@@ -404,9 +404,9 @@ namespace SibaDev.Models
                                     }
 
 
-                                    /*----------------
+                                    /*-------------------------------
                                     * FAC Inward/Co-insurance Member
-                                    *--------------*/
+                                    *--------------------------------*/
                                     foreach (var facIn in viewPolh.INS_RI_FAC_INWARD)
                                     {
                                         var dbFacIn = db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID);
@@ -437,7 +437,6 @@ namespace SibaDev.Models
                                                                 break;
 
                                                             case "U":
-
                                                                 pap.FINW_PAP_STATUS = "A";
                                                                 db.INS_RI_FAC_INW_COMPANY.Add(pap);
                                                                 break;

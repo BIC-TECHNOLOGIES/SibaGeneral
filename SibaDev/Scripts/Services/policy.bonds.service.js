@@ -49,6 +49,16 @@
             u.post("/api/IntermediaryCommission/lov/", code, success, error);
         },
 
+        get_lov_cedent: function (success, error) {
+            u.get("/api/customercategory/lov", success, error);
+        },
+        get_lov_com: function (success, error) {
+            u.get("/api/customercategory/lov", success, error);
+        },
+        get_lov_member_com: function (success, error) {
+            u.get("/api/customercategory/lov", success, error);
+        },
+
         check_company_code: function (code, success, error) {
             u.get("/api/company/check/" + code, success, error);
         },

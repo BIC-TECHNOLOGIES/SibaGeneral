@@ -2775,8 +2775,6 @@
 
                 polhData.INS_RI_FAC_OUTWARD = u.get_grid_data($scope.grdCoinsLeader_grid);
 
-
-
                 console.log(polhData);
 
                 if (!$scope.saving) {

@@ -328,7 +328,14 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <input id="POLH_POL_DAYS" class="form-control" min="12" maxlength="12"
-                                                                   type="text" name="POLH_POL_DAYS" title="Name" required />
+                                                                   type="text" name="POLH_POL_DAYS" title="Name" readonly required />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label class="">UW Year</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input id="POLH_POL_UW_YEAR" class="form-control" min="12" maxlength="12"
+                                                                   type="text" name="POLH_POL_UW_YEAR" title="Name" required disabled="" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -570,7 +577,30 @@
                                     </div>
 
                                 </div>
-                                <hr />
+                                
+                                <h4 style="border-bottom-color: blue" class="sub-header"></h4>
+
+                                <div class="row">
+                                    <div class="col-md-1">  </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group">
+                                            <button type="button" id="btnFACInward" name="btnFACInward" disabled class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>FAC Inward </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group">
+                                            <button type="button" id="btnCoInsMember" name="btnCoInsMember" disabled class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>Co-Insurance Member </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group">
+                                            <button type="button" id="btnCoInsLeader" name="btnCoInsLeader" disabled class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>Co-Insurance Leader </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <h4 style="border-bottom-color: blue" class="sub-header"></h4>
 
                             </form>
                         </div>
@@ -581,11 +611,12 @@
 
                         <div id="tabs">
                             <ul>
-                                <li><a href="#tabs-1">Risk</a></li>
-                                <li><a href="#tabs-2">Premium Payables</a></li>
-                                <li><a href="#tabs-3">Payment Details</a></li>
-                                <li><a href="#tabs-4">RI Details</a></li>
-                                <li><a href="#tabs-5">Claim History</a></li>
+                                <li><a href="#tabs-1">Bond Risk</a></li>
+                                <li><a href="#tabs-2">Risk Premium Summary</a></li>
+                                <li><a href="#tabs-3">Applicable Fees</a></li>
+                                <li><a href="#tabs-4">Reinsurance Details</a></li>
+                                <li><a href="#tabs-5">Payment Details</a></li>
+                                <li><a href="#tabs-6">Claim History</a></li>
                             </ul>
 
                             <div id="tabs-1">
@@ -614,12 +645,29 @@
 
                                 <div class="row control-group form-padding">
                                     <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Premium Payables</span>
+                                        <span class="control-grp-lbl text-danger">Risk Premium Summanry</span>
 
-                                        <hr />
+                                        <div class="row">
+                                            <table id="gridRiskPremSummary"></table>
+                                            <table id="gridRiskPremSummaryPager"></table>
+                                        </div>
+                                       
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div id="tabs-3">
+
+                                <div class="row control-group form-padding">
+                                    <div class="container" style="width:100%">
+                                        <span class="control-grp-lbl text-danger"></span>
+
                                         <div class="row">
                                             <button id="btn_GetCompFees" name="btn_GetCompFees" class="btn btn-default" type="button">
-                                            <i class="fa fa-trash-o text-danger"></i> Get Fees</button>
+                                                <i class="fa fa-trash-o text-danger"></i> Get Fees
+                                            </button>
                                         </div>
 
                                         <div class="row">
@@ -632,33 +680,49 @@
                                             <table id="gridPolFees"></table>
                                             <table id="gridPolFeesPager"></table>
                                         </div>
-
-                                        <hr />
-                                        <div class="row">
-                                            <table id="gridPremSum"></table>
-                                            <table id="gridPremSumPager"></table>
-                                        </div>
-
                                         <hr />
                                         <div class="row">
                                             <table id="gridPremReg"></table>
                                             <table id="gridPremRegPager"></table>
                                         </div>
 
-                                        <hr />
+                                        @*<hr />
                                         <div class="row">
-                                            <table id="gridPremRegFees"></table>
-                                            <table id="gridPremRegFeesPager"></table>
-                                        </div>
+                                            <table id="gridPremSum"></table>
+                                            <table id="gridPremSumPager"></table>
+                                        </div>*@
 
-                                        
                                     </div>
-
                                 </div>
 
                             </div>
 
-                            <div id="tabs-3">
+                            <div id="tabs-4">
+
+                                <div class="row control-group form-padding">
+                                    <div class="container" style="width:100%">
+                                        <span class="control-grp-lbl text-danger">Reinsurance Details</span>
+
+                                        <div class="row">
+                                            <button type="reset" class="btn btn-primary" id="btnTreatyAppor">
+                                                <i class="fa fa-list" title="" aria-hidden="true"></i>RI Apportionments
+                                            </button>
+                                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
+                                                <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                            </button>
+                                        </div>
+
+                                        <div class="row">
+                                            <table id="gridRISummary"></table>
+                                            <table id="gridRISummaryPager"></table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="tabs-5">
 
                                 <div class="row control-group form-padding">
                                     <div class="container" style="width:100%">
@@ -672,36 +736,9 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div>                            
 
-                            <div id="tabs-4">
-
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">RI Summary</span>
-                                        <div class="row">
-                                            <table id="gridRISummary"></table>
-                                            <table id="gridRISummaryPager"></table>
-                                        </div>
-
-                                        <hr />
-                                        <div class="row">
-                                            <table id="gridFACINPremSum"></table>
-                                            <table id="gridFACINPremSumPager"></table>
-                                        </div>
-
-                                        <hr />
-                                        <div class="row">
-                                            <table id="gridCoIns"></table>
-                                            <table id="gridCoInsPager"></table>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div id="tabs-5">
+                            <div id="tabs-6">
 
                                 <div class="row control-group form-padding">
                                     <div class="container" style="width:100%">
@@ -818,6 +855,8 @@
                                             <div class="col-md-2">
                                                 <input id="BOND_PERIOD_DAYS" class="form-control" min="12" maxlength="12"
                                                        type="text" name="BOND_PERIOD_DAYS" title="Name" readonly />
+                                                <input id="BOND_UW_YEAR" class="form-control"
+                                                       type="hidden" name="BOND_UW_YEAR" title="Name" readonly />
                                             </div>
                                         </div>
                                     </div>
@@ -915,7 +954,7 @@
                 <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Risk Cover</strong>
             </div>
 
-            <div class="modal-body" style="padding: 40px 50px;">
+            <div class="modal-body">
 
                 <div class="row control-group form-padding">
                     <div class="container" style="width:100%">
@@ -927,7 +966,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <label>Cover Code</label>
+                                            <span style="margin-left: -60px"><label>Cover Code</label></span>
                                             <div class="input-group">
                                                 <input class="form-control" min="3" max-length="15" type="text" id="RCOV_CODE" name="RCOV_CODE" placeholder="Code" required />
                                                 <span class="input-group-btn">
@@ -941,31 +980,31 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <label>Cover Name</label>
+                                           <span style="margin-left: -50px"><label>Cover Name</label></span>
                                             <input type="text" class="form-control" id="RCOV_NAME" name="RCOV_NAME" />
                                         </div>
                                         <div class="col-md-2">
-                                            <label>Sum Insured</label>
+                                            <span style="margin-left: -50px"><label>Sum Insured</label></span>                                          
                                             <input type="number" class="form-control" id="RCOV_SI_FC" name="RCOV_SI_FC" required />
                                             <input type="hidden" class="form-control" id="RCOV_SI_BC" name="RCOV_SI_BC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <label>Rate</label>
+                                            <span style="margin-left: -30px"><label>Rate</label></span>                                             
                                             <input type="number" class="form-control" id="RCOV_RATE" name="RCOV_RATE" required />
                                         </div>
                                         <div class="col-md-2">
-                                            <label>Gross Premium</label>
+                                            <span style="margin-left: -50px"><label>Gross Premium</label></span>
                                             <input type="number" class="form-control" id="RCOV_GROSS_PREM_FC" name="RCOV_GROSS_PREM_FC" required />
                                             <input type="hidden" class="form-control" id="RCOV_GROSS_PREM_BC" name="RCOV_GROSS_PREM_BC" />
                                         </div>
                                         <div class="col-md-2">
-                                            <label>Net Premium</label>
+                                            <span style="margin-left: -50px"><label>Net Premium</label></span>
                                             <input type="number" class="form-control" id="RCOV_NET_PREM_FC" name="RCOV_NET_PREM_FC" required />
                                             <input type="hidden" class="form-control" id="RCOV_NET_PREM_BC" name="RCOV_NET_PREM_BC" />
                                         </div>
                                        
                                     </div>
-                                    <hr />
+                                   
                                     <div class="row">
                                         <!-- Hidden Controls-->
                                         <div class="col-sm-1">
@@ -1018,6 +1057,7 @@
                                         </div>
                                     </div>
 
+                                    <h4 style="border-bottom-color: red" class="sub-header"> </h4>
 
                                 </div>
                             </form>
@@ -1037,11 +1077,13 @@
                                     <button type="button" id="btn_get_DeftCovers" class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>Get Default Covers</button>
 
                                     <button type="button" id="btn_get_Cover_Premiums" class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>Refresh Calculations </button>
+
+                                    <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
+                                        <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                    </button>
                                 </div>
 
-                                <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
-                                    <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
-                                </button>
+                                
                             </div>
                         </div>
 
@@ -1555,6 +1597,81 @@
 </div>
 
 
+    <!-- Treaty Apportionment -->
+<div class="container">
+    <div class="modal draggable ui-accordion fade" id="treatyApportionmentModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog" style="width: 800px">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"> Treaty Apportionments </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row control-group form-padding">
+                        <div class="container" style="width: 100%">
+                            <span class="control-grp-lbl text-danger">Treaty Apportionment</span>
+                            <hr />
+                            <div class="row">
+                                <div class="btn-block">
+
+                                    <button type="reset" class="btn btn-primary" id="btnTreatyShare">
+                                        <i class="fa fa-list pull right" title="" aria-hidden="true"></i>Treaty Share
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <table id="gridTreatAppor"></table>
+                                <table id="gridTreatAppor"></table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-danger pull right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Treaty share among companies -->
+<div class="container">
+    <div class="modal draggable ui-accordion fade" id="treatyShareModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog" style="width: 800px">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Treaty Share</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row control-group form-padding">
+                        <div class="container" style="width: 100%">
+                            <span class="control-grp-lbl text-danger">Treaty Share</span>
+
+                            <div class="row">
+                                <table id="gridTreatyShare"></table>
+                                <table id="gridTreatySharePager"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-danger pull right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--  Class of Business Modal -->
 
 <div class="modal draggable ui-accordion fade" id="prodRiskLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
@@ -1595,7 +1712,7 @@
         </div>
 
     </div>
-</div>]
+</div>
 
 
 <!--  Customer Modal -->
@@ -2226,3 +2343,396 @@
     </div>
 </div>
 
+
+<!-- Coinsurance Member or Inward Modal -------------------- -->
+<div class="container">
+    <div class="modal draggable ui-accordion fade" id="MemberIwardModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog" style="width: 1000px">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 id="textCoinsMember" class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row control-group form-padding">
+                        <div class="container" style="width: 100%">
+
+                            <form id="facInwardForm" name="facInwardForm" class="form">
+                                <input class="form-control" type="hidden" id="FINW_SYS_ID" name="FINW_SYS_ID" />
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label class="">Ceding Company</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span id="spry_polhbuz">
+                                                    <div class="input-group">
+                                                        <input class="form-control" min="3" max-length="15" type="text" id="FINW_CEDANT_CODE" name="FINW_CEDANT_CODE" title="Code" required />
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_facinw_cedent", "field1":"FINW_CEDANT_CODE", "field2":"FINW_CEDANT_NAME"}'>
+                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                    <span class="textfieldRequiredMsg">Code is required.</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input class="form-control" min="3" max-length="50" type="text" id="FINW_CEDANT_NAME" name="FINW_CEDANT_NAME" />
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <button id="btn_Participant" class="btn btn-default" type="button"><i class="fa fa-list-ul text-danger "></i> Participants</button>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label>Cedant Reference</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input class="form-control" min="3" max-length="50" type="text" id="FINW_REF_NO" name="FINW_REF_NO" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label>Cedant No.</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input class="form-control" min="3" max-length="50" type="text" id="FINW_ACCPT_NO" name="FINW_ACCPT_NO" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label>Comments</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" min="3" max-length="50" type="text" id="FINW_COMMENT" name="FINW_COMMENT" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label>Our Share %</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-control" type="text" id="FINW_SHARE_PERC" name="FINW_SHARE_PERC" />
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label>Inward Comm %</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-control" type="text" id="FINW_COMM_PERC" name="FINW_COMM_PERC" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 style="border-bottom-color: red" class="sub-header"></h5>
+                                <div class="row">
+                                    <div class="col-lg-1"></div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -40px"><label>Original SI</label></span>
+                                        <input class="form-control" type="number" id="FINW_ORIG_SI_FC" name="FINW_ORIG_SI_FC" title="Original Sum Insured FC" />
+                                        <input class="form-control" type="number" name="FINW_ORIG_SI_BC" id="FINW_ORIG_SI_BC" title="Original Sum Insured BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Original Premium</label></span>
+                                        <input class="form-control" type="number" id="FINW_ORIG_PREM_FC" name="FINW_ORIG_PREM_FC" title="Original Premium FC" />
+                                        <input class="form-control" type="number" id="FINW_ORIG_PREM_BC" name="FINW_ORIG_PREM_BC" title="Original Premium BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Our Share SI</label></span>
+                                        <input class="form-control" type="number" id="FINW_SI_FC" name="FINW_SI_FC" title="Original Premium FC" />
+                                        <input class="form-control" type="number" id="FINW_SI_BC" name="FINW_SI_BC" title="Original Premium BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Our Share Premium</label></span>
+                                        <input class="form-control" type="number" id="FINW_PREM_FC" name="FINW_PREM_FC" title="Our Share Premium FC" />
+                                        <input class="form-control" type="number" id="FINW_PREM_BC" name="FINW_PREM_BC" title="Our Share Premium BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Inward Commission</label></span>
+                                        <input class="form-control" type="number" id="FINW_COMM_FC" name="FINW_COMM_FC" title="Inward Commission FC" />
+                                        <input class="form-control" type="number" id="FINW_COMM_BC" name="FINW_COMM_BC" title="Inward Commission BC" readonly />
+                                    </div>
+                                </div>
+                                <h5 style="border-bottom-color: red" class="sub-header"></h5>
+
+                            </form>
+
+                            <div class="row">
+                                <div class="btn-block">
+                                    &nbsp;
+                                    <button id="btn_add_MemberInward" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add </button>
+                                    <button id="btn_update_MemberInward" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                                    <button id="btn_remove_MemberInward" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+
+                                    <button type="button" class="btn btn-default pull-right dialog-btn" id="export-MemberInward-btn" title="Export Grid data to Excel">
+                                        <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                    </button>
+                                    &nbsp;
+                                </div>
+                            </div>
+
+                            <div>
+                                <table id="grdfacInward"></table>
+                                <table id="grdfacInwardPager"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-danger pull right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inward/Coinsurance Member  Participating companies -->
+<div class="container">
+    <div class="modal draggable ui-accordion fade" id="PartipantsModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog" style="width: 1000px">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Participating Companies</h4>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="row control-group form-padding">
+                        <div class="container" style="width: 100%">
+
+
+                            <form name="InwardParticipantsForm" id="InwardParticipantsForm">
+                                <h5 style="border-bottom-color: red" class="sub-header">Apportionments</h5>
+                                <input class="form-control" type="hidden" id="FINW_PAP_FINW_SYS_ID" name="FINW_PAP_FINW_SYS_ID" />
+                                <div class="row">
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Reinsurer Code</label></span>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" maxlength="15" id="FINW_PAP_CODE" name="FINW_PAP_CODE" title="Main Account Code" required />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn_lov" data-dialog='{"type":"btn_pap_com" ,"field1":"FINW_PAP_CODE", "field2":"FINW_PAP_NAME"}'>
+                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span style="margin-left: -100px"><label>Reinsurer Name</label></span>
+                                        <input class="form-control" type="text" id="FINW_PAP_NAME" name="FINW_PAP_NAME" title="" readonly />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -40px"><label>Share %</label></span>
+                                        <input class="form-control" type="number" min="1" id="FINW_PAP_SHARE_PERC" name="FINW_PAP_SHARE_PERC" title="Share %" required />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -50px"><label>Share SI</label></span>
+                                        <input class="form-control" type="number" min="1" id="FINW_PAP_SHARE_SI" name="FINW_PAP_SHARE_SI" title="Share SI" required />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -25px"><label>Share Premium</label></span>
+                                        <input class="form-control" type="number" min="1" id="FINW_PAP_SHARE_PREM" name="FINW_PAP_SHARE_PREM" title="Share Premium" required />
+                                    </div>
+                                </div>
+                                <h5 style="border-bottom-color: red" class="sub-header"></h5>
+                            </form>
+                            <div class="row">
+                                <div class="btn-block">
+                                    &nbsp;
+                                    <button id="btn_add_facInwardComp" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add </button>
+                                    <button id="btn_update_facInwardComp" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                                    <button id="btn_remove_facInwardComp" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+
+                                    <button type="button" class="btn btn-default pull-right dialog-btn" id="export-facInward-btn" title="Export Grid data to Excel">
+                                        <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                    </button>
+                                    &nbsp;
+                                </div>
+                            </div>
+
+                            <div>
+                                <table id="grdInwdParticipants"></table>
+                                <table id="grdInwdParticipantsPager"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="companyOk" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+                    <button type="button" id="companyClose" class="btn btn-danger pull right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Coinsurance Leader or Outward Modal -------------------- -->
+<div class="container">
+    <div class="modal draggable ui-accordion fade" id="CoInsLeaderModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog" style="width: 1000px">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 id="textCoinsLederMember" class="modal-title">Coinsurance Leader Details</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row control-group form-padding">
+                        <div class="container" style="width: 100%">
+
+                            <form id="CoinsLeaderForm" name="CoinsLeaderForm" class="form">
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label>Our Share %</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-control" type="text" id="FOTW_SHARE_PERC" name="FOTW_SHARE_PERC" />
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label>Members Share %</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-control" type="text" id="FOTW_MEM_SHARE_PERC" name="FOTW_MEM_SHARE_PERC" readonly />
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 style="border-bottom-color: red" class="sub-header"></h5>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-3">
+                                        <span style="margin-left: -75px"><label>Share SI</label></span>
+                                        <input class="form-control" type="number" id="FOTW_SHARE_SI_FC" name="FOTW_SHARE_SI_FC" title="Our Share SI FC" />
+                                        <input class="form-control" type="number" name="FOTW_SHARE_SI_BC" id="FOTW_SHARE_SI_BC" title="Our Share SI BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Share Premium</label></span>
+                                        <input class="form-control" type="number" id="FOTW_SHARE_PREM_FC" name="FOTW_SHARE_PREM_FC" title="Original Premium FC" />
+                                        <input class="form-control" type="number" id="FOTW_SHARE_PREM_BC" name="FOTW_SHARE_PREM_BC" title="Original Premium BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <span style="margin-left: -80px"><label>Members  SI</label></span>
+                                        <input class="form-control" type="number" id="FOTW_MEM_SI_FC" name="FOTW_MEM_SI_FC" title="Member Share SI FC" />
+                                        <input class="form-control" type="number" id="FOTW_MEM_SI_BC" name="FOTW_MEM_SI_BC" title="Member Share SI BC" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Member  Premium</label></span>
+                                        <input class="form-control" type="number" id="FOTW_MEM_PREM_FC" name="FOTW_MEM_PREM_FC" title="Member Share Premium FC" />
+                                        <input class="form-control" type="number" id="FOTW_MEM_PREM_BC" name="FOTW_MEM_PREM_BC" title="Member Share Premium BC" readonly />
+                                    </div>
+
+
+                                </div>
+                                <h5 style="border-bottom-color: red" class="sub-header">Coinsurance Members Share details</h5>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Reinsurer Code</label></span>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" maxlength="15" id="FOTW_RI_MEM_CODE" name="FOTW_RI_MEM_CODE" title="Member Code" required />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn_lov" data-dialog='{"type":"btn_member_code" ,"field1":"FOTW_RI_MEM_CODE", "field2":"FOTW_RI_MEM_NAME"}'>
+                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span style="margin-left: -100px"><label>Reinsurer Name</label></span>
+                                        <input class="form-control" type="number" min="1" id="FOTW_RI_MEM_NAME" name="FOTW_RI_MEM_NAME" title="Member Name" readonly />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -50px"><label>Share %</label></span>
+                                        <input class="form-control" type="number" min="1" id="FOTW_RI_PERC" name="FOTW_RI_PERC" title="RI Share %" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -30px"><label>Commission %</label></span>
+                                        <input class="form-control" type="number" min="1" id="FOTW_RI_COMM" name="FOTW_RI_COMM" title="RI Share Commission" />
+                                    </div>
+
+                                </div>
+
+                                <!-- -->
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -45px"><label>Share SI</label></span>
+                                        <input class="form-control" type="number" min="1" id="FOTW_RI_SHARE_SI" name="FOTW_RI_SHARE_SI" title="Share SI" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Share Premium</label></span>
+                                        <input class="form-control" type="number" min="1" id="FOTW_RI_SHARE_PREM" name="FOTW_RI_SHARE_PREM" title="Share Premium" readonly />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <span style="margin-left: -20px"><label>Share Commission</label></span>
+                                        <input class="form-control" type="number" min="1" id="FOTW_RI_SHARE_COMM" name="FOTW_RI_SHARE_COMM" title="Share Commission" readonly />
+                                    </div>
+                                </div>
+
+                            </form>
+                            <h5 style="border-bottom-color: red" class="sub-header"></h5>
+                            <div class="row">
+                                <div class="btn-block">
+                                    &nbsp;
+                                    <button id="btn_add_CoinsLeader" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add </button>
+                                    <button id="btn_update_CoinsLeader" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                                    <button id="btn_remove_CoinsLeader" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+
+                                    <button type="button" class="btn btn-default pull-right dialog-btn" id="export-CoinsLeader-btn" title="Export Grid data to Excel">
+                                        <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                    </button>
+                                    &nbsp;
+                                </div>
+                            </div>
+
+                            <div>
+                                <table id="grdCoinsLeader"></table>
+                                <table id="grdCoinsLeaderPager"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-danger pull right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

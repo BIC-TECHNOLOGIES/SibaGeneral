@@ -305,7 +305,7 @@
 
         
         /*--------------------------------------------------
-        * treaty Tyep Details Modal 
+        * treaty Type Details Modal 
         *------------------------------------------------*/
         //
         $("#btn_ri_company").click(function () {

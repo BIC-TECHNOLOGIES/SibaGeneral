@@ -17,6 +17,7 @@ namespace SibaDev.Models
                 {
                     RCOV_SYS_ID = r.RCOV_SYS_ID,
                     RCOV_CODE = r.RCOV_CODE,
+                    RCOV_NAME = r.RCOV_NAME,
                     RCOV_CRTE_BY = r.RCOV_CRTE_BY,
                     RCOV_CRTE_DATE = r.RCOV_CRTE_DATE,
                     RCOV_DISC_BC = r.RCOV_DISC_BC,

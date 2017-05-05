@@ -430,6 +430,9 @@ namespace SibaDev.Models
 
                                     }
 
+                                    /*--------------------------------
+                                   * Policy Fees
+                                   *-------------------------------*/
                                     foreach (var fee in viewPolh.INS_UDW_POL_FEES)
                                     {
                                         var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
@@ -456,6 +459,9 @@ namespace SibaDev.Models
 
                                     }
 
+                                    /*--------------------------------
+                                    * Risk Fees
+                                    *-------------------------------*/
                                     foreach (var fees in viewPolh.INS_UDW_FIRE_FEES)
                                     {
                                         var dbrkfees = db.INS_UDW_FIRE_FEES.Find(fees.FIRE_FEE_SYS_ID);
@@ -486,7 +492,98 @@ namespace SibaDev.Models
                                         }
                                     }
 
-                                    db.SaveChanges();
+                                    /*-------------------------------
+                                    * FAC Inward/Co-insurance Member
+                                    *-------------------------------*/
+                                    foreach (var facIn in viewPolh.INS_RI_FAC_INWARD)
+                                    {
+                                        var dbFacIn = db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID);
+                                        switch (facIn.FINW_STATUS)
+                                        {
+                                            case "A":
+                                                if (dbFacIn != null)
+                                                {
+                                                    db.INS_RI_FAC_INWARD.Attach(dbFacIn);
+                                                    dbFacIn.Map(facIn);
+
+                                                    /*----------------
+                                                    * Participating Companies
+                                                    *--------------*/
+                                                    foreach (var pap in facIn.INS_RI_FAC_INW_COMPANY)
+                                                    {
+                                                        var dbcover = db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID);
+
+                                                        switch (pap.FINW_PAP_STATUS)
+                                                        {
+                                                            case "A":
+                                                                if (dbcover != null)
+                                                                {
+                                                                    db.INS_RI_FAC_INW_COMPANY.Attach(dbcover);
+                                                                    dbcover.Map(pap);
+                                                                }
+
+                                                                break;
+
+                                                            case "U":
+                                                                pap.FINW_PAP_STATUS = "A";
+                                                                db.INS_RI_FAC_INW_COMPANY.Add(pap);
+                                                                break;
+
+                                                            case "D":
+                                                                db.INS_RI_FAC_INW_COMPANY.Remove(db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID));
+                                                                break;
+                                                        }
+
+                                                    }
+
+
+                                                }
+
+                                                break;
+                                            case "U":
+                                                facIn.FINW_STATUS = "A";
+                                                facIn.FINW_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_RI_FAC_INWARD.Add(facIn);
+
+                                                break;
+                                            case "D":
+                                                db.INS_RI_FAC_INWARD.Remove(db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID));
+                                                break;
+                                        }
+
+                                    }
+
+
+                                    /*-------------------------------
+                                    * FAC Outward/Co-insurance Leader
+                                    *--------------------------------*/
+                                    foreach (var facout in viewPolh.INS_RI_FAC_OUTWARD)
+                                    {
+                                        var dbFacOut = db.INS_RI_FAC_OUTWARD.Find(facout.FOTW_SYS_ID);
+                                        switch (facout.FOTW_STATUS)
+                                        {
+                                            case "A":
+                                                if (dbFacOut != null)
+                                                {
+                                                    db.INS_RI_FAC_OUTWARD.Attach(dbFacOut);
+                                                    dbFacOut.Map(facout);
+                                                }
+
+                                                break;
+                                            case "U":
+                                                facout.FOTW_STATUS = "A";
+                                                facout.FOTW_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_RI_FAC_OUTWARD.Add(dbFacOut);
+
+                                                break;
+                                            case "D":
+                                                db.INS_RI_FAC_OUTWARD.Remove(db.INS_RI_FAC_OUTWARD.Find(facout.FOTW_SYS_ID));
+                                                break;
+                                        }
+
+                                    }
+
+                                    //db.SaveChanges();
                                 }
                             }
                             break;

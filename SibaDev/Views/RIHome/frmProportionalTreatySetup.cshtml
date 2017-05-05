@@ -54,177 +54,177 @@
                                         <div class="col-md-6">
                                             <input class="form-control" min="3" max-length="15" type="hidden" id="TH_TTY_ID" name="TH_TTY_ID" title="Code" />
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <label class="required">Treaty Code</label>
-                    </div>
-                    <div class="col-md-3">
-                        <span id="spry_code">
-                            <input id="TH_CODE" class="form-control" min="2" maxlength="15" type="text" name="TH_CODE" title="Year" required />
-                            <span class="textfieldRequiredMsg">Code is required.</span>
-                            <span class="textfieldMaxCharsMsg">Code must not exceed 15 characters.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="required">Treaty Code</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span id="spry_code">
+                                                        <input id="TH_CODE" class="form-control" min="2" maxlength="15" type="text" name="TH_CODE" title="Year" required />
+                                                        <span class="textfieldRequiredMsg">Code is required.</span>
+                                                        <span class="textfieldMaxCharsMsg">Code must not exceed 15 characters.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <label class="required">Treaty Group</label>
-                    </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="required">Treaty Group</label>
+                                                </div>
 
                                                     <div class="col-md-3">
                                                         <div class="input-group">
                                                             <input class="form-control" min="3" max-length="15" type="text" id="TH_TTY_CODE" name="TH_TTY_CODE" title="Code" required />
 
-                            <span class="input-group-btn">
-                                <span id="spry_basecurr">
-                                    <button type="button" class="btn btn_lov btn-default pull-left" id="btn_treatygrp" name="btn_treatygrp">
-                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="textfieldRequiredMsg">Rate is required.</span>
-                                </span>
-                            </span>
+                                                        <span class="input-group-btn">
+                                                            <span id="spry_basecurr">
+                                                                <button type="button" class="btn btn_lov btn-default pull-left" id="btn_treatygrp" name="btn_treatygrp">
+                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                </button>
+                                                                <span class="textfieldRequiredMsg">Rate is required.</span>
+                                                            </span>
+                                                        </span>
 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <span id="spry_baserate">
-                            <input class="form-control" min="3" max-length="50" type="text" name="GP_NAME" id="GP_NAME" title="Name" />
-                            <span class="textfieldRequiredMsg">Rate is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <span id="spry_baserate">
+                                                        <input class="form-control" min="3" max-length="50" type="text" name="GP_NAME" id="GP_NAME" title="Name" />
+                                                        <span class="textfieldRequiredMsg">Rate is required.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <label class="required">UW Year</label>
-                    </div>
-                    <div class="col-md-3">
-                        <span id="spry_code">
-                            <input id="TH_UWYR"
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    type = "number" maxlength = "4" class="form-control" name="TH_UWYR" title="Year" required />
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="required">UW Year</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span id="spry_code">
+                                                        <input id="TH_UWYR"
+                                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                                type = "number" maxlength = "4" class="form-control" name="TH_UWYR" title="Year" required />
                                     
-                            <span class="textfieldRequiredMsg">Year is required.</span>
+                                                        <span class="textfieldRequiredMsg">Year is required.</span>
                             
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <label class="required">Start Date</label>
-                    </div>
-                    <div class="col-md-3">
-                        <span id="spry_name">
-                            <input id="TH_SART_DATE" class="form-control" min="5" maxlength="15"
-                                    type="text" name="TH_SART_DATE" title="Name" required />
-                            <span class="textfieldRequiredMsg">Date is required.</span>
-                        </span>
-                    </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="required">Start Date</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span id="spry_name">
+                                                        <input id="TH_SART_DATE" class="form-control" min="5" maxlength="15"
+                                                                type="text" name="TH_SART_DATE" title="Name" required />
+                                                        <span class="textfieldRequiredMsg">Date is required.</span>
+                                                    </span>
+                                                </div>
 
-                    <div class="col-md-2">
-                        <label class="required">End Date</label>
-                    </div>
-                    <div class="col-md-3">
-                        <span id="spry_name">
-                            <input id="TH_END_DATE" class="form-control" min="5" maxlength="15"
-                                    type="text" name="TH_END_DATE" title="Name" required />
-                            <span class="textfieldRequiredMsg">Date is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                                <div class="col-md-2">
+                                                    <label class="required">End Date</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span id="spry_name">
+                                                        <input id="TH_END_DATE" class="form-control" min="5" maxlength="15"
+                                                                type="text" name="TH_END_DATE" title="Name" required />
+                                                        <span class="textfieldRequiredMsg">Date is required.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                             <div class="row">
                                                 <div class="form-group">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <label class="required">Currency</label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="input-group">
                                                             <input class="form-control" min="3" max-length="15" type="text" id="TH_CURRENCY" name="TH_CURRENCY" title="Code" required />
 
-                            <span class="input-group-btn">
-                                <span id="spry_basecurr">
-                                    <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_currency", "field1":"TH_CURRENCY", "field2":"TH_CUR_RATE"}'>
-                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="textfieldRequiredMsg">Rate is required.</span>
-                                </span>
-                            </span>
+                                                    <span class="input-group-btn">
+                                                        <span id="spry_basecurr">
+                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_currency", "field1":"TH_CURRENCY", "field2":"TH_CUR_RATE"}'>
+                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                            </button>
+                                                            <span class="textfieldRequiredMsg">Rate is required.</span>
+                                                        </span>
+                                                    </span>
 
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <span id="spry_baserate">
-                            <input class="form-control" min="3" max-length="50" type="text" name="TH_CUR_RATE" id="TH_CUR_RATE" title="Name" />
-                            <span class="textfieldRequiredMsg">Rate is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <span id="spry_baserate">
+                                                        <input class="form-control" min="3" max-length="50" type="text" name="TH_CUR_RATE" id="TH_CUR_RATE" title="Name" />
+                                                        <span class="textfieldRequiredMsg">Rate is required.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <label class="">Quota Share?</label>
-                    </div>
-                    <div class="col-md-2">
-                        <span id="spry_decsymbol">
-                            <select id="TH_QS_YN" name="TH_QS_YN" class="btn btn-default">
-                                <option value="">--Select Basis--</option>
-                                <option value="Y">Yes</option>
-                                <option value="N">No </option>
-                            </select>
-                            <span class="textfieldRequiredMsg">Term is required.</span>
-                        </span>
-                    </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="">Quota Share?</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <span id="spry_decsymbol">
+                                                        <select id="TH_QS_YN" name="TH_QS_YN" class="btn btn-default" required>
+                                                            <option value="">--Select Basis--</option>
+                                                            <option value="Y">Yes</option>
+                                                            <option value="N">No </option>
+                                                        </select>
+                                                        <span class="textfieldRequiredMsg">Term is required.</span>
+                                                    </span>
+                                                </div>
 
-                    <div class="col-md-3">
-                        <label class="required">Share %</label>
-                    </div>
-                    <div class="col-md-2">
-                        <span id="spry_code">
-                            <input id="TH_QS_PERC" 
-                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    type = "number" maxlength = "3"
-                                   class="form-control"  name="TH_QS_PERC" title="Code" required />
-                            <span class="textfieldRequiredMsg">Share is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                                <div class="col-md-3">
+                                                    <label class="required">Share %</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <span id="spry_code">
+                                                        <input id="TH_QS_PERC" 
+                                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                                type = "number" maxlength = "3"
+                                                               class="form-control"  name="TH_QS_PERC" title="Code" required />
+                                                        <span class="textfieldRequiredMsg">Share is required.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         </div>
 
                                         <div class="col-md-6">
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-3">
-                        <label class="required">UW Basis</label>
-                    </div>
-                    <div class="col-md-6">
-                        <span id="spry_decsymbol">
-                            <select id="TH_UW_BASIS" name="TH_UW_BASIS" class="btn btn-default" required>
-                                <option value="">--Select Basis--</option>
-                                <option value="U">Underwriting</option>
-                                <option value="C">Clean Cut </option>
-                                <option value="C">Run Off Basis </option>
-                            </select>
-                            <span class="textfieldRequiredMsg">Term is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="required">UW Basis</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span id="spry_decsymbol">
+                                                        <select id="TH_UW_BASIS" name="TH_UW_BASIS" class="btn btn-default" required>
+                                                            <option value="">--Select Basis--</option>
+                                                            <option value="U">Underwriting</option>
+                                                            <option value="C">Clean Cut </option>
+                                                            <option value="C">Run Off Basis </option>
+                                                        </select>
+                                                        <span class="textfieldRequiredMsg">Term is required.</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                             <div class="row">
                                                 <div class="form-group">
@@ -244,43 +244,43 @@
                                                 </div>
                                             </div>
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-3">
-                        <label class="required">RI App. Level</label>
-                    </div>
-                    <div class="col-md-6">
-                        <span id="spry_decsymbol">
-                            <select id="TH_RI_LEVEL" name="TH_RI_LEVEL" class="btn btn-default" required>
-                                <option value="">--Select RI Level--</option>
-                                <option value="P">Policy </option>
-                                <option value="L">Location</option>
-                                <option value="R">Risk</option>
-                            </select>
-                            <span class="textfieldRequiredMsg">Term is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label class="required">RI App. Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span id="spry_decsymbol">
+                                                    <select id="TH_RI_LEVEL" name="TH_RI_LEVEL" class="btn btn-default" required>
+                                                        <option value="">--Select RI Level--</option>
+                                                        <option value="P">Policy </option>
+                                                        <option value="L">Location</option>
+                                                        <option value="R">Risk</option>
+                                                    </select>
+                                                    <span class="textfieldRequiredMsg">Term is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-3">
-                        <label class="required">War Treaty ?</label>
-                    </div>
-                    <div class="col-md-6">
-                        <span id="spry_decsymbol">
-                            <select id="TH_WAR_YN" name="TH_WAR_YN" class="btn btn-default" required>
-                                <option value="">--Select--</option>
-                                <option value="Y">Yes </option>
-                                <option value="N">No</option>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label class="required">War Treaty ?</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span id="spry_decsymbol">
+                                                    <select id="TH_WAR_YN" name="TH_WAR_YN" class="btn btn-default" required>
+                                                        <option value="">--Select--</option>
+                                                        <option value="Y">Yes </option>
+                                                        <option value="N">No</option>
                                                                     
-                            </select>
-                            <span class="textfieldRequiredMsg">Term is required.</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+                                                    </select>
+                                                    <span class="textfieldRequiredMsg">Term is required.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                         </div>
                                     </div>
