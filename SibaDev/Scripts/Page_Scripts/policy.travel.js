@@ -900,6 +900,11 @@
                     //fill grid 
                     for (var i in result) {
 
+                        result[i]["TRA_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["TRA_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["TRA_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
+                        result[i]["TRA_FEE_RK_NO"] = result[i]["PRF_SYS_ID"];
+                        result[i]["TRA_FEE_NAME"] = result[i]["FEE_NAME"];
                         result[i]["TRA_FEE_RK_CODE"] = $("#TRA_RISK_CODE").val();
                         result[i]["TRA_FEE_RK_SYS_ID"] = $("#TRA_SYS_ID").val();
                         result[i]["TRA_FEE_CRTE_BY"] = "Admin";
@@ -2175,7 +2180,7 @@
             if (!u.form_validation("#receiptHeaderForm")) return u.growl_warning("Fields marked red are required");
 
             u.modal_confirmation("Are you sure you want to Approve ?", function () {
-                s.policyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: 0, TXN_TYPE: 1 }, function (response) {
+                s.TravelpolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: 0, TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
                         //alert(JSON.stringify(response));

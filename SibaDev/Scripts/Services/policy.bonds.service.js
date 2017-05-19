@@ -10,7 +10,7 @@
             u.get("/api/policybond/search/" + query, success, error);
         },
         confirmPolicy: function (polId, success,error) {
-            u.get("/api/Confirmation/confirmPolicy/" + polId, success, error);
+            u.get("/api/Confirmation/confirmBondPolicy/" + polId, success, error);
         },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);

@@ -16,6 +16,7 @@ namespace SibaDev.Models
             MS_MOTOR_RISK_COVER = new HashSet<MS_MOTOR_RISK_COVER>();
             MST_UWD_PRODUCT_COVERS = new HashSet<MST_UWD_PRODUCT_COVERS>();
             INS_UWD_RISK_COVERS = new HashSet<INS_UWD_RISK_COVERS>();
+            MS_UDW_HOME_OWNERS_COVERS = new HashSet<MS_UDW_HOME_OWNERS_COVERS>();
         }
 
         [Key]
@@ -80,5 +81,8 @@ namespace SibaDev.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UWD_RISK_COVERS> INS_UWD_RISK_COVERS { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MS_UDW_HOME_OWNERS_COVERS> MS_UDW_HOME_OWNERS_COVERS { get; set; }
     }
 }

@@ -77,7 +77,7 @@ namespace SibaDev.Models.ReportsModel
                     POLH_CRTE_DATE = polh.POLH_CRTE_DATE,
                     POLH_MOD_BY = polh.POLH_MOD_BY,
                     POLH_MOD_DATE = polh.POLH_MOD_DATE,
-                    POLH_STATUS = polh.POLH_STATUS,
+                    POLH_STATUS = polh.POLH_STATUS, 
                     POLH_CURRENCY = polh.POLH_CURRENCY,
                     POLH_CURRENCY_RATE = polh.POLH_CURRENCY_RATE,                  
                     INS_UWD_VEHICLE_RISK = polh.INS_UWD_VEHICLE_RISK != null ? polh.INS_UWD_VEHICLE_RISK.Select(r => PolicyMotorMdl.get_motor(r.VEH_SYS_ID)).ToList() : null,

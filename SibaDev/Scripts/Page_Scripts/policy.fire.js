@@ -5,7 +5,8 @@
         $scope.location_grid = u.default_grid("#gridPLoc", "#gridPLocPager", "Location Details",
             [
                       "Region Code", "Region Name", "Area Code", "Area Name", "Location Code", "Location Name", "Location Desc", "Location Address", "Loc No.",
-                     "Occupancy Code", "Occupancy Name", "Occupancy Section", "Earthquake ", "RI EML", "EML", "UW Year", "Policy Cancelled", "Cancelled Reason",
+                     "Occupancy Code", "Occupancy Name", "Occupancy Section", "Earthquake ", "RI EML", "EML", "UW Year", "Start Date", "End Date",
+                     "Policy Cancelled", "Cancelled Reason",
                      "Sum Insured FC", "Sum Insured BC", "Total Premium FC", "Total Premium BC", "Risk Premium FC", "Risk Premium BC", 
                     //                  
                      "Adj Premium FC", "Adj Premium BC", "Discount FC", "Discount BC", "Load FC", "Load BC",                   
@@ -33,7 +34,9 @@
                     { name: "PLOC_EQZONE", index: "PLOC_EQZONE", width: 150 },
                     { name: "PLOC_RIEML", index: "PLOC_RIEML", width: 150 },
                     { name: "PLOC_EML", index: "PLOC_EML", width: 150 },
-                   
+                    
+                    { name: "PLOC_START_DATE", index: "PLOC_START_DATE", width: 150 },
+                    { name: "PLOC_END_DATE", index: "PLOC_END_DATE", width: 150 },
                     { name: "PLOC_UW_YEAR", index: "PLOC_UW_YEAR", width: 150 },
                     { name: "PLOC_POL_CANCELLED", index: "PLOC_POL_CANCELLED", width: 150 },
                     { name: "PLOC_CANCELLED_REASON", index: "PLOC_CANCELLED_REASON", width: 150 },
@@ -1497,6 +1500,11 @@
                     //fill grid 
                     for (var i in result) {
 
+                        result[i]["FIRE_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["FIRE_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["FIRE_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
+                        result[i]["FIRE_FEE_RK_NO"] = result[i]["PRF_SYS_ID"];
+                        result[i]["FIRE_FEE_NAME"] = result[i]["FEE_NAME"];
                         result[i]["FIRE_FEE_RK_CODE"] = $("#FIRE_RISK_CODE").val();
                         result[i]["FIRE_FEE_RK_SYS_ID"] = $("#FIRE_SYS_ID").val();
                         result[i]["FIRE_FEE_CRTE_BY"] = "Admin";
@@ -1555,7 +1563,7 @@
                 u.growl_warning("Region is not selected, Please check and try again");
             }
             else {
-
+                 $scope.area_grid.jqGrid("clearGridData");
                 $("#areaLovModal").modal();
 
             }
@@ -1588,6 +1596,7 @@
 
 
         $("#btnQueryArea").on("click", function () {
+           
             getAreaLov();
         });
 
@@ -1604,7 +1613,7 @@
                 u.growl_warning("Area is not selected, Please check and try again");
             }
             else {
-
+                $scope.loc_grid.jqGrid("clearGridData");
                 $("#locationLovModal").modal();
 
             }
@@ -3621,13 +3630,13 @@
             var Pol_Ins_Source = $("#POLH_INS_SOURCE").val();
             if (Pol_Txn_State === "C") return u.growl_warning("The Policy is already Confirmed, Please unconfirm before saving");
             if (Pol_Txn_State === "P") return u.growl_warning("The Policy is Approved, You cannot save the Policy");
-            if (Pol_Ins_Source === "Fac-In" && u.grid_empty($scope.grdfacInward_grid)) {
+            if (Pol_Ins_Source === "FAC-IN" && u.grid_empty($scope.grdfacInward_grid)) {
                 return u.growl_warning("Facultative Inward is selected, Please add Fac Inward details to it's grid");
             }
-            if (Pol_Ins_Source === "Co-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
+            if (Pol_Ins_Source === "CO-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
                 return u.growl_warning("Coinsurance Leader is selected, Please add Coinsurance Leader details to it's grid");
             }
-            if (Pol_Ins_Source === "Co-M" && u.grid_empty($scope.grdfacInward_grid)) {
+            if (Pol_Ins_Source === "CO-M" && u.grid_empty($scope.grdfacInward_grid)) {
                 return u.growl_warning("Coinsurance Member is selected, Please add Coinsurance Member details to it's grid");
             }
 
@@ -4046,7 +4055,7 @@
             if (!u.form_validation("#receiptHeaderForm")) return u.growl_warning("Fields marked red are required");
 
             u.modal_confirmation("Are you sure you want to Approve ?", function () {
-                s.policyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: 0, TXN_TYPE: 1 }, function (response) {
+                s.FirepolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: 0, TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
                         //alert(JSON.stringify(response));
@@ -5050,17 +5059,17 @@
                 if (Polins === "") {
                     u.growl_warning("Please select the Policy Insurance Source");
                 }
-                else if (Polins === "Fac-In") {
+                else if (Polins === "FAC-IN") {
                     document.getElementById("btnFACInward").disabled = false;
                     document.getElementById("btnCoInsMember").disabled = true
                     document.getElementById("btnCoInsLeader").disabled = true;
                 }
-                else if (Polins === "Co-M") {
+                else if (Polins === "CO-M") {
                     document.getElementById("btnFACInward").disabled = true;
                     document.getElementById("btnCoInsMember").disabled = false;
                     document.getElementById("btnCoInsLeader").disabled = true;
                 }
-                else if (Polins === "Co-L") {
+                else if (Polins === "CO-L") {
                     document.getElementById("btnFACInward").disabled = true;
                     document.getElementById("btnCoInsMember").disabled = true;
                     document.getElementById("btnCoInsLeader").disabled = false;

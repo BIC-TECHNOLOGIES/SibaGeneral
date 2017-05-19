@@ -127,7 +127,7 @@
         },
 
         getRiskFees: function (data, success, error) {
-            u.post("/api/productriskfee/TravelFees", data, success, error)
+            u.post("/api/productriskfee/RiskFees", data, success, error)
         },
 
     });

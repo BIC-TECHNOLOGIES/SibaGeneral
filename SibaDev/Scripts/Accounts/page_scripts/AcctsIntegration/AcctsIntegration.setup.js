@@ -381,7 +381,7 @@
                     $scope.lov.call_dialog("Select Transaction Type", "getInsAcctTxnLov", $scope.dialog_data);
                     break;
                 case "btn_cust_type":
-                    $scope.lov.call_dialog("Select Customer Type", "get_customertypes_lov", $scope.dialog_data);
+                    $scope.lov.call_dialog("Select Customer Type", "get_customer_type_lov", $scope.dialog_data);
                     break;
                 case "btn_business_source":
                     $scope.lov.call_dialog("Select Source Of Business", "get_sourcebusiness_lov", $scope.dialog_data);

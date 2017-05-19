@@ -31,22 +31,30 @@ namespace SibaDev.Models
         [StringLength(15)]
         public string RCOV_CODE { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_SI_FC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_SI_BC { get; set; }
 
         public decimal? RCOV_RATE { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_GROSS_PREM_FC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_ANNL_PREM_BC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_ANNL_PREM_FC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_GROSS_PREM_BC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_NET_PREM_FC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_NET_PREM_BC { get; set; }
 
         [StringLength(1)]
@@ -61,15 +69,19 @@ namespace SibaDev.Models
         [StringLength(1)]
         public string RCOV_DISC_YN { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_DISC_FC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_DISC_BC { get; set; }
 
         [StringLength(1)]
         public string RCOV_LOAD_YN { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_LOAD_FC { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? RCOV_LOAD_BC { get; set; }
 
         [StringLength(1)]
@@ -107,8 +119,20 @@ namespace SibaDev.Models
 
         public virtual INS_UWD_FIRE_LOCINT INS_UWD_FIRE_LOCINT { get; set; }
 
+        public virtual INS_UDW_PERSONAL_ACCIDENT INS_UDW_PERSONAL_ACCIDENT { get; set; }
+
+        public virtual INS_UDW_GENERAL_ACCIDENT INS_UDW_GENERAL_ACCIDENT { get; set; }
+
         public virtual MS_UDW_COVERS MS_UDW_COVERS { get; set; }
 
         public virtual INS_UWD_POLICY_HEAD INS_UWD_POLICY_HEAD { get; set; }
+
+        public virtual INS_UDW_GA_ASSET_ALL_RISK INS_UDW_GA_ASSET_ALL_RISK { get; set; }
+
+        public virtual INS_UDW_GA_PROF_INDEMNITY INS_UDW_GA_PROF_INDEMNITY { get; set; }
+
+        public virtual INS_UDW_GA_TRANSIT INS_UDW_GA_TRANSIT { get; set; }
+
+        public virtual INS_UDW_HOME_OWNERS INS_UDW_HOME_OWNERS { get; set; }
     }
 }

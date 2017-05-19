@@ -31,6 +31,7 @@ namespace SibaDev.Models.ReportsModel
                     MST_UWD_PRODUCT = ProductMdl.get_product(polh.POLH_SUB_CLASS_CODE),
                     MS_UDW_CLASS_OF_BUSINESS = ClassBusinessMdl.get_class(polh.POLH_CLASS_CODE),
                     MS_SYS_CHANNEL = ChannelMdl.get_channel(polh.POLH_CHANNEL_CODE),
+                    MS_SYS_EXCHANGE_RATES = ExchangerateMdl.get_exchangerate(polh.POLH_CURRENCY),
                     POLH_CLASS_CODE = polh.POLH_CLASS_CODE,
                     POLH_SUB_CLASS_CODE = polh.POLH_SUB_CLASS_CODE,
                     POLH_CHANNEL_CODE = polh.POLH_CHANNEL_CODE,
@@ -78,8 +79,8 @@ namespace SibaDev.Models.ReportsModel
                     POLH_STATUS = polh.POLH_STATUS,
                     POLH_CURRENCY = polh.POLH_CURRENCY,
                     POLH_CURRENCY_RATE = polh.POLH_CURRENCY_RATE,
-                    INS_UDW_BONDS = polh.INS_UDW_BONDS != null ? polh.INS_UDW_BONDS.Select(r => PolicyBondMdl.get_bond(r.BOND_SYS_ID)).ToList() : null,                 
-
+                    INS_UDW_BONDS = polh.INS_UDW_BONDS != null ? polh.INS_UDW_BONDS.Select(r => PolicyBondMdl.get_bond(r.BOND_SYS_ID)).ToList() : null,
+                    INS_UWD_INTERMEDIARY_COMM = polh.INS_UWD_INTERMEDIARY_COMM != null ? polh.INS_UWD_INTERMEDIARY_COMM.Select(r => IntermediaryCommissionMdl.get_Insintermcomm(r.CMM_SYS_ID)).ToList() : null,
                 }).Single();
 
         }

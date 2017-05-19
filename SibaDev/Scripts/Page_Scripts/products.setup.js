@@ -758,7 +758,7 @@
        * search grid
        *----------------*/
         $scope.search_grid = u.default_grid("#grdSearchResults", "#grdSearchResultsPager", "Product Search Results",
-            ["Code", "Motor Product No.", "Status", "index"],
+            ["Code", "Product Name.", "Status", "index"],
             [
                 { name: "PDT_CODE", index: "PDT_CODE", hidden: true },
                 { name: "PDT_NAME", index: "PDT_NAME" },
@@ -798,7 +798,7 @@
                             $scope.search_fill(result[0]);
                         }
                     } else {
-                        u.growl_info("Motor Tariff No. not found, please make sure you enter the correct Policy No!");
+                        u.growl_info("Product not found, please make sure you enter the correct Product No!");
                     }
                 },
                     function (err) {

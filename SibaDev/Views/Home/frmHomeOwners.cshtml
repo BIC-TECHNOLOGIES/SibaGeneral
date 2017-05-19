@@ -1,0 +1,307 @@
+﻿@{
+    ViewBag.Title = "Home Owners";
+}
+
+
+<script src="~/Scripts/Page_Scripts/home.owners.setup.js"></script>
+<script src="~/Scripts/Services/home.owners.service.js"></script>
+
+<div class="main">
+
+    <div id="page-content-wrapper" class="roundElement effects">
+        <div class="container-fluid xyz">
+            <div class="row form-view">
+
+                <div class="col-sm-12 col-md-12">
+                    <!--Form Header-->
+                    <div class="container" style="width: 100%;">
+                        <div class="panel panel-default container-fluid">
+                            <div class="panel-heading row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-success" id="btn_Save">
+                                            <i class="fa fa-save" title="Save" aria-hidden="true"></i> Save
+                                        </button>
+                                        <button type="button" class="btn btn-danger" id="btn_Delete">
+                                            <i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i> Delete
+                                        </button>
+                                        <button type="reset" class="btn btn-primary" id="btn_Reset">
+                                            <i class="fa fa-refresh" title="Reset" aria-hidden="true"></i> Reset
+                                        </button>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <button type="button" id="btnQueryHomeowners" class="btn btn-info" style="float: right; margin-right: 15px">
+                                            <i class="fa fa-search" title="Search" aria-hidden="true"></i> Search
+                                        </button>
+                                        <input id="txtSearch" style="width: 50%; text-align: center; float: right; margin-right: 10px"
+                                               class="form-control" type="text" name="txtSearch" placeholder="Search by Code">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-header">
+                        <div class="row control-group form-padding">
+                            <div class="container" style="width:100%">
+                                <span class="control-grp-lbl text-danger">Fill the form below</span>
+
+                                      <form name="sectionForm" id="sectionForm">
+                                                                                  
+                                            <div class="row">
+                                              
+                                                 <div class="col-md-8">
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label class="required">Section</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="HON_SEC_CODE" name="HON_SEC_CODE" title="Code" required />
+
+                                                                    <span class="input-group-btn">
+                                                                        <span id="spry_basecurr">
+                                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_section", "field1":"HON_SEC_CODE", "field2":"HON_SEC_NAME"}'>
+                                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                            </button>
+                                                                            <span class="textfieldRequiredMsg">Code is required.</span>
+                                                                        </span>
+                                                                    </span>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <span id="spry_baserate">
+                                                                    <input class="form-control" min="3" max-length="50" type="text" name="HON_SEC_NAME" id="HON_SEC_NAME" title="Name" />
+                                                                    <span class="textfieldRequiredMsg">Name is required.</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label class="required">Description</label>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <textarea id="HON_SEC_DESC" rows="2" cols="20" class="form-control" type="text"
+                                                                          name="HON_SEC_DESC" title="Description"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label class="required">Product</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="HON_PDT_CODE" name="HON_PDT_CODE" title="Code" required />
+
+                                                                    <span class="input-group-btn">
+                                                                        <span id="spry_basecurr">
+                                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product", "field1":"HON_PDT_CODE", "field2":"HON_PDT_NAME"}'>
+                                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                            </button>
+                                                                            <span class="textfieldRequiredMsg">Rate is required.</span>
+                                                                        </span>
+                                                                    </span>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <span id="spry_baserate">
+                                                                    <input class="form-control" min="3" max-length="50" type="text" name="HON_PDT_NAME" id="HON_PDT_NAME" title="Name" />
+                                                                    <span class="textfieldRequiredMsg">Name is required.</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label class="required">Insurance Type</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input id="HON_INS_TYPE" class="form-control" min="2" maxlength="15" type="text" name="HON_INS_TYPE" title="Code" required />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label class="required">Maximum SI</label>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input id="HON_MAX_SI" class="form-control" min="5" maxlength="5"
+                                                                       type="text" name="HON_MAX_SI" title="Name" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label class="required">Maximum SI</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="input-group">
+                                                                    <input class="form-control" min="3" max-length="4" type="text" id="HON_MAX_SI_PERC" name="HON_MAX_SI_PERC" title="Code" />
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left">
+                                                                            <i class="fa fa-percent" title="Select" aria-hidden="true"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class="col-md-2">
+                                                                <label>
+                                                                    Status
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input class="checkbox checkbox-inline pull-left" type="checkbox" name="HON_STATUS" id="HON_STATUS" checked />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                                                                                                      
+                                            </div>                                           
+                                                                                   
+                                    </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Header-->
+                    <div class="row form-header">
+
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1">Applicable Covers</a></li>
+                               
+                            </ul>
+
+                            <div id="tabs-1">
+                                <div class="row control-group form-padding">
+                                    <div class="container" style="width:100%">
+                                        <span class="control-grp-lbl text-danger"> Applicable Covers</span>
+
+                                        <div class="row">
+
+                                            <form id="coverForm" name="coverForm">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <span style="margin-left: -40px"><label>Cover Code</label></span>
+                                                            <div class="input-group">
+                                                                <input class="form-control" min="3" max-length="15" type="text" id="HCV_COV_CODE" name="HCV_COV_CODE" placeholder="Code" required />
+                                                                <span class="input-group-btn">
+                                                                    <span id="spry_basecurr">
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_cover", "field1":"HCV_COV_CODE", "field2":"HCV_COV_NAME"}'>
+                                                                            <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                        </button>
+                                                                        <span class="textfieldRequiredMsg">Rate is required.</span>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <span style="margin-left: -30px"><label>Cover Name</label></span>
+                                                            <input type="text" class="form-control" id="HCV_COV_NAME" name="HCV_COV_NAME" required />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <span style="margin-left: -30px"><label>Sum Insured</label></span>
+                                                            <input type="number" class="form-control" id="HCV_SI" name="HCV_SI" required />
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <span style="margin-left: -20px"><label>Rate</label></span>
+                                                            <input type="number" class="form-control" id="HCV_DEF_RATE" name="HCV_DEF_RATE" required />
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <span style="margin-left: -45px"><label>Premium</label></span>
+                                                            <input type="number" class="form-control" id="HCV_DEF_PREM" name="HCV_DEF_PREM"  />
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <label>Default</label>
+                                                            <input type="checkbox" checked class="checkbox-inline" id="HCV_DFT" name="HCV_DFT" style="margin-left: 50px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="btn-block">
+                                                <button id="btn_add_cover" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add New</button>
+                                                <button id="btn_update_cover" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                                                <button id="btn_remove_cover" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+
+                                                <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
+                                                    <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <table id="grdCover"></table>
+                                            <table id="grdCoverPager"></table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                         
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="modal ui-accordion fade" id="mySearchResultModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Search Result</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table id="grdSearchResults"></table>
+                        <table id="grdSearchResultsPager"></table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="search-ok" type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    <button id="search-close" type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

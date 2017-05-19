@@ -993,9 +993,9 @@
             //    return u.growl_warning("Please add Sub Class");
             //}
 
-            if (u.grid_empty($scope.riCompany_grid)) {
-                return u.growl_warning("Please add Participating companies")
-            }
+            //if (u.grid_empty($scope.riCompany_grid)) {
+            //    return u.growl_warning("Please add Participating companies")
+            //}
 
 
             u.modal_confirmation("Are you sure you want to save?", function (e) {

@@ -1154,7 +1154,8 @@
         $scope.grdfacInward_grid = u.default_grid("#grdfacInward", "#grdfacInwardPager", "FAC Inward Details",
             ["Cedant Code", "Cedant Name", "Referential No.", "Acceptance No.", "Comment", "Original SI FC", "Original SI BC",
              "Original Premium FC", "Original Premium BC", "Share %", "Commission %", "FAC Inward SI FC", "FAC Inward SI BC",
-             "FAC Inward Premium FC", "FAC Inward Premium BC", "FAC Inward Comm FC", "FAC Inward Comm FC", "Sys ID", "Polh ID", "Created by", "Created date", "Status"],
+             "FAC Inward Premium FC", "FAC Inward Premium BC", "FAC Inward Comm FC", "FAC Inward Comm FC", "Sys ID", "Polh ID",
+             "Created by", "Created date", "Status", "Companies"],
             [
                 { name: "FINW_CEDANT_CODE", index: "FINW_CEDANT_CODE", width: 150 },
                 { name: "FINW_CEDANT_NAME", index: "FINW_CEDANT_NAME", width: 150 },
@@ -1181,7 +1182,7 @@
                 { name: "FINW_CRTE_BY", index: "FINW_CRTE_BY", hidden: false, width: 200 },
                 { name: "FINW_CRTE_DATE", index: "FINW_CRTE_DATE", hidden: false, width: 200 },
                 { name: "FINW_STATUS", index: "FINW_STATUS", hidden: false, width: 200 },
-
+                { name: "INS_RI_FAC_INW_COMPANY", index: "INS_RI_FAC_INW_COMPANY", hidden: false, width: 200 },
             ],
            //Retrive Grid data into form input fields on row click..
             function (selId) {
@@ -1618,33 +1619,67 @@
 
         });
 
+
         /*--------------------------------------------------
+* FAC Partiicpating company Details Modal 
+*------------------------------------------------*/
+        //
+        $("#btn_Participant").click(function () {
+
+            //obthain the id of the selected fac details
+            var grid = $scope.grdfacInward_grid;
+            var selRow = $scope.selectedfac = grid.jqGrid("getGridParam", "selrow");
+
+            if (selRow) {
+                //obtain the companies that have been assigned to selected treaty details
+                var facString = grid.jqGrid("getCell", selRow, "INS_RI_FAC_INW_COMPANY") || "[]";
+
+                console.log(facString)
+
+                var facJson = [];
+                if (facString.length <= 0) {
+                }
+                facJson = JSON.parse(facString);
+                console.log(facJson);
+
+                for (var i in facJson) {
+                    $scope.grdInwdParticipant_grid.addRowData(facJson[i].ID, facJson[i]);
+                }
+
+                $("#PartipantsModal").modal();
+            }
+            else {
+                u.growl_warning("No FAC Detail selected, Please check and try again");
+            }
+
+        });
+
+        $("#companyOk").click(function () {
+
+            if ($scope.selectedfac) {
+                //obtain the compnaies that have been selected
+                var companies = u.get_grid_data($scope.grdInwdParticipant_grid);
+                console.log(companies);
+                alert(JSON.stringify(companies))
+                //assign the set companies to the selected treaty detials
+                $scope.grdfacInward_grid.jqGrid("setCell", $scope.selectedfac, "INS_RI_FAC_INW_COMPANY", JSON.stringify(companies));
+
+            } else {
+                u.growl_info("No selected FAC to update");
+            }
+            $("#PartipantsModal").modal("hide");
+            u.clear_grid_data($scope.grdInwdParticipant_grid);
+        });
+
+        $("#PartipantsModal .close, #companyClose").click(function () {
+            u.clear_grid_data($scope.riCompany_grid);
+
+        });
+
+
+        /*-------------------------
         * FAC Inward Modal
-        */
-
-        $("#btnFACInward").on("click", function () {
-
-            $("#MemberIwardModal").modal();
-            var message = "FAC Inward Details";
-
-            $("#textCoinsMember").text(message);
-
-
-        });
-
-        /*--------------------------------------------------
-       * FAC Inward Modal
-       */
-
-        $("#btn_Participant").on("click", function () {
-
-            $("#PartipantsModal").modal();
-
-
-        });
-        /*--------------------------------------------------
-    * FAC Inward Modal
-    */
+        *-------------------------*/
 
         $("#btnCoInsMember").on("click", function () {
 
@@ -1656,9 +1691,9 @@
 
         });
 
-        /*--------------------------------------------------
-    * Coinsurance Leader Modal
-    */
+        /*------------------------
+        * Coinsurance Leader Modal
+        *---------------------------- */
 
         $("#btnCoInsLeader").on("click", function () {
 
@@ -1666,9 +1701,9 @@
 
 
         });
-        /*--------------------------------------------------
+        /*----------------------------
          * Get Agent Broker commission
-         */
+         *---------------------------*/
 
         $("#btn_Intermediary_comm").on("click", function () {
 
@@ -2691,14 +2726,14 @@
             var Pol_Ins_Source = $("#POLH_INS_SOURCE").val();
             if (Pol_Txn_State === "C") return u.growl_warning("The Policy is already Confirmed, Please unconfirm before saving");
             if (Pol_Txn_State === "P") return u.growl_warning("The Policy is Approved, You cannot save the Policy");
-            if (Pol_Ins_Source === "Fac-In" && u.grid_empty($scope.grdfacInward_grid))
+            if (Pol_Ins_Source === "FAC-IN" && u.grid_empty($scope.grdfacInward_grid))
             {
                 return u.growl_warning("Facultative Inward is selected, Please add Fac Inward details to it's grid");
             }
-            if (Pol_Ins_Source === "Co-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
+            if (Pol_Ins_Source === "CO-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
                 return u.growl_warning("Coinsurance Leader is selected, Please add Coinsurance Leader details to it's grid");
             }
-            if (Pol_Ins_Source === "Co-M" && u.grid_empty($scope.grdfacInward_grid)) {
+            if (Pol_Ins_Source === "CO-M" && u.grid_empty($scope.grdfacInward_grid)) {
                 return u.growl_warning("Coinsurance Member is selected, Please add Coinsurance Member details to it's grid");
             }
 
@@ -2751,22 +2786,14 @@
 
                 polhData.INS_RI_FAC_INWARD = u.get_grid_data($scope.grdfacInward_grid);
 
-                var facCompanies = u.get_grid_data($scope.grdInwdParticipant_grid);
-
                 for (var i in polhData.INS_RI_FAC_INWARD) {
-                    //loop through every risk and obtain the sys_id of the risk
-                    var id = polhData.INS_RI_FAC_INWARD[i]["FINW_SYS_ID"];
-                    polhData.INS_RI_FAC_INWARD[i]["INS_RI_FAC_INW_COMPANY"] = [];
-                    for (var y in facCompanies) {
-                        //find covers which have the same the same risk sys_id
-                        if (facCompanies[y]["FINW_PAP_FINW_SYS_ID"] === id) {
-                            polhData.INS_RI_FAC_INWARD[i]["INS_RI_FAC_INW_COMPANY"].push(facCompanies[y]);
-                        }
-                    }
+
+                    polhData.INS_RI_FAC_INWARD[i]["INS_RI_FAC_INW_COMPANY"] = JSON.parse(polhData.INS_RI_FAC_INWARD[i]["INS_RI_FAC_INW_COMPANY"]);
 
                 }
 
                 console.log(polhData);
+
                 polhData.INS_UDW_VEHICLE_FEES = u.get_grid_data($scope.riskFees_grid);
 
                 polhData.INS_UWD_INTERMEDIARY_COMM = u.get_grid_data($scope.intermCom_grid);
@@ -5347,17 +5374,17 @@
             if (Polins === "") {
                 u.growl_warning("Please select the Policy Insurance Source");
             }
-            else if (Polins === "Fac-In") {
+            else if (Polins === "FAC-IN") {
                 document.getElementById("btnFACInward").disabled = false;
                 document.getElementById("btnCoInsMember").disabled = true
                 document.getElementById("btnCoInsLeader").disabled = true;
             }
-            else if (Polins === "Co-M") {
+            else if (Polins === "CO-M") {
                 document.getElementById("btnFACInward").disabled = true;
                 document.getElementById("btnCoInsMember").disabled = false;
                 document.getElementById("btnCoInsLeader").disabled = true;
             }
-            else if (Polins === "Co-L") {
+            else if (Polins === "CO-L") {
                 document.getElementById("btnFACInward").disabled = true;
                 document.getElementById("btnCoInsMember").disabled = true;
                 document.getElementById("btnCoInsLeader").disabled = false;
@@ -5459,13 +5486,13 @@
 
                 $("#FINW_SYS_ID").val("");
 
-                if ($("#FINW_SYS_ID").val() == "") {
-                    RetnSequenceNo("INS_RI_FAC_INWARD_SEQ", getVehSeqNo);
+                //if ($("#FINW_SYS_ID").val() == "") {
+                //    RetnSequenceNo("INS_RI_FAC_INWARD_SEQ", getVehSeqNo);
 
-                    function getVehSeqNo(data) {
-                        $("#FINW_SYS_ID").val(data);
-                    }
-                }
+                //    function getVehSeqNo(data) {
+                //        $("#FINW_SYS_ID").val(data);
+                //    }
+                //}
 
                 u.modal_confirmation("Are you sure you want to add RI FAC Inward Details to the grid?", function () {
 

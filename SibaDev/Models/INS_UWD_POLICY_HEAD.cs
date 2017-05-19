@@ -14,9 +14,11 @@ namespace SibaDev.Models
         public INS_UWD_POLICY_HEAD()
         {
             //INSURANCE_LEDGER = new HashSet<INSURANCE_LEDGER>();
-            INS_GA_ASSET_ALL_RISK = new HashSet<INS_GA_ASSET_ALL_RISK>();
-            INS_GA_ASSET_TRANSIT = new HashSet<INS_GA_ASSET_TRANSIT>();
-            INS_GA_PROF_INDEMNITY = new HashSet<INS_GA_PROF_INDEMNITY>();
+            INS_UDW_HOME_OWNERS = new HashSet<INS_UDW_HOME_OWNERS>();
+            INS_UDW_GA_ASSET_ALL_RISK = new HashSet<INS_UDW_GA_ASSET_ALL_RISK>();
+            INS_UDW_GA_PROF_INDEMNITY = new HashSet<INS_UDW_GA_PROF_INDEMNITY>();
+            INS_UDW_GA_TRANSIT = new HashSet<INS_UDW_GA_TRANSIT>();
+
             INS_UDW_AGENCY_COMM = new HashSet<INS_UDW_AGENCY_COMM>();
             INS_UDW_BONDS = new HashSet<INS_UDW_BONDS>();
             INS_UDW_CARCON_INTEREST = new HashSet<INS_UDW_CARCON_INTEREST>();
@@ -48,6 +50,8 @@ namespace SibaDev.Models
             INS_UDW_BOND_FEES = new HashSet<INS_UDW_BOND_FEES>();
             INS_UDW_FIRE_FEES = new HashSet<INS_UDW_FIRE_FEES>();
             INS_UDW_TRAVEL_FEES = new HashSet<INS_UDW_TRAVEL_FEES>();
+            INS_UDW_GA_RISK_FEES = new HashSet<INS_UDW_GA_RISK_FEES>();
+            //INS_UDW_PA_FEES = new HashSet<INS_UDW_PA_FEES>();
 
             INS_RI_FAC_INWARD = new HashSet<INS_RI_FAC_INWARD>();
             INS_RI_FAC_OUTWARD = new HashSet<INS_RI_FAC_OUTWARD>();
@@ -187,13 +191,16 @@ namespace SibaDev.Models
         //public virtual ICollection<INSURANCE_LEDGER> INSURANCE_LEDGER { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_GA_ASSET_ALL_RISK> INS_GA_ASSET_ALL_RISK { get; set; }
+        public virtual ICollection<INS_UDW_HOME_OWNERS> INS_UDW_HOME_OWNERS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_GA_ASSET_TRANSIT> INS_GA_ASSET_TRANSIT { get; set; }
+        public virtual ICollection<INS_UDW_GA_ASSET_ALL_RISK> INS_UDW_GA_ASSET_ALL_RISK { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_GA_PROF_INDEMNITY> INS_GA_PROF_INDEMNITY { get; set; }
+        public virtual ICollection<INS_UDW_GA_PROF_INDEMNITY> INS_UDW_GA_PROF_INDEMNITY { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INS_UDW_GA_TRANSIT> INS_UDW_GA_TRANSIT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UDW_AGENCY_COMM> INS_UDW_AGENCY_COMM { get; set; }
@@ -300,6 +307,12 @@ namespace SibaDev.Models
         public virtual ICollection<INS_UWD_INTERMEDIARY_COMM> INS_UWD_INTERMEDIARY_COMM { get; set; }
 
         public virtual MS_UDW_CLASS_OF_BUSINESS MS_UDW_CLASS_OF_BUSINESS { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<INS_UDW_PA_FEES> INS_UDW_PA_FEES { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INS_UDW_GA_RISK_FEES> INS_UDW_GA_RISK_FEES { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UDW_BOND_FEES> INS_UDW_BOND_FEES { get; set; }

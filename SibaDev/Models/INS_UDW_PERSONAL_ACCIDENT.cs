@@ -9,9 +9,15 @@ namespace SibaDev.Models
     [Table("DEVSIBAINS.INS_UDW_PERSONAL_ACCIDENT")]
     public partial class INS_UDW_PERSONAL_ACCIDENT:Model
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public INS_UDW_PERSONAL_ACCIDENT()
+        {
+            INS_UWD_RISK_COVERS = new HashSet<INS_UWD_RISK_COVERS>();
+            INS_UDW_PA_FEES = new HashSet<INS_UDW_PA_FEES>();
+        }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long PA_SYS_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PA_SYS_ID { get; set; }
 
         [StringLength(20)]
         public string PA_CURRENCY { get; set; }
@@ -165,6 +171,14 @@ namespace SibaDev.Models
 
         public DateTime? PA_ACCT_DATE { get; set; }
 
+        public decimal? PA_RI_SI_FC { get; set; }
+
+        public decimal? PA_RI_SI_BC { get; set; }
+
+        public decimal? PA_RI_PREM_FC { get; set; }
+         
+        public decimal? PA_RI_PREM_BC { get; set; }
+
         [StringLength(50)]
         public string PA_CRTE_BY { get; set; }
 
@@ -179,5 +193,11 @@ namespace SibaDev.Models
         public string PA_STATUS { get; set; }
 
         public virtual INS_UWD_POLICY_HEAD INS_UWD_POLICY_HEAD { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INS_UWD_RISK_COVERS> INS_UWD_RISK_COVERS { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INS_UDW_PA_FEES> INS_UDW_PA_FEES { get; set; } 
     }
 }

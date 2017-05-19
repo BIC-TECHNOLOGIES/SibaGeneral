@@ -58,8 +58,23 @@ namespace SibaDev.Controllers
         {
             try
             {
-                PolicyPaMdl.save_policy(pa);
-                return new { state = true, message = "Personal Accident Policy Successfully Saved" };
+                var result = PolicyPaMdl.save_policy(pa);
+
+                return new
+                {
+                    state = true,
+                    message = "Personal Accident Policy successfully Saved",
+                    result = new
+                    {
+                        result.POLH_SYS_ID,
+                        result.POLH_END_NO,
+                        result.POLH_STATUS,
+                        result.POLH_TXN_STATE,
+                        result.POLH_POL_STATE,
+                        result.POLH_DISPLAY_NO,
+                        result.POLH_QUT_SER_NO,
+                    }
+                };
             }
             catch (Exception e)
             {

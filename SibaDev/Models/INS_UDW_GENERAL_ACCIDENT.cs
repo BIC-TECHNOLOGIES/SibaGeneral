@@ -12,13 +12,12 @@ namespace SibaDev.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INS_UDW_GENERAL_ACCIDENT()
         {
-            INS_GA_ASSET_ALL_RISK = new HashSet<INS_GA_ASSET_ALL_RISK>();
-            INS_GA_ASSET_TRANSIT = new HashSet<INS_GA_ASSET_TRANSIT>();
-            INS_GA_PROF_INDEMNITY = new HashSet<INS_GA_PROF_INDEMNITY>();
+            INS_UWD_RISK_COVERS = new HashSet<INS_UWD_RISK_COVERS>();
+        
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int GA_SYS_ID { get; set; }
 
         public DateTime? GA_START_DATE { get; set; }
@@ -146,13 +145,7 @@ namespace SibaDev.Models
         public decimal? GA_RI_PREM_BC { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_GA_ASSET_ALL_RISK> INS_GA_ASSET_ALL_RISK { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_GA_ASSET_TRANSIT> INS_GA_ASSET_TRANSIT { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_GA_PROF_INDEMNITY> INS_GA_PROF_INDEMNITY { get; set; }
+        public virtual ICollection<INS_UWD_RISK_COVERS> INS_UWD_RISK_COVERS { get; set; }
 
         public virtual INS_UWD_POLICY_HEAD INS_UWD_POLICY_HEAD { get; set; }
     }

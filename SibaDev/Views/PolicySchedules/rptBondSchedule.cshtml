@@ -23,379 +23,267 @@
     </button>
 </div>
 
-<div class="row">
-    <div class="col-sm-12 center-block">
-        <p style="text-align:center;"><img src="~/Content/Images/plain-backgrounds.jpg" /></p>
+<div class="book">
+    <div class="page">
+        <div class="subpage">
+
+            <div class="col-md-12 tdfont">
+
+                <table style="width: 100%; text-align:center;" class="motor_detail">
+                    <tr>
+                        <td style="width: 50%; border-right:1px solid black;"><p style="text-align:center;"><img src="~/Content/Images/multi-logo1.jpg" /></p></td>
+                        <td style="width: 50%; text-align:center; font-size:medium; font-family:'Lucida Sans'">
+                            <p style="text-align:center;font-weight:400; font-size:x-large">@Model.MS_SYS_COMPANY.CMP_NAME</p>
+                            <p>@Model.MS_SYS_COMPANY.CMP_HEAD_OFFICE_ADD</p>
+                            <p>@Model.MS_SYS_COMPANY.CMP_PHONE</p>
+                            <p>@Model.MS_SYS_COMPANY.CMP_EMAIL</p>
+                            <p>@Model.MS_SYS_COMPANY.CMP_WEBSITE</p>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <p style="text-align:center;font-weight:700; font-size:x-large">@Model.MST_UWD_PRODUCT.PDT_NAME</p>
+
+                <table style="width: 100%;" class="table table-bordered">
+                    <tr>
+                        <td style="width: 30%" colspan="2"> <b>Issue Date of Policy</b></td>
+                        <td> @Html.DisplayFor(x => x.POLH_POL_START_DATE)</td>
+                        <td> <b>Policy No.:</b> @Model.POLH_DISPLAY_NO</td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 30%" colspan="2">
+
+                            <p style="margin-top: 50px"><b>Policy Holder</b></p>
+
+                        </td>
+                        <td style="font-family:'Trebuchet MS';">
+
+                            <p><b>Insured Code: </b> <span style="float:right">@Model.MS_UDW_CUSTOMERS.CUS_CODE</span> </p>
+                            <p><b>Insured Name: </b> <span style="float:right">@Model.MS_UDW_CUSTOMERS.CUS_OFFICIAL_NAME</span> </p>
+                            <p><b>Insured Address: </b> <span style="float:right">@Model.MS_UDW_CUSTOMERS.CUS_ADDRS1 </span> </p>
+                            <p><b>Occupation: </b> <span style="float:right">@Model.MS_UDW_CUSTOMERS.CUS_PROFESSION</span> </p>
+
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 30%;" rowspan="4" colspan="2" class="tvertical">
+                            <p style="margin-top: 80px"><b>Policy Details</b></p> 
+                        </td>
+                        <td> <b>Policy Number:</b> @Model.POLH_DISPLAY_NO </td>
+                        <td> <b>Endorsement Number:</b> @Model.POLH_END_NO </td>
+                    </tr>
+
+                    <tr>
+                        @*  <td style="width: 30%" colspan="2"> <b>Policy Details</b></td>*@
+                        <td><b>Period:</b>  @Html.DisplayFor(x => x.POLH_POL_START_DATE)</td>
+                        <td><b>To:</b> @Html.DisplayFor(x => x.POLH_POL_END_DATE) </td>
+                    </tr>
+
+                    <tr>
+                        @*  <td style="width: 30%" colspan="2"> </td>*@
+                        <td colspan="2" style="font-family:'Trebuchet MS';">
+                            (1) Both Days Inclusive <br />
+                            (2)Any subsequent period for which the insured shall
+                            pay and the Company shall agree to accept a renewal premium.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        @*  <td style="width: 30%" colspan="2"> </td>*@
+                        <td colspan="2">
+                            <b>Cover:</b> <span style="font-family:'Trebuchet MS';">
+                               @Model.MST_UWD_PRODUCT.PDT_NAME
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 30%" colspan="2"> <b>Premium Details</b></td>
+                        <td colspan="2">
+                            Basic Premium:  @Model.MS_SYS_EXCHANGE_RATES.EXR_CODE <b>@Html.DisplayFor(m => m.POLH_POL_PREM_FC)</b> <br />
+                            <span style="margin-left:32px">Discount:  @Model.MS_SYS_EXCHANGE_RATES.EXR_CODE <b>@Html.DisplayFor(m => m.POLH_POL_DISC_FC) </b></span><br />
+                            <span style="margin-left:32px">Loadings:  @Model.MS_SYS_EXCHANGE_RATES.EXR_CODE <b>@Html.DisplayFor(m => m.POLH_POL_LOAD_FC) </b></span><br />
+                            <span><b>Premium(GH):</b>    @Model.MS_SYS_EXCHANGE_RATES.EXR_CODE <b>@Html.DisplayFor(m => m.POLH_POL_PREM_FC)</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 30%" colspan="2"> <b>Agency Details</b></td>
+                        <td colspan="2">
+
+                            @foreach (var rsk in Model.INS_UWD_INTERMEDIARY_COMM)
+                            {
+                                @rsk.MS_SYS_INTERMEDIARY.INT_OFFICIAL_NAME <br />
+                            }
+
+                        </td>
+                    </tr>
+
+
+                </table>
+
+                <p style="text-align:center;font-weight:700; font-size:medium">RISK DETAILS</p>
+
+                <table style="width:100%;" class="motor_detail">
+
+                    <tr style="height:30px; border:1px #000 solid; text-align: center;">
+                        <td style="width:40%; border:1px #000 solid;">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td colspan="2" style="width:30%; border:1px #000 solid;">
+                            <p><strong>Principal</strong> </p>
+                        </td>
+
+                        <td style="width:20%; border:1px #000 solid;"> 
+                            <p><strong></strong></p>
+                        </td>
+
+                    </tr>
+
+                    @foreach (var be in Model.INS_UDW_BONDS)
+                    {
+                        
+                        <tbody style="border-top:2px #000 solid;">
+
+                            <tr valign="top" style="height:20px; text-align:center;">
+
+                                <td style="border:1px #000 solid;">                                  
+                                    <p> @be.BOND_DESCRIPTION</p>
+                                </td>
+                                <td colspan="2" style="border:1px #000 solid">
+                                    <p> @be.BOND_PRINCIPAL</p>
+                                </td>
+
+                                <td style="border:1px #000 solid;"></td>
+
+                            </tr>
+
+                            <tr valign="top" style="height:20px; text-align:center;">
+
+                                <td style="border:1px #000 solid;">
+                                    <p><strong></strong></p>
+                                </td>
+                                <td style="border:1px #000 solid;">
+                                    <p><strong>Sum Insured (GHC)</strong></p>
+                                </td>
+                                <td style="border:1px #000 solid;">
+                                    <p><strong>Premium (GHC)</strong></p>
+                                </td>
+                                <td style="border:1px #000 solid;">
+                                    <p><strong>Interest Excess</strong></p>
+                                </td>
+
+                            </tr>
+
+                            <tr valign="top" style="height:20px; text-align:center;">
+
+                                <td style="border:1px #000 solid;">
+
+                                </td>
+                                <td style="border-left:1px #000 solid;">
+                                    @foreach (var bond in Model.INS_UDW_BONDS)
+                                    {
+                                        foreach (var rsk in bond.INS_UWD_RISK_COVERS)
+                                        {
+                                            <p>@rsk.RCOV_SI_FC</p>
+                                        }
+                                    }
+                                    @*@Html.DisplayFor(m => m.RCOV_SI_FC)*@
+                                </td>
+                                <td style="border:1px #000 solid">
+                                    @foreach (var bond in Model.INS_UDW_BONDS)
+                                    {
+                                        foreach (var rsk in bond.INS_UWD_RISK_COVERS)
+                                        {
+                                            <p>@rsk.RCOV_NET_PREM_FC</p> 
+                                        }
+                                    }
+                                </td>
+                                <td style="border-left:1px #000 solid; border-right:1px #000 solid;"></td>
+
+                            </tr>
+
+                            <tr valign="top" style="height:20px; text-align:center;">
+
+                                <td style="border:1px #000 solid">
+                                    <p><strong>Total</strong></p>
+                                </td>
+                                <td style="border:1px #000 solid">
+                                    @foreach (var bond in Model.INS_UDW_BONDS)
+                                    {
+                                        foreach (var rsk in bond.INS_UWD_RISK_COVERS)
+                                        {
+                                            <p>@rsk.RCOV_SI_FC</p>
+                                        }
+                                    }
+                                </td>
+                                <td style="border:1px #000 solid">
+                                    @foreach (var bond in Model.INS_UDW_BONDS)
+                                    {
+                                        foreach (var rsk in bond.INS_UWD_RISK_COVERS)
+                                        {
+                                            <p>@rsk.RCOV_NET_PREM_FC</p>
+                                        }
+                                    }
+                                </td>
+                                <td style="border:1px #000 solid"></td>
+
+                            </tr>
+
+                            <tr valign="top" style="height:20px; text-align:center;">
+
+                                <td style="border-left:1px #000 solid; border-right:1px #000 solid;">
+                                    <p><strong>Grand Total</strong></p>
+                                </td>
+                                <td width="12%" style="border-left:1px #000 solid; border-right:1px #000 solid;">
+                                    @foreach (var bond in Model.INS_UDW_BONDS)
+                                    {
+                                        foreach (var rsk in bond.INS_UWD_RISK_COVERS)
+                                        {
+                                            <p>@rsk.RCOV_SI_FC</p>
+                                        }
+                                    }
+                                </td>
+                                <td width="12%" style="border-left:1px #000 solid; border-right:1px #000 solid;">
+                                    @foreach (var bond in Model.INS_UDW_BONDS)
+                                    {
+                                        foreach (var rsk in bond.INS_UWD_RISK_COVERS)
+                                        {
+                                            <p>@rsk.RCOV_NET_PREM_FC</p>
+                                        }
+                                    }
+                                </td>
+                                <td style="border-left:1px #000 solid; border-right:1px #000 solid;"></td>
+
+                            </tr>
+
+                        </tbody>
+
+                    }
+
+                </table>
+
+
+                <table style="width:85%;">
+                    <tr valign="top" style="margin-top: 10px;">
+                        <td width="50%" valign="middle">Branch: <strong>@Model.MS_SYS_OFFICE.OFF_NAME</strong> <br /> </td>
+
+                        <td width="70%" valign="middle">For and Behalf of: <strong>@Model.MS_SYS_COMPANY.CMP_NAME </strong> <br /> </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td height="32" valign="middle"><p><strong>Examined By.......................................................................</strong></p></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
     </div>
+
 </div>
 
-    <div class="container" style="color:#000">
-    <!-------------------Ttile------------------------>
-    <!------------------------------------------------->
-
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10 center-block">
-
-            <p style="text-align:center;font-weight:bold;margin-top:20px;font-size:26px;">POLICY  SCHEDULE</p>
-
-        </div>
-        <div class="col-sm-1"></div>
-    </div>
-
-    <!--------------Details------------------>
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <table width="100%" height="174" class="" style="border-top:2px #000 solid;border-bottom:2px #000 solid;">
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Insured Code:</strong></p></td>
-                    <td width="251" valign="middle"> @Model.POLH_CUST_CODE</td>
-                    <td width="251" valign="middle">&nbsp;</td>
-                </tr>
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Insured Name:</strong></p></td>
-                    <td width="251" valign="middle"> @Model.MS_UDW_CUSTOMERS.CUS_OFFICIAL_NAME</td>
-                    <td width="251" valign="middle">&nbsp;</td>
-                </tr>
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Insured Address:</strong></p></td>
-                    <td width="251" valign="middle"> @Model.MS_UDW_CUSTOMERS.CUS_ADDRS1</td>
-                    <td width="251" valign="middle">&nbsp;</td>
-                </tr>
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Business/Occupation:</strong></p></td>
-                    <td width="251" valign="middle"> @Model.MS_UDW_CUSTOMERS.CUS_PROFESSION</td>
-                    <td width="251" valign="middle">&nbsp;</td>
-                </tr>
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Broker/Agent:</strong></p></td>
-                    <td width="251" valign="middle"> @Model.MS_SYS_INTERMEDIARY.INT_OFFICIAL_NAME</td>
-                    <td width="251" valign="middle">&nbsp;</td>
-                </tr>
-            </table>
-
-            <!---Second Table---->
-            <table width="100%" height="54" class="" style="border-bottom:2px #000 solid;">              
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p style="text-align:center;font-weight:bold;margin-top:10px;font-size:22px;">
-                        <strong>@Model.MST_UWD_PRODUCT.PDT_NAME </strong></p></td>                 
-                </tr>
-            </table>
-       
-            <!---Third Table---->
-            <table width="100%" height="128" class="" style="margin-top:2px;">
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Policy Number:</strong></p></td>
-                    <td width="251" align="center" valign="middle"> @Model.POLH_SYS_ID</td>
-                    <td width="251" valign="middle">&nbsp;</td>
-                </tr>
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle">
-                        <p><strong>Period of Insurance:</strong></p>
-                    </td>
-                    <td width="40" align="center" valign="middle"><p><strong>From</strong></p></td>
-                    <td width="70" align="left" valign="middle">@Model.POLH_POL_START_DATE</td>
-                    <td width="50" align="left" valign="middle"><p><strong>To</strong></p></td>
-                    <td width="120" align="left" valign="middle">@Model.POLH_POL_END_DATE.Value.Date</td>
-                    <td width="100" align="right" valign="middle">Basic Premium:</td>
-                    <td width="101" align="right" valign="middle">
-                        @foreach (var rsk in Model.INS_UDW_BONDS)
-                        {
-                            foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                            {
-                                @cover.RCOV_NET_PREM_FC
-                            }
-                        }
-                   </td>
-                </tr>
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p>(1) Both Days Inclusive </p></td>
-                    <td width="351" align="left" valign="middle"><p>(2)Any subsequent period for which the
-                         insured shall pay and </p></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="100" align="right" valign="middle">Discount:</td>
-                    <td width="150" align="right" valign="middle">
-                        @foreach (var rsk in Model.INS_UDW_BONDS)
-                        {
-                            foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                            {
-                                @cover.RCOV_DISC_FC
-                            }
-                        }
-                    </td>
-                </tr>   
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p></p></td>
-                    <td width="351" align="left" valign="middle">
-                        <p>the Company shall agree to accept a renewal premium</p>
-                    </td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="100" align="right" valign="middle">Loading:</td>
-                    <td width="150" align="right" valign="middle">
-                        @foreach (var rsk in Model.INS_UDW_BONDS)
-                        {
-                            foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                            {
-                                @cover.RCOV_LOAD_FC
-                            }
-                        }                       
-                    </td>
-                </tr>    
-                <tr valign="top">
-                    <td width="186" height="32" valign="middle"><p><strong>Cover:</strong></p></td>
-                    <td width="351" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="20" align="right" valign="middle"></td>
-                    <td width="50" align="right" valign="middle"><strong>Premium(GHC):</strong></td>
-                    <td width="101" align="right" valign="middle">
-                    @foreach (var rsk in Model.INS_UDW_BONDS)
-                    {
-                        foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                        {
-                            @cover.RCOV_GROSS_PREM_FC
-                        }
-                    }
-                    </td>
-                </tr>               
-            </table>
-            <!-------------THIRD----------------------------->
-
-            <table width="100%" height="50" class="" style="border-top:2px #000 solid;border-bottom:2px #000 solid;">
-                <tr valign="top">
-                    <td valign="middle">
-                        <p style="text-align:center;font-weight:bold;font-size:22px;">Risk Details  </p>
-                    </td>
-                </tr>
-            </table>
-
-            <table width="100%" height="100" class="" style="margin-top:10px;">
-              
-                <tr valign="top" style="border:1px #000 solid;">
-                                   
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                                Description                             
-                            </strong>
-                        </p>
-                    </td>
-                    <td colspan="2" width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                               Principle                              
-                            </strong>
-                        </p>
-                    </td>
-                   
-                    <td width="13%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-
-                            </strong>
-                        </p>
-                    </td>
-                </tr>
-
-                <tr valign="top" style="border:1px #000 solid;">
-         
-                    <td style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var be in Model.INS_UDW_BONDS)
-                            {
-                                @be.BOND_DESCRIPTION
-                            }
-                        </p>
-                    </td>
-                    <td colspan="2" style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var be in Model.INS_UDW_BONDS)
-                            {
-                                @be.BOND_PRINCIPAL
-                            }
-                        </p>
-                    </td>
-                   
-                    <td style="border:1px #000 solid;">
-                        <p>
-
-                        </p>
-                    </td>
-          
-                </tr>
-
-                <tr valign="top" style="border:1px #000 solid;">
-
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                              
-                            </strong>
-                        </p>
-                    </td>
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                               Sum Insured (GHC)
-                            </strong>
-                        </p>
-                    </td>
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                                Premium (GHC)
-                            </strong>
-                        </p>
-                    </td>
-                    <td width="7%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                                Interest Excess
-                            </strong>
-                        </p>
-                    </td>
-
-                </tr>
-
-                <tr valign="top" style="border:1px #000 solid;">
-
-                    <td style="border:1px #000 solid;">
-                        <p>
-                          
-                        </p>
-                    </td>
-                    <td style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var rsk in Model.INS_UDW_BONDS)
-                            {
-                                foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                                {
-                                    @cover.RCOV_SI_FC
-                                }
-                            }                         
-                        </p>
-                    </td>
-                    <td style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var rsk in Model.INS_UDW_BONDS)
-                            {
-                                foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                                {
-                                    @cover.RCOV_GROSS_PREM_FC
-                                }
-                            }                         
-                        </p>
-                    </td>
-                    <td style="border:1px #000 solid;">
-                        <p>
-                          
-                        </p>
-                    </td>
-
-                </tr>
-
-                <tr valign="top" style="border:1px #000 solid;">
-
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                               Total
-                            </strong>
-                        </p>
-                    </td>
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var rsk in Model.INS_UDW_BONDS)
-                            {
-                                foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                                {
-                                    @cover.RCOV_SI_FC
-                                }
-                            }
-                            
-                        </p>
-                    </td>
-                    <td width="6%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var rsk in Model.INS_UDW_BONDS)
-                            {
-                                foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                                {
-                                    @cover.RCOV_GROSS_PREM_FC
-                                }
-                            }
-                            
-                        </p>
-                    </td>
-                    <td width="7%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            
-                        </p>
-                    </td>
-
-                </tr>
-
-                <tr valign="top" style="border:1px #000 solid;">
-
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            <strong>
-                               Grand Total
-                            </strong>
-                        </p>
-                    </td>
-                    <td width="11%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var rsk in Model.INS_UDW_BONDS)
-                            {
-                                foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                                {
-                                    @cover.RCOV_SI_FC
-                                }
-                            }
-                        </p>
-                    </td>
-                    <td width="6%" valign="top" style="border:1px #000 solid;">
-                        <p>
-                            @foreach (var rsk in Model.INS_UDW_BONDS)
-                            {
-                                foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                                {
-                                    @cover.RCOV_GROSS_PREM_FC
-                                }
-                            }
-                            
-                        </p>
-                    </td>
-                    <td width="7%" valign="top" style="border:1px #000 solid;">
-                        <p>
-
-                        </p>
-                    </td>
-
-                </tr>
-
-            </table>
-
-            <table width="100%" height="116" class="" style="margin-top:20px;border-top:2px #000 solid;border-bottom:2px #000 solid;">
-                <tr valign="top" style="margin-top: 50px;">
-                    <td width="70%" valign="middle"><strong>Branch:</strong> <br /> @Model.MS_SYS_OFFICE.OFF_NAME,@Model.MS_SYS_OFFICE.OFF_ADDRESS1</td>
-
-                    <td width="70%" valign="middle"><strong>For And Behalf of:</strong> <br /> @Model.MS_SYS_COMPANY.CMP_NAME</td>
-                </tr>
-
-                <tr valign="top">
-                    <td height="32" valign="middle"><p><strong>Examined By.......................................................................</strong></p></td>
-                    
-                </tr>
-
-            </table>
-
-        </div>
-    </div>
- </div>

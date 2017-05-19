@@ -259,108 +259,224 @@ namespace SibaDev.Models
                                     db.INS_UWD_POLICY_HEAD.Attach(dbPolh);
                                     dbPolh.Map(viewPolh);
 
-                                    /*--------------------------------
-                                     * PA Individual
-                                     *-------------------------------*/
-                                    foreach (var parisk in viewPolh.INS_UDW_PA_INDIVIDUAL)
+
+                                    foreach (var risk in viewPolh.INS_UDW_PERSONAL_ACCIDENT)
                                     {
-                                        parisk.PA_IND_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (parisk.PA_IND_STATUS)
+                                        var dbrisk = db.INS_UDW_PERSONAL_ACCIDENT.Find(risk.PA_SYS_ID);
+                                        switch (risk.PA_STATUS)
                                         {
                                             case "A":
-                                                var dbveh = db.INS_UDW_PA_INDIVIDUAL.Find(parisk.PA_IND_SYS_ID);
-                                                db.INS_UDW_PA_INDIVIDUAL.Attach(dbveh);
+                                                if (dbrisk != null)
+                                                {
+                                                    db.INS_UDW_PERSONAL_ACCIDENT.Attach(dbrisk);
+                                                    dbrisk.Map(risk);
 
-                                                dbveh.Map(parisk);
+                                                    /*--------------------------------
+                                                    * Risk Covers
+                                                    *-------------------------------*/
+                                                    foreach (var cover in risk.INS_UWD_RISK_COVERS)
+                                                    {
+                                                        var dbcovers = db.INS_UWD_RISK_COVERS.Find(cover.RCOV_SYS_ID);
+                                                        switch (cover.RCOV_STATUS)
+                                                        {
+                                                            case "A":
+                                                                if (dbcovers != null)
+                                                                {
+                                                                    db.INS_UWD_RISK_COVERS.Attach(dbcovers);
+                                                                    dbcovers.Map(cover);
+                                                                    dbcovers.RCOV_MOD_DATE = DateTime.Now;
+                                                                }
+                                                                break;
+
+                                                            case "U":
+                                                                cover.RCOV_STATUS = "A";
+                                                                cover.RCOV_MOD_DATE = DateTime.Now;
+                                                                cover.RCOV_RISK_SYS_ID = risk.PA_SYS_ID;
+                                                                db.INS_UWD_RISK_COVERS.Add(cover);
+                                                                break;
+
+                                                            case "D":
+                                                                if (dbcovers != null)
+                                                                {
+                                                                    db.INS_UWD_RISK_COVERS.Attach(dbcovers);
+                                                                    dbcovers.RCOV_STATUS = "D";
+                                                                    dbcovers.RCOV_MOD_DATE = DateTime.Now;
+                                                                }
+                                                                break;
+                                                        }
+                                                    }
+
+
+                                                    /*--------------------------------
+                                                    * Risk Fees
+                                                    *-------------------------------*/
+                                                    foreach (var fees in risk.INS_UDW_PA_FEES)
+                                                    {
+                                                        var dbrkfees = db.INS_UDW_PA_FEES.Find(fees.PA_FEE_SYS_ID);
+                                                        switch (fees.PA_FEE_STATUS)
+                                                        {
+                                                            case "A":
+                                                                if (dbrkfees != null)
+                                                                {
+                                                                    db.INS_UDW_PA_FEES.Attach(dbrkfees);
+                                                                    dbrkfees.Map(fees);
+                                                                }
+                                                                break;
+
+                                                            case "U":
+                                                                fees.PA_FEE_STATUS = "A";
+                                                                fees.PA_FEE_CRTE_DATE = DateTime.Now;
+                                                                fees.PA_FEE_RK_SYS_ID = risk.PA_SYS_ID;
+                                                                db.INS_UDW_PA_FEES.Add(fees);
+                                                                break;
+
+                                                            case "D":
+                                                                if (dbrkfees != null)
+                                                                {
+                                                                    db.INS_UDW_PA_FEES.Attach(dbrkfees);
+                                                                    dbrkfees.PA_FEE_STATUS = "D";
+                                                                }
+                                                                break;
+                                                        }
+                                                    }
+
+                                                }
+
                                                 break;
                                             case "U":
-                                                parisk.PA_IND_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                parisk.PA_IND_STATUS = "A";
-                                                db.INS_UDW_PA_INDIVIDUAL.Add(parisk);
+                                                risk.PA_STATUS = "A";
+                                                risk.PA_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_UDW_PERSONAL_ACCIDENT.Add(risk);
                                                 break;
                                             case "D":
-                                                db.INS_UDW_PA_INDIVIDUAL.Remove(db.INS_UDW_PA_INDIVIDUAL.Find(parisk.PA_IND_SYS_ID));
+                                                db.INS_UDW_PERSONAL_ACCIDENT.Remove(db.INS_UDW_PERSONAL_ACCIDENT.Find(risk.PA_SYS_ID));
                                                 break;
                                         }
 
                                     }
 
-                                    /*--------------------------------
-                                     * PA Group Named
-                                     *-------------------------------*/
-                                    foreach (var pagrp in viewPolh.INS_UDW_PA_GROUP_NAMED)
-                                    {
-                                        pagrp.PA_GRP_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (pagrp.PA_GRP_STATUS)
-                                        {
-                                            case "A":
-                                                var dbveh = db.INS_UDW_PA_GROUP_NAMED.Find(pagrp.PA_GRP_SYS_ID);
-                                                db.INS_UDW_PA_GROUP_NAMED.Attach(dbveh);
-
-                                                dbveh.Map(pagrp);
-                                                break;
-                                            case "U":
-                                                pagrp.PA_GRP_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                pagrp.PA_GRP_STATUS = "A";
-                                                db.INS_UDW_PA_GROUP_NAMED.Add(pagrp);
-                                                break;
-                                            case "D":
-                                                db.INS_UDW_PA_GROUP_NAMED.Remove(db.INS_UDW_PA_GROUP_NAMED.Find(pagrp.PA_GRP_SYS_ID));
-                                                break;
-                                        }
-
-                                    }
 
                                     /*--------------------------------
-                                     * PA Group Un-Named
-                                     *-------------------------------*/
-                                    foreach (var pagrp in viewPolh.INS_UDW_PA_GROUP_UNAMED)
+                                    * Policy Fees
+                                    *-------------------------------*/
+                                    foreach (var fee in viewPolh.INS_UDW_POL_FEES)
                                     {
-                                        pagrp.PA_GRP_UN_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (pagrp.PA_GRP_UN_STATUS)
+                                        var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                                        switch (fee.POL_FEE_STATUS)
                                         {
                                             case "A":
-                                                var dbveh = db.INS_UDW_PA_GROUP_UNAMED.Find(pagrp.PA_GRP_UN_SYS_ID);
-                                                db.INS_UDW_PA_GROUP_UNAMED.Attach(dbveh);
+                                                if (dbFee != null)
+                                                {
+                                                    db.INS_UDW_POL_FEES.Attach(dbFee);
+                                                    dbFee.Map(fee);
+                                                }
 
-                                                dbveh.Map(pagrp);
                                                 break;
                                             case "U":
-                                                pagrp.PA_GRP_UN_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                pagrp.PA_GRP_UN_STATUS = "A";
-                                                db.INS_UDW_PA_GROUP_UNAMED.Add(pagrp);
+                                                fee.POL_FEE_STATUS = "A";
+                                                fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_UDW_POL_FEES.Add(fee);
+
                                                 break;
                                             case "D":
-                                                db.INS_UDW_PA_GROUP_UNAMED.Remove(db.INS_UDW_PA_GROUP_UNAMED.Find(pagrp.PA_GRP_UN_SYS_ID));
+                                                db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
                                                 break;
                                         }
 
                                     }
 
                                     /*-------------------------------
-                                     * Cover
-                                     *-----------------------------*/
-                                    foreach (var cover in viewPolh.INS_UWD_RISK_COVERS)
+                                    * FAC Inward/Co-insurance Member
+                                    *-------------------------------*/
+                                    foreach (var facIn in viewPolh.INS_RI_FAC_INWARD)
                                     {
-                                        cover.RCOV_POLH_DOC_NO = viewPolh.POLH_SYS_ID;
-                                        switch (cover.RCOV_STATUS)
+                                        var dbFacIn = db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID);
+                                        switch (facIn.FINW_STATUS)
                                         {
                                             case "A":
-                                                var dbcover = db.INS_UWD_RISK_COVERS.Find(cover.RCOV_SYS_ID);
-                                                db.INS_UWD_RISK_COVERS.Attach(dbcover);
+                                                if (dbFacIn != null)
+                                                {
+                                                    db.INS_RI_FAC_INWARD.Attach(dbFacIn);
+                                                    dbFacIn.Map(facIn);
 
-                                                dbcover.Map(cover);
+                                                    /*----------------
+                                                    * Participating Companies
+                                                    *--------------*/
+                                                    foreach (var pap in facIn.INS_RI_FAC_INW_COMPANY)
+                                                    {
+                                                        var dbcover = db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID);
+
+                                                        switch (pap.FINW_PAP_STATUS)
+                                                        {
+                                                            case "A":
+                                                                if (dbcover != null)
+                                                                {
+                                                                    db.INS_RI_FAC_INW_COMPANY.Attach(dbcover);
+                                                                    dbcover.Map(pap);
+                                                                }
+
+                                                                break;
+
+                                                            case "U":
+                                                                pap.FINW_PAP_STATUS = "A";
+                                                                db.INS_RI_FAC_INW_COMPANY.Add(pap);
+                                                                break;
+
+                                                            case "D":
+                                                                db.INS_RI_FAC_INW_COMPANY.Remove(db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID));
+                                                                break;
+                                                        }
+
+                                                    }
+
+
+                                                }
+
                                                 break;
                                             case "U":
-                                                cover.RCOV_STATUS = "A";
-                                                db.INS_UWD_RISK_COVERS.Add(cover);
+                                                facIn.FINW_STATUS = "A";
+                                                facIn.FINW_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_RI_FAC_INWARD.Add(facIn);
+
                                                 break;
                                             case "D":
-                                                db.INS_UWD_RISK_COVERS.Remove(db.INS_UWD_RISK_COVERS.Find(cover.RCOV_SYS_ID));
+                                                db.INS_RI_FAC_INWARD.Remove(db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID));
                                                 break;
                                         }
 
                                     }
+
+
+                                    /*-------------------------------
+                                    * FAC Outward/Co-insurance Leader
+                                    *--------------------------------*/
+                                    foreach (var facout in viewPolh.INS_RI_FAC_OUTWARD)
+                                    {
+                                        var dbFacOut = db.INS_RI_FAC_OUTWARD.Find(facout.FOTW_SYS_ID);
+                                        switch (facout.FOTW_STATUS)
+                                        {
+                                            case "A":
+                                                if (dbFacOut != null)
+                                                {
+                                                    db.INS_RI_FAC_OUTWARD.Attach(dbFacOut);
+                                                    dbFacOut.Map(facout);
+                                                }
+
+                                                break;
+                                            case "U":
+                                                facout.FOTW_STATUS = "A";
+                                                facout.FOTW_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_RI_FAC_OUTWARD.Add(dbFacOut);
+
+                                                break;
+                                            case "D":
+                                                db.INS_RI_FAC_OUTWARD.Remove(db.INS_RI_FAC_OUTWARD.Find(facout.FOTW_SYS_ID));
+                                                break;
+                                        }
+
+                                    }
+
+
                                 }
 
                             }
@@ -374,16 +490,14 @@ namespace SibaDev.Models
                             /*-----------------------------------------
                              * updating the status of related tables
                              *---------------------------------------*/
-                            viewPolh.INS_UWD_RISK_COVERS.ForEach(x => x.RCOV_STATUS = "A");
-
-                            viewPolh.INS_UDW_PA_GROUP_NAMED.ForEach(x => x.PA_GRP_STATUS = "A");
-
-                            viewPolh.INS_UDW_PA_GROUP_UNAMED.ForEach(x => x.PA_GRP_UN_STATUS = "A");
-
-                            viewPolh.INS_UDW_PA_INDIVIDUAL.ForEach(x => x.PA_IND_STATUS = "A");
-
+                            viewPolh.INS_UDW_PERSONAL_ACCIDENT.ForEach(x => {
+                                x.PA_STATUS = "A";
+                                x.INS_UWD_RISK_COVERS.ForEach(c => c.RCOV_STATUS = "A");
+                            });
+                           
                             db.INS_UWD_POLICY_HEAD.Add(viewPolh);
 
+                            db.SaveChanges();
                             /*---------------------------------
                               * create premium register record
                               *-------------------------------*/

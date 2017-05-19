@@ -121,8 +121,7 @@ namespace SibaDev.Models
         [StringLength(10)]
         public string BOND_PERIOD_DAYS { get; set; }
 
-        [StringLength(10)]
-        public string BOND_UW_YEAR { get; set; }
+        public short? BOND_UW_YEAR { get; set; }
 
         public int? BOND_RISK_NO { get; set; }
 

@@ -46,5 +46,10 @@ namespace SibaDev.Controllers
         {
             return View();
         }
+
+        public ActionResult frmClmPmtMotor()
+        {
+            return View();
+        }
     }
 }

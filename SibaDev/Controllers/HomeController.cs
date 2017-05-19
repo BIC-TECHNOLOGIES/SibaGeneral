@@ -354,7 +354,35 @@ namespace SibaDev.Controllers
         {
             return View();
         }
+        
+        public ActionResult frmUwGAProIndemnity()
+        {
+            return View();
+        }
 
+        public ActionResult frmUwGACashinTransit()
+        {
+            return View();
+        }
 
+        public ActionResult frmUwGAGoodsinTransit()
+        {
+            return View();
+        }
+
+        public ActionResult frmSection()
+        {
+            return View();
+        }
+        
+        public ActionResult frmHomeOwners()
+        {
+            return View();
+        }
+
+        public ActionResult frmUwHomeOwners()
+        {
+            return View();
+        }
     }
 }

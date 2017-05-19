@@ -10,7 +10,7 @@
             u.get("/api/policyfire/search/" + query, success, error);
         },
         confirmPolicy: function (polId, success, error) {
-            u.get("/api/Confirmation/confirmPolicy/" + polId, success, error);
+            u.get("/api/Confirmation/confirmFirePolicy/" + polId, success, error);
         },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);
@@ -160,7 +160,7 @@
         },
 
         getRiskFees: function (data, success, error) {
-            u.post("/api/productriskfee/FireFees", data, success, error)
+            u.post("/api/productriskfee/RiskFees", data, success, error)
         },
 
     });

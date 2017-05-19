@@ -109,5 +109,28 @@ namespace SibaDev.Models
             var db = new SibaModel();
             return db.Database.SqlQuery<decimal>("SELECT COVERS_SEQ.NEXTVAL FROM DUAL").Single();
         }
+
+        public static IEnumerable<MS_UDW_HOME_OWNERS_COVERS> GetHomeOwnersCovers(int hownrCode)
+        {
+            var db = new SibaModel();
+            return (from cov in db.MS_UDW_HOME_OWNERS_COVERS where cov.HCV_HON_SYS_ID == hownrCode select cov).ToList()
+                    .Select(cv => new MS_UDW_HOME_OWNERS_COVERS
+                    {
+                        HCV_STATUS = cv.HCV_STATUS,
+                        HCV_SI = cv.HCV_SI,
+                        HCV_COV_CODE = cv.HCV_COV_CODE,
+                        HCV_COV_NAME = cv.HCV_COV_NAME,
+                        HCV_DEF_PREM = cv.HCV_DEF_PREM,
+                        HCV_DEF_RATE = cv.HCV_DEF_RATE,
+                        HCV_DFT = cv.HCV_DFT,
+                        HCV_HON_SYS_ID = cv.HCV_HON_SYS_ID,
+                        HCV_CRTE_BY = cv.HCV_CRTE_BY,
+                        HCV_CRTE_DATE = cv.HCV_CRTE_DATE,
+                        HCV_MOD_BY = cv.HCV_MOD_BY,
+                        HCV_MOD_DATE = cv.HCV_MOD_DATE,
+                        HCV_SYS_ID = cv.HCV_SYS_ID
+                    });
+
+        }
     }
 }

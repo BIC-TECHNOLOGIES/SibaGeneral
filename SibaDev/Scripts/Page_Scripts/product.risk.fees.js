@@ -57,7 +57,7 @@
 
             if (u.form_validation("#productriskfeeForm")) {
 
-                if (u.field_empty("input[name='PRF_FEE_CODE']")) return u.growl_error
+                if (u.field_empty("input[name='PRF_PDT_CODE']")) return u.growl_error
 
                    ("The Form code field is empty, please fill and to add to the grid");
 
@@ -82,7 +82,7 @@
                          * get value of the cell or column in an array
                          *----------------------------------------------*/
                         //
-                        var cellValue = $scope.prodriskfee_grid.jqGrid('getCell', currRow, 'PRF_FEE_CODE');
+                        var cellValue = $scope.prodriskfee_grid.jqGrid('getCell', currRow, 'PRF_PDT_CODE');
 
                         Code.push(cellValue);
                     }
@@ -91,13 +91,13 @@
                      * add if code is not found in the Grid
                      *--------------------------------------*/
                     //
-                    if ($.inArray($('#PRF_FEE_CODE').val(), Code) < 0) {
+                    if ($.inArray($('#PRF_PDT_CODE').val(), Code) < 0) {
 
                         var FormData = u.parse_form("#productriskfeeForm");
                         FormData.PRF_STATUS = "U";
                         FormData.PRF_CRTE_BY = "Admin";
                         FormData.PRF_CRTE_DATE = u.get_date();
-                        $scope.prodriskfee_grid.addRowData(FormData.PRF_FEE_CODE, FormData);
+                        $scope.prodriskfee_grid.addRowData(FormData.PRF_PDT_CODE, FormData);
                         u.hide_confirm();
                         u.growl_success("Product Risk Fee successfully added to grid");
                     }

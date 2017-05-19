@@ -129,71 +129,71 @@ namespace SibaDev.Models
 
                          }).ToList() : null,
 
-                    INS_GA_ASSET_ALL_RISK = polh.INS_GA_ASSET_ALL_RISK != null ? polh.INS_GA_ASSET_ALL_RISK.Select(c =>
-                         new INS_GA_ASSET_ALL_RISK
-                         {
-                             AAR_SYS_ID = c.AAR_SYS_ID,
-                             AAR_POLH_SYS_ID = c.AAR_POLH_SYS_ID,
-                             AAR_GA_SYS_ID = c.AAR_GA_SYS_ID,
-                             AAR_RISK_TYPE = c.AAR_RISK_TYPE,
-                             AAR_RISK_NAME = c.AAR_RISK_NAME,
-                             AAR_DESCRIPTION = c.AAR_DESCRIPTION,
-                             AAR_LIMIT_LIABILITY = c.AAR_LIMIT_LIABILITY,
-                             AAR_CRTE_BY = c.AAR_CRTE_BY,
-                             AAR_CRTE_DATE = c.AAR_CRTE_DATE,
-                             AAR_STATUS = c.AAR_STATUS,
-                             AAR_POLH_END_NO = c.AAR_POLH_END_NO,
-                             AAR_RISK_ID = c.AAR_RISK_ID,    
+                    //INS_GA_ASSET_ALL_RISK = polh.INS_GA_ASSET_ALL_RISK != null ? polh.INS_GA_ASSET_ALL_RISK.Select(c =>
+                    //     new INS_GA_ASSET_ALL_RISK
+                    //     {
+                    //         AAR_SYS_ID = c.AAR_SYS_ID,
+                    //         AAR_POLH_SYS_ID = c.AAR_POLH_SYS_ID,
+                    //         AAR_GA_SYS_ID = c.AAR_GA_SYS_ID,
+                    //         AAR_RISK_TYPE = c.AAR_RISK_TYPE,
+                    //         AAR_RISK_NAME = c.AAR_RISK_NAME,
+                    //         AAR_DESCRIPTION = c.AAR_DESCRIPTION,
+                    //         AAR_LIMIT_LIABILITY = c.AAR_LIMIT_LIABILITY,
+                    //         AAR_CRTE_BY = c.AAR_CRTE_BY,
+                    //         AAR_CRTE_DATE = c.AAR_CRTE_DATE,
+                    //         AAR_STATUS = c.AAR_STATUS,
+                    //         AAR_POLH_END_NO = c.AAR_POLH_END_NO,
+                    //         AAR_RISK_ID = c.AAR_RISK_ID,    
 
-                         }).ToList() : null,
-
-
-                    INS_GA_ASSET_TRANSIT = polh.INS_GA_ASSET_TRANSIT != null ? polh.INS_GA_ASSET_TRANSIT.Select(c =>
-                         new INS_GA_ASSET_TRANSIT
-                         {
-                             TRANS_SYS_ID = c.TRANS_SYS_ID,
-                             TRANS_GA_SYS_ID = c.TRANS_GA_SYS_ID,
-                             TRANS_POLH_SYS_ID = c.TRANS_POLH_SYS_ID,
-                             TRANS_RISK_TYPE = c.TRANS_RISK_TYPE,
-                             TRANS_RISK_NAME = c.TRANS_RISK_NAME,
-                             TRANS_DESCRIPTION = c.TRANS_DESCRIPTION,
-                             TRANS_SUM_INSURED = c.TRANS_SUM_INSURED,
-                             TRANS_LIMIT_LOSS = c.TRANS_LIMIT_LOSS,
-                             TRANS_DENT_FROM = c.TRANS_DENT_FROM,
-                             TRANS_DENT_T0 = c.TRANS_DENT_T0,
-                             TRANS_DISTANCE = c.TRANS_DISTANCE,
-                             TRANS_CRTE_BY = c.TRANS_CRTE_BY,
-                             TRANS_CRTE_DATE = c.TRANS_CRTE_DATE,
-                             TRANS_STATUS = c.TRANS_STATUS,
-                             TRANS_POLH_END_NO = c.TRANS_POLH_END_NO,
-                             TRANS_RISK_ID = c.TRANS_RISK_ID,
-
-                         }).ToList() : null,
+                    //     }).ToList() : null,
 
 
-                    INS_GA_PROF_INDEMNITY = polh.INS_GA_PROF_INDEMNITY != null ? polh.INS_GA_PROF_INDEMNITY.Select(c =>
-                             new INS_GA_PROF_INDEMNITY
-                             {
-                                 PRO_SYS_ID = c.PRO_SYS_ID,
-                                 PRO_RISK_ID = c.PRO_RISK_ID,
-                                 PRO_GA_SYS_ID = c.PRO_GA_SYS_ID,
-                                 PRO_POLH_SYS_ID = c.PRO_POLH_SYS_ID,
-                                 PRO_POLH_END_NO = c.PRO_POLH_END_NO,
-                                 PRO_ITEM = c.PRO_ITEM,
-                                 PRO_ITEM_DESC = c.PRO_ITEM_DESC,
-                                 PRO_AGGRET_LIMIT = c.PRO_AGGRET_LIMIT,
-                                 PRO_LIMIT_OCCUR = c.PRO_LIMIT_OCCUR,
-                                 PRO_PREM_FC = c.PRO_PREM_FC,
-                                 PRO_LIMIT_LOSS = c.PRO_LIMIT_LOSS,
-                                 PRO_ANN_TURNOVER = c.PRO_ANN_TURNOVER,
-                                 PRO_DENT_FROM = c.PRO_DENT_FROM,
-                                 PRO_DENT_TO = c.PRO_DENT_TO,
-                                 PRO_DISTANCE = c.PRO_DISTANCE,
-                                 PRO_CRTE_BY = c.PRO_CRTE_BY,
-                                 PRO_CRTE_DATE = c.PRO_CRTE_DATE,
-                                 PRO_STATUS = c.PRO_STATUS,
+                    //INS_GA_ASSET_TRANSIT = polh.INS_GA_ASSET_TRANSIT != null ? polh.INS_GA_ASSET_TRANSIT.Select(c =>
+                    //     new INS_GA_ASSET_TRANSIT
+                    //     {
+                    //         TRANS_SYS_ID = c.TRANS_SYS_ID,
+                    //         TRANS_GA_SYS_ID = c.TRANS_GA_SYS_ID,
+                    //         TRANS_POLH_SYS_ID = c.TRANS_POLH_SYS_ID,
+                    //         TRANS_RISK_TYPE = c.TRANS_RISK_TYPE,
+                    //         TRANS_RISK_NAME = c.TRANS_RISK_NAME,
+                    //         TRANS_DESCRIPTION = c.TRANS_DESCRIPTION,
+                    //         TRANS_SUM_INSURED = c.TRANS_SUM_INSURED,
+                    //         TRANS_LIMIT_LOSS = c.TRANS_LIMIT_LOSS,
+                    //         TRANS_DENT_FROM = c.TRANS_DENT_FROM,
+                    //         TRANS_DENT_T0 = c.TRANS_DENT_T0,
+                    //         TRANS_DISTANCE = c.TRANS_DISTANCE,
+                    //         TRANS_CRTE_BY = c.TRANS_CRTE_BY,
+                    //         TRANS_CRTE_DATE = c.TRANS_CRTE_DATE,
+                    //         TRANS_STATUS = c.TRANS_STATUS,
+                    //         TRANS_POLH_END_NO = c.TRANS_POLH_END_NO,
+                    //         TRANS_RISK_ID = c.TRANS_RISK_ID,
 
-                             }).ToList() : null,
+                    //     }).ToList() : null,
+
+
+                    //INS_GA_PROF_INDEMNITY = polh.INS_GA_PROF_INDEMNITY != null ? polh.INS_GA_PROF_INDEMNITY.Select(c =>
+                    //         new INS_GA_PROF_INDEMNITY
+                    //         {
+                    //             PRO_SYS_ID = c.PRO_SYS_ID,
+                    //             PRO_RISK_ID = c.PRO_RISK_ID,
+                    //             PRO_GA_SYS_ID = c.PRO_GA_SYS_ID,
+                    //             PRO_POLH_SYS_ID = c.PRO_POLH_SYS_ID,
+                    //             PRO_POLH_END_NO = c.PRO_POLH_END_NO,
+                    //             PRO_ITEM = c.PRO_ITEM,
+                    //             PRO_ITEM_DESC = c.PRO_ITEM_DESC,
+                    //             PRO_AGGRET_LIMIT = c.PRO_AGGRET_LIMIT,
+                    //             PRO_LIMIT_OCCUR = c.PRO_LIMIT_OCCUR,
+                    //             PRO_PREM_FC = c.PRO_PREM_FC,
+                    //             PRO_LIMIT_LOSS = c.PRO_LIMIT_LOSS,
+                    //             PRO_ANN_TURNOVER = c.PRO_ANN_TURNOVER,
+                    //             PRO_DENT_FROM = c.PRO_DENT_FROM,
+                    //             PRO_DENT_TO = c.PRO_DENT_TO,
+                    //             PRO_DISTANCE = c.PRO_DISTANCE,
+                    //             PRO_CRTE_BY = c.PRO_CRTE_BY,
+                    //             PRO_CRTE_DATE = c.PRO_CRTE_DATE,
+                    //             PRO_STATUS = c.PRO_STATUS,
+
+                    //         }).ToList() : null,
 
                     INS_UWD_RISK_COVERS = polh.INS_UWD_RISK_COVERS != null ? polh.INS_UWD_RISK_COVERS.Select(v =>
                         new INS_UWD_RISK_COVERS
@@ -314,125 +314,238 @@ namespace SibaDev.Models
 
         public static INS_UWD_POLICY_HEAD save_policy(INS_UWD_POLICY_HEAD viewPolh)
         {
-
             var db = new SibaModel();
+
             using (var trans = db.Database.BeginTransaction())
             {
                 try
                 {
-                    var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
 
+                    var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
                     switch (viewPolh.POLH_STATUS)
                     {
                         case "A":
                             {
                                 //policy header before update
-                                
+
                                 if (dbPolh != null)
                                 {
                                     //update of policy header details
                                     db.INS_UWD_POLICY_HEAD.Attach(dbPolh);
                                     dbPolh.Map(viewPolh);
 
-                                    /*--------------------------------
-                                     * General Accident Header
-                                     *-------------------------------*/
-                                    foreach (var gahead in viewPolh.INS_UDW_GENERAL_ACCIDENT)
+
+                                    foreach (var risk in viewPolh.INS_UDW_GENERAL_ACCIDENT)
                                     {
-                                        gahead.GA_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (gahead.GA_STATUS)
+                                        var dbrisk = db.INS_UDW_GENERAL_ACCIDENT.Find(risk.GA_SYS_ID);
+                                        switch (risk.GA_STATUS)
                                         {
                                             case "A":
-                                                var dbveh = db.INS_UDW_GENERAL_ACCIDENT.Find(gahead.GA_SYS_ID);
-                                                db.INS_UDW_GENERAL_ACCIDENT.Attach(dbveh);
+                                                if (dbrisk != null)
+                                                {
+                                                    db.INS_UDW_GENERAL_ACCIDENT.Attach(dbrisk);
+                                                    dbrisk.Map(risk);
 
-                                                dbveh.Map(gahead);
+                                                    /*--------------------------------
+                                                    * Risk Covers
+                                                    *-------------------------------*/
+                                                    foreach (var cover in risk.INS_UWD_RISK_COVERS)
+                                                    {
+                                                        var dbcovers = db.INS_UWD_RISK_COVERS.Find(cover.RCOV_SYS_ID);
+                                                        switch (cover.RCOV_STATUS)
+                                                        {
+                                                            case "A":
+                                                                if (dbcovers != null)
+                                                                {
+                                                                    db.INS_UWD_RISK_COVERS.Attach(dbcovers);
+                                                                    dbcovers.Map(cover);
+                                                                    dbcovers.RCOV_MOD_DATE = DateTime.Now;
+                                                                }
+                                                                break;
+
+                                                            case "U":
+                                                                cover.RCOV_STATUS = "A";
+                                                                cover.RCOV_MOD_DATE = DateTime.Now;
+                                                                cover.RCOV_RISK_SYS_ID = risk.GA_SYS_ID;
+                                                                db.INS_UWD_RISK_COVERS.Add(cover);
+                                                                break;
+
+                                                            case "D":
+                                                                if (dbcovers != null)
+                                                                {
+                                                                    db.INS_UWD_RISK_COVERS.Attach(dbcovers);
+                                                                    dbcovers.RCOV_STATUS = "D";
+                                                                    dbcovers.RCOV_MOD_DATE = DateTime.Now;
+                                                                }
+                                                                break;
+                                                        }
+                                                    }
+
+
+                                                    /*--------------------------------
+                                                    * Risk Fees
+                                                    *-------------------------------*/
+                                                    //foreach (var fees in risk.INS_UDW_PA_FEES)
+                                                    //{
+                                                    //    var dbrkfees = db.INS_UDW_PA_FEES.Find(fees.PA_FEE_SYS_ID);
+                                                    //    switch (fees.PA_FEE_STATUS)
+                                                    //    {
+                                                    //        case "A":
+                                                    //            if (dbrkfees != null)
+                                                    //            {
+                                                    //                db.INS_UDW_PA_FEES.Attach(dbrkfees);
+                                                    //                dbrkfees.Map(fees);
+                                                    //            }
+                                                    //            break;
+
+                                                    //        case "U":
+                                                    //            fees.PA_FEE_STATUS = "A";
+                                                    //            fees.PA_FEE_CRTE_DATE = DateTime.Now;
+                                                    //            fees.PA_FEE_RK_SYS_ID = risk.PA_SYS_ID;
+                                                    //            db.INS_UDW_PA_FEES.Add(fees);
+                                                    //            break;
+
+                                                    //        case "D":
+                                                    //            if (dbrkfees != null)
+                                                    //            {
+                                                    //                db.INS_UDW_PA_FEES.Attach(dbrkfees);
+                                                    //                dbrkfees.PA_FEE_STATUS = "D";
+                                                    //            }
+                                                    //            break;
+                                                    //    }
+                                                    //}
+
+                                                }
+
                                                 break;
                                             case "U":
-                                                gahead.GA_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                gahead.GA_STATUS = "A";
-                                                db.INS_UDW_GENERAL_ACCIDENT.Add(gahead);
+                                                risk.GA_STATUS = "A";
+                                                risk.GA_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_UDW_GENERAL_ACCIDENT.Add(risk);
                                                 break;
                                             case "D":
-                                                db.INS_UDW_GENERAL_ACCIDENT.Remove(db.INS_UDW_GENERAL_ACCIDENT.Find(gahead.GA_SYS_ID));
+                                                db.INS_UDW_GENERAL_ACCIDENT.Remove(db.INS_UDW_GENERAL_ACCIDENT.Find(risk.GA_SYS_ID));
                                                 break;
                                         }
+
                                     }
 
+
                                     /*--------------------------------
-                                     * Asset All risk
-                                     *-------------------------------*/
-                                    foreach (var assets in viewPolh.INS_GA_ASSET_ALL_RISK)
+                                    * Policy Fees
+                                    *-------------------------------*/
+                                    foreach (var fee in viewPolh.INS_UDW_POL_FEES)
                                     {
-                                        assets.AAR_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (assets.AAR_STATUS)
+                                        var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                                        switch (fee.POL_FEE_STATUS)
                                         {
                                             case "A":
-                                                var dbveh = db.INS_GA_ASSET_ALL_RISK.Find(assets.AAR_SYS_ID);
-                                                db.INS_GA_ASSET_ALL_RISK.Attach(dbveh);
+                                                if (dbFee != null)
+                                                {
+                                                    db.INS_UDW_POL_FEES.Attach(dbFee);
+                                                    dbFee.Map(fee);
+                                                }
 
-                                                dbveh.Map(assets);
                                                 break;
                                             case "U":
-                                                assets.AAR_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                assets.AAR_STATUS = "A";
-                                                db.INS_GA_ASSET_ALL_RISK.Add(assets);
+                                                fee.POL_FEE_STATUS = "A";
+                                                fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_UDW_POL_FEES.Add(fee);
+
                                                 break;
                                             case "D":
-                                                db.INS_GA_ASSET_ALL_RISK.Remove(db.INS_GA_ASSET_ALL_RISK.Find(assets.AAR_SYS_ID));
+                                                db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                                                break;
+                                        }
+
+                                    }
+
+                                    /*-------------------------------
+                                    * FAC Inward/Co-insurance Member
+                                    *-------------------------------*/
+                                    foreach (var facIn in viewPolh.INS_RI_FAC_INWARD)
+                                    {
+                                        var dbFacIn = db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID);
+                                        switch (facIn.FINW_STATUS)
+                                        {
+                                            case "A":
+                                                if (dbFacIn != null)
+                                                {
+                                                    db.INS_RI_FAC_INWARD.Attach(dbFacIn);
+                                                    dbFacIn.Map(facIn);
+
+                                                    /*----------------
+                                                    * Participating Companies
+                                                    *--------------*/
+                                                    foreach (var pap in facIn.INS_RI_FAC_INW_COMPANY)
+                                                    {
+                                                        var dbcover = db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID);
+
+                                                        switch (pap.FINW_PAP_STATUS)
+                                                        {
+                                                            case "A":
+                                                                if (dbcover != null)
+                                                                {
+                                                                    db.INS_RI_FAC_INW_COMPANY.Attach(dbcover);
+                                                                    dbcover.Map(pap);
+                                                                }
+
+                                                                break;
+
+                                                            case "U":
+                                                                pap.FINW_PAP_STATUS = "A";
+                                                                db.INS_RI_FAC_INW_COMPANY.Add(pap);
+                                                                break;
+
+                                                            case "D":
+                                                                db.INS_RI_FAC_INW_COMPANY.Remove(db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID));
+                                                                break;
+                                                        }
+
+                                                    }
+
+
+                                                }
+
+                                                break;
+                                            case "U":
+                                                facIn.FINW_STATUS = "A";
+                                                facIn.FINW_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_RI_FAC_INWARD.Add(facIn);
+
+                                                break;
+                                            case "D":
+                                                db.INS_RI_FAC_INWARD.Remove(db.INS_RI_FAC_INWARD.Find(facIn.FINW_SYS_ID));
                                                 break;
                                         }
 
                                     }
 
 
-                                    /*--------------------------------
-                                     * Goods/Cash in Transit
-                                     *-------------------------------*/
-                                    foreach (var transit in viewPolh.INS_GA_ASSET_TRANSIT)
+                                    /*-------------------------------
+                                    * FAC Outward/Co-insurance Leader
+                                    *--------------------------------*/
+                                    foreach (var facout in viewPolh.INS_RI_FAC_OUTWARD)
                                     {
-                                        transit.TRANS_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (transit.TRANS_STATUS)
+                                        var dbFacOut = db.INS_RI_FAC_OUTWARD.Find(facout.FOTW_SYS_ID);
+                                        switch (facout.FOTW_STATUS)
                                         {
                                             case "A":
-                                                var dbveh = db.INS_GA_ASSET_TRANSIT.Find(transit.TRANS_SYS_ID);
-                                                db.INS_GA_ASSET_TRANSIT.Attach(dbveh);
+                                                if (dbFacOut != null)
+                                                {
+                                                    db.INS_RI_FAC_OUTWARD.Attach(dbFacOut);
+                                                    dbFacOut.Map(facout);
+                                                }
 
-                                                dbveh.Map(transit);
                                                 break;
                                             case "U":
-                                                transit.TRANS_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                transit.TRANS_STATUS = "A";
-                                                db.INS_GA_ASSET_TRANSIT.Add(transit);
+                                                facout.FOTW_STATUS = "A";
+                                                facout.FOTW_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_RI_FAC_OUTWARD.Add(dbFacOut);
+
                                                 break;
                                             case "D":
-                                                db.INS_GA_ASSET_TRANSIT.Remove(db.INS_GA_ASSET_TRANSIT.Find(transit.TRANS_SYS_ID));
-                                                break;
-                                        }
-                                    }
-
-
-                                    /*--------------------------------
-                                     * Professional Indemity
-                                     *-------------------------------*/
-                                    foreach (var prof in viewPolh.INS_GA_PROF_INDEMNITY)
-                                    {
-                                        prof.PRO_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                        switch (prof.PRO_STATUS)
-                                        {
-                                            case "A":
-                                                var dbveh = db.INS_GA_PROF_INDEMNITY.Find(prof.PRO_SYS_ID);
-                                                db.INS_GA_PROF_INDEMNITY.Attach(dbveh);
-
-                                                dbveh.Map(prof);
-                                                break;
-                                            case "U":
-                                                prof.PRO_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                prof.PRO_STATUS = "A";
-                                                db.INS_GA_PROF_INDEMNITY.Add(prof);
-                                                break;
-                                            case "D":
-                                                db.INS_GA_PROF_INDEMNITY.Remove(db.INS_GA_PROF_INDEMNITY.Find(prof.PRO_SYS_ID));
+                                                db.INS_RI_FAC_OUTWARD.Remove(db.INS_RI_FAC_OUTWARD.Find(facout.FOTW_SYS_ID));
                                                 break;
                                         }
 
@@ -452,13 +565,8 @@ namespace SibaDev.Models
                             /*-----------------------------------------
                              * updating the status of related tables
                              *---------------------------------------*/
-                            //viewPolh.INS_UWD_RISK_COVERS.ForEach(x => x.RCOV_STATUS = "A");
 
-                            viewPolh.INS_GA_ASSET_ALL_RISK.ForEach(x => x.AAR_STATUS = "A");
-
-                            viewPolh.INS_GA_ASSET_TRANSIT.ForEach(x => x.TRANS_STATUS = "A");
-
-                            viewPolh.INS_GA_PROF_INDEMNITY.ForEach(x => x.PRO_STATUS = "A");
+                            viewPolh.INS_UDW_PERSONAL_ACCIDENT.ForEach(x => x.PA_STATUS = "A");
 
                             db.INS_UWD_POLICY_HEAD.Add(viewPolh);
 
@@ -495,8 +603,8 @@ namespace SibaDev.Models
                         case "D":
                             {
                                 /*--------------------------
-                                 * update of policy details
-                                 *------------------------*/
+                               * update of policy details
+                               *------------------------*/
                                 //
                                 if (dbPolh != null)
                                 {
@@ -525,7 +633,7 @@ namespace SibaDev.Models
                     throw;
                 }
             }
-
         }
+
     }
 }

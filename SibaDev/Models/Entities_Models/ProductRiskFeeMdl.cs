@@ -91,48 +91,12 @@ namespace SibaDev.Models
                     where rskfee.PRF_PDT_CODE == riskCode
                     select new
                     {
-                        BOND_FEE_CODE = rskfee.PRF_FEE_CODE,
-                        BOND_FEE_NAME = rskfee.MS_COMPULSORY_FEES.FEE_NAME,
-                        BOND_FEE_FC_AMOUNT = rskfee.PRF_FEE_AMOUNT,
-                        BOND_FEE_BC_AMOUNT = rskfee.PRF_FEE_AMOUNT,
-                        BOND_FEE_RK_NO = rskfee.PRF_SYS_ID,
-                        BOND_FEE_RK_CODE = "",
-                        BOND_FEE_SYS_ID = ""
+                        PRF_FEE_CODE = rskfee.PRF_FEE_CODE,
+                        FEE_NAME = rskfee.MS_COMPULSORY_FEES.FEE_NAME,
+                        PRF_FEE_AMOUNT = rskfee.PRF_FEE_AMOUNT,
+                        PRF_SYS_ID = rskfee.PRF_SYS_ID,
                     });
         }
 
-        public static IEnumerable<object> FireFees(string riskCode)
-        {
-            var db = new SibaModel();
-            return (from rskfee in db.MS_PRODUCT_RISK_FEES
-                    where rskfee.PRF_PDT_CODE == riskCode
-                    select new
-                    {
-                        FIRE_FEE_CODE = rskfee.PRF_FEE_CODE,
-                        FIRE_FEE_NAME = rskfee.MS_COMPULSORY_FEES.FEE_NAME,
-                        FIRE_FEE_FC_AMOUNT = rskfee.PRF_FEE_AMOUNT,
-                        FIRE_FEE_BC_AMOUNT = rskfee.PRF_FEE_AMOUNT,
-                        FIRE_FEE_RK_NO = rskfee.PRF_SYS_ID,
-                        FIRE_FEE_RK_CODE = "",
-                        FIRE_FEE_SYS_ID = ""
-                    });
-        }
-
-        public static IEnumerable<object> TravelFees(string riskCode)
-        {
-            var db = new SibaModel();
-            return (from rskfee in db.MS_PRODUCT_RISK_FEES
-                    where rskfee.PRF_PDT_CODE == riskCode
-                    select new
-                    {
-                        TRA_FEE_CODE = rskfee.PRF_FEE_CODE,
-                        TRA_FEE_NAME = rskfee.MS_COMPULSORY_FEES.FEE_NAME,
-                        TRA_FEE_FC_AMOUNT = rskfee.PRF_FEE_AMOUNT,
-                        TRA_FEE_BC_AMOUNT = rskfee.PRF_FEE_AMOUNT,
-                        TRA_FEE_RK_NO = rskfee.PRF_SYS_ID,
-                        TRA_FEE_RK_CODE = "",
-                        TRA_FEE_SYS_ID = "" 
-                    });
-        }
     }
 }

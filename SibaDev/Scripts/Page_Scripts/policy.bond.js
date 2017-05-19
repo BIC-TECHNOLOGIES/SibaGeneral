@@ -487,7 +487,7 @@
             }),
 
 
-        // Premium Payment Summary
+        // Risk Premium Summary
         $scope.RiskPremium_grid = u.default_grid("#gridRiskPremSummary", "#gridRiskPremSummaryPager", "Risk Premium Summary",
             ["Code", "Description", "FC_Amount", "BC_Amount"],
             [
@@ -616,7 +616,7 @@
             }),
 
         // Product Risk Grid ****
-        $scope.prodRisks_grid = u.default_grid("#gridProdRisk", "#gridProdRiskPager", "Motor Risk",
+        $scope.prodRisks_grid = u.default_grid("#gridProdRisk", "#gridProdRiskPager", "Bond Risk",
             ['Code', 'Name'],
             [
                 { name: 'RISK_CODE', index: 'RISK_CODE', width: 150 },
@@ -980,7 +980,9 @@
                     $scope.lov.call_dialog("Select RI Company", "get_lov_member_com", $scope.dialog_data);
                     break;
             }
-        }); /*--------------------------------------------------
+        });
+
+        /*--------------------------------------------------
         * Retrieving customers on calling function
         *------------------------------------------------*/
 
@@ -1029,7 +1031,10 @@
                 });
             }
 
-        }); /*--------------------------------------------------
+        });
+
+
+        /*--------------------------------------------------
         * add product base on class of business
         *------------------------------------------------*/
         //
@@ -1058,8 +1063,8 @@
         }
 
         /*--------------------------------------------------
-      * Retrieving products on calling getProductRiskLov function
-      *------------------------------------------------*/
+        * Retrieving products on calling getProductRiskLov function
+        *------------------------------------------------*/
 
         $("#btnQueryProductRisk").on('click', function () {
             getProductRiskLov();
@@ -1094,6 +1099,11 @@
                     //fill grid 
                     for (var i in result) {
 
+                        result[i]["BOND_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["BOND_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["BOND_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
+                        result[i]["BOND_FEE_RK_NO"] = result[i]["FEE_NAME"];
+                        result[i]["BOND_FEE_NAME"] = result[i]["PRF_SYS_ID"];
                         result[i]["BOND_FEE_RK_CODE"] = $("#BOND_RISK_CODE").val();
                         result[i]["BOND_FEE_RK_SYS_ID"] = $("#BOND_SYS_ID").val();
                         result[i]["BOND_FEE_CRTE_BY"] = "Admin";
@@ -1473,7 +1483,7 @@
                     grid.jqGrid("setCell", rowId, "RCOV_ANNL_PREM_BC", $("#RCOV_ANNL_PREM_BC").val());
 
                     //call
-                    $scope.SumCoverRiskValues();
+                    //$scope.SumCoverRiskValues();
 
 
                     u.hide_confirm();
@@ -1518,8 +1528,8 @@
 
 
         /*--------------------------------------------------
- * Motor Risk modal dialog
- *------------------------------------------------*/
+         * Bond Risk modal dialog
+         *------------------------------------------------*/
         //
         $("#btn_open_bond_risk").click(function () {
             if (u.form_validation("#polheaderForm")) {
@@ -2044,13 +2054,13 @@
 
             if (Pol_Txn_State === "C") return u.growl_warning("The Policy is already Confirmed, Please unconfirm before saving");
             if (Pol_Txn_State === "P") return u.growl_warning("The Policy is Approved, You cannot save the Policy");
-            if (Pol_Ins_Source === "Fac-In" && u.grid_empty($scope.grdfacInward_grid)) {
+            if (Pol_Ins_Source === "FAC-IN" && u.grid_empty($scope.grdfacInward_grid)) {
                 return u.growl_warning("Facultative Inward is selected, Please add Fac Inward details to it's grid");
             }
-            if (Pol_Ins_Source === "Co-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
+            if (Pol_Ins_Source === "CO-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
                 return u.growl_warning("Coinsurance Leader is selected, Please add Coinsurance Leader details to it's grid");
             }
-            if (Pol_Ins_Source === "Co-M" && u.grid_empty($scope.grdfacInward_grid)) {
+            if (Pol_Ins_Source === "CO-M" && u.grid_empty($scope.grdfacInward_grid)) {
                 return u.growl_warning("Coinsurance Member is selected, Please add Coinsurance Member details to it's grid");
             }
 
@@ -2440,7 +2450,7 @@
             if (!u.form_validation("#receiptHeaderForm")) return u.growl_warning("Fields marked red are required");
 
             u.modal_confirmation("Are you sure you want to Approve ?", function () {
-                s.policyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
+                s.BondpolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
                         //alert(JSON.stringify(response));
@@ -3182,7 +3192,7 @@
                             result[i]["RCOV_NAME"] = result[i]["MS_UDW_COVERS"]["CVR_NAME"];
                             result[i]["RCOV_TYPE"] = result[i]["MS_UDW_COVERS"]["CVR_TYPE"];
 
-                            result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_BONDLICABLE"];
+                            result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_APPLICABLE"];
 
                             result[i]["CVR_USER_PREMIUM"] = result[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
                             result[i]["RCOV_PREM_REFUND"] = result[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
@@ -3415,17 +3425,17 @@
             if (Polins === "") {
                 u.growl_warning("Please select the Policy Insurance Source");
             }
-            else if (Polins === "Fac-In") {
+            else if (Polins === "FAC-IN") {
                 document.getElementById("btnFACInward").disabled = false;
                 document.getElementById("btnCoInsMember").disabled = true
                 document.getElementById("btnCoInsLeader").disabled = true;
             }
-            else if (Polins === "Co-M") {
+            else if (Polins === "CO-M") {
                 document.getElementById("btnFACInward").disabled = true;
                 document.getElementById("btnCoInsMember").disabled = false;
                 document.getElementById("btnCoInsLeader").disabled = true;
             }
-            else if (Polins === "Co-L") {
+            else if (Polins === "CO-L") {
                 document.getElementById("btnFACInward").disabled = true;
                 document.getElementById("btnCoInsMember").disabled = true;
                 document.getElementById("btnCoInsLeader").disabled = false;

@@ -107,22 +107,5 @@ namespace SibaDev.Controllers
             return rskFeelist;
         }
 
-        [HttpPost]
-        [Route("api/productriskfee/FireFees")]
-        public IEnumerable<object> FireFees(ProductsRisksFeesJSON riskFeesJson)
-        {
-            var rskFeelist = ProductRiskFeeMdl.FireFees(riskFeesJson.PRD_CODE).ToList();
-
-            return rskFeelist;
-        }
-
-        [HttpPost]
-        [Route("api/productriskfee/TravelFees")]
-        public IEnumerable<object> TravelFees(ProductsRisksFeesJSON riskFeesJson)
-        {
-            var rskFeelist = ProductRiskFeeMdl.TravelFees(riskFeesJson.PRD_CODE).ToList();
-
-            return rskFeelist;
-        }
     }
 }

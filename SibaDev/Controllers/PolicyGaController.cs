@@ -52,15 +52,20 @@ namespace SibaDev.Controllers
          
         }
 
+
         [HttpPost]
         [Route("api/policyga/save")]
-        public object Save([FromBody] INS_UWD_POLICY_HEAD policy)
+        public object Save([FromBody] INS_UWD_POLICY_HEAD ga)
         {
             try
             {
-               var result = PolicyGAMdl.save_policy(policy);
+                var result = PolicyGAMdl.save_policy(ga);
 
-                return new { state = true, message = "General Accident Policy successfully Saved", result = new
+                return new
+                {
+                    state = true,
+                    message = "General Accident Policy successfully Saved",
+                    result = new
                     {
                         result.POLH_SYS_ID,
                         result.POLH_END_NO,
@@ -77,6 +82,7 @@ namespace SibaDev.Controllers
                 return new { state = false, message = e };
             }
         }
+
 
     }
 }

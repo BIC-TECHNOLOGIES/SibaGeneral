@@ -10,7 +10,7 @@
             u.get("/api/policypa/search/" + query, success, error);
         },
         confirmPolicy: function (polId, success, error) {
-            u.get("/api/Confirmation/confirmPolicy/" + polId, success, error);
+            u.get("/api/Confirmation/confirmPaPolicy/" + polId, success, error);
         },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);
@@ -45,20 +45,18 @@
         get_lov_currency: function (success, error) {
             u.get("/api/exchangerate/lov", success, error);
         },
-        get_lov_makemodel: function (success, error) {
-            u.get("/api/makemodel/lov", success, error);
+        get_lov_Intermediary_Comm: function (code, success, error) {
+            u.post("/api/IntermediaryCommission/lov/", code, success, error);
         },
-        get_lov_motor_risks: function (success, error) {
-            u.get("/api/motorrisk/lov", success, error);
+
+        get_lov_cedent: function (success, error) {
+            u.get("/api/customercategory/lov", success, error);
         },
-        get_lov_area: function (success, error) {
-            u.get("/api/area/lov", success, error);
+        get_lov_com: function (success, error) {
+            u.get("/api/customercategory/lov", success, error);
         },
-        get_lov_location: function (success, error) {
-            u.get("/api/location/lov", success, error);
-        },
-        get_lov_occupancy: function (success, error) {
-            u.get("/api/occupancy/lov", success, error);
+        get_lov_member_com: function (success, error) {
+            u.get("/api/customercategory/lov", success, error);
         },
 
         check_company_code: function (code, success, error) {
@@ -100,6 +98,7 @@
         get_customer: function (code, success, error) {
             u.get("/api/Customer/" + code, success, error);
         },
+
         getAddRiskCovers: function (data, success, error) {
             u.post("/api/RisksCovers/additionalCovers", data, success, error);
         },
@@ -111,8 +110,19 @@
             u.post("/api/RisksCovers/RiskCoversLOV", data, success, error);
         },
 
-          getProdtRisk: function (data, success, error) {
+        getProdtRisk: function (data, success, error) {
             u.post("/api/RisksCovers/productRisk", data, success, error);
-          }
+        },
+
+        get_customers: function (success, error) {
+            u.get("/api/customer", success, error);
+        },
+        search_customer: function (query, success, error) {
+            u.get("/api/customer/search/" + query, success, error);
+        },
+        getRiskFees: function (data, success, error) {
+            u.post("/api/productriskfee/RiskFees", data, success, error)
+        },
+
     });
 })(window.service, window.utility)

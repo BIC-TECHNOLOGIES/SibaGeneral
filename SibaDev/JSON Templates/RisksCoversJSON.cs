@@ -16,5 +16,7 @@ namespace SibaDev.JSON_Templates
         //public string MANF_YEAR { get; set; }
         //public string BBE_PERC { get; set; }
         //public string PRD_CV_DFT { get; set; } 
+
+        public int HOWNRS_CODE { get; set; }
     }
 }
