@@ -3,7 +3,7 @@
 }
 
 <script src="~/Scripts/Claims/Claim_Scripts/claim.Motor.Pmt.js"></script>
-<script src="~/Scripts/Claims/Claim_Services/claim.fire.estimation.service.js"></script>
+<script src="~/Scripts/Claims/Claim_Services/claim.estimation.service.js"></script>
 <script src="~/Scripts/Libraries/SibaScript/getSequenceNo.js"></script>
 <script src="~/Scripts/Libraries/SibaScript/RetnSequenceNo.js"></script>
 
@@ -63,13 +63,13 @@
                                                         <label class="required">Claim Number</label>
                                                     </div>
 
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-3">
                                                         <div class="input-group">
-                                                            <input class="form-control" min="3" max-length="15" type="text" id="CLM_POLH_SYS_ID" name="CLM_POLH_SYS_ID" title="Policy No." required/>
+                                                            <input class="form-control" min="3" max-length="15" type="text" id="CLM_N0" name="CLM_N0" title="Policy No." required/>
 
                                                             <span class="input-group-btn">
                                                                 <span id="spry_basecurr">
-                                                                    <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Polh_lov" name="btn_Polh_lov">
+                                                                    <button type="button" class="btn btn_lov btn-default pull-left" id="btnClaimNo">
                                                                         <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                     </button>
                                                                     <span class="textfieldRequiredMsg">Policy ID is required.</span>
@@ -89,11 +89,11 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="input-group">
-                                                            <input class="form-control" min="3" max-length="15" type="text" id="CLM_OFF_CODE" name="CLM_OFF_CODE" title="Code" required />
+                                                            <input class="form-control" min="3" max-length="15" type="text" id="CLPMT_CLM_OFFICE1" name="CLPMT_CLM_OFFICE1" title="Code" required />
 
                                                             <span class="input-group-btn">
                                                                 <span id="spry_basecurr">
-                                                                    <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLM_OFF_CODE", "field2":"OFF_NAME"}'>
+                                                                    <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLPMT_CLM_OFFICE1", "field2":"CLPMT_CLM_OFFICE11"}'>
                                                                         <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                     </button>
                                                                     <span class="textfieldRequiredMsg">Office is required.</span>
@@ -104,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <span id="spry_baserate">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_CLM_OFFICE11" id="CLPMT_CLM_OFFICE11" title="Name" />
                                                             <span class="textfieldRequiredMsg">Office Name is required.</span>
                                                         </span>
                                                     </div>
@@ -400,7 +400,6 @@
 
                             <div id="tabs-3">
                              
-
                                     <!--Grid Buttons-->
                                     <div class="row">
                                         <div class="btn-block">
@@ -453,85 +452,96 @@
 
             <div class="modal-content">
 
-                <div class="modal-header bg-primary">
-                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                    <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
-                    <div class="row">
-                        <div class="col=md-12">
-                            <div class="col-md-4">
-                                <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Loss Claim Settlement</strong>
+                <div class="modal-header">
+                    <div class="row bg-primary">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 id="msg" class="modal-title"><strong style="font-size: 20px; margin-left:30px; color: white; line-height: 1.7; font-family: Arial"> </strong></h4>
+                    </div>
+                   
+                    <div class="row some-bg-color">
+                        <div style="margin-top: 10px;">
+                            <div class="col-md-7">
+                                <button id="" type="button" class="btn btn-success"><i class="fa fa-check-circle "></i>Aprrove Claim </button>
+                                <button id="btn_add_expense" type="button" class="btn btn-danger"><i class="fa fa-print "></i> Print Document </button>
                             </div>
-                       
                         </div>
                     </div>
+
                 </div>
 
                 <div class="modal-body">
 
-
                     <div class="row control-group form-padding">
                         <div class="container" style="width: 100%">
                             <span class="control-grp-lbl text-danger">Loss Claim Settlement </span>
-                        <form id="clmExpenseForm1" name="clmExpenseForm">
-                        <input class="form-control" min="3" max-length="15" type="hidden" id="CLM_EXP_CLM_EST_SYS_ID" name="CLM_EXP_CLM_EST_SYS_ID" title=""/>
-                        <input class="form-control" min="3" max-length="15" type="hidden" id="CLM_EXP_CLM_EST_TYPE" name="CLM_EXP_CLM_EST_TYPE" title=""/>
+
+                        <form id="clmSettledForm1" name="clmSettledForm1">
 
                         <div class="row">
-
-
-                            <div class="form-group">
+                            <input class="form-control" type="hidden" id="CLPMT_CLAIM_NO" name="CLPMT_CLAIM_NO" />
+                            <input class="form-control" type="hidden" id="CLPMT_CLM_REG_SYS_ID" name="CLPMT_CLM_REG_SYS_ID" />
+                            <input class="form-control" type="hidden" id="CLPMT_RISK_SYS_ID" name="CLPMT_RISK_SYS_ID" />
+                            <input class="form-control" type="hidden" id="CLPMT_POLH_SYS_ID" name="CLPMT_POLH_SYS_ID" />
+                            <input class="form-control" type="hidden" id="CLPMT_CLM_TYPE" name="CLPMT_CLM_TYPE" />
+                            <input class="form-control" type="hidden" id="CLPMT_CLM_OFFICE" name="CLPMT_CLM_OFFICE" />
+                            <input class="form-control" type="hidden" id="CLPMT_POL_OFFICE" name="CLPMT_POL_OFFICE" />
+                            <input class="form-control" type="hidden" id="CLPMT_CLM_EXP_TYPE" name="CLPMT_CLM_EXP_TYPE" />
+                            <input class="form-control" type="hidden" id="CLPMT_TXN_TYPE" name="CLPMT_TXN_TYPE" />
+                        </div>
+                        <div class="row">
+                           <div class="form-group">
 
                                 <div class="col-md-2">
                                     <label class="required">Settlement Type ?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select Type--</option>
-                                                    <option value="P">Partial</option>
-                                                    <option value="F">Full</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
+                                    <select id="CLPMT_STLMNT_TYPE" name="CLPMT_STLMNT_TYPE" class="btn btn-default dropdown-toggle" required="">
+                                        <option value="">--Select Type--</option>
+                                        <option value="P">Partial</option>
+                                        <option value="F">Full</option>
+                                    </select>
                                 </div>
 
+                                <div class="col-md-2">
+                                    <label class="required">Settlement Option</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="CLPMT_STLMNT_OPTION" name="CLPMT_STLMNT_OPTION" class="btn btn-default dropdown-toggle">
+                                        <option value="">--Select--</option>
+                                        <option value="E">Expense</option>
+                                        <option value="F">Fees</option>
+                                    </select>
+                                </div>
+
+                          </div>                      
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
                                 <div class="col-md-2">
                                     <label class="required">Ex-Gratia ?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="N">No</option>
-                                                    <option value="Y">Yes</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
+                                    <select id="CLPMT_EX_GRATIA" name="CLPMT_EX_GRATIA" class="btn btn-default dropdown-toggle" >
+                                        <option value="">--Select--</option>
+                                        <option value="N">No</option>
+                                        <option value="Y">Yes</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label class="required">Total Loss ?</label>
+                                    <label class="required">Total Loss?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="N">No</option>
-                                                    <option value="Y">Yes</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
+                                    <select id="CLPMT_TOTAL_LOSS" name="CLPMT_TOTAL_LOSS" class="btn btn-default dropdown-toggle" >
+                                        <option value="">--Select--</option>
+                                        <option value="N">No</option>
+                                        <option value="Y">Yes</option>
+                                    </select>
                                 </div>
-
                             </div>
-                            <hr/>
-
                         </div>
-                        <hr/>
 
+                        <hr/>
 
                         <div class="row">
                             <div class="form-group">
@@ -539,40 +549,33 @@
                                     <label class="required">Payment Type:</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="OD">Own Damage</option>
-                                                    <option value="GA">Garage</option>
-                                                    <option value="SO">Solicitor</option>
-                                                    <option value="SV">Surveyor</option>
-                                                    <option value="TP">Third Party</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
+                                    <select id="CLPMT_PAY_TYPE" name="CLPMT_PAY_TYPE" class="btn btn-default dropdown-toggle" required="">
+                                        <option value="">--Select--</option>
+                                        <option value="OD">Own Damage</option>
+                                        <option value="GA">Garage</option>
+                                        <option value="SO">Solicitor</option>
+                                        <option value="SV">Surveyor</option>
+                                        <option value="TP">Third Party</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-2">
                                     <label class="required">Pay To:</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="C">Customer</option>
-                                                    <option value="F">Financier</option>
-                                                    <option value="R">Repairer</option>
-                                                    <option value="T">Third Party</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
+                                    <select id="CLPMT_PAY_TO" name="CLPMT_PAY_TO" class="btn btn-default dropdown-toggle" required="">
+                                        <option value="">--Select--</option>
+                                        <option value="C">Customer</option>
+                                        <option value="F">Financier</option>
+                                        <option value="R">Repairer</option>
+                                        <option value="T">Third Party</option>
+                                    </select>
                                 </div>
 
 
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-2">
@@ -580,24 +583,22 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="input-group">
-                                        <input class="form-control" min="3" max-length="15" type="text" id="CLM_OFF_CODE" name="CLM_OFF_CODE" title="Code" required/>
-
+                                        <input class="form-control" min="3" max-length="15" type="text" id="CLPMT_PAYEE_ID" name="CLPMT_PAYEE_ID" title="Code" required/>
                                         <span class="input-group-btn">
-                                                    <span id="spry_basecurr">
-                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLM_OFF_CODE", "field2":"OFF_NAME"}'>
-                                                            <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                        </button>
-                                                        <span class="textfieldRequiredMsg">Office is required.</span>
-                                                    </span>
-                                                </span>
-
+                                            <span id="spry_basecurr">
+                                                <button type="button" class="btn btn_lov btn-default pull-left" id="btn_CustomersLov" name="btn_CustomersLov">
+                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                </button>
+                                                <span class="textfieldRequiredMsg">Office is required.</span>
+                                            </span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
+                                        <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_PAYEE_NAME" id="CLPMT_PAYEE_NAME" title="Name" />
+                                        <span class="textfieldRequiredMsg">Office Name is required.</span>
+                                     </span>
                                 </div>
                             </div>
                         </div>
@@ -609,9 +610,9 @@
                                 </div>
                                 <div class="col-md-10">
                                     <span id="spry_baserate">
-                                                <textarea class="form-control" id="CLM_LOSS_PLACE" name="CLM_LOSS_PLACE" title="Place of Loss" required></textarea>
-                                                <span class="textfieldRequiredMsg">Rate is required.</span>
-                                            </span>
+                                        <textarea class="form-control" id="CLPMT_CHQ_NAME" name="CLPMT_CHQ_NAME" title="" required></textarea>
+                                        <span class="textfieldRequiredMsg">Rate is required.</span>
+                                     </span>
                                 </div>
                             </div>
                         </div>
@@ -623,24 +624,16 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="input-group">
-                                        <input class="form-control" min="3" max-length="15" type="text" id="CLM_OFF_CODE" name="CLM_OFF_CODE" title="Code" required/>
-
+                                        <input class="form-control" min="3" max-length="15" type="text" id="CLPMT_CURRENCY" name="CLPMT_CURRENCY" title="Code" required/>
                                         <span class="input-group-btn">
-                                                    <span id="spry_basecurr">
-                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLM_OFF_CODE", "field2":"OFF_NAME"}'>
-                                                            <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                        </button>
-                                                        <span class="textfieldRequiredMsg">Office is required.</span>
-                                                    </span>
-                                                </span>
-
+                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_currency", "field1":"CLPMT_CURRENCY", "field2":"CLPMT_CURR_RATE"}'>
+                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                            </button>
+                                          </span>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
+                                    <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_CURR_RATE" id="CLPMT_CURR_RATE" title="Name" />
                                 </div>
                             </div>
                         </div>
@@ -650,52 +643,38 @@
                                 <div class="col-md-2">
                                     <label class="required">Claim Amount</label>
                                 </div>
-
                                 <div class="col-md-2">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
+                                    <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_CLM_AMT_FC" id="CLPMT_CLM_AMT_FC" required />
                                 </div>
-
                                 <div class="col-md-2">
                                     <label class="">Claim Excess</label>
                                 </div>
-
                                 <div class="col-md-2">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg"></span>
-                                            </span>
+                                    <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_DED_FC" id="CLPMT_DED_FC" required />
                                 </div>
                                 <div class="col-md-2">
                                     <label class="">Tax </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
+                                    <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_TAX_FC" id="CLPMT_TAX_FC" required />
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-2">
                                 <label class="required">Net Claim Amount</label>
                             </div>
 
                             <div class="col-md-2">
-                                <span id="spry_baserate">
-                                        <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                        <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                    </span>
+                                <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_NET_CLM_FC" id="CLPMT_NET_CLM_FC" required />
                             </div>
                             <div class="col-md-2">
                                 <label class="required">Narration</label>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    <textarea class="form-control" id="CLM_LOSS_PLACE" name="CLM_LOSS_PLACE" title="Place of Loss"></textarea>
+                                    <textarea class="form-control" id="CLPMT_CLM_NARRATION" name="CLPMT_CLM_NARRATION" title="Narration"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -706,8 +685,8 @@
                             <div class="col-md-1">
                                 <label class=""></label>
                             </div>
-                            <button id="btn_add_expense" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i> Add New </button>
-                            <button id="btn_update_expense" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
+                            <button id="btn_add_est_settle" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i> Add New </button>
+                            <button id="btn_update_est_settle" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
                             <button id="" class="btn btn-default" type="reset"><i class="fa fa-trash-o text-danger"></i> Clear </button>
 
                         </div>
@@ -720,9 +699,7 @@
                     </div>
                     
                 </div>
-                <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">
-                    <button id="btn_add_expense" type="button" class="btn btn-success"><i class="fa fa-check-circle "></i>Aprrove Claim </button>
-                    <button id="btn_add_expense" type="button" class="btn btn-danger"><i class="fa fa-print "></i> Print Document </button>
+                <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">                 
                     <button id="btn_LossClm_Onclose" type="button" class="btn btn-primary pull right">Ok</button>
                 </div>
 
@@ -770,30 +747,22 @@
                                     <label class="required">Settlement Type ?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select Type--</option>
-                                                    <option value="P">Partial</option>
-                                                    <option value="F">Full</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
+                                    <select id="CLPMT_STLMNT_TYPE" name="CLPMT_STLMNT_TYPE" class="btn btn-default dropdown-toggle" required="">
+                                        <option value="">--Select Type--</option>
+                                        <option value="P">Partial</option>
+                                        <option value="F">Full</option>
+                                    </select>
                                 </div>
 
                                 <div class="col-md-2">
                                     <label class="required">Settlement Option</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="N">Expense</option>
-                                                    <option value="Y">Fees</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                    </span>
+                                    <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
+                                        <option value="">--Select--</option>
+                                        <option value="E">Expense</option>
+                                        <option value="F">Fees</option>
+                                    </select>
                                 </div>
                             </div>
                             <hr/>
@@ -801,170 +770,144 @@
                         </div>
                         <hr/>
 
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Payment Type:</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select id="CLPMT_PAY_TYPE" name="CLPMT_PAY_TYPE" class="btn btn-default dropdown-toggle" required="">
+                                            <option value="">--Select--</option>
+                                            <option value="OD">Own Damage</option>
+                                            <option value="GA">Garage</option>
+                                            <option value="SO">Solicitor</option>
+                                            <option value="SV">Surveyor</option>
+                                            <option value="TP">Third Party</option>
+                                        </select>
+                                    </div>
 
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="required">Payment Type:</label>
+                                    <div class="col-md-2">
+                                        <label class="required">Pay To:</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select id="CLPMT_PAY_TO" name="CLPMT_PAY_TO" class="btn btn-default dropdown-toggle" required="">
+                                            <option value="">--Select--</option>
+                                            <option value="C">Customer</option>
+                                            <option value="F">Financier</option>
+                                            <option value="R">Repairer</option>
+                                            <option value="T">Third Party</option>
+                                        </select>
+                                    </div>
+
+
                                 </div>
-                                <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="OD">Own Damage</option>
-                                                    <option value="GA">Garage</option>
-                                                    <option value="SO">Solicitor</option>
-                                                    <option value="SV">Surveyor</option>
-                                                    <option value="TP">Third Party</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Payee</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input class="form-control" min="3" max-length="15" type="text" id="CLPMT_PAYEE_ID" name="CLPMT_PAYEE_ID" title="Code" required />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLPMT_PAYEE_ID", "field2":"OFF_NAME"}'>
+                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                </button>
                                             </span>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label class="required">Pay To:</label>
-                                </div>
-                                <div class="col-md-2">
-                                    <span id="sprytf_type">
-                                                <select id="LDI_TYPE" name="LDI_TYPE" class="btn btn-default dropdown-toggle" required="">
-                                                    <option value="">--Select--</option>
-                                                    <option value="SU">Surveyor</option>
-                                                    <option value="IV">Investigator</option>
-                                                    <option value="SO">Solicitor</option>
-                                                </select>
-                                                <span class="textfieldRequiredMsg">Code is required.</span>
-                                                <span class="textfieldMinCharsMsg">Code must specify at least 15 characters.</span>
-                                            </span>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="required">Payee</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <input class="form-control" min="3" max-length="15" type="text" id="CLM_OFF_CODE" name="CLM_OFF_CODE" title="Code" required/>
-
-                                        <span class="input-group-btn">
-                                                    <span id="spry_basecurr">
-                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLM_OFF_CODE", "field2":"OFF_NAME"}'>
-                                                            <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                        </button>
-                                                        <span class="textfieldRequiredMsg">Office is required.</span>
-                                                    </span>
-                                                </span>
-
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_PAYEE_NAME" id="CLPMT_PAYEE_NAME" required />
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
-                                </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="required">Cheque Name</label>
-                                </div>
-                                <div class="col-md-10">
-                                    <span id="spry_baserate">
-                                                <textarea class="form-control" id="CLM_LOSS_PLACE" name="CLM_LOSS_PLACE" title="Place of Loss" required></textarea>
-                                                <span class="textfieldRequiredMsg">Rate is required.</span>
-                                            </span>
-                                </div>
-                            </div>
-                        </div>
-                        <hr/>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="required">Currency</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <input class="form-control" min="3" max-length="15" type="text" id="CLM_OFF_CODE" name="CLM_OFF_CODE" title="Code" required/>
-
-                                        <span class="input-group-btn">
-                                                    <span id="spry_basecurr">
-                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLM_OFF_CODE", "field2":"OFF_NAME"}'>
-                                                            <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                        </button>
-                                                        <span class="textfieldRequiredMsg">Office is required.</span>
-                                                    </span>
-                                                </span>
-
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Cheque Name</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <span id="spry_baserate">
+                                            <textarea class="form-control" id="CLM_LOSS_PLACE" name="CLM_LOSS_PLACE" title="Place of Loss" required></textarea>
+                                            <span class="textfieldRequiredMsg">Rate is required.</span>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Currency</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input class="form-control" min="3" max-length="15" type="text" id="CLPMT_CURRENCY" name="CLPMT_CURRENCY" title="Code" required />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_office", "field1":"CLPMT_CURRENCY", "field2":"CLPMT_CURR_RATE"}'>
+                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                </button>
                                             </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_CURR_RATE" id="CLPMT_CURR_RATE" required />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    <label class="required">Claim Amount</label>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label class="">Claim Excess</label>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg"></span>
-                                            </span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label class="">Tax </label>
-                                </div>
-                                <div class="col-md-2">
-                                    <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
-                                                <span class="textfieldRequiredMsg">Office Name is required.</span>
-                                            </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label class="required">Net Claim Amount</label>
-                            </div>
-
-                            <div class="col-md-2">
-                                <span id="spry_baserate">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Claim Amount</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_CLM_AMT_FC" id="CLPMT_CLM_AMT_FC" required />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="">Claim Excess</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span id="spry_baserate">
                                             <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
+                                            <span class="textfieldRequiredMsg"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="">Tax </label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span id="spry_baserate">
+                                            <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_TAX_FC" id="CLPMT_TAX_FC" title="Name" />
                                             <span class="textfieldRequiredMsg">Office Name is required.</span>
                                         </span>
-                            </div>
-                            <div class="col-md-2">
-                                <label class="required">Narration</label>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    <textarea class="form-control" id="CLM_LOSS_PLACE" name="CLM_LOSS_PLACE" title="Place of Loss"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label class="required">Net Claim Amount</label>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <span id="spry_baserate">
+                                        <input class="form-control" min="3" max-length="50" type="text" name="CLPMT_NET_CLM_FC" id="CLPMT_NET_CLM_FC" title="" />
+                                        <span class="textfieldRequiredMsg">Office Name is required.</span>
+                                    </span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="required">Narration</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <textarea class="form-control" id="CLPMT_CLM_NARRATION" name="CLPMT_CLM_NARRATION" title="Narration"></textarea>
+                                    </div>
+                                </div>
+                            </div>
 
                         </form>
                             <hr />
@@ -1066,6 +1009,93 @@
             </div>
         </div>
     </div>
+
+
+    <!--  Claim Modal -->
+
+    <div class="modal draggable ui-accordion fade" id="claimLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center">LOV Modal</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <label>Search:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="text ui-widget-content ui-corner-all" style="margin-left: 10px; height: 30px; width: 70%; text-align: center" type="text" id="txtClmNoSearch" title="" placeholder="Search by ID" />
+                                <button type="button" class="btn btn-default" id="btnQueryClmDtls" name="btnQueryClmDtls">
+                                    <i class="fa fa-search" title="Search" aria-hidden="true"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <table id="gridClmDtls"></table>
+                        <table id="gridClmDtlsPager"></table>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--  Customer Modal -->
+
+    <div class="modal draggable ui-accordion fade" id="customerLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center">LOV Modal</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <label>Search:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="text ui-widget-content ui-corner-all" style="margin-left: 10px; height: 30px; width: 70%; text-align: center" type="text" title="" placeholder="Search by Name" />
+                                <button type="button" class="btn btn-default" id="btnQueryCustomers" name="btnQueryCustomers">
+                                    <i class="fa fa-search" title="Search" aria-hidden="true"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <table id="gridCustomer"></table>
+                        <table id="gridCustomerPager"></table>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 </div>
 

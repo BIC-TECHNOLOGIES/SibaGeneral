@@ -1,4 +1,4 @@
-namespace SibaDev.Models
+namespace SibaDev.Models.History_Entities
 {
     using System;
     using System.Collections.Generic;
@@ -6,20 +6,14 @@ namespace SibaDev.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DEVSIBAINS.INS_UDW_HOME_OWNERS")]
-    public partial class INS_UDW_HOME_OWNERS:Model
+    [Table("DEVSIBAINS.INS_UDW_HHOME_OWNERS")]
+    public partial class INS_UDW_HHOME_OWNERS:Model
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public INS_UDW_HOME_OWNERS()
-        {
-            INS_UDW_HOME_OWNERS_DETAILS = new HashSet<INS_UDW_HOME_OWNERS_DETAILS>();
-            INS_UDW_HOME_OWNERS_FEES = new HashSet<INS_UDW_HOME_OWNERS_FEES>();
-            INS_UWD_RISK_COVERS = new HashSet<INS_UWD_RISK_COVERS>();
-        }
-
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int HOP_SYS_ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int HHOP_SYS_ID { get; set; }
+
+        public int? HOP_SYS_ID { get; set; }
 
         public int? HOP_POLH_SYS_ID { get; set; }
 
@@ -27,9 +21,6 @@ namespace SibaDev.Models
 
         [StringLength(20)]
         public string HOP_POLH_END_NO { get; set; }
-
-        [StringLength(15)]
-        public string HOP_SEC_CODE { get; set; }
 
         [StringLength(100)]
         public string HOP_SEC_NAME { get; set; }
@@ -151,16 +142,5 @@ namespace SibaDev.Models
 
         [StringLength(1)]
         public string HOP_STATUS { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_HOME_OWNERS_DETAILS> INS_UDW_HOME_OWNERS_DETAILS { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_HOME_OWNERS_FEES> INS_UDW_HOME_OWNERS_FEES { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UWD_RISK_COVERS> INS_UWD_RISK_COVERS { get; set; }
-
-        public virtual INS_UWD_POLICY_HEAD INS_UWD_POLICY_HEAD { get; set; }
     }
 }

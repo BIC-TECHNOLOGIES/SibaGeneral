@@ -3,6 +3,9 @@
         save_estimation: function (estimations, success, error) {
             u.post("/api/ClaimEstimation/save", estimations, success, error);
         },
+        save_settlement: function (estimations, success, error) {
+            u.post("/api/ClaimSettlement/save", estimations, success, error);
+        },
         get_estimations: function (success, error) {
             u.get("/api/ClaimEstimation", success, error);
         },
@@ -18,7 +21,12 @@
         get_office_lov: function (success, error) {
             u.get("/api/office/lov", success, error);
         },
-       
+        get_lov_currency: function (success, error) {
+            u.get("/api/exchangerate/lov", success, error);
+        },
+        get_lov_customer: function (success, error) {
+            u.get("/api/Customer/lov", success, error);
+        },
         get_polh_lov: function (success, error) {
             u.get("/api/policymotor/lov", success, error);
         },
@@ -40,6 +48,10 @@
         get_estimation_lov: function (success, error) {
             u.get("/api/ClaimEstimationType/lov", success, error);
         },
+        get_claim_lov: function (success, error) {
+            u.get("/api/office/lov", success, error);
+        },
+
 
         check_estimation_code: function (code, success, error) {
             u.get("/api/ClaimEstimationType/check/" + code, success, error);
@@ -64,6 +76,12 @@
         },
         check_cust_code: function (code, success, error) {
             u.get("/api/customer/check/" + code, success, error);
+        },
+        get_customers: function (success, error) {
+            u.get("/api/customer", success, error);
+        },
+        search_customer: function (query, success, error) {
+            u.get("/api/customer/search/" + query, success, error);
         },
     });
 })(window.service, window.utility)

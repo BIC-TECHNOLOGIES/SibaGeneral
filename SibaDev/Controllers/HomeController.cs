@@ -384,5 +384,10 @@ namespace SibaDev.Controllers
         {
             return View();
         }
+
+        public ActionResult frmUwLiabilityWorksmenComp()
+        {
+            return View();
+        }
     }
 }

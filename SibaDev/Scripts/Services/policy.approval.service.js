@@ -21,5 +21,8 @@
         PapolicyApproval: function (data, success, error) {
             u.post("/api/policypaapproval", data, success, error)
         },
+        HomeOwnerspolicyApproval: function (data, success, error) {
+            u.post("/api/policyhomeownersapproval", data, success, error)
+        },
     });
 })(window.service, window.utility)

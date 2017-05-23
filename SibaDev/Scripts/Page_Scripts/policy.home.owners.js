@@ -2969,13 +2969,13 @@
             u.fill_form(policy, "#polheaderForm");
 
             u.clear_grid_data($scope.homeowners_grid);
-            for (var i in policy.INS_UDW_HOPS) {
-                $scope.homeowners_grid.addRowData(policy.INS_UDW_HOPS[i].ID, policy.INS_UDW_HOPS[i]);
+            for (var i in policy.INS_UDW_HOME_OWNERS) {
+                $scope.homeowners_grid.addRowData(policy.INS_UDW_HOME_OWNERS[i].ID, policy.INS_UDW_HOME_OWNERS[i]);
 
                 //populate risk covers with covers from the bonds nd not the policy header
                 u.clear_grid_data($scope.cover_grid);
-                for (var x in policy.INS_UDW_HOPS[i].INS_UWD_RISK_COVERS) {
-                    $scope.cover_grid.addRowData(policy.INS_UDW_HOPS[i].INS_UWD_RISK_COVERS[x].RCOV_RISK_SYS_ID, policy.INS_UDW_HOPS[i].INS_UWD_RISK_COVERS[x]);
+                for (var x in policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS) {
+                    $scope.cover_grid.addRowData(policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS[x].RCOV_RISK_SYS_ID, policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS[x]);
                 }
             }       
         };

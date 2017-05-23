@@ -497,18 +497,18 @@ namespace SibaDev.Models.PolicyApproval_Models
                         db.INS_UDW_HPOL_FEES.Add(historyPolFee);
                     });
 
-                    policy.INS_UDW_POL_FEES.ForEach(f =>
-                    {
-                        var historyPolFee = new INS_UDW_HPOL_FEES();
-                        historyPolFee.Map(f);
-                        db.INS_UDW_HPOL_FEES.Add(historyPolFee);
-                    });
-
                     policy.INS_UDW_PERSONAL_ACCIDENT.ForEach(b =>
                     {
-                        var historyrisk = new INS_UDW_PA_FEES();
+                        var historyrisk = new INS_UDW_HPERSONAL_ACCIDENT();
                         historyrisk.Map(b);
-                        db.INS_UDW_PA_FEES.Add(historyrisk);
+                        db.INS_UDW_HPERSONAL_ACCIDENT.Add(historyrisk);
+
+                        b.INS_UDW_PA_FEES.ForEach(c =>
+                        {
+                            var historyfees = new INS_UDW_HPA_FEES();
+                            historyfees.Map(c);
+                            db.INS_UDW_HPA_FEES.Add(historyfees);
+                        });
 
                         //save risk cover history
                         b.INS_UWD_RISK_COVERS.ForEach(c =>

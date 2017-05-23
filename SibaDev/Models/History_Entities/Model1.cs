@@ -12,11 +12,11 @@ namespace SibaDev.Models.History_Entities
         {
         }
 
-       
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-         
+
         }
     }
 }

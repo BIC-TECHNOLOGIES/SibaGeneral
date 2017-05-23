@@ -102,6 +102,7 @@ namespace SibaDev.Models.Claim_Models
                     CLM_EST_MOD_DATE = r.CLM_EST_MOD_DATE,
                     CLM_EST_RISK_SYS_ID = r.CLM_EST_RISK_SYS_ID,
                     CLM_EST_TYPE = r.CLM_EST_TYPE,
+                    CLM_EST_STATUS = r.CLM_EST_STATUS,
                     CLM_EST_EXPENSE = r.CLM_EST_EXPENSE != null ? r.CLM_EST_EXPENSE.Select(c => get_expense(c.CLM_EXP_SYS_ID)).ToList() : null,
                 }).Single();
             }
@@ -149,6 +150,12 @@ namespace SibaDev.Models.Claim_Models
             return (from mdl in db.CLM_EST_HEAD
                     where (mdl.CLM_N0.ToLower().Contains(q.ToLower()) || mdl.CLM_CLT_CODE.ToLower().Contains(q.ToLower())) && mdl.CLM_STATUS == "A"
                     select mdl.CLM_N0).ToList().Select(get_estimation);
+        }
+
+        public static IEnumerable<object> get_claim_lov()
+        {
+            var db = new SibaModel();
+            return (from clm in db.CLM_EST_HEAD where clm.CLM_STATUS == "A" select new { CODE = clm.CLM_N0, NAME = clm.CLM_CLT_NAME });
         }
 
         public static bool save_estimation(CLM_EST_HEAD polhClaim)

@@ -2,13 +2,14 @@
     $(function () {
 
         $scope.riskdtls_grid = u.default_grid("#grdRiskDtls", "#grdRiskDtlsPager", "Claim Risk List",
-        ['Risk Code', 'Risk Name.', 'Construction Type', ' RI EML', 'EML SI', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
+       ['Vehicle Reg No.', 'Chasis No', 'Engine No.', 'Vehicle No.', ' Vehicle Type', 'Model', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
        [
-          { name: 'CLM_RISK_CODE', id: false, index: 'CLM_RISK_CODE' },
-          { name: 'CLM_RISK_NAME', id: false, index: 'CLM_RISK_NAME' },
-          { name: 'CLM_RISK_CONS_TYPE', id: false, index: 'CLM_RISK_CONS_TYPE', width: 150 },
-          { name: 'CLM_RISK_RI_EML', index: 'CLM_RISK_RI_EML', width: 200 },
-          { name: 'CLM_RISK_EML_SI', index: 'CLM_RISK_EML_SI' },
+          { name: 'CLM_RISK_VEH_REG_NO', id: false, index: 'CLM_RISK_VEH_REG_NO' },
+          { name: 'CLM_RISK_CHASIS_NO', id: false, index: 'CLM_RISK_CHASIS_NO' },
+          { name: 'CLM_RISK_ENG_NO', id: false, index: 'CLM_RISK_ENG_NO', width: 150 },
+          { name: 'CLM_RISK_VEH_NO', index: 'CLM_RISK_VEH_NO', width: 200 },
+          { name: 'CLM_RISK_VEH_TYPE', index: 'CLM_RISK_VEH_TYPE' },
+          { name: 'CLM_RISK_MAKE_MODEL', index: 'CLM_RISK_MAKE_MODEL' },
           { name: 'CLM_RISK_STATUS', index: 'CLM_RISK_STATUS' },
           { name: 'CLM_RISK_CRTE_BY', index: 'CLM_RISK_CRTE_BY' },
           { name: 'CLM_RISK_CRTE_DATE', index: 'CLM_RISK_CRTE_DATE' },
@@ -23,14 +24,13 @@
 
 
         //Loss Claims settlement ..
-
         $scope.lossSetment_grid = u.default_grid("#grdEstimatesDtls", "#grdEstimatesDtlsPager", "Claim Estimate Details List",
         ['Loss Code', 'Loss Type', 'Estimate Amount', 'Settled Amount', 'OS Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
        [
           { name: 'CLM_EST_TYPE', id: true, index: 'CLM_EST_TYPE' },
           { name: 'CLM_EST_NAME', index: 'CLM_EST_NAME', width: 200 },
           { name: 'CLM_EST_AMT', index: 'CLM_EST_AMT', width: 150 },
-            { name: 'CLM_EST_SETTLED_AMT', index: 'CLM_EST_SETTLED_AMT', width: 150 },
+          { name: 'CLM_EST_SETTLED_AMT', index: 'CLM_EST_SETTLED_AMT', width: 150 },
           { name: 'CLM_EST_OS_AMT', index: 'CLM_EST_OS_AMT', width: 150 },
           { name: 'CLM_EST_STATUS', index: 'CLM_EST_STATUS' },
           { name: 'CLM_EST_CRTE_BY', index: 'CLM_EST_CRTE_BY' },
@@ -44,98 +44,104 @@
           var sel_id = grid.jqGrid('getGridParam', 'selrow');
           $("form input[name='CLM_EST_TYPE']").data("update", true);
           u.fill_form({
-              CLM_EST_TYPE: grid.jqGrid('getCell', sel_id, 'CLM_EST_TYPE'),
-              CLM_EST_NAME: grid.jqGrid('getCell', sel_id, 'CLM_EST_NAME'),
-              CLM_EST_AMT: grid.jqGrid('getCell', sel_id, 'CLM_EST_AMT'),
-              CLM_EST_OS_AMT: grid.jqGrid('getCell', sel_id, 'CLM_EST_OS_AMT'),
-          }, "#clmEstDtlsForm");
-          u.fill_form({
-              CLM_EXP_CLM_EST_TYPE: grid.jqGrid('getCell', sel_id, 'CLM_EST_TYPE'),
-          }, "#clmExpenseForm");
+              CLPMT_CLM_TYPE: grid.jqGrid('getCell', sel_id, 'CLM_EST_TYPE'),
+          }, "#clmSettledForm1");
       });
 
         // Claims Expense/Fees settlement ..
         $scope.expseSetment_grid = u.default_grid("#grdExpseSetment", "#grdExpseSetmentPager", "Claim Estimate",
-['Code', 'Estimate Name', 'Loss Code', 'Loss Type', 'Estimate Amount', ' Settled Amount', ' OS Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
-[
-{ name: 'CLM_EXP_TYPE', id: true, index: 'CLM_EST_TYPE' },
-{ name: 'CLM_EXP_NAME', index: 'CLM_EST_NAME', width: 200 },
-{ name: 'CLM_LOSS_CODE', id: true, index: 'CLM_EST_TYPE' },
-{ name: 'CLM_LOSS_TYPE', index: 'CLM_EST_NAME', width: 200 },
+           ['Code', 'Expense type', 'Expense Cost', 'Loss Code', 'Loss Type', 'Estimate Amount', ' Settled Amount', ' OS Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
+            [
+            { name: 'CLM_EXP_CODE', id: true, index: 'CLM_EXP_CODE' },
+            { name: 'CLM_EXP_CLM_EST_TYPE', index: 'CLM_EXP_CLM_EST_TYPE', width: 200 },
+            { name: 'CLM_EXP_COST', id: true, index: 'CLM_EXP_COST' },
+            { name: 'CLM_LOSS_CODE', id: true, index: 'CLM_LOSS_CODE' },
+            { name: 'CLM_LOSS_TYPE', index: 'CLM_LOSS_TYPE', width: 200 },
+            { name: 'CLM_EST_AMT', index: 'CLM_EST_AMT', width: 150 },
+            { name: 'CLM_EST_SETTLED_AMT', index: 'CLM_EST_SETTLED_AMT', width: 150 },
+            { name: 'CLM_EST_OS_AMT', index: 'CLM_EST_OS_AMT', width: 150 },
+            { name: 'CLM_EXP_STATUS', index: 'CLM_EXP_STATUS' },
+            { name: 'CLM_EXP_CRTE_BY', index: 'CLM_EXP_CRTE_BY' },
+            { name: 'CLM_EXP_CRTE_DATE', index: 'CLM_EST_CRTE_DATE' },
+            { name: 'CLM_EXP_SYS_ID', id: false, hidden: true, index: 'CLM_EXP_SYS_ID' },
+            { name: 'CLM_EXP_CLM_EST_SYS_ID', id: false, hidden: true, index: 'CLM_EXP_CLM_EST_SYS_ID' }
+            ],
+                //Retrive Grid data into form input fields on row click..
+            function (sel_id) {
+                var grid = $scope.expseSetment_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow');
+                $("form input[name='CLM_EXP_CODE']").data("update", true);
+                u.fill_form({
+                    CLPMT_CLM_EXP_TYPE: grid.jqGrid('getCell', sel_id, 'CLM_EXP_CLM_EST_TYPE'),
 
-{ name: 'CLM_EST_AMT', index: 'CLM_EST_AMT', width: 150 },
-{ name: 'CLM_EST_SETTLED_AMT', index: 'CLM_EST_SETTLED_AMT', width: 150 },
-{ name: 'CLM_EST_OS_AMT', index: 'CLM_EST_OS_AMT', width: 150 },
-{ name: 'CLM_EST_STATUS', index: 'CLM_EST_STATUS' },
-{ name: 'CLM_EST_CRTE_BY', index: 'CLM_EST_CRTE_BY' },
-{ name: 'CLM_EST_CRTE_DATE', index: 'CLM_EST_CRTE_DATE' },
-{ name: 'CLM_EST_SYS_ID', id: false, hidden: true, index: 'CLM_EST_SYS_ID' },
-{ name: 'CLM_EST_CLM_SYS_ID', id: false, hidden: true, index: 'CLM_EST_CLM_SYS_ID' }
-],
-//Retrive Grid data into form input fields on row click..
-function (sel_id) {
-    var grid = $scope.expseSetment_grid;
-    var sel_id = grid.jqGrid('getGridParam', 'selrow');
-    $("form input[name='CLM_EST_TYPE']").data("update", true);
-    u.fill_form({
-        CLM_EST_TYPE: grid.jqGrid('getCell', sel_id, 'CLM_EST_TYPE'),
-        CLM_EST_NAME: grid.jqGrid('getCell', sel_id, 'CLM_EST_NAME'),
-        CLM_EST_AMT: grid.jqGrid('getCell', sel_id, 'CLM_EST_AMT'),
-        CLM_EST_OS_AMT: grid.jqGrid('getCell', sel_id, 'CLM_EST_OS_AMT'),
-    }, "#clmEstDtlsForm");
-    u.fill_form({
-        CLM_EXP_CLM_EST_TYPE: grid.jqGrid('getCell', sel_id, 'CLM_EST_TYPE'),
-    }, "#clmExpenseForm");
-});
+                }, "#clmSettledForm1");
+            });
 
 
+        //Claim Estimation Settled
+         $scope.clmSettled_grid = u.default_grid("#grdClmLossSettled", "#grdClmLossSettledPager", "Claim Expense Details List",
+          ['Claim No', 'ID', 'Reg ID', 'Risk ID', 'Polh ID', 'Estimate Code', 'Expense Code', 'Settled Type', 'Ex Gratia', 'Total Loss', 'Settled Option', 'Payment Type',
+           'Payment To', 'Payee ID', 'Payee Name', 'Cheque Name', 'Currency', 'Currency Rate', 'Ammount FC', 'Ammount BC', 'Excess FC', 'Excess BC', 'Tax FC', 'Tax BC',
+           'Net FC', 'Net BC','Claim Office','Policy Office', 'Narration', 'Txn Type','Status','Create By','Create Date'],
+            [
+            { name: 'CLPMT_CLAIM_NO', id: true, index: 'CLPMT_CLAIM_NO', width: 150 },
+            { name: 'CLPMT_SYS_ID', id: true, index: 'CLPMT_SYS_ID', width: 150 },
+            { name: 'CLPMT_CLM_REG_SYS_ID', index: 'CLPMT_CLM_REG_SYS_ID' },
+            { name: 'CLPMT_RISK_SYS_ID', index: 'CLPMT_RISK_SYS_ID', width: 150 },
+            { name: 'CLPMT_POLH_SYS_ID', index: 'CLPMT_POLH_SYS_ID' },
+            { name: 'CLPMT_CLM_TYPE', index: 'CLPMT_CLM_TYPE' },
+            { name: 'CLPMT_CLM_EXP_TYPE', index: 'CLPMT_CLM_EXP_TYPE' },
+            { name: 'CLPMT_STLMNT_TYPE', index: 'CLPMT_STLMNT_TYPE' },
+            { name: 'CLPMT_EX_GRATIA', index: 'CLPMT_EX_GRATIA' },
+            { name: 'CLPMT_TOTAL_LOSS', index: 'CLPMT_TOTAL_LOSS' },
+            { name: 'CLPMT_STLMNT_OPTION', index: 'CLPMT_STLMNT_OPTION' },
+            { name: 'CLPMT_PAY_TYPE', id: false, index: 'CLPMT_PAY_TYPE' },
+            { name: 'CLPMT_PAY_TO', id: false, index: 'CLPMT_PAY_TO' },
+            { name: 'CLPMT_PAYEE_ID', id: true, index: 'CLPMT_PAYEE_ID', width: 150 },
+            { name: 'CLPMT_PAYEE_NAME', index: 'CLPMT_PAYEE_NAME' },
+            { name: 'CLPMT_CHQ_NAME', index: 'CLPMT_CHQ_NAME' },
+            { name: 'CLPMT_CURRENCY', index: 'CLPMT_CURRENCY', width: 150 },
+            { name: 'CLPMT_CURR_RATE', index: 'CLPMT_CURR_RATE' },
+            { name: 'CLPMT_CLM_AMT_FC', index: 'CLPMT_CLM_AMT_FC' },
+            { name: 'CLPMT_CLM_AMT_BC', index: 'CLPMT_CLM_AMT_BC' },
+            { name: 'CLPMT_DED_FC', index: 'CLPMT_DED_FC' },
+            { name: 'CLPMT_DED_BC', index: 'CLPMT_DED_BC' }, 
+            { name: 'CLPMT_TAX_FC', id: false, index: 'CLPMT_TAX_FC' },
+            { name: 'CLPMT_TAX_BC', id: false, index: 'CLPMT_TAX_BC' },
+            { name: 'CLPMT_NET_CLM_FC', id: false, index: 'CLPMT_NET_CLM_FC' },
+            { name: 'CLPMT_NET_CLM_BC', id: false, index: 'CLPMT_NET_CLM_BC' },
+            { name: 'CLPMT_CLM_OFFICE', id: false, index: 'CLPMT_CLM_OFFICE' },
+            { name: 'CLPMT_POL_OFFICE', id: false, index: 'CLPMT_POL_OFFICE' },
+            { name: 'CLPMT_CLM_NARRATION', id: false, index: 'CLPMT_CLM_NARRATION' },
+            { name: 'CLPMT_TXN_TYPE', id: false, index: 'CLPMT_TXN_TYPE' },
+            { name: 'CLPMT_STATUS', id: false, index: 'CLPMT_STATUS' },
+            { name: 'CLPMT_CRTE_BY', id: false, index: 'CLPMT_CRTE_BY' },
+            { name: 'CLPMT_CRTE_DATE', id: false, index: 'CLPMT_CRTE_DATE' }
+            ],
+            //Retrive Grid data into form input fields on row click..
+            function (sel_id) {
+                var grid = $scope.clmSettled_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow'); 
+                $("form input[name='CLM_EST_TYPE']").data("update", true);
+                u.fill_form({
+                    CLPMT_STLMNT_TYPE: grid.jqGrid('getCell', sel_id, 'CLPMT_STLMNT_TYPE'),
+                    CLPMT_EX_GRATIA: grid.jqGrid('getCell', sel_id, 'CLPMT_EX_GRATIA'),
+                    CLPMT_TOTAL_LOSS: grid.jqGrid('getCell', sel_id, 'CLPMT_TOTAL_LOSS'), 
+                    CLPMT_PAY_TYPE: grid.jqGrid('getCell', sel_id, 'CLPMT_PAY_TYPE'),
+                    CLPMT_PAY_TO: grid.jqGrid('getCell', sel_id, 'CLPMT_PAY_TO'),
+                    CLPMT_PAYEE_ID: grid.jqGrid('getCell', sel_id, 'CLPMT_PAYEE_ID'),
+                    CLPMT_PAYEE_NAME: grid.jqGrid('getCell', sel_id, 'CLPMT_PAYEE_NAME'),
+                    CLPMT_CHQ_NAME: grid.jqGrid('getCell', sel_id, 'CLPMT_CHQ_NAME'),
+                    CLPMT_CURRENCY: grid.jqGrid('getCell', sel_id, 'CLPMT_CURRENCY'),
+                    CLPMT_CURR_RATE: grid.jqGrid('getCell', sel_id, 'CLPMT_CURR_RATE'),
+                    CLPMT_CLM_AMT_FC: grid.jqGrid('getCell', sel_id, 'CLPMT_CLM_AMT_FC'),
+                    CLPMT_DED_FC: grid.jqGrid('getCell', sel_id, 'CLPMT_DED_FC'),
+                    CLPMT_TAX_FC: grid.jqGrid('getCell', sel_id, 'CLPMT_TAX_FC'),
+                    CLPMT_NET_CLM_FC: grid.jqGrid('getCell', sel_id, 'CLPMT_NET_CLM_FC'),
+                    CLPMT_CLM_NARRATION: grid.jqGrid('getCell', sel_id, 'CLPMT_CLM_NARRATION'),
 
-        $scope.clmSettled_grid = u.default_grid("#grdClmLossSettled", "#grdClmLossSettledPager", "Claim Expense Details List",
-      ['Code', 'Estimate Type', 'Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Est ID'],
-     [
-        { name: 'CLM_EXP_CODE', id: true, index: 'CLM_EXP_CODE', width: 150 },
-        { name: 'CLM_EXP_CLM_EST_TYPE', index: 'CLM_EXP_CLM_EST_TYPE' },
-        { name: 'CLM_EXP_COST', index: 'CLM_EXP_COST', width: 150 },
-        { name: 'CLM_EXP_STATUS', index: 'CLM_EXP_STATUS' },
-        { name: 'CLM_EXP_CRTE_BY', index: 'CLM_EXP_CRTE_BY' },
-        { name: 'CLM_EXP_CRTE_DATE', index: 'CLM_EXP_CRTE_DATE' },
-        { name: 'CLM_EXP_SYS_ID', id: false, index: 'CLM_EXP_SYS_ID' },
-        { name: 'CLM_EXP_CLM_EST_SYS_ID', id: false, index: 'CLM_EXP_CLM_EST_SYS_ID' }
-     ],
-    //Retrive Grid data into form input fields on row click..
-    function (sel_id) {
-        var grid = $scope.clmSettled_grid;
-        var sel_id = grid.jqGrid('getGridParam', 'selrow');
-        $("form input[name='CLM_EST_TYPE']").data("update", true);
-        u.fill_form({
-            CLM_EXP_CODE: grid.jqGrid('getCell', sel_id, 'CLM_EXP_CODE'),
-            CLM_EXP_COST: grid.jqGrid('getCell', sel_id, 'CLM_EXP_COST'),
-        }, "#clmExpenseForm");
-    }),
-
-
-        $scope.clmExpSettled_grid = u.default_grid("#grdclmExpSettled", "#grdclmExpSettledPager", "Claim Expense Details List",
-      ['Code', 'Estimate Type', 'Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Est ID'],
-     [
-        { name: 'CLM_EXP_CODE', id: true, index: 'CLM_EXP_CODE', width: 150 },
-        { name: 'CLM_EXP_CLM_EST_TYPE', index: 'CLM_EXP_CLM_EST_TYPE' },
-        { name: 'CLM_EXP_COST', index: 'CLM_EXP_COST', width: 150 },
-        { name: 'CLM_EXP_STATUS', index: 'CLM_EXP_STATUS' },
-        { name: 'CLM_EXP_CRTE_BY', index: 'CLM_EXP_CRTE_BY' },
-        { name: 'CLM_EXP_CRTE_DATE', index: 'CLM_EXP_CRTE_DATE' },
-        { name: 'CLM_EXP_SYS_ID', id: false, index: 'CLM_EXP_SYS_ID' },
-        { name: 'CLM_EXP_CLM_EST_SYS_ID', id: false, index: 'CLM_EXP_CLM_EST_SYS_ID' }
-     ],
-    //Retrive Grid data into form input fields on row click..
-    function (sel_id) {
-        var grid = $scope.clmSettled_grid;
-        var sel_id = grid.jqGrid('getGridParam', 'selrow');
-        $("form input[name='CLM_EST_TYPE']").data("update", true);
-        u.fill_form({
-            CLM_EXP_CODE: grid.jqGrid('getCell', sel_id, 'CLM_EXP_CODE'),
-            CLM_EXP_COST: grid.jqGrid('getCell', sel_id, 'CLM_EXP_COST'),
-        }, "#clmExpenseForm");
-    }),
+                }, "#clmSettledForm1");
+            }),
 
 
         // Claim Summ Grid
@@ -161,6 +167,53 @@ function (sel_id) {
 
           }),
 
+
+
+        // Customer Dialog
+            $scope.customer_grid = u.default_grid("#gridCustomer", "#gridCustomerPager", "Customer",
+            ['Code', 'Full Name', 'Date of Birth', 'Address', 'Tel no', 'Mobile', 'Created date', 'Created by'],
+            [
+                { name: 'CUS_CODE', index: 'CUS_CODE', width: 150 },
+                { name: 'CUS_OFFICIAL_NAME', index: 'CUS_OFFICIAL_NAME', width: 150 },
+                { name: 'CUS_DOB', index: 'CUS_DOB', width: 150 },
+                { name: 'CUS_ADDRS1', index: 'CUS_ADDRS1', width: 150 },
+                { name: 'CUS_PHONE1', index: 'CUS_PHONE1', width: 150 },
+                { name: 'CUS_MOBILE', index: 'CUS_MOBILE', width: 150 },
+                { name: 'CUS_CRTE_DATE', index: 'CUS_CRTE_DATE', width: 150 },
+                { name: 'CUS_CRTE_BY', index: 'CUS_CRTE_BY', width: 150 },
+            ],
+             //Retrive Grid data into form input fields on row click..
+            function (sel_id) {
+
+                var grid = $scope.customer_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow');
+                $("form input[name='CUS_CODE']").data("update", true);
+                u.fill_form({
+                    CLPMT_PAYEE_ID: grid.jqGrid('getCell', sel_id, 'CUS_CODE'),
+                    CLPMT_PAYEE_NAME: grid.jqGrid('getCell', sel_id, 'CUS_OFFICIAL_NAME'),
+                }, "#clmSettledForm1");
+            },
+            //Retrive Grid data into form input fields on row double click.... XXX
+            function (sel_id) {
+
+                var grid = $scope.customer_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow');
+                $("form input[name='CUS_CODE']").data("update", true);
+                u.fill_form({
+                    POLH_CUST_CODE: grid.jqGrid('getCell', sel_id, 'CUS_CODE'),
+                    CUS_OFFICIAL_NAME: grid.jqGrid('getCell', sel_id, 'CUS_OFFICIAL_NAME'),
+                    CUS_ADDRS1: grid.jqGrid('getCell', sel_id, 'CUS_ADDRS1'),
+                    CUS_PHONE1: grid.jqGrid('getCell', sel_id, 'CUS_PHONE1'),
+                    CUS_MOBILE: grid.jqGrid('getCell', sel_id, 'CUS_MOBILE'),
+                    CUS_CRTE_DATE: grid.jqGrid('getCell', sel_id, 'CUS_CRTE_DATE'),
+                    CUS_CRTE_BY: grid.jqGrid('getCell', sel_id, 'CUS_CRTE_BY'),
+                }, "#polheaderForm");
+
+                // hide modal on double click
+                $("#customerLovModal").modal('hide');
+
+            }),
+
    $scope.saving = false;
 
 
@@ -182,9 +235,9 @@ function (sel_id) {
                         /*
                          * clear grid before populating
                          */
-                        $scope.polh_grid.jqGrid("clearGridData");
+                        $scope.clmdtls_grid.jqGrid("clearGridData");
                         for (var i in result) {
-                            $scope.polh_grid.addRowData(result[i].POLH_SYS_ID, result[i])
+                            $scope.clmdtls_grid.addRowData(result[i].POLH_SYS_ID, result[i])
                         }
                     },
                     function (err) {
@@ -194,12 +247,12 @@ function (sel_id) {
                 /*--------------------------------
                  * clear grid before populating
                  *------------------------------*/
-                $scope.polh_grid.jqGrid("clearGridData");
+                $scope.clmdtls_grid.jqGrid("clearGridData");
 
                 //fetch all
                 s.get_policys_est(function (polhs) {
                     for (var i in polhs) {
-                        $scope.polh_grid.addRowData(polhs[i].POLH_SYS_ID, polhs[i]);
+                        $scope.clmdtls_grid.addRowData(polhs[i].POLH_SYS_ID, polhs[i]);
                     }
                 })
             }
@@ -300,17 +353,208 @@ function (sel_id) {
         });
 
 
-        $("#btn_add_est").on('click', function () {
+        /*----------------------
+         * LOV initialization
+         *--------------------*/
+        $scope.lov = u.lov_init("#myLOVModal", "#grdLOVRegion", "#grdLOVRegionPager");
 
-            if (u.form_validation("#clmEstDtlsForm")) {
+        /*-----------------------------------------
+         * LOV button click event handling
+         *---------------------------------------*/
+        $("body").delegate(".btn_lov", "click", function (e) {
+            $scope.dialog_data = $(this).data("dialog");
+            switch ($scope.dialog_data.type) {
+                case "btn_office":
+                    $scope.lov.call_dialog("Select Office", "get_office_lov", $scope.dialog_data);
+                    break;
+                case "btn_currency":
+                    $scope.lov.call_dialog("Select Currency", "get_lov_currency", $scope.dialog_data);
+                    break;
+                case "btn_customers":
+                    $scope.lov.call_dialog("Select Customer", "get_lov_customer", $scope.dialog_data);
+                    break;
+                case "btn_expense":
+                    $scope.lov.call_dialog("Select Customer Category", "get_expense_lov", $scope.dialog_data);
+                    break;
+                case "btn_catastrophy":
+                    $scope.lov.call_dialog("Select Claim Catastrophy", "get_catastrophy_lov", $scope.dialog_data);
+                    break;
+                case "btn_loss":
+                    $scope.lov.call_dialog("Select Claim Cause of Loss", "get_loss_lov", $scope.dialog_data);
+                    break;
+                case "btn_est_type":
+                    $scope.lov.call_dialog("Select Claim Estimate Type", "get_estimation_lov", $scope.dialog_data);
+                    break;
+                case "btn_claim_no":
+                    $scope.lov.call_dialog("Select Claim No.", "get_claim_lov", $scope.dialog_data);
+                    break;
 
-                //if (u.field_empty("input[name='CLM_EST_TYPE']")) return u.growl_error
+            }
+        })
+        //////////////////////////////////
 
-                //("The Form code field is empty, please fill and to add to the grid");
+        $("#btn_CustomersLov").on('click', function () {
 
-                u.modal_confirmation("Are you sure you want to add Class of Business to the grid?", function () {
+            $("#customerLovModal").modal();
 
-                    var rowIds = $scope.estDtls_grid.jqGrid('getDataIDs');
+        });
+
+
+        /*---------------------------
+         * Search Customers
+         *-------------------------*/
+        //
+        $("#btnQueryCustomers").click(function () {
+            var queryTxt = $("#treatySearch").val();
+            if (queryTxt != null && queryTxt.length > 0) {
+                s.search_customer(queryTxt,
+                    function (result) {
+                        /*
+                         * clear grid before populating
+                         */
+                        $scope.customer_grid.jqGrid("clearGridData");
+                        for (var i in result) {
+                            $scope.customer_grid.addRowData(result[i].CUS_CODE, result[i]);
+                        }
+                    },
+                    function (err) {
+
+                    });
+            } else {
+                /*--------------------------------
+                 * clear grid before populating
+                 *------------------------------*/
+                $scope.customer_grid.jqGrid("clearGridData");
+
+                //fetch all regions
+                s.get_customers(function (regions) {
+                    for (var i in regions) {
+                        $scope.customer_grid.addRowData(regions[i].CUS_CODE, regions[i]);
+                    }
+                });
+            }
+
+        });
+        ///////////////////////
+
+        // Claim Search Dialog
+        $scope.clmdtls_grid = u.default_grid("#gridClmDtls", "#gridClmDtlsPager", "Claim Search Results",
+        ['Claim No.', 'Claim ID', 'Policy ID', 'Office Code', 'Loss Date', 'Discovery Date', 'Reported Date', 'Transaction Date', 'Loss Code',
+            'Place of Loss', 'Client Code', 'Client Name', 'Event Code', 'Time bared', 'Warranty Breached', 'Repudent','index'
+        ],
+        [
+            { name: 'CLM_N0', index: 'CLM_N0', width: 150 },
+            { name: 'CLM_SYS_ID', index: 'CLM_SYS_ID', width: 150 },
+            { name: 'CLM_POLH_SYS_ID', index: 'CLM_POLH_SYS_ID', width: 150 },
+            { name: 'CLM_OFF_CODE', index: 'CLM_OFF_CODE', width: 150 },
+            { name: 'CLM_LOSS_DATE', index: 'CLM_LOSS_DATE', width: 150 },
+            { name: 'CLM_DISC_DATE', index: 'CLM_DISC_DATE', width: 150 },
+            { name: 'CLM_REP_DATE', index: 'CLM_REP_DATE', width: 150 },
+            { name: 'CLM_TXN_DATE', index: 'CLM_TXN_DATE', width: 150 },
+            { name: 'CLM_LOSS_CODE', index: 'CLM_LOSS_CODE', width: 150 },
+            { name: 'CLM_LOSS_PLACE', index: 'CLM_LOSS_PLACE', width: 150 },
+            { name: 'CLM_CLT_CODE', index: 'CLM_CLT_CODE', width: 150 },
+            { name: 'CLM_CLT_NAME', index: 'CLM_CLT_NAME', width: 150 },
+            { name: 'CLM_CAT_EVNT_CODE', index: 'CLM_CAT_EVNT_CODE', width: 150 },
+            { name: 'CLM_TIME_BRD', index: 'CLM_TIME_BRD', width: 150 },
+            { name: 'CLM_WART_BRCH', index: 'CLM_WART_BRCH', width: 150 },
+            { name: 'CLM_RPDT', index: 'CLM_RPDT', width: 150 },
+            { name: "index", id: true, index: "index", hidden: true }
+        ],
+        function (index) {
+            $scope.selected_index = index;
+            $scope.search_fill($scope.result[index]);
+        },
+        function (index) {
+            $scope.search_fill($scope.result[index]);
+            u.clear_grid_data($scope.clmdtls_grid);
+            $("#claimLovModal").modal("hide");
+        });
+
+
+
+         /*---------------------------
+         * Search Claim Details
+         *-------------------------*/
+        $("#btnQueryClmDtls").click(function () {
+            var query = $("#txtClmNoSearch").val();
+            if (query && query.length > 0 && query !== " ") {
+                s.search_estimation(query, function (result) { 
+                    $scope.searched = true;
+                    $scope.result = result;
+                    if (result.length > 0) {
+                        if (result.length > 1) {
+                            u.clear_grid_data($scope.clmdtls_grid);
+                            /*display result of the search to the user in a modal*/
+                            for (var i in result) {
+                                //u.clear_grid_data($scope.search_grid);
+                                result[i].index = i;
+                                $scope.clmdtls_grid.addRowData(result[i].index, result[i]);
+                            }
+                            //$("#mySearchResultModal").modal();
+                        } else {
+
+                            $scope.search_fill(result[0]);
+                        }
+                    } else {
+                        u.growl_info("Claim No. not found, please make sure you enter the correct Policy No!");
+                    }
+                },
+                    function (err) {
+                        u.growl_error("Error fetching search results");
+                    })
+            } else {
+                u.growl_info("Please check Claim No. and try again!");
+            }
+        });
+
+        $scope.search_fill = function (product) {
+
+            $scope.riskdtls_grid.jqGrid("clearGridData");
+            $scope.lossSetment_grid.jqGrid("clearGridData");
+            $scope.expseSetment_grid.jqGrid("clearGridData");
+
+            u.fill_form(product, "#clmEstimateForm");
+
+            //populating child entities
+            u.clear_grid_data($scope.riskdtls_grid);
+            for (var i in product.CLM_EST_RISK_DTLS) {
+                $scope.riskdtls_grid.addRowData(product.CLM_EST_RISK_DTLS[i].CLM_RISK_SYS_ID, product.CLM_EST_RISK_DTLS[i]);
+            }
+            //populating child entities
+            u.clear_grid_data($scope.lossSetment_grid);
+            for (var i in product.CLM_EST_DTLS) {
+                $scope.lossSetment_grid.addRowData(product.CLM_EST_DTLS[i].CLM_EST_SYS_ID, product.CLM_EST_DTLS[i]);
+
+                // u.clear_grid_data($scope.Covers_grid);
+                for (var X in product.CLM_EST_DTLS[i].CLM_EST_EXPENSE) {
+                    $scope.expseSetment_grid.addRowData(product.CLM_EST_DTLS[i].CLM_EST_EXPENSE[X].CLM_EXP_SYS_ID, product.CLM_EST_DTLS[i].CLM_EST_EXPENSE[X])
+                }
+            }
+
+        };
+
+
+
+
+        $("#btnClaimNo").on('click', function () {
+
+            $("#claimLovModal").modal();
+
+        });
+
+
+        /*----------------------------------------------------
+         * Add record to the Grid
+         *---------------------------------------------------*/
+        //
+        $("#btn_add_est_settle").on('click', function () {
+
+            if (u.form_validation("#clmSettledForm1")) {              
+
+                u.modal_confirmation("Are you sure you want to add Settlement to the grid?", function () {
+
+                    var rowIds = $scope.clmSettled_grid.jqGrid('getDataIDs');
 
                     /*----------------------------------------------
                      * declare array to contain the codes to verify
@@ -329,24 +573,34 @@ function (sel_id) {
                          * get value of the cell or column in an array
                          *----------------------------------------------*/
                         //
-                        var cellValue = $scope.estDtls_grid.jqGrid('getCell', currRow, 'CLM_EST_TYPE');
+                        var estValue = $scope.clmSettled_grid.jqGrid('getCell', currRow, 'CLPMT_CLM_TYPE');
+
+                        var expValue = $scope.clmSettled_grid.jqGrid('getCell', currRow, 'CLPMT_CLM_EXP_TYPE');
+
+                        var cellValue = estValue + expValue;
 
                         Code.push(cellValue);
                     }
+
+                    var estCode = $("#CLPMT_CLM_TYPE").val();
+
+                    var expCode = $("#CLPMT_CLM_EXP_TYPE").val();
+
+                    var verifyLossExp = estCode + expCode;
 
                     /*----------------------------------------
                      * add if code is not found in the Grid
                      *--------------------------------------*/
                     //
-                    if ($.inArray($('#CLM_EST_TYPE').val(), Code) < 0) {
+                    if ($.inArray(verifyLossExp, Code) < 0) {
 
-                        var FormData = u.parse_form("#clmEstDtlsForm");
-                        FormData.CLM_EST_STATUS = "U";
-                        FormData.CLM_EST_CRTE_BY = "Admin";
-                        FormData.CLM_EST_CRTE_DATE = u.get_date();
-                        $scope.estDtls_grid.addRowData(FormData.CLM_EST_TYPE, FormData);
+                        var FormData = u.parse_form("#clmSettledForm1");
+                        FormData.CLPMT_STATUS = "U";
+                        FormData.CLPMT_CRTE_BY = "Admin";
+                        FormData.CLPMT_CRTE_DATE = u.get_date();
+                        $scope.clmSettled_grid.addRowData(FormData.CLPMT_CLM_TYPE, FormData); 
                         u.hide_confirm();
-                        u.growl_success("Claim Estimate Details successfully added to grid");
+                        u.growl_success("Claim Settlement Details successfully added to grid");
                     }
 
                     else {
@@ -361,54 +615,22 @@ function (sel_id) {
         });
 
 
-        /*----------------------
-         * LOV initialization
-         *--------------------*/
-        $scope.lov = u.lov_init("#myLOVModal", "#grdLOVRegion", "#grdLOVRegionPager");
-
-        /*-----------------------------------------
-         * LOV button click event handling
-         *---------------------------------------*/
-        $("body").delegate(".btn_lov", "click", function (e) {
-            $scope.dialog_data = $(this).data("dialog");
-            switch ($scope.dialog_data.type) {
-                case "btn_office":
-                    $scope.lov.call_dialog("Select Office", "get_office_lov", $scope.dialog_data);
-                    break;
-                case "btn_region":
-                    $scope.lov.call_dialog("Select Region", "get_polh_lov", $scope.dialog_data);
-                    break;
-                case "btn_expense":
-                    $scope.lov.call_dialog("Select Customer Category", "get_expense_lov", $scope.dialog_data);
-                    break;
-                case "btn_catastrophy":
-                    $scope.lov.call_dialog("Select Claim Catastrophy", "get_catastrophy_lov", $scope.dialog_data);
-                    break;
-                case "btn_loss":
-                    $scope.lov.call_dialog("Select Claim Cause of Loss", "get_loss_lov", $scope.dialog_data);
-                    break;
-                case "btn_est_type":
-                    $scope.lov.call_dialog("Select Claim Estimate Type", "get_estimation_lov", $scope.dialog_data);
-                    break;
-
-            }
-        })
 
         /*----------------------------------------------------
-         * Remove record or Mark for deletion from City Grid
+         * Remove record or Mark for deletion from the Grid
          *---------------------------------------------------*/
+         //
+        $("#btn_remove_est_settle").on('click', function () {
 
-        $("#btn_remove_est").on('click', function () {
+            if (u.grid_empty($scope.clmSettled_grid)) return u.growl_info("The grid is empty");
 
-            if (u.grid_empty($scope.estDtls_grid)) return u.growl_info("The grid is empty");
-
-            var grid = $scope.estDtls_grid;
+            var grid = $scope.clmSettled_grid;
 
             var row_id = grid.jqGrid('getGridParam', 'selrow');
 
-            var recordStatus = grid.jqGrid('getCell', row_id, 'CLM_EST_STATUS');
+            var recordStatus = grid.jqGrid('getCell', row_id, 'CLPMT_STATUS');
 
-            var Code = grid.jqGrid('getCell', row_id, 'CLM_EST_TYPE');
+            var Code = grid.jqGrid('getCell', row_id, 'CLPMT_CLM_TYPE');
 
             var message = "";
 
@@ -435,16 +657,16 @@ function (sel_id) {
                 // 
                 if (recordStatus == "A") {
 
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_STATUS', 'D');
-                    $('#' + row_id, '#grdEstimatesDtls').css({ color: 'red' });
+                    grid.jqGrid('setCell', row_id, 'CLPMT_STATUS', 'D');
+                    $('#' + row_id, '#grdClmLossSettled').css({ color: 'red' });
 
                     u.hide_confirm();
                     u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
 
                 } else if (recordStatus == "D") {
 
-                    $('#' + row_id, '#grdEstimatesDtls').css({ color: 'black' });
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_STATUS', 'A');
+                    $('#' + row_id, '#grdClmLossSettled').css({ color: 'black' });
+                    grid.jqGrid('setCell', row_id, 'CLPMT_STATUS', 'A');
                     u.hide_confirm();
                     u.growl_hide("Data successfully restored");
                 }
@@ -458,38 +680,35 @@ function (sel_id) {
          * Edit/Update Function
          *------------------------------*/
         //
-        $("#btn_update_est").on('click', function () {
+        $("#btn_update_est_settle").on('click', function () {
 
-            if (u.grid_empty($scope.estDtls_grid)) return u.growl_info("The grid is empty");
+            if (u.grid_empty($scope.clmSettled_grid)) return u.growl_info("Claim Settlement grid is empty");
 
-            u.modal_confirmation("Are you sure you want to update the selected Row?", function () {
+            if (u.form_validation("#clmSettledForm1")) {
 
-                var grid = $scope.estDtls_grid;
+                u.modal_confirmation("Are you sure you want to update the selected Row?", function () {
 
-                var row_id = grid.jqGrid('getGridParam', 'selrow');
+                    var grid = $scope.clmSettled_grid;
 
-                var Code = grid.jqGrid('getCell', row_id, 'CLM_EST_TYPE');
+                    var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                if (Code == $('#CLM_EST_TYPE').val()) {
+                    var code = grid.jqGrid("getCell", rowId, "CLPMT_CLM_TYPE");
 
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_SYS_ID', $('#CLM_EST_SYS_ID').val());
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_TYPE', $('#CLM_EST_TYPE').val());
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_NAME', $('#CLM_EST_NAME').val());
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_AMT', $('#CLM_EST_AMT').val());
-                    grid.jqGrid('setCell', row_id, 'CLM_EST_OS_AMT', $('#CLM_EST_OS_AMT').val());
-                    u.hide_confirm();
-                    u.growl_success("Claim Estimate Details successfully updated");
-                    $("form input[name='CLM_EST_TYPE']").data("update", false);
-                }
-                else {
-                    u.hide_confirm();
-                    u.growl_info("Please Select a row to edit");
-                }
+                    if (code === $("input[name='CLPMT_CLM_TYPE']").val()) {
+                        var data = u.parse_form("#clmSettledForm1");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
+                        }
+                        u.hide_confirm();
+                        u.growl_success("Claim Settlement updated");
+                    } else {
+                        u.hide_confirm();
+                        u.growl_warning("Please select the correct row to edit");
+                    }
+                });
+            }
 
-            });
         });
-
-
 
 
         /*--------------------------------------------------
@@ -498,50 +717,156 @@ function (sel_id) {
         //
         $("#btn_Loss_Settlement").click(function () {
 
-            $scope.hideShowCovers();
-            $("#ClmLossSetmentModal").modal();
+            if (!u.form_validation("#clmEstimateForm")) {
+                return u.growl_warning("Please fill the fields that are marked red!");
+            }
+           
+            if (u.grid_empty($scope.lossSetment_grid)) {
+                return u.growl_warning("Estimate grid is empty!");
+            }
+
+            var grid = $scope.lossSetment_grid;
+            var sel_id = grid.jqGrid('getGridParam', 'selrow');
+            var RiskID = grid.jqGrid('getCell', sel_id, 'CLM_EST_TYPE');
+            if (RiskID == $("#CLPMT_CLM_TYPE").val()) {
+                //Hide covers not related to selected risk
+                $scope.hideShowEsts();
+
+                $("#CLPMT_CLAIM_NO").val($("#CLM_N0").val());
+                $("#CLPMT_POLH_SYS_ID").val($("#CLM_POLH_SYS_ID").val());
+                $("#CLPMT_RISK_SYS_ID").val($("#").val());
+                $("#CLPMT_CLM_REG_SYS_ID").val($("#CLM_SYS_ID").val());
+                $("#CLPMT_CLM_OFFICE").val($("#CLPMT_CLM_OFFICE1").val());
+                $("#CLPMT_POL_OFFICE").val($("#CLM_OFF_CODE").val());
+                $("#CLPMT_TXN_TYPE").val('L');
+                $("#CLPMT_CLM_EXP_TYPE").val(''); 
+            
+
+                $("#ClmLossSetmentModal").modal();
+                var message = "Loss Claim Settlement";
+                $("#msg").text(message);
+
+            }
+            else {
+                u.growl_warning("No Row selected");
+            }  
 
         });
+
+       
+        document.getElementById('btn_Loss_Settlement').onclick = function () {
+            document.getElementById('CLPMT_STLMNT_OPTION').disabled = true;
+            document.getElementById('CLPMT_EX_GRATIA').disabled = false;
+            document.getElementById('CLPMT_TOTAL_LOSS').disabled = false;
+        };
+
+        document.getElementById('btn_Expense_Settlement').onclick = function () {
+            document.getElementById('CLPMT_STLMNT_OPTION').disabled = false;
+            document.getElementById('CLPMT_EX_GRATIA').disabled = true;
+            document.getElementById('CLPMT_TOTAL_LOSS').disabled = true;
+        };
 
         //
         $("#btn_Expense_Settlement").click(function () {
 
-            $scope.hideShowCovers();
-            $("#ClmExpSetmentModal").modal();
+            if (!u.form_validation("#clmEstimateForm")) {
+                return u.growl_warning("Please fill the fields that are marked red!");
+            }
 
+            if (u.grid_empty($scope.expseSetment_grid)) {
+                return u.growl_warning("Expense grid is empty!"); 
+            }
+
+            var grid = $scope.expseSetment_grid; 
+            var sel_id = grid.jqGrid('getGridParam', 'selrow');
+            var RiskID = grid.jqGrid('getCell', sel_id, 'CLM_EXP_CLM_EST_TYPE');
+            if (RiskID == $("#CLPMT_CLM_EXP_TYPE").val()) {
+                //Hide covers not related to selected risk
+                $scope.hideShowExp();
+
+                $("#CLPMT_CLAIM_NO").val($("#CLM_N0").val());
+                $("#CLPMT_POLH_SYS_ID").val($("#CLM_POLH_SYS_ID").val());
+                $("#CLPMT_RISK_SYS_ID").val($("#").val());
+                $("#CLPMT_CLM_REG_SYS_ID").val($("#CLM_SYS_ID").val());
+                $("#CLPMT_CLM_OFFICE").val($("#CLPMT_CLM_OFFICE1").val());
+                $("#CLPMT_POL_OFFICE").val($("#CLM_OFF_CODE").val());
+                $("#CLPMT_TXN_TYPE").val('E');
+                $("#CLPMT_EX_GRATIA").val('');
+                $("#CLPMT_TOTAL_LOSS").val('');
+
+                $("#ClmLossSetmentModal").modal();
+                var message = "Expense Claim Settlement";
+                $("#msg").text(message);
+            }
+            else {
+                u.growl_warning("No Row selected");
+            }
+            $("#ClmLossSetmentModal").modal();
         });
 
 
 
         /*
-      //Hide or show Expense in the Risk Covers (to filter out the covers for particular risk
+      //Hide or show Estimate Loss
       */
-        $scope.hideShowCovers = function () {
+        $scope.hideShowEsts = function () {
 
             //get the selected Risk ID
-            var estimgrid = $('#grdEstimatesDtls');
+            var estimgrid = $scope.lossSetment_grid;
             var selId = estimgrid.jqGrid("getGridParam", "selrow");
             var estimRiskId = estimgrid.jqGrid("getCell", selId, "CLM_EST_TYPE");
 
-            //get the Expense data
-            var expgrid = $('#grdClmExpense');
-            var rowIds = expgrid.jqGrid("getDataIDs");
+            //get the data
+            var setlledgrid = $scope.clmSettled_grid;
+            var rowIds = setlledgrid.jqGrid("getDataIDs");
 
             for (var i = 0, len = rowIds.length; i < len; i++) {
 
                 //get value of the cell or column in an array
                 var currRow = rowIds[i];
 
-                var getExpId = expgrid.jqGrid("getCell", currRow, "CLM_EXP_CLM_EST_TYPE");
+                var getsetlledId = setlledgrid.jqGrid("getCell", currRow, "CLPMT_CLM_TYPE");
 
-                if (estimRiskId != getExpId) {
+                if (estimRiskId != getsetlledId) {
 
-                    $("#" + currRow, '#grdClmExpense').hide();
+                    $("#" + currRow).hide();
 
                 }
-                else if (estimRiskId == getExpId) {
+                else if (estimRiskId == getsetlledId) {
 
-                    $("#" + currRow, '#grdClmExpense').show();
+                    $("#" + currRow).show();
+
+                }
+            }
+
+        };
+
+        $scope.hideShowExp = function () {
+
+            //get the selected Risk ID
+            var estimgrid = $scope.expseSetment_grid;
+            var selId = estimgrid.jqGrid("getGridParam", "selrow");
+            var estimRiskId = estimgrid.jqGrid("getCell", selId, "CLM_EXP_CLM_EST_TYPE");
+
+            //get the data
+            var setlledgrid = $scope.clmSettled_grid;
+            var rowIds = setlledgrid.jqGrid("getDataIDs");
+
+            for (var i = 0, len = rowIds.length; i < len; i++) {
+
+                //get value of the cell or column in an array
+                var currRow = rowIds[i];
+
+                var getsetlledId = setlledgrid.jqGrid("getCell", currRow, "CLPMT_CLM_EXP_TYPE");
+
+                if (estimRiskId != getsetlledId) {
+
+                    $("#" + currRow).hide();
+
+                }
+                else if (estimRiskId == getsetlledId) {
+
+                    $("#" + currRow).show();
 
                 }
             }
@@ -549,229 +874,32 @@ function (sel_id) {
         };
 
 
+        $("#btn_LossClm_Onclose").click(function () {
 
-
-        $("#btn_Exp_Onclose").click(function () {
-
-            if (u.grid_empty($scope.clmExpense_grid)) {
+            if (u.grid_empty($scope.lossSetment_grid)) {
                 u.modal_confirmation("The Grid is empty, do you want to close form?", function (e) {
-                    $("#ClaimExpDetailskModal").modal("hide");
+                    $("#ClmLossSetmentModal").modal("hide");
                     u.hide_confirm();
                 });
             }
             else {
-                $("#ClaimExpDetailskModal").modal("hide");
+                $("#ClmLossSetmentModal").modal("hide");
             }
         });
-
-
-        /*--------------------------------
-         * Expense Functions
-         *------------------------------*/
-        //
-        $("#btn_add_expense").on('click', function () {
-
-            if (u.form_validation("#clmExpenseForm")) {
-
-                u.modal_confirmation("Are you sure you want to add Claim Expense Details to the grid?", function () {
-
-                    var rowIds = $scope.clmExpense_grid.jqGrid('getDataIDs');
-
-                    /*----------------------------------------------
-                     * declare array to contain the codes to verify
-                     *--------------------------------------------*/
-                    //
-                    var Code = [];
-
-                    /*------------------------------------------------------------
-                     * iterate through the rows and check duplicate each of them
-                     *----------------------------------------------------------*/
-                    // 
-                    for (var i = 0, len = rowIds.length; i < len; i++) {
-                        var currRow = rowIds[i];
-
-                        /*------------------------------------------------
-                         * get value of the cell or column in an array
-                         *----------------------------------------------*/
-                        //
-                        var expCode = $scope.clmExpense_grid.jqGrid('getCell', currRow, 'CLM_EXP_CODE');
-                        var exptype = $scope.clmExpense_grid.jqGrid('getCell', currRow, 'CLM_EXP_CLM_EST_TYPE');
-                        var cellValue = expCode + exptype;
-                        Code.push(cellValue);
-                    }
-                    var expenCode = $("#CLM_EXP_CODE").val();
-
-                    var estCode = $("#CLM_EST_TYPE").val();
-
-                    var verifyEstExp = expenCode + estCode;
-                    /*----------------------------------------
-                     * add if code is not found in the Grid
-                     *--------------------------------------*/
-                    //
-                    if ($.inArray(verifyEstExp, Code) < 0) {
-
-                        var FormData = u.parse_form("#clmExpenseForm");
-                        FormData.CLM_EXP_STATUS = "U";
-                        FormData.CLM_EXP_CRTE_BY = "Admin";
-                        FormData.CLM_EXP_CRTE_DATE = u.get_date();
-                        $scope.clmExpense_grid.addRowData(FormData.CLM_EXP_CODE, FormData);
-                        u.hide_confirm();
-                        u.growl_success("Claim Expense Details successfully added to grid");
-                    }
-
-                    else {
-                        u.hide_confirm();
-                        u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
-                    }
-
-                })
-            } else {
-                u.growl_error("Please fill out the fields that are marked red");
-            }
-        });
-
-
-        $("#btn_update_expense").on('click', function () {
-
-            if (u.grid_empty($scope.clmExpense_grid)) return u.growl_info("The grid is empty");
-
-            u.modal_confirmation("Are you sure you want to update the selected Row?", function () {
-
-                var grid = $scope.clmExpense_grid;
-
-                var row_id = grid.jqGrid('getGridParam', 'selrow');
-
-                var Code = grid.jqGrid('getCell', row_id, 'CLM_EXP_CODE');
-
-                if (Code == $('#CLM_EXP_CODE').val()) {
-
-                    grid.jqGrid('setCell', row_id, 'CLM_EXP_NAME', $('#CLM_EXP_NAME').val());
-                    grid.jqGrid('setCell', row_id, 'CLM_EXP_COST', $('#CLM_EXP_COST').val());
-                    grid.jqGrid('setCell', row_id, 'CLM_EXP_CODE', $('#CLM_EXP_CODE').val());
-                    u.hide_confirm();
-                    u.growl_success("Claim Expense Details successfully updated");
-                    $("form input[name='CLM_EXP_CODE']").data("update", false);
-                }
-                else {
-                    u.hide_confirm();
-                    u.growl_info("Please Select a row to edit");
-                }
-
-            });
-        });
-
-
-        /*--------------------------------
-         * Risk Funtions
-         *------------------------------*/
-        //
-        $("#btn_add_veh_risk").on('click', function () {
-
-            if (u.grid_empty($scope.polrisk_grid)) return u.growl_info("The grid is empty");
-
-            u.modal_confirmation("Are you sure you want to update the selected Row?", function () {
-
-                //var grid = $scope.riskdtls_grid;
-                var rowIds = $scope.riskdtls_grid.jqGrid('getDataIDs');
-                var CodeArray = [];
-
-                for (var i = 0, len = rowIds.length; i < len; i++) {
-                    var currRow = rowIds[i];
-
-                    var cellValue = $scope.riskdtls_grid.jqGrid('getCell', currRow, 'CLM_RISK_VEH_NO');
-
-                    CodeArray.push(cellValue);
-
-                }
-
-                //get value of the cell or column in an array
-                //var coverCode = $scope.riskdtls_grid.jqGrid("getCell", currRow, "CLM_RISK_VEH_REG_NO");
-
-                var RiskCode = $scope.riskdtls_grid.jqGrid("getCell", currRow, "CLM_RISK_VEH_NO");
-
-                //var riskCov = coverCode + RiskCode;
-
-                //alert(riskCov);
-
-                var vehgrid = $scope.polrisk_grid;
-                var selRowId = vehgrid.jqGrid("getGridParam", "selrow");
-                var selId = vehgrid.jqGrid("getGridParam", "selrow");
-                var rowData = vehgrid.jqGrid("getRowData", selRowId);
-                var vehRiskId = vehgrid.jqGrid("getCell", selId, "CLM_RISK_VEH_NO");
-
-                if ($.inArray(vehRiskId, CodeArray) < 0) {
-                    $scope.riskdtls_grid.addRowData("getRowData", rowData);
-                    u.hide_confirm();
-
-                }
-                else if (cellValue == vehRiskId) {
-                    //alert("code exits");
-                    u.growl_warning("Cover exists for this Risk, you cannot add same Cover " + cellValue);
-                    u.hide_confirm();
-                }
-
-            });
-        });
-
-
-        $("#btn_remove_veh_risk").on('click', function () {
-
-            if (u.grid_empty($scope.riskdtls_grid)) return u.growl_info("The grid is empty");
-
-            var grid = $scope.riskdtls_grid;
-
-            var row_id = grid.jqGrid('getGridParam', 'selrow');
-
-            var recordStatus = grid.jqGrid('getCell', row_id, 'CLM_RISK_STATUS');
-
-            var Code = grid.jqGrid('getCell', row_id, 'CLM_RISK_VEH_NO');
-
-            var message = "";
-
-            /*---------------------------------
-             * Display modal message
-             *------------------------------*/
-            //
-            u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
-
-                /*--------------------------------------------
-                 * Remove newly added record before saving
-                 *------------------------------------------*/
-                // 
-                if (recordStatus == "A") {
-
-                    grid.jqGrid('delRowData', row_id);
-                    u.hide_confirm();
-                    u.growl_hide("Selected row successfully deleted");
-
-                }
-
-            });
-
-        });
-
 
 
         /*-----------------------------
          * Save/Update Data
          *---------------------------*/
         //
-        $("#btn_Save").on('click', function () {
+        $("#").on('click', function () {
 
             /*-----------------------------------------------
              * setup validation before sending save request
              *---------------------------------------------*/
 
-            if (!u.form_validation("#clmEstimateForm")) {
-                return u.growl_warning("Please fill the fields that are marked red")
-            }
-
             if (u.grid_empty($scope.estDtls_grid)) {
                 return u.growl_warning("Please enter Estimation Type")
-            }
-
-            if (u.grid_empty($scope.riskdtls_grid)) {
-                return u.growl_warning("Please Select Risk")
             }
 
             u.modal_confirmation("Are you sure you want to save?", function (e) {
@@ -830,6 +958,59 @@ function (sel_id) {
                 }
 
             })
+        });
+
+
+        $("#btn_Save").on('click', function () {
+
+            if (u.grid_empty($scope.clmSettled_grid)) return u.growl_info("The grid is empty");
+
+            u.modal_confirmation("Are you sure you want to Save Changes?", function (e) {
+
+                /*-----------------------------
+                 * obtain data from the grid
+                 *---------------------------*/
+                console.log(u.get_grid_data($scope.clmSettled_grid));
+                /*-----------------------------------
+                 * send data to backend for saving
+                 *---------------------------------*/
+                if (!$scope.saving) {
+                    $scope.saving = true;
+                    s.save_settlement(u.get_grid_data($scope.clmSettled_grid), function (responseData) {
+                        $scope.saving = false; 
+                        if (responseData.state) {
+                            var formgrid = $scope.clmSettled_grid;
+                            var rowIds = $scope.clmSettled_grid.jqGrid("getDataIDs");
+
+                            // iterate through the rows in Cover Grid and update Status
+                            for (var i = 0, len = rowIds.length; i < len; i++) {
+                                var covCurrRow = rowIds[i];
+
+                                var covRecStatus = formgrid.jqGrid("getCell", covCurrRow, "CLPMT_STATUS");
+
+                                //Delete row if it is marked for deletion
+                                if (covRecStatus === "D") {
+                                    formgrid.jqGrid("delRowData", covCurrRow);
+                                }
+                                //Update row status to Active (A) if it is newly added
+                                if (covRecStatus === "U") {
+                                    formgrid.jqGrid("setCell", covCurrRow, "CLPMT_STATUS", "A");
+                                }
+                            }
+                            u.hide_confirm();
+                            u.growl_success(responseData.message);
+
+                        } else {
+                            u.growl_error(responseData.message);
+                        }
+
+                    }, function () {
+                        u.hide_confirm();
+                        u.growl_error("Server Please try again Later"); 
+                    });
+                }
+            });
+
         });
 
 
@@ -937,97 +1118,9 @@ function (sel_id) {
         u.set_datepicker("input[name='CLM_TXN_DATE']");
         u.set_datepicker("input[name='CUS_DOB']");
 
-        /*---------------------------
-         *  Search
-         *-------------------------*/
-
-        /*-----------------
-        * search grid
-        *----------------*/
-        $scope.search_grid = u.default_grid("#grdSearchResults", "#grdSearchResultsPager", "Claim Search Results",
-            ["ID", "Policy ID", "Status", "index"],
-            [
-                { name: "CLM_N0", index: "CLM_N0", hidden: true },
-                { name: "CLM_N0", index: "CLM_N0" },
-                { name: "CLM_STATUS", index: "CLM_STATUS" },
-                { name: "index", id: true, index: "index", hidden: true }
-            ],
-            function (index) {
-                $scope.selected_index = index;
-                $scope.search_fill($scope.result[index]);
-            },
-            function (index) {
-                $scope.search_fill($scope.result[index]);
-                u.clear_grid_data($scope.search_grid);
-                $("#mySearchResultModal").modal("hide");
-            });
-
-
-        /*---------------------------
-         *  Search
-         *-------------------------*/
-        $("#btnQueryClaim").click(function () {
-            var query = $("#txtSearch").val();
-            if (query && query.length > 0 && query !== " ") {
-                s.search_estimation(query, function (result) {
-                    $scope.searched = true;
-                    $scope.result = result;
-                    if (result.length > 0) {
-                        if (result.length > 1) {
-                            u.clear_grid_data($scope.search_grid);
-                            /*display result of the search to the user in a modal*/
-                            for (var i in result) {
-                                //u.clear_grid_data($scope.search_grid);
-                                result[i].index = i;
-                                $scope.search_grid.addRowData(result[i].index, result[i]);
-                            }
-                            $("#mySearchResultModal").modal();
-                        } else {
-
-                            $scope.search_fill(result[0]);
-                        }
-                    } else {
-                        u.growl_info("Claim No. not found, please make sure you enter the correct Policy No!");
-                    }
-                },
-                    function (err) {
-                        u.growl_error("Error fetching search results");
-                    })
-            } else {
-                u.growl_info("Please check Claim No. and try again!");
-            }
-        });
-
-        $scope.search_fill = function (product) {
-
-            $scope.riskdtls_grid.jqGrid("clearGridData");
-            $scope.estDtls_grid.jqGrid("clearGridData");
-            $scope.clmExpense_grid.jqGrid("clearGridData");
-
-            u.fill_form(product, "#clmEstimateForm");
-
-            //populating child entities
-            u.clear_grid_data($scope.riskdtls_grid);
-            for (var i in product.CLM_EST_FIRE_RISK_DTLS) {
-                $scope.riskdtls_grid.addRowData(product.CLM_EST_FIRE_RISK_DTLS[i].CLM_RISK_SYS_ID, product.CLM_EST_FIRE_RISK_DTLS[i]);
-            }
-            //populating child entities
-            u.clear_grid_data($scope.estDtls_grid);
-            for (var i in product.CLM_EST_DTLS) {
-                $scope.estDtls_grid.addRowData(product.CLM_EST_DTLS[i].CLM_EST_SYS_ID, product.CLM_EST_DTLS[i]);
-
-                // u.clear_grid_data($scope.Covers_grid);
-                for (var X in product.CLM_EST_DTLS[i].CLM_EST_EXPENSE) {
-                    $scope.clmExpense_grid.addRowData(product.CLM_EST_DTLS[i].CLM_EST_EXPENSE[X].CLM_EXP_SYS_ID, product.CLM_EST_DTLS[i].CLM_EST_EXPENSE[X])
-                }
-            }
-
-        };
-
-
         /*-----------------------------
-     * Code validation
-     *-----------------------*/
+        * Code validation
+        *-----------------------*/
         u.codeVal("form input[name='CLM_EST_SYS_ID']", "check_channel_code");
 
         u.lovCodeVal("form input[name='CLM_EST_TYPE']", "check_estimation_code", "form input[name='CLM_EST_NAME']");

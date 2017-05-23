@@ -1,13 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Liability Policy";
+    ViewBag.Title = "Worksmen Compensation Liability Policy";
 }
 
-<script src="~/Scripts/Page_Scripts/policy.liability.js"></script>
-<script src="~/Scripts/Services/policy.liability.service.js"></script>
+<script src="~/Scripts/Page_Scripts/policy.liability.worksmen.js"></script>
+<script src="~/Scripts/Services/policy.liability.wks.comp.js"></script>
 <script src="~/Scripts/Services/customers.service.js"></script>
 <script src="~/Scripts/Services/policy.approval.service.js"></script>
 <script src="~/Scripts/Libraries/SibaScript/getSequenceNo.js"></script>
 <script src="~/Scripts/Libraries/SibaScript/RetnSequenceNo.js"></script>
+
 
 <div class="main">
 
@@ -78,7 +79,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CMP_CODE" name="POLH_CMP_CODE" value="MULTI" title="Code" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_company", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_companys", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -126,7 +127,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="LIABIL" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -598,14 +599,14 @@
 
                                 <div class="row">
                                     <div class="btn-block">
-                                        <div class="col-md-7">
-                                            <button id="btn_open_interest_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Add Risk </button>
-                                            <button id="btn_remove_interest_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                                       <div class="col-md-7">
+                                           <button id="btn_open_liab_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Add Risk </button>
+                                           <button id="btn_remove_liab_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
 
-                                            <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover </button>
-                                        </div>                                    
+                                           <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover </button>
+                                       </div>                                  
 
-                                        <button type="button" class="btn btn-default pull-right dialog-btn" id="export-liability-btn" title="Export Grid data to Excel">
+                                        <button type="button" class="btn btn-default pull-right dialog-btn" id="export-liab-btn" title="Export Grid data to Excel">
                                             <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
                                         </button>
                                     </div>
@@ -743,319 +744,252 @@
 </div>
 
 
-<!-- Interest Risk Modal Dialog -->
-
+<!--  Details Modal -->
 <div class="modal draggable ui-accordion fade" id="LiabilityModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
 
-            <div class="modal-header bg-primary">
-                <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
-                <div class="row">
-                    <div class="col=md-12">
-                        <div class="col-md-4">
-                            <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Interest Risk Setup</strong>
-                        </div>
-                        <div class="col-md-4" style="background-color:white;">
-                            <button id="btn_add_liability_details" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
-                            <button id="btn_update_liability_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
-                            <button id="" class="btn btn-default" type="reset"><i class="fa fa-trash-o text-danger"></i> Clear </button>
+            <div class="modal-header">
+                <div class="row bg-primary">
+                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+                    <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
+                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial"> Risk Interest</strong>
+                </div>
+
+                <div class="row some-bg-color">
+                    <div style="margin-top: 10px;">
+                        <div class="col-md-5">
+                            <button id="btn_add_liab_details" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add Risk</button>
+                            <button id="btn_update_liab_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                            <button id="btn_reset_liab_risk" type="reset" class="btn btn-default"><i class="fa fa-refresh" title="Reset" aria-hidden="true"></i> Clear</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-body">
-                <div class="row control-group form-padding">
-                    <div class="container" style="width:100%">
-                        <span class="control-grp-lbl text-danger"> Interest Details</span>
-                        <form id="interestForm" name="interestForm">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-1">
-                                                <input class="form-control" type="hidden" id="LIA_SYS_ID" name="LIA_SYS_ID" />
-                                            </div>
-                                            <div class="col-md-1">
-                                                <input class="form-control" type="hidden" id="LIA_RISK_ID" name="LIA_RISK_ID" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Item</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <input class="form-control" min="3" max-length="15" type="text" id="LIA_ITEM" name="LIA_ITEM" required />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Item</label>
-                                                </div>
-                                                <div class="col-md-7">
-                                                    <textarea name="LIA_DESC" id="LIA_DESC" cols="5" rows="5" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="required">Aggreate Limit</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_AGG_LIM_FC" name="LIA_AGG_LIM_FC" readonly />
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_AGG_LIM_BC" name="LIA_AGG_LIM_BC" readonly />
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="required">Limit per Occurance</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_LIM_OCCUR_FC" name="LIA_LIM_OCCUR_FC" readonly />
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_LIM_OCCUR_BC" name="LIA_LIM_OCCUR_BC" readonly />
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="required">Premium FC</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="" max-length="10" type="number" id="LIA_PREMIUM_FC" name="LIA_PREMIUM_FC" readonly />
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_PREMIUM_BC" name="LIA_PREMIUM_BC" readonly />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <hr />
-                                    <div class="col-md-2">
-                                        <button id="btn_open_block_details" name="btn_open_block_details" class="btn btn-info" type="button">
-                                            <i class="fa fa-fire"></i> Add Block Details
-                                        </button>
-                                    </div>
-
-                                    <div class="row">
-                                        <input class="form-control" type="hidden" id="LIA_START_DATE" name="LIA_START_DATE" title="Start Date" required />
-                                        <input class="form-control" type="hidden" id="LIA_END_DATE" name="LIA_END_DATE" title="To Date" required />
-                                        <input class="form-control" type="hidden" id="LIA_PERIOD_DAYS" name="LIA_PERIOD_DAYS" readonly />
-                                        <input class="form-control" type="hidden" id="LIA_UW_YEAR" name="LIA_UW_YEAR" readonly />
-                                        <input class="form-control" type="hidden" id="LIA_CURRENCY" name="LIA_CURRENCY" readonly />
-                                        <input class="form-control" type="hidden" id="LIA_CURRENCY_RATE" name="LIA_CURRENCY_RATE" readonly />
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">
-
-                <button id="btn_Interest_OnClose" type="button" class="btn btn-primary pull right">Ok</button>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-
-
-
-<!--  Block Modal -->
-<div class="modal draggable ui-accordion fade" id="BlockDetailsModal" role="dialog" data-backdrop="static" data-keyboard="true">
-    <div class="modal-dialog modal-lg">
-
-        <div class="modal-content">
-
-            <div class="modal-header bg-primary">
-                <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
-                <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial"> Block Details</strong>
             </div>
 
             <div class="modal-body">
 
                 <div>
                     <div class="row control-group form-padding">
-                        <span class="control-grp-lbl text-danger">Block Details</span>
+                        <span class="control-grp-lbl text-danger">Risk Details</span>
 
                         <div class="row">
                             <div class="col-md-12">
-                                <form id="blockForm" name="blockForm">                                
+                                <form id="LiabilityForm" name="LiabilityForm">
                                     <div class="row">
+
                                         <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Region</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <span id="spry_lovcode">
-                                                        <div class="input-group">
-                                                            <input class="form-control" min="3" max-length="15" type="text" id="LIA_REG_CODE" name="LIA_REG_CODE" required />
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_region", "field1":"LIA_REG_CODE", "field2":"LIA_REG_NAME"}'>
-                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                                </button>
-                                                            </span>
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-md-1">
+                                                            <input class="form-control" type="hidden" id="LIAWOC_SYS_ID" name="LIAWOC_SYS_ID" />
                                                         </div>
-                                                        <span class="textfieldRequiredMsg">Code is required.</span>
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span id="spry_baserate">
-                                                        <input class="form-control" min="3" max-length="50" type="text" name="LIA_REG_NAME" required />
-                                                        <span class="textfieldRequiredMsg">Name is required.</span>
-                                                    </span>
+                                                        <div class="col-md-1">
+                                                            <input class="form-control" type="hidden" id="LIAWOC_RISK_ID" name="LIAWOC_RISK_ID" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Area</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <span id="spry_lovcode">
-                                                        <div class="input-group">
-                                                            <input class="form-control" min="3" max-length="15" type="text" id="LIA_AREA_CODE" name="LIA_AREA_CODE" required />
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Area" name="btn_Area">
-                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                        <span class="textfieldRequiredMsg">Code is required.</span>
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span id="spry_baserate">
-                                                        <input class="form-control" min="3" max-length="50" type="text" name="LIA_AREA_NAME" required />
-                                                        <span class="textfieldRequiredMsg">Name is required.</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Location</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <span id="spry_lovcode">
-                                                        <div class="input-group">
-                                                            <input class="form-control" min="3" max-length="15" type="text" id="LIA_LOC_CODE" name="LIA_LOC_CODE" required />
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Loc" name="btn_Loc">
-                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                        <span class="textfieldRequiredMsg">Code is required.</span>
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <span id="spry_baserate">
-                                                        <input class="form-control" min="3" max-length="50" type="text" name="LIA_LOC_NAME" required />
-                                                        <span class="textfieldRequiredMsg">Location name is required.</span>
-                                                    </span>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="required">Object</label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span id="spry_lovcode">
+                                                            <div class="input-group">
+                                                                <input class="form-control" min="3" max-length="15" type="text" id="LIAWOC_OBJECT" name="LIAWOC_OBJECT" required />
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_fire_risk", "field1":"LIAWOC_OBJECT", "field2":"LIAWOC_OBJECT_NAME"}'>
+                                                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                            <span class="textfieldRequiredMsg">Code is required.</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <span id="spry_baserate">
+                                                            <input class="form-control" min="3" max-length="50" type="text" id="LIAWOC_OBJECT_NAME" name="LIAWOC_OBJECT_NAME" />
+                                                            <span class="textfieldRequiredMsg">Name is required.</span>
+                                                        </span>
+                                                    </div>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <label class="">Site/Branch Address</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <textarea id="LIAWOC_ADDRESS" name="LIAWOC_ADDRESS" cols="50" rows="2" class="form-control" required></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                     
+
+                                        <div class="row">
                                             <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label>Floater</label>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <input class="checkbox checkbox-inline pull-left" type="checkbox" id="LIAWOC_FLOATER" name="LIAWOC_FLOATER" />
+                                                </div>
+
                                                 <div class="col-md-2">
-                                                    <label class="required">Loc Address</label>
+                                                    <label class="">Salary slab</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <span id="spry_desc">
-                                                        <textarea id="LIA_LOC_ADDRS" rows="2" cols="5" maxlength="100"
-                                                                  class="form-control" type="text" name="LIA_LOC_ADDRS" title="Description" required></textarea>
-                                                        <span class="textfieldRequiredMsg">Address is required.</span>
-                                                    </span>
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="number" id="LIAWOC_SAL_SLAB" name="LIAWOC_SAL_SLAB" value="99.999.999,999.00" readonly />
+                                                    </div>
                                                 </div>
-
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="">Earthquake Zone</label>
+                                                <div class="col-md-3">
+                                                    <label class="">Geo Limit</label>
                                                 </div>
-                                                <div class="col-md-5">
-                                                    <input id="LIA_EARTHQ_ZONE" class="form-control" min="" maxlength="20"
-                                                           type="text" name="LIA_EARTHQ_ZONE" title="Name" />
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <input class="form-control" min="3" max-length="15" type="text" id="LIAWOC_GEO_LIM" name="LIAWOC_GEO_LIM" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label class="">No. of Person</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="number" id="LIAWOC_NO_PERSONS" name="LIAWOC_NO_PERSONS" />
+                                                    </div>
                                                 </div>
 
                                             </div>
                                         </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label class="">No. of Years</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="number" id="LIAWOC_NO_YEARS" name="LIAWOC_NO_YEARS" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label class="">Labour Type</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <select id="LIAWOC_LABR_TYPE" name="LIAWOC_LABR_TYPE" class="btn btn-default" required>
+                                                        <option value="X">--Select--</option>
+                                                        <option value="N">None</option>
+                                                        <option value="N"> NO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                               <div class="form-group">
+                                                   <div class="col-md-3">
+                                                       <label class="">Salary/Wages per Month</label>
+                                                   </div>
+                                                   <div class="col-md-2">
+                                                       <div class="form-group">
+                                                           <input class="form-control" type="number" id="LIAWOC_SAL_MONTH" name="LIAWOC_SAL_MONTH" />
+                                                       </div>
+                                                   </div>
+
+                                                   <div class="col-md-4">
+                                                       <label class="">Additional Monthly Benefits</label>
+                                                   </div>
+                                                   <div class="col-md-2">
+                                                       <div class="form-group">
+                                                           <input class="form-control" type="number" id="LIAWOC_ADD_MONTH_BENF" name="LIAWOC_ADD_MONTH_BENF" />
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <label class="required">Annual Est Wages/Salary</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <input class="form-control" type="number" id="LIAWOC_ANN_WAGES_FC" name="LIAWOC_ANN_WAGES_FC" readonly />
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <input class="form-control" type="number" id="LIAWOC_ANN_WAGES_BC" name="LIAWOC_ANN_WAGES_BC" readonly />
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <label class="required">Premium FC</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <input class="form-control" type="number" id="LIAWOC_PREMIUM_FC" name="LIAWOC_PREMIUM_FC" readonly />
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <input class="form-control" type="number" id="LIAWOC_PREMIUM_BC" name="LIAWOC_PREMIUM_BC" readonly />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="row">
+                                            <input class="form-control" type="hidden" id="LIAWOC_START_DATE" name="LIAWOC_START_DATE" title="Start Date" required />
+                                            <input class="form-control" type="hidden" id="LIAWOC_END_DATE" name="LIAWOC_END_DATE" title="To Date" required />
+                                            <input class="form-control" type="hidden" id="LIAWOC_PERIOD_DAYS" name="LIAWOC_PERIOD_DAYS" readonly />
+                                            <input class="form-control" type="hidden" id="LIAWOC_UW_YEAR" name="LIAWOC_UW_YEAR" readonly />
+                                            <input class="form-control" type="hidden" id="LIAWOC_CURRENCY" name="LIAWOC_CURRENCY" readonly />
+                                            <input class="form-control" type="hidden" name="LIAWOC_CURRENCY_RATE" id="LIAWOC_CURRENCY_RATE" readonly />
+                                        </div>                    
+
                                     </div>
+
                                 </form>
                             </div>
                         </div>
-                        <hr />
-                       
-
+                        <hr />                     
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">
-                <button type="button" class="btn btn-primary pull right" id="btn_block_OnClose">Ok</button>
+                <button type="button" class="btn btn-primary pull right" id="btn_Liability_OnClose">Ok</button>
             </div>
 
         </div>
@@ -1235,6 +1169,7 @@
 
     </div>
 </div>
+
 
 
 <!--Customer Setup Modal -->
@@ -1561,6 +1496,7 @@
 </div>
 
 
+
 <!--Policy Search Modal -->
 
 <div class="container">
@@ -1585,6 +1521,7 @@
         </div>
     </div>
 </div>
+
 
 
 <!--Agent/Broker Commission Modal -->
@@ -1766,7 +1703,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Treaty share among companies -->
 <div class="container">
@@ -2423,7 +2359,6 @@
     </div>
 </div>
 
-
 <!---  Intermediary Commission-->
 
 <div class="container">
@@ -2723,7 +2658,6 @@
     </div>
 </div>
 
-
 <!-- Coinsurance Leader or Outward Modal -------------------- -->
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="CoInsLeaderModal" role="dialog" data-backdrop="static" data-keyboard="true">
@@ -2863,89 +2797,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-<!--  Area Modal -->
-<div class="modal draggable ui-accordion fade" id="areaLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header modal-header-success">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" style="text-align: center">LOV Modal</h4>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <label>Search:</label>
-                        </div>
-                        <div class="col-md-10">
-                            <input class="text ui-widget-content ui-corner-all" style="margin-left: 10px; height: 30px; width: 70%; text-align: center" type="text" title="" placeholder="Search by Name" />
-                            <button type="button" class="btn btn-default" id="btnQueryArea" name="btnQueryArea">
-                                <i class="fa fa-search" title="Search" aria-hidden="true"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <table id="gridArea"></table>
-                    <table id="gridAreaPager"></table>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<!--  Location Modal -->
-<div class="modal draggable ui-accordion fade" id="locationLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header modal-header-success">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" style="text-align: center">LOV Modal</h4>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-1">
-                            <label>Search:</label>
-                        </div>
-                        <div class="col-md-10">
-                            <input class="text ui-widget-content ui-corner-all" style="margin-left: 10px; height: 30px; width: 70%; text-align: center" type="text" title="" placeholder="Search by Name" />
-                            <button type="button" class="btn btn-default" id="btnQueryLocation" name="btnQueryLocation">
-                                <i class="fa fa-search" title="Search" aria-hidden="true"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <table id="gridLoc"></table>
-                    <table id="gridLocPager"></table>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
     </div>
 </div>

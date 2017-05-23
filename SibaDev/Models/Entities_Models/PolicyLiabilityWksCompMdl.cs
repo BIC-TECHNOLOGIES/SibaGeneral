@@ -9,7 +9,7 @@ using WebGrease.Css.Extensions;
 
 namespace SibaDev.Models
 {
-    public class PolicyHomeOwnersMdl : Model
+    public class PolicyLiabilityWksCompMdl : Model
     {
         private static SibaModel db = new SibaModel();
         public static INS_UWD_POLICY_HEAD get_policy(int code)
@@ -81,7 +81,7 @@ namespace SibaDev.Models
                     POLH_STATUS = polh.POLH_STATUS,
                     POLH_CURRENCY = polh.POLH_CURRENCY,
                     POLH_CURRENCY_RATE = polh.POLH_CURRENCY_RATE,
-                    INS_UDW_HOME_OWNERS = polh.INS_UDW_HOME_OWNERS != null ? polh.INS_UDW_HOME_OWNERS.Select(r => get_homeowner(r.HOP_SYS_ID)).ToList() : null,
+                    INS_UDW_LIABILITY_WKS_COMP = polh.INS_UDW_LIABILITY_WKS_COMP != null ? polh.INS_UDW_LIABILITY_WKS_COMP.Select(r => get_riskd(r.LIAWOC_SYS_ID)).ToList() : null,
 
 
                 }).Single();
@@ -92,73 +92,67 @@ namespace SibaDev.Models
             }
         }
 
-
-        public static INS_UDW_HOME_OWNERS get_homeowner(int code)
+        public static INS_UDW_LIABILITY_WKS_COMP get_riskd(int code)
         {
             var db = new SibaModel();
             try
             {
-                return (from c in db.INS_UDW_HOME_OWNERS where c.HOP_SYS_ID == code select c).ToList().Select(c => new INS_UDW_HOME_OWNERS
+                return (from c in db.INS_UDW_LIABILITY_WKS_COMP where c.LIAWOC_SYS_ID == code select c).ToList().Select(c => new INS_UDW_LIABILITY_WKS_COMP
                 {
-                    HOP_SYS_ID = c.HOP_SYS_ID,
-                    HOP_POLH_SYS_ID = c.HOP_POLH_SYS_ID,
-                    HOP_SEC_CODE = c.HOP_SEC_CODE,
-                    HOP_SEC_NAME = c.HOP_SEC_NAME,
-                    HOP_DESC = c.HOP_DESC,
-                    HOP_LOC_CODE = c.HOP_LOC_CODE,
-                    HOP_LOC_NAME = c.HOP_LOC_NAME,
-                    HOP_POLH_DOC_NO = c.HOP_POLH_DOC_NO,
-                    HOP_GEO_LIM = c.HOP_GEO_LIM,
-                    HOP_RIPML = c.HOP_RIPML,
-                    HOP_PML = c.HOP_PML,
-                    HOP_RISK_NO = c.HOP_RISK_NO,
-                    HOP_ACCT_DATE = c.HOP_ACCT_DATE,
-                    HOP_APPROVE_DATE = c.HOP_APPROVE_DATE,
-                    HOP_SUM_INSURED_FC = c.HOP_SUM_INSURED_FC,
-                    HOP_SUM_INSURED_BC = c.HOP_SUM_INSURED_BC,
-                    HOP_PREMIUM_FC = c.HOP_PREMIUM_FC,
-                    HOP_PREMIUM_BC = c.HOP_PREMIUM_BC,
-                    HOP_CURRENCY = c.HOP_CURRENCY,
-                    HOP_CURRENCY_RATE = c.HOP_CURRENCY_RATE,
-                    HOP_TOT_PREM_FC = c.HOP_TOT_PREM_FC,
-                    HOP_TOT_PREM_BC = c.HOP_TOT_PREM_BC,
-                    HOP_SI_FC = c.HOP_SI_FC,
-                    HOP_SI_BC = c.HOP_SI_BC,
-                    HOP_RISK_PREM_FC = c.HOP_RISK_PREM_FC,
-                    HOP_RISK_PREM_BC = c.HOP_RISK_PREM_BC,
-                    HOP_ADJ_PREM_FC = c.HOP_ADJ_PREM_FC,
-                    HOP_ADJ_PREM_BC = c.HOP_ADJ_PREM_BC,
-                    HOP_DISC_FC = c.HOP_DISC_FC,
-                    HOP_DISC_BC = c.HOP_DISC_BC,
-                    HOP_LOAD_FC = c.HOP_LOAD_FC,
-                    HOP_LOAD_BC = c.HOP_LOAD_BC,
-                    HOP_COMP_FEE_FC = c.HOP_COMP_FEE_FC,
-                    HOP_COMP_FEE_BC = c.HOP_COMP_FEE_BC,
-                    HOP_COMMISSION_FC = c.HOP_COMMISSION_FC,
-                    HOP_COMMISSION_BC = c.HOP_COMMISSION_BC,
-                    HOP_TXN_STATUS = c.HOP_TXN_STATUS,
-                    HOP_RISK_STATE = c.HOP_RISK_STATE,
-                    HOP_RISK_ID = c.HOP_RISK_ID,
-                    HOP_POLH_END_NO = c.HOP_POLH_END_NO,
-                    HOP_PDT_CODE = c.HOP_PDT_CODE,
-                    HOP_CVR_CODE = c.HOP_CVR_CODE,
-                    HOP_RENEWAL_STATUS = c.HOP_RENEWAL_STATUS,
-                    HOP_END_TYPE = c.HOP_END_TYPE,
-                    HOP_CRTE_BY = c.HOP_CRTE_BY,
-                    HOP_CRTE_DATE = c.HOP_CRTE_DATE,
-                    HOP_MOD_BY = c.HOP_MOD_BY,
-                    HOP_MOD_DATE = c.HOP_MOD_DATE,
-                    HOP_STATUS = c.HOP_STATUS,
-                    HOP_PERIOD_DAYS = c.HOP_PERIOD_DAYS,
-                    HOP_UW_YEAR = c.HOP_UW_YEAR,
-                    HOP_RI_SI_FC = c.HOP_RI_SI_FC,
-                    HOP_RI_SI_BC = c.HOP_RI_SI_BC,
-                    HOP_RI_PREM_FC = c.HOP_RI_PREM_FC,
-                    HOP_RI_PREM_BC = c.HOP_RI_PREM_BC,
-                    HOP_START_DATE = c.HOP_START_DATE,
-                    HOP_END_DATE = c.HOP_END_DATE,
-                    INS_UWD_RISK_COVERS = c.INS_UWD_RISK_COVERS != null ? c.INS_UWD_RISK_COVERS.Select(x => PolicyRiskCovers.get_riskcovers(x.RCOV_SYS_ID)).ToList() : null,
-                    INS_UDW_HOME_OWNERS_DETAILS = c.INS_UDW_HOME_OWNERS_DETAILS != null ? c.INS_UDW_HOME_OWNERS_DETAILS.Select(x => get_homeowners_details(x.HODT_SYS_ID)).ToList() : null
+                    LIAWOC_SYS_ID = c.LIAWOC_SYS_ID,
+                    LIAWOC_OBJECT = c.LIAWOC_OBJECT,
+                    LIAWOC_OBJECT_NAME = c.LIAWOC_OBJECT_NAME,
+                    LIAWOC_ADDRESS = c.LIAWOC_ADDRESS,
+                    LIAWOC_FLOATER = c.LIAWOC_FLOATER,
+                    LIAWOC_SAL_SLAB = c.LIAWOC_SAL_SLAB,
+                    LIAWOC_GEO_LIM = c.LIAWOC_GEO_LIM,
+                    LIAWOC_NO_PERSONS = c.LIAWOC_NO_PERSONS,
+                    LIAWOC_NO_YEARS = c.LIAWOC_NO_YEARS,
+                    LIAWOC_SAL_MONTH = c.LIAWOC_SAL_MONTH,
+                    LIAWOC_ADD_MONTH_BENF = c.LIAWOC_ADD_MONTH_BENF,
+                    LIAWOC_LABR_TYPE = c.LIAWOC_LABR_TYPE,
+                    LIAWOC_ANN_WAGES_BC = c.LIAWOC_ANN_WAGES_BC,
+                    LIAWOC_ANN_WAGES_FC = c.LIAWOC_ANN_WAGES_FC,
+                    LIAWOC_PREMIUM_BC = c.LIAWOC_PREMIUM_BC,
+                    LIAWOC_PREMIUM_FC = c.LIAWOC_PREMIUM_FC,
+                    LIAWOC_CURRENCY = c.LIAWOC_CURRENCY,
+                    LIAWOC_CURRENCY_RATE = c.LIAWOC_CURRENCY_RATE,
+                    LIAWOC_TOT_PREM_BC = c.LIAWOC_TOT_PREM_BC,
+                    LIAWOC_TOT_PREM_FC = c.LIAWOC_TOT_PREM_FC,
+                    LIAWOC_SI_BC = c.LIAWOC_SI_BC,
+                    LIAWOC_SI_FC = c.LIAWOC_SI_FC,
+                    LIAWOC_RISK_PREM_BC = c.LIAWOC_RISK_PREM_BC,
+                    LIAWOC_RISK_PREM_FC = c.LIAWOC_RISK_PREM_FC,
+                    LIAWOC_ADJ_PREM_BC = c.LIAWOC_ADJ_PREM_BC,
+                    LIAWOC_ADJ_PREM_FC = c.LIAWOC_ADJ_PREM_FC,
+                    LIAWOC_DISC_BC = c.LIAWOC_DISC_BC,
+                    LIAWOC_DISC_FC = c.LIAWOC_DISC_FC,
+                    LIAWOC_LOAD_BC = c.LIAWOC_LOAD_BC,
+                    LIAWOC_LOAD_FC = c.LIAWOC_LOAD_FC,
+                    LIAWOC_COMP_FEE_BC = c.LIAWOC_COMP_FEE_BC,
+                    LIAWOC_COMP_FEE_FC = c.LIAWOC_COMP_FEE_FC,
+                    LIAWOC_COMMISSION_BC = c.LIAWOC_COMMISSION_BC,
+                    LIAWOC_COMMISSION_FC = c.LIAWOC_COMMISSION_FC,
+                    LIAWOC_TXN_STATUS = c.LIAWOC_TXN_STATUS,
+                    LIAWOC_RISK_STATE = c.LIAWOC_RISK_STATE,
+                    LIAWOC_RISK_ID = c.LIAWOC_RISK_ID,
+                    LIAWOC_POLH_END_NO = c.LIAWOC_POLH_END_NO,
+                    LIAWOC_PDT_CODE = c.LIAWOC_PDT_CODE,
+                    LIAWOC_CVR_CODE = c.LIAWOC_CVR_CODE,
+                    LIAWOC_RENEWAL_STATUS = c.LIAWOC_RENEWAL_STATUS,
+                    LIAWOC_END_TYPE = c.LIAWOC_END_TYPE,
+                    LIAWOC_CRTE_BY = c.LIAWOC_CRTE_BY,
+                    LIAWOC_MOD_BY = c.LIAWOC_MOD_BY,
+                    LIAWOC_STATUS = c.LIAWOC_STATUS,
+                    LIAWOC_PERIOD_DAYS = c.LIAWOC_PERIOD_DAYS,
+                    LIAWOC_UW_YEAR = c.LIAWOC_UW_YEAR,
+                    LIAWOC_RI_SI_BC = c.LIAWOC_RI_SI_BC,
+                    LIAWOC_RI_SI_FC = c.LIAWOC_RI_SI_FC,
+                    LIAWOC_RI_PREM_BC = c.LIAWOC_RI_PREM_BC,
+                    LIAWOC_RI_PREM_FC = c.LIAWOC_RI_PREM_FC,
+                    LIAWOC_START_DATE = c.LIAWOC_START_DATE,
+                    LIAWOC_END_DATE = c.LIAWOC_END_DATE,
+                    INS_UWD_RISK_COVERS = c.INS_UWD_RISK_COVERS != null ? c.INS_UWD_RISK_COVERS.Select(x => PolicyRiskCovers.get_riskcovers(x.RCOV_SYS_ID)).ToList() : null
                 }).Single();
             }
             catch (Exception)
@@ -166,34 +160,6 @@ namespace SibaDev.Models
                 return null;
             }
         }
-
-
-        public static INS_UDW_HOME_OWNERS_DETAILS get_homeowners_details(int code)
-        {
-            var db = new SibaModel();
-            try
-            {
-                return (from c in db.INS_UDW_HOME_OWNERS_DETAILS where c.HODT_SYS_ID == code select c).ToList().Select(c => new INS_UDW_HOME_OWNERS_DETAILS
-                {
-                    HODT_SYS_ID = c.HODT_SYS_ID,
-                    HODT_HOP_SYS_ID = c.HODT_HOP_SYS_ID,
-                    HODT_DESC = c.HODT_DESC,
-                    HODT_ITEM_NAME = c.HODT_ITEM_NAME,
-                    HODT_QTY = c.HODT_QTY,
-                    HODT_SUM_INSURED = c.HODT_SUM_INSURED,
-                    HODT_CRTE_BY = c.HODT_CRTE_BY,
-                    HODT_CRTE_DATE = c.HODT_CRTE_DATE,
-                    HODT_MOD_BY = c.HODT_MOD_BY,
-                    HODT_MOD_DATE = c.HODT_MOD_DATE,
-                    HODT_STATUS = c.HODT_STATUS
-                }).Single();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
 
         public static INS_UWD_POLICY_HEAD get_policy_estimation(int code)
         {
@@ -267,14 +233,14 @@ namespace SibaDev.Models
         public static IEnumerable<INS_UWD_POLICY_HEAD> get_policys_est()
         {
             var db = new SibaModel();
-            return (from polh in db.INS_UWD_POLICY_HEAD where polh.POLH_CLASS_CODE == "BONDS" && polh.POLH_STATUS == "A" select polh.POLH_SYS_ID).ToList().Select(get_policy_estimation);
+            return (from polh in db.INS_UWD_POLICY_HEAD where polh.POLH_CLASS_CODE == "LIABIL" && polh.POLH_STATUS == "A" select polh.POLH_SYS_ID).ToList().Select(get_policy_estimation);
         }
 
         public static IEnumerable<object> search_policys_est(string q)
         {
             var db = new SibaModel();
             return (from polh in db.INS_UWD_POLICY_HEAD
-                    where (polh.POLH_SYS_ID.ToString().Contains(q.ToLower())) && polh.POLH_STATUS == "A" && polh.POLH_CLASS_CODE == "BONDS"
+                    where (polh.POLH_SYS_ID.ToString().Contains(q.ToLower())) && polh.POLH_STATUS == "A" && polh.POLH_CLASS_CODE == "LIABIL"
                     select polh.POLH_SYS_ID).Select(get_policy);
         }
 
@@ -283,16 +249,16 @@ namespace SibaDev.Models
             var db = new SibaModel();
             try
             {
-                return (from risk in db.INS_UDW_HOME_OWNERS
-                        where risk.HOP_POLH_SYS_ID == ProdCode && risk.HOP_STATUS == "A"
+                return (from risk in db.INS_UDW_LIABILITY_WKS_COMP
+                        where risk.LIAWOC_POLH_SYS_ID == ProdCode && risk.LIAWOC_STATUS == "A"
                         select new
                         {
-                            CLM_RISK_STATUS = risk.HOP_STATUS,
-                            CLM_RISK_DESCRIPTION = risk.HOP_DESC,
-                            CLM_RISK_PRINCIPAL = risk.HOP_SEC_NAME,
-                            CLM_RISK_SI = risk.HOP_SUM_INSURED_FC,
-                            CLM_EST_CRTE_BY = risk.HOP_CRTE_BY,
-                            CLM_EST_CRTE_DATE = risk.HOP_CRTE_DATE
+                            CLM_RISK_STATUS = risk.LIAWOC_STATUS,
+                            CLM_RISK_DESCRIPTION = risk.LIAWOC_OBJECT_NAME,
+                            CLM_RISK_PRINCIPAL = risk.LIAWOC_OBJECT,
+                            CLM_RISK_SI = risk.LIAWOC_SI_BC,
+                            CLM_EST_CRTE_BY = risk.LIAWOC_CRTE_BY,
+                            CLM_EST_CRTE_DATE = risk.LIAWOC_CRTE_DATE
                         });
 
             }
@@ -338,24 +304,24 @@ namespace SibaDev.Models
                                     dbPolh.Map(viewPolh);
 
                                     /*--------------------------------
-                                     * Bond
+                                     * Risk
                                      *-------------------------------*/
 
-                                    foreach (var bon in viewPolh.INS_UDW_HOME_OWNERS)
+                                    foreach (var risk in viewPolh.INS_UDW_LIABILITY_WKS_COMP)
                                     {
-                                        var dbbon = db.INS_UDW_HOME_OWNERS.Find(bon.HOP_SYS_ID);
-                                        switch (bon.HOP_STATUS)
+                                        var dbrisk = db.INS_UDW_LIABILITY_WKS_COMP.Find(risk.LIAWOC_SYS_ID);
+                                        switch (risk.LIAWOC_STATUS)
                                         {
                                             case "A":
-                                                if (dbbon != null)
+                                                if (dbrisk != null)
                                                 {
-                                                    db.INS_UDW_HOME_OWNERS.Attach(dbbon);
-                                                    dbbon.Map(bon);
+                                                    db.INS_UDW_LIABILITY_WKS_COMP.Attach(dbrisk);
+                                                    dbrisk.Map(risk);
 
                                                     /*--------------------------------
                                                     * Risk Covers
                                                     *-------------------------------*/
-                                                    foreach (var cover in bon.INS_UWD_RISK_COVERS)
+                                                    foreach (var cover in risk.INS_UWD_RISK_COVERS)
                                                     {
                                                         var dbcovers = db.INS_UWD_RISK_COVERS.Find(cover.RCOV_SYS_ID);
                                                         switch (cover.RCOV_STATUS)
@@ -372,7 +338,7 @@ namespace SibaDev.Models
                                                             case "U":
                                                                 cover.RCOV_STATUS = "A";
                                                                 cover.RCOV_MOD_DATE = DateTime.Now;
-                                                                cover.RCOV_RISK_SYS_ID = bon.HOP_SYS_ID;
+                                                                cover.RCOV_RISK_SYS_ID = risk.LIAWOC_SYS_ID;
                                                                 db.INS_UWD_RISK_COVERS.Add(cover);
                                                                 break;
 
@@ -387,83 +353,49 @@ namespace SibaDev.Models
                                                         }
                                                     }
 
-
                                                     /*--------------------------------
-                                                    * Risk Details
+                                                    * Risk Fees
                                                     *-------------------------------*/
-                                                    foreach (var detail in bon.INS_UDW_HOME_OWNERS_DETAILS)
+                                                    foreach (var fees in risk.INS_UDW_LIABILITY_FEES)
                                                     {
-                                                        var dbdetails = db.INS_UDW_HOME_OWNERS_DETAILS.Find(detail.HODT_SYS_ID);
-                                                        switch (detail.HODT_STATUS)
+                                                        var dbrkfees = db.INS_UDW_LIABILITY_FEES.Find(fees.LIA_FEE_SYS_ID);
+                                                        switch (fees.LIA_FEE_STATUS)
                                                         {
                                                             case "A":
-                                                                if (dbdetails != null)
+                                                                if (dbrkfees != null)
                                                                 {
-                                                                    db.INS_UDW_HOME_OWNERS_DETAILS.Attach(dbdetails);
-                                                                    dbdetails.Map(detail);
-                                                                    dbdetails.HODT_MOD_DATE = DateTime.Now;
+                                                                    db.INS_UDW_LIABILITY_FEES.Attach(dbrkfees);
+                                                                    dbrkfees.Map(fees);
                                                                 }
                                                                 break;
 
                                                             case "U":
-                                                                detail.HODT_STATUS = "A";
-                                                                detail.HODT_MOD_DATE = DateTime.Now;
-                                                                detail.HODT_HOP_SYS_ID = bon.HOP_SYS_ID;
-                                                                db.INS_UDW_HOME_OWNERS_DETAILS.Add(detail);
+                                                                fees.LIA_FEE_STATUS = "A";
+                                                                fees.LIA_FEE_CRTE_DATE = DateTime.Now;
+                                                                fees.LIA_FEE_RK_SYS_ID = risk.LIAWOC_SYS_ID;
+                                                                db.INS_UDW_LIABILITY_FEES.Add(fees);
                                                                 break;
 
                                                             case "D":
-                                                                if (dbdetails != null)
+                                                                if (dbrkfees != null)
                                                                 {
-                                                                    db.INS_UDW_HOME_OWNERS_DETAILS.Attach(dbdetails);
-                                                                    dbdetails.HODT_STATUS = "D";
-                                                                    dbdetails.HODT_MOD_DATE = DateTime.Now;
+                                                                    db.INS_UDW_LIABILITY_FEES.Attach(dbrkfees);
+                                                                    dbrkfees.LIA_FEE_STATUS = "D";
                                                                 }
                                                                 break;
                                                         }
-                                                    }
-
-
-                                                    /*--------------------------------
-                                                     * Risk Fees
-                                                     *-------------------------------*/
-                                                    foreach (var fee in bon.INS_UDW_HOME_OWNERS_FEES)
-                                                    {
-                                                        var dbFee = db.INS_UDW_HOME_OWNERS_FEES.Find(fee.HOP_FEE_SYS_ID);
-                                                        switch (fee.HOP_FEE_STATUS)
-                                                        {
-                                                            case "A":
-                                                                if (dbFee != null)
-                                                                {
-                                                                    db.INS_UDW_HOME_OWNERS_FEES.Attach(dbFee);
-                                                                    dbFee.Map(fee);
-                                                                }
-
-                                                                break;
-                                                            case "U":
-                                                                fee.HOP_FEE_STATUS = "A";
-                                                                fee.HOP_FEE_RK_SYS_ID = bon.HOP_SYS_ID;
-                                                                fee.HOP_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                                db.INS_UDW_HOME_OWNERS_FEES.Add(fee);
-
-                                                                break;
-                                                            case "D":
-                                                                db.INS_UDW_HOME_OWNERS_FEES.Remove(db.INS_UDW_HOME_OWNERS_FEES.Find(fee.HOP_FEE_SYS_ID));
-                                                                break;
-                                                        }
-
                                                     }
 
                                                 }
 
                                                 break;
                                             case "U":
-                                                bon.HOP_STATUS = "A";
-                                                bon.HOP_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                db.INS_UDW_HOME_OWNERS.Add(bon);
+                                                risk.LIAWOC_STATUS = "A";
+                                                risk.LIAWOC_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_UDW_LIABILITY_WKS_COMP.Add(risk);
                                                 break;
                                             case "D":
-                                                db.INS_UDW_HOME_OWNERS.Remove(db.INS_UDW_HOME_OWNERS.Find(bon.HOP_SYS_ID));
+                                                db.INS_UDW_LIABILITY_WKS_COMP.Remove(db.INS_UDW_LIABILITY_WKS_COMP.Find(risk.LIAWOC_SYS_ID));
                                                 break;
                                         }
 
@@ -550,15 +482,15 @@ namespace SibaDev.Models
                                                     *--------------*/
                                                     foreach (var pap in facIn.INS_RI_FAC_INW_COMPANY)
                                                     {
-                                                        var dbcomp = db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID);
+                                                        var dbcover = db.INS_RI_FAC_INW_COMPANY.Find(pap.FINW_PAP_SYS_ID);
 
                                                         switch (pap.FINW_PAP_STATUS)
                                                         {
                                                             case "A":
-                                                                if (dbcomp != null)
+                                                                if (dbcover != null)
                                                                 {
-                                                                    db.INS_RI_FAC_INW_COMPANY.Attach(dbcomp);
-                                                                    dbcomp.Map(pap);
+                                                                    db.INS_RI_FAC_INW_COMPANY.Attach(dbcover);
+                                                                    dbcover.Map(pap);
                                                                 }
 
                                                                 break;
@@ -636,11 +568,9 @@ namespace SibaDev.Models
                             /*-----------------------------------------
                              * updating the status of related tables
                              *---------------------------------------*/
-                            viewPolh.INS_UDW_HOME_OWNERS.ForEach(x => {
-                                x.HOP_STATUS = "A";
+                            viewPolh.INS_UDW_LIABILITY_WKS_COMP.ForEach(x => {
+                                x.LIAWOC_STATUS = "A";
                                 x.INS_UWD_RISK_COVERS.ForEach(c => c.RCOV_STATUS = "A");
-                                x.INS_UDW_HOME_OWNERS_DETAILS.ForEach(c => c.HODT_STATUS = "A");
-                                x.INS_UDW_HOME_OWNERS_FEES.ForEach(c => c.HOP_FEE_STATUS = "A");
                             });
 
                             db.INS_UWD_POLICY_HEAD.Add(viewPolh);

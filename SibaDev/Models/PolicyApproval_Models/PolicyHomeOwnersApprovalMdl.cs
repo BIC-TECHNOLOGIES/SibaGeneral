@@ -9,11 +9,11 @@ using WebGrease.Css.Extensions;
 
 namespace SibaDev.Models.PolicyApproval_Models
 {
-    public class PolicyBondApprovalMdl : Model
+    public class PolicyHomeOwnersApprovalMdl : Model
     {
         // Policy Confirmations
         
-        public object ForwardTransaction(INS_UWD_POLICY_HEAD polHead, List<INS_UDW_BONDS> bondrisk, INS_PREMIUM_REGISTER premRegister, MS_ACCTS_INTEGRATION acntInt, List<INS_UDW_POL_FEES> polFees, List<INS_UWD_INTERMEDIARY_COMM> commissions)
+        public object ForwardTransaction(INS_UWD_POLICY_HEAD polHead, List<INS_UDW_HOME_OWNERS> prodrisk, INS_PREMIUM_REGISTER premRegister, MS_ACCTS_INTEGRATION acntInt, List<INS_UDW_POL_FEES> polFees, List<INS_UWD_INTERMEDIARY_COMM> commissions)
         {
             //obtain total amount of premium and police fees
             var accountTotalBc = (premRegister.PR_BC_AMOUNT ?? 0) + (polFees == null ? 0 : polFees.Sum(x => x.POL_FEE_BC_AMOUNT));
@@ -130,7 +130,7 @@ namespace SibaDev.Models.PolicyApproval_Models
                         //RI Allocations for Vehecle risks
 
                         //obtain risks
-                        bondrisk.ForEach(risk =>
+                        prodrisk.ForEach(risk =>
                         {
                             if (risk != null)
                             {
@@ -139,21 +139,21 @@ namespace SibaDev.Models.PolicyApproval_Models
                                 if (grpDtls != null)
                                 {
                                     var treatyGrpHead = grpDtls.MS_RI_GROUP_HEAD;
-                                    var tttyMsHead = treatyGrpHead.MS_RI_PTTY_HEAD.FirstOrDefault(t => t.TH_CURRENCY == polHead.POLH_CURRENCY && risk.BOND_UW_YEAR == t.TH_UWYR);
+                                    var tttyMsHead = treatyGrpHead.MS_RI_PTTY_HEAD.FirstOrDefault(t => t.TH_CURRENCY == polHead.POLH_CURRENCY && risk.HOP_UW_YEAR == t.TH_UWYR);
                                     if (tttyMsHead != null)
                                     {
 
                                         var ttyhead = new INS_RI_TTY_HEAD
                                         {
-                                            TTH_ACC_SI_BC = risk.BOND_RI_SI_BC,
-                                            TTH_ACC_SI_FC = risk.BOND_RI_SI_FC,
+                                            TTH_ACC_SI_BC = risk.HOP_RI_SI_BC,
+                                            TTH_ACC_SI_FC = risk.HOP_RI_SI_FC,
                                             TTH_ADJ_YN = null,
                                             TTH_CLASS_CODE = polHead.POLH_CLASS_CODE,
                                             TTH_COMB_LOC_ID = null,
                                             TTH_CRTE_BY = "System",
                                             TTH_CRTE_DATE = DateTime.Now,
                                             TTH_EML_PERC = grpDtls.GD_PML_PERC,
-                                            TTH_FROM_DATE = risk.BOND_START_DATE,
+                                            TTH_FROM_DATE = risk.HOP_START_DATE,
                                             TTH_INS_SRCE = polHead.POLH_INS_SOURCE,
                                             TTH_LOC_END_NO = (int?)polHead.POLH_END_NO,
                                             TTH_LOC_SYS_ID = null,
@@ -164,26 +164,26 @@ namespace SibaDev.Models.PolicyApproval_Models
                                             TTH_POLNUM = polHead.POLH_DISPLAY_NO,
                                             //TTH_REF_ID = risk.BOND_SYS_ID,
                                             TTH_RISK_END_NO = (int?)polHead.POLH_END_NO,
-                                            TTH_RISK_SYS_ID = risk.BOND_SYS_ID,
+                                            TTH_RISK_SYS_ID = risk.HOP_SYS_ID,
                                             TTH_RI_ACC_YN = null,
-                                            TTH_RI_PREM_BC = risk.BOND_RI_PREM_BC,
-                                            TTH_RI_PREM_FC = risk.BOND_RI_PREM_FC,
-                                            TTH_RI_SI_BC = risk.BOND_RI_SI_BC,
-                                            TTH_RI_SI_FC = risk.BOND_RI_SI_FC,
+                                            TTH_RI_PREM_BC = risk.HOP_RISK_PREM_BC,
+                                            TTH_RI_PREM_FC = risk.HOP_RI_PREM_FC,
+                                            TTH_RI_SI_BC = risk.HOP_RI_SI_BC,
+                                            TTH_RI_SI_FC = risk.HOP_RI_SI_FC,
                                             TTH_SC_CODE = polHead.POLH_SUB_CLASS_CODE,
                                             TTH_STATUS = "A",
-                                            TTH_TOTAL_PREM_BC = risk.BOND_TOT_PREM_BC,
-                                            TTH_TOTAL_PREM_FC = risk.BOND_TOT_PREM_FC,
-                                            TTH_TOTAL_SI_BC = risk.BOND_SI_BC,
-                                            TTH_TOTAL_SI_FC = risk.BOND_SI_FC,
-                                            TTH_TO_DATE = risk.BOND_END_DATE,
-                                            TTH_UW_YEAR = (short?)risk.BOND_UW_YEAR
+                                            TTH_TOTAL_PREM_BC = risk.HOP_TOT_PREM_BC,
+                                            TTH_TOTAL_PREM_FC = risk.HOP_TOT_PREM_FC,
+                                            TTH_TOTAL_SI_BC = risk.HOP_SI_BC,
+                                            TTH_TOTAL_SI_FC = risk.HOP_SI_FC,
+                                            TTH_TO_DATE = risk.HOP_END_DATE,
+                                            TTH_UW_YEAR = (short?)risk.HOP_UW_YEAR
                                         };
                                         db.INS_RI_TTY_HEAD.Add(ttyhead);
                                         db.SaveChanges();
 
-                                        var excessSIFC = risk.BOND_SI_FC;
-                                        var excessSIBC = risk.BOND_SI_BC;
+                                        var excessSIFC = risk.HOP_SI_FC;
+                                        var excessSIBC = risk.HOP_SI_BC;
 
                                         //Create FAC-Excess record
                                         var exxAll = new INS_RI_TTY_ALLOCATION
@@ -204,7 +204,7 @@ namespace SibaDev.Models.PolicyApproval_Models
                                             TTA_TTY_COMM_FC = null,
                                             TTA_TTY_LIMIT_FC = 0,
                                             TTA_TTY_LIMIT_BC = 0,
-                                            TTA_UW_YEAR = (short?)risk.BOND_UW_YEAR
+                                            TTA_UW_YEAR = (short?)risk.HOP_UW_YEAR
                                         };
 
                                         db.INS_RI_TTY_ALLOCATION.Add(exxAll);
@@ -228,7 +228,7 @@ namespace SibaDev.Models.PolicyApproval_Models
                                                 TTA_TTY_CODE = tttyMsHead.TH_CODE,
                                                 TTA_TTY_COMM_BC = null,
                                                 TTA_TTY_COMM_FC = null,
-                                                TTA_UW_YEAR = (short?)risk.BOND_UW_YEAR,
+                                                TTA_UW_YEAR = (short?)risk.HOP_UW_YEAR,
                                                 TTA_TTY_TYPE = detail.TD_TTY_CODE,
 
                                             };
@@ -258,16 +258,16 @@ namespace SibaDev.Models.PolicyApproval_Models
 
                                             }
 
-                                            allocation.TTA_ALLOC_PERC = (allocation.TTA_TTY_SI_FC / risk.BOND_SI_FC) * 100;
-                                            allocation.TTA_TTY_PREM_BC = risk.BOND_TOT_PREM_BC * (allocation.TTA_ALLOC_PERC / 100);
-                                            allocation.TTA_TTY_PREM_FC = risk.BOND_TOT_PREM_FC * (allocation.TTA_ALLOC_PERC / 100);
+                                            allocation.TTA_ALLOC_PERC = (allocation.TTA_TTY_SI_FC / risk.HOP_SI_FC) * 100;
+                                            allocation.TTA_TTY_PREM_BC = risk.HOP_TOT_PREM_BC * (allocation.TTA_ALLOC_PERC / 100);
+                                            allocation.TTA_TTY_PREM_FC = risk.HOP_TOT_PREM_FC * (allocation.TTA_ALLOC_PERC / 100);
 
                                             //Update FAC Excess record
                                             exxAll.TTA_TTY_SI_FC = excessSIFC;
                                             exxAll.TTA_TTY_SI_BC = excessSIBC;
-                                            exxAll.TTA_ALLOC_PERC = (excessSIFC / risk.BOND_SI_FC) * 100;
-                                            exxAll.TTA_TTY_PREM_BC = risk.BOND_TOT_PREM_BC * (exxAll.TTA_ALLOC_PERC / 100);
-                                            exxAll.TTA_TTY_PREM_FC = risk.BOND_TOT_PREM_FC * (exxAll.TTA_ALLOC_PERC / 100);
+                                            exxAll.TTA_ALLOC_PERC = (excessSIFC / risk.HOP_SI_FC) * 100;
+                                            exxAll.TTA_TTY_PREM_BC = risk.HOP_TOT_PREM_BC * (exxAll.TTA_ALLOC_PERC / 100);
+                                            exxAll.TTA_TTY_PREM_FC = risk.HOP_TOT_PREM_FC * (exxAll.TTA_ALLOC_PERC / 100);
                                             exxAll.TTA_SEQ_NO = (byte)(detail.TD_SEQ + 1);
                                             //add allocations
                                             db.INS_RI_TTY_ALLOCATION.Add(allocation);
@@ -479,11 +479,25 @@ namespace SibaDev.Models.PolicyApproval_Models
                     });
 
 
-                    policy.INS_UDW_BONDS.ForEach(b =>
+                    policy.INS_UDW_HOME_OWNERS.ForEach(b =>
                     {
-                        var historyBonds = new INS_UDW_HBONDS();
-                        historyBonds.Map(b);
-                        db.INS_UDW_HBONDS.Add(historyBonds);
+                        var historyrisk = new INS_UDW_HHOME_OWNERS();
+                        historyrisk.Map(b);
+                        db.INS_UDW_HHOME_OWNERS.Add(historyrisk);
+
+                        b.INS_UDW_HOME_OWNERS_DETAILS.ForEach(c =>
+                        {
+                            var historydetails = new INS_UDW_HHOME_OWNERS_DETAILS();
+                            historydetails.Map(c);
+                            db.INS_UDW_HHOME_OWNERS_DETAILS.Add(historydetails);
+                        });
+
+                        b.INS_UDW_HOME_OWNERS_FEES.ForEach(c =>
+                        {
+                            var historyfees = new INS_UDW_HHOME_OWNERS_FEES();
+                            historyfees.Map(c);
+                            db.INS_UDW_HHOME_OWNERS_FEES.Add(historyfees);
+                        });
 
                         //save risk cover history
                         b.INS_UWD_RISK_COVERS.ForEach(c =>
@@ -496,15 +510,8 @@ namespace SibaDev.Models.PolicyApproval_Models
 
                     });
 
-                    policy.INS_UDW_BOND_FEES.ForEach(f =>
-                    {
-                        var historyriskFee = new INS_UDW_HBOND_FEES();
-                        historyriskFee.Map(f);
-                        db.INS_UDW_HBOND_FEES.Add(historyriskFee);
-                    });
-
                     policy.INS_RI_FAC_INWARD.ForEach(inw =>
-                    {
+                    { 
                         var historyRIFacInward = new INS_HRI_FAC_INWARD();
                         historyRIFacInward.Map(inw);
                         db.INS_HRI_FAC_INWARD.Add(historyRIFacInward);

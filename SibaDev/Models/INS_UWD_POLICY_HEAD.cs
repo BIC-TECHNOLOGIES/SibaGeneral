@@ -14,6 +14,8 @@ namespace SibaDev.Models
         public INS_UWD_POLICY_HEAD()
         {
             //INSURANCE_LEDGER = new HashSet<INSURANCE_LEDGER>();
+            INS_UDW_LIABILITY = new HashSet<INS_UDW_LIABILITY>();
+            INS_UDW_LIABILITY_WKS_COMP = new HashSet<INS_UDW_LIABILITY_WKS_COMP>();
             INS_UDW_HOME_OWNERS = new HashSet<INS_UDW_HOME_OWNERS>();
             INS_UDW_GA_ASSET_ALL_RISK = new HashSet<INS_UDW_GA_ASSET_ALL_RISK>();
             INS_UDW_GA_PROF_INDEMNITY = new HashSet<INS_UDW_GA_PROF_INDEMNITY>();
@@ -188,7 +190,10 @@ namespace SibaDev.Models
         public string POLH_CLASS_CODE { get; set; }
 
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<INSURANCE_LEDGER> INSURANCE_LEDGER { get; set; }
+        //public virtual ICollection<INSURANCE_LEDGER> INSURANCE_LEDGER { get; set; } 
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INS_UDW_LIABILITY_WKS_COMP> INS_UDW_LIABILITY_WKS_COMP { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UDW_HOME_OWNERS> INS_UDW_HOME_OWNERS { get; set; }

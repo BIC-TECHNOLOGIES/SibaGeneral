@@ -134,5 +134,9 @@ namespace SibaDev.Models
         public virtual INS_UDW_GA_TRANSIT INS_UDW_GA_TRANSIT { get; set; }
 
         public virtual INS_UDW_HOME_OWNERS INS_UDW_HOME_OWNERS { get; set; }
+
+        public virtual INS_UDW_LIABILITY INS_UDW_LIABILITY { get; set; } 
+
+        public virtual INS_UDW_LIABILITY_WKS_COMP INS_UDW_LIABILITY_WKS_COMP { get; set; }
     }
 }

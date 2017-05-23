@@ -6,19 +6,15 @@ namespace SibaDev.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DEVSIBAINS.INS_UDW_LIABILITY")]
-    public partial class INS_UDW_LIABILITY:Model
+    [Table("DEVSIBAINS.INS_UDW_HLIABILITY")]
+    public partial class INS_UDW_HLIABILITY:Model
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public INS_UDW_LIABILITY()
-        {
-            INS_UWD_RISK_COVERS = new HashSet<INS_UWD_RISK_COVERS>();
-            INS_UDW_LIABILITY_FEES = new HashSet<INS_UDW_LIABILITY_FEES>();
-        }
-
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int LIA_SYS_ID { get; set; }
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int HLIA_SYS_ID { get; set; }
+
+        public int? LIA_SYS_ID { get; set; }
 
         public DateTime? LIA_START_DATE { get; set; }
 
@@ -29,11 +25,13 @@ namespace SibaDev.Models
 
         public decimal? LIA_CURRENCY_RATE { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 1)]
         [StringLength(15)]
         public string LIA_REG_CODE { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 2)]
         [StringLength(40)]
         public string LIA_REG_NAME { get; set; }
 
@@ -67,49 +65,11 @@ namespace SibaDev.Models
         [StringLength(100)]
         public string LIA_ITEM_DESC { get; set; }
 
-        public decimal? LIA_AGGRET_LIMIT_FC { get; set; }
+        public decimal? LIA_AGGRET_LIMIT { get; set; }
 
-        public decimal? LIA_AGGRET_LIMIT_BC { get; set; }
+        public decimal? LIA_LIMIT_OCCUR { get; set; }
 
-        public decimal? LIA_LIMIT_OCCUR_FC { get; set; }
-
-        public decimal? LIA_LIMIT_OCCUR_BC { get; set; }
-
-        public decimal? LIA_PREMIUM_FC { get; set; } 
-
-        public decimal? LIA_PREMIUM_BC { get; set; } 
-
-        [StringLength(40)]
-        public string LIA_OBJECT { get; set; }
-
-        [StringLength(100)]
-        public string LIA_OBJECT_NAME { get; set; }
-
-        [StringLength(40)]
-        public string LIA_BRANCH_ADDRS { get; set; }
-
-        [StringLength(1)]
-        public string LIA_FLOATER { get; set; }
-
-        public decimal? LIA_SALARY_SLAB { get; set; }
-
-        [StringLength(40)]
-        public string LIA_GEO_LIMIT { get; set; }
-
-        public int? LIA_NO_PERSONS { get; set; }
-
-        public int? LIA_NO_YEARS { get; set; }
-
-        public decimal? LIA_SALARY_MONTH { get; set; }
-
-        public decimal? LIA_MONTHLY_BENEFITS { get; set; }
-
-        [StringLength(40)]
-        public string LIA_LABOUR_TYPE { get; set; }
-
-        public decimal? LIA_ANNUAL_EST_SAL { get; set; }
-
-        public decimal? LIA_WKM_PREMIUM { get; set; }
+        public decimal? LIA_PREM_FC { get; set; }
 
         public decimal? LIA_TOT_PREM_FC { get; set; }
 
@@ -161,11 +121,13 @@ namespace SibaDev.Models
 
         public int? LIA_POLH_END_NO { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 3)]
         [StringLength(20)]
         public string LIA_PDT_CODE { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 4)]
         [StringLength(20)]
         public string LIA_CVR_CODE { get; set; }
 
@@ -199,16 +161,5 @@ namespace SibaDev.Models
 
         [StringLength(1)]
         public string LIA_STATUS { get; set; }
-
-        [StringLength(1)]
-        public string LIA_PERIOD_DAYS { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UWD_RISK_COVERS> INS_UWD_RISK_COVERS { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_LIABILITY_FEES> INS_UDW_LIABILITY_FEES { get; set; }
-
-        public virtual INS_UWD_POLICY_HEAD INS_UWD_POLICY_HEAD { get; set; }
     }
 }

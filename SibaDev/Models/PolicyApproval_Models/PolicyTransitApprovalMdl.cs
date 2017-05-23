@@ -498,11 +498,11 @@ namespace SibaDev.Models.PolicyApproval_Models
                     });
 
 
-                    policy.INS_UDW_BONDS.ForEach(b =>
+                    policy.INS_UDW_GA_TRANSIT.ForEach(b =>
                     {
-                        var historyBonds = new INS_UDW_HBONDS();
-                        historyBonds.Map(b);
-                        db.INS_UDW_HBONDS.Add(historyBonds);
+                        var historyrisk = new INS_UDW_HGA_TRANSIT();
+                        historyrisk.Map(b);
+                        db.INS_UDW_HGA_TRANSIT.Add(historyrisk); 
 
                         //save risk cover history
                         b.INS_UWD_RISK_COVERS.ForEach(c =>

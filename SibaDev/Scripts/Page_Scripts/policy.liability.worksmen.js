@@ -1,165 +1,176 @@
-﻿(function ($, s, u, $scope) {
+﻿
+(function ($, s, u, $scope) {
     $(function () {
 
-        // Bond Risk Grid
-        $scope.bond_grid = u.default_grid("#gridBondRisks", "#gridBondRisksPager", "Bond Policy",
+        // Liability Risk Grid
+        $scope.liability_grid = u.default_grid("#gridLiabilityRisks", "#gridLiabilityRisksPager", "Liability Policy",
             [
-                'Description', 'Principal', 'SI FC', 'SI BC', 'Total Prm FC', 'Total Prm BC',
-                'Currrency', 'Exchange Rate', 'Start Date', 'End Date', 'Period Days', 'Uw Year',
-                //
-                'Sum Insured', 'Premium',
-            //
-                'Risk Premium FC', 'Risk Premium BC', 'Adj Premium FC', 'Adj Premium BC', 'Discount FC', 'Discount BC', 'Load FC', 'Laod BC',
-            'Compulsory Fee FC', 'Compulsory Fee BC', 'Commossion FC', 'Commission BC', 'RI SI FC', 'RI SI BC',
-            'RI Prem FC', 'RI Prem BC', 'Txn Status', 'Risk State',
-            //
-            'Risk ID', 'PolID', 'polDocNo', 'Endorsement No.', 'Risk No',
-            'Product code',
-            'Cover Code', ' Renewal Status', 'Endorsement Type', 'Approval Date', 'Account Date',
-            'Create by', 'Create Date', 'Modified By', 'Modified Date', 'Status',
-              'Sys ID',
+             'Object', 'Object Name', 'Address', 'Floater', 'Salary slab', 'Geographical Limit', 'No. Persons', 'No. Years', 'Monthly Salary', 'Add Monthly Benefits',
+             'Labour Type', 'Annual Wages FC', 'Annual Wages BC', 'Premium FC', 'Premium BC', 'SI FC', 'SI BC', 'Total Prm FC', 'Total Prm BC', 'Currrency', 'Exchange Rate',
+             'Start Date', 'End Date', 'Period Days',
+             'Uw Year','Risk Premium FC', 'Risk Premium BC', 'Adj Premium FC', 'Adj Premium BC', 'Discount FC', 'Discount BC', 
+             'Load FC', 'Laod BC','Compulsory Fee FC', 'Compulsory Fee BC', 'Commossion FC', 'Commission BC', 'RI SI FC', 'RI SI BC',
+             'RI Prem FC', 'RI Prem BC', 'Txn Status', 'Risk State','Risk ID', 'PolID', 'polDocNo', 'Endorsement No.', 'Risk No', 'Product code',
+             'Cover Code', ' Renewal Status', 'Endorsement Type', 'Approval Date', 'Account Date',
+             'Create by', 'Create Date', 'Modified By', 'Modified Date', 'Status', 'Sys ID',           
             ],
             [
-                    { name: 'BOND_DESCRIPTION', index: 'BOND_DESCRIPTION', width: 150 },
-                    { name: 'BOND_PRINCIPAL', index: 'BOND_PRINCIPAL', width: 150 },
-                    { name: 'BOND_SI_FC', index: 'BOND_SI_FC', width: 150 },
-                    { name: 'BOND_SI_BC', index: 'BOND_SI_BC', width: 150 },
-                    { name: 'BOND_TOT_PREM_FC', index: 'BOND_TOT_PREM_FC', width: 150 },
-                    { name: 'BOND_TOT_PREM_BC', index: 'BOND_TOT_PREM_BC', width: 150 },                             
-                    { name: 'BOND_CURRENCY', index: 'BOND_CURRENCY', width: 150, },
-                    { name: 'BOND_CURRENCY_RATE', index: 'BOND_CURRENCY_RATE', width: 150 },
-                    { name: 'BOND_START_DATE', index: 'BOND_START_DATE', width: 150 },
-                    { name: 'BOND_END_DATE', index: 'BOND_END_DATE', width: 150 },
-                    { name: 'BOND_PERIOD_DAYS', index: 'BOND_PERIOD_DAYS', width: 150 },
-                    { name: 'BOND_UW_YEAR', index: 'BOND_UW_YEAR', width: 150 },                 
-                    { name: 'BOND_SUM_INSURED', index: 'BOND_SUM_INSURED', width: 150 },
-                    { name: 'BOND_PREMIUM_FC', index: 'BOND_PREMIUM_FC', width: 150 },
-                    { name: 'BOND_RISK_PREM_FC', index: 'BOND_RISK_PREM_FC', width: 150 },
-                    { name: 'BOND_RISK_PREM_BC', index: 'BOND_RISK_PREM_BC', width: 150 },
-                    { name: 'BOND_ADJ_PREM_FC', index: 'BOND_ADJ_PREM_FC', width: 150 },
-                    { name: 'BOND_ADJ_PREM_BC', index: 'BOND_ADJ_PREM_BC', width: 150 },
-                    { name: 'BOND_DISC_FC', index: 'BOND_DISC_FC', width: 150 },
-                    { name: 'BOND_DISC_BC', index: 'BOND_DISC_BC', width: 150 },
-                    { name: 'BOND_LOAD_FC', index: 'BOND_LOAD_FC', width: 150 },
-                    { name: 'BOND_LOAD_BC', index: 'BOND_LOAD_BC', width: 150 },
-                    { name: 'BOND_COMP_FEE_FC', index: 'BOND_COMP_FEE_FC', width: 150 },
-                    { name: 'BOND_COMP_FEE_BC', index: 'BOND_COMP_FEE_BC', width: 150 },
-                    { name: 'BOND_COMMISSION_FC', index: 'BOND_COMMISSION_FC', width: 150 },
-                    { name: 'BOND_COMMISSION_BC', index: 'BOND_COMMISSION_BC', width: 150 },
-                    { name: 'BOND_RI_SI_FC', index: 'BOND_RI_SI_FC', width: 150 },
-                    { name: 'BOND_RI_SI_BC', index: 'BOND_RI_SI_BC', width: 150 },
-                    { name: 'BOND_RI_PREM_FC', index: 'BOND_RI_PREM_FC', width: 150 },
-                    { name: 'BOND_RI_PREM_BC', index: 'BOND_RI_PREM_BC', width: 150 },
+                    { name: 'LIAWOC_OBJECT', index: 'LIAWOC_OBJECT', width: 150 },
+                    { name: 'LIAWOC_OBJECT_NAME', index: 'LIAWOC_OBJECT_NAME', width: 150 },
 
-                    { name: 'BOND_TXN_STATUS', index: 'BOND_TXN_STATUS', width: 150 },
-                    { name: 'BOND_RISK_STATE', index: 'BOND_RISK_STATE', width: 150 },
+                    { name: 'LIAWOC_ADDRESS', index: 'LIAWOC_ADDRESS', width: 150 },
+                    { name: 'LIAWOC_FLOATER', index: 'LIAWOC_FLOATER', width: 150 },
+                    { name: 'LIAWOC_SAL_SLAB', index: 'LIAWOC_SAL_SLAB', width: 150 },
+                    { name: 'LIAWOC_GEO_LIM', index: 'LIAWOC_GEO_LIM', width: 150 },
+                    { name: 'LIAWOC_NO_PERSONS', index: 'LIAWOC_NO_PERSONS', width: 150, },
+                    { name: 'LIAWOC_NO_YEARS', index: 'LIAWOC_NO_YEARS', width: 150 },
 
-                    { name: 'BOND_RISK_ID', index: 'BOND_RISK_ID', width: 150, sorttype: "int" },
-                    { name: 'BOND_POLH_SYS_ID', index: 'BOND_POLH_SYS_ID', width: 150 },
-                    { name: 'BOND_POLH_DOC_NO', index: 'BOND_POLH_DOC_NO', width: 150 },
-                    { name: 'BOND_POLH_END_NO', index: 'BOND_POLH_END_NO', width: 150 },
-                    { name: 'BOND_RISK_NO', index: 'BOND_RISK_NO', width: 150 },
+                    { name: 'LIAWOC_SAL_MONTH', index: 'LIAWOC_SAL_MONTH', width: 150 },
+                    { name: 'LIAWOC_ADD_MONTH_BENF', index: 'LIAWOC_ADD_MONTH_BENF', width: 150 },
+                    { name: 'LIAWOC_LABR_TYPE', index: 'LIAWOC_LABR_TYPE', width: 150 },
 
-                    { name: 'BOND_PDT_CODE', index: 'BOND_PDT_CODE', width: 150 },
-                    { name: 'BOND_CVR_CODE', index: 'BOND_CVR_CODE', width: 150 },
-                    { name: 'BOND_RENEWAL_STATUS', index: 'BOND_RENEWAL_STATUS', width: 150 },
-                    { name: 'BOND_END_TYPE', index: 'BOND_END_TYPE', width: 150 },
-                    { name: 'BOND_BONDROVE_DATE', index: 'BOND_BONDROVE_DATE', width: 150 },
-                    { name: 'BOND_ACCT_DATE', index: 'BOND_ACCT_DATE', width: 150 },
-                    { name: 'BOND_CRTE_BY', index: 'BOND_CRTE_BY', width: 150 },
-                    { name: 'BOND_CRTE_DATE', index: 'BOND_CRTE_DATE', width: 150 },
-                    { name: 'BOND_MOD_BY', index: 'BOND_MOD_BY', width: 150 },
-                    { name: 'BOND_MOD_DATE', index: 'BOND_MOD_DATE', width: 150 },
-                    { name: 'BOND_STATUS', index: 'BOND_STATUS', width: 150 },
+                    { name: 'LIAWOC_ANN_WAGES_FC', index: 'LIAWOC_ANN_WAGES_FC', width: 150, },
+                    { name: 'LIAWOC_ANN_WAGES_BC', index: 'LIAWOC_ANN_WAGES_BC', width: 150, },
+                    { name: 'LIAWOC_PREMIUM_FC', index: 'LIAWOC_PREMIUM_FC', width: 150 },
+                    { name: 'LIAWOC_PREMIUM_BC', index: 'LIAWOC_PREMIUM_BC', width: 150 },
 
-                    { name: 'BOND_SYS_ID', index: 'BOND_SYS_ID', width: 150 },
+                    { name: 'LIAWOC_SI_FC', index: 'LIAWOC_SI_FC', width: 150 },
+                    { name: 'LIAWOC_SI_BC', index: 'LIAWOC_SI_BC', width: 150 },
+                    { name: 'LIAWOC_TOT_PREM_FC', index: 'LIAWOC_TOT_PREM_FC', width: 150 },
+                    { name: 'LIAWOC_TOT_PREM_BC', index: 'LIAWOC_TOT_PREM_BC', width: 150 },                             
+                    { name: 'LIAWOC_CURRENCY', index: 'LIAWOC_CURRENCY', width: 150, },
+                    { name: 'LIAWOC_CURRENCY_RATE', index: 'LIAWOC_CURRENCY_RATE', width: 150 },
+                    { name: 'LIAWOC_START_DATE', index: 'LIAWOC_START_DATE', width: 150 },
+                    { name: 'LIAWOC_END_DATE', index: 'LIAWOC_END_DATE', width: 150 },
+                    { name: 'LIAWOC_PERIOD_DAYS', index: 'LIAWOC_PERIOD_DAYS', width: 150 },
+                    { name: 'LIAWOC_UW_YEAR', index: 'LIAWOC_UW_YEAR', width: 150 },                 
+                  
+                    { name: 'LIAWOC_RISK_PREM_FC', index: 'LIAWOC_RISK_PREM_FC', width: 150 },
+                    { name: 'LIAWOC_RISK_PREM_BC', index: 'LIAWOC_RISK_PREM_BC', width: 150 },
+                    { name: 'LIAWOC_ADJ_PREM_FC', index: 'LIAWOC_ADJ_PREM_FC', width: 150 },
+                    { name: 'LIAWOC_ADJ_PREM_BC', index: 'LIAWOC_ADJ_PREM_BC', width: 150 },
+                    { name: 'LIAWOC_DISC_FC', index: 'LIAWOC_DISC_FC', width: 150 },
+                    { name: 'LIAWOC_DISC_BC', index: 'LIAWOC_DISC_BC', width: 150 },
+                    { name: 'LIAWOC_LOAD_FC', index: 'LIAWOC_LOAD_FC', width: 150 },
+                    { name: 'LIAWOC_LOAD_BC', index: 'LIAWOC_LOAD_BC', width: 150 },
+                    { name: 'LIAWOC_COMP_FEE_FC', index: 'LIAWOC_COMP_FEE_FC', width: 150 },
+                    { name: 'LIAWOC_COMP_FEE_BC', index: 'LIAWOC_COMP_FEE_BC', width: 150 },
+                    { name: 'LIAWOC_COMMISSION_FC', index: 'LIAWOC_COMMISSION_FC', width: 150 },
+                    { name: 'LIAWOC_COMMISSION_BC', index: 'LIAWOC_COMMISSION_BC', width: 150 },
+                    { name: 'LIAWOC_RI_SI_FC', index: 'LIAWOC_RI_SI_FC', width: 150 },
+                    { name: 'LIAWOC_RI_SI_BC', index: 'LIAWOC_RI_SI_BC', width: 150 },
+                    { name: 'LIAWOC_RI_PREM_FC', index: 'LIAWOC_RI_PREM_FC', width: 150 },
+                    { name: 'LIAWOC_RI_PREM_BC', index: 'LIAWOC_RI_PREM_BC', width: 150 },
+
+                    { name: 'LIAWOC_TXN_STATUS', index: 'LIAWOC_TXN_STATUS', width: 150 },
+                    { name: 'LIAWOC_RISK_STATE', index: 'LIAWOC_RISK_STATE', width: 150 },
+
+                    { name: 'LIAWOC_RISK_ID', index: 'LIAWOC_RISK_ID', width: 150, sorttype: "int" },
+                    { name: 'LIAWOC_POLH_SYS_ID', index: 'LIAWOC_POLH_SYS_ID', width: 150 },
+                    { name: 'LIAWOC_POLH_DOC_NO', index: 'LIAWOC_POLH_DOC_NO', width: 150 },
+                    { name: 'LIAWOC_POLH_END_NO', index: 'LIAWOC_POLH_END_NO', width: 150 },
+                    { name: 'LIAWOC_RISK_NO', index: 'LIAWOC_RISK_NO', width: 150 },
+
+                    { name: 'LIAWOC_PDT_CODE', index: 'LIAWOC_PDT_CODE', width: 150 },
+                    { name: 'LIAWOC_CVR_CODE', index: 'LIAWOC_CVR_CODE', width: 150 },
+                    { name: 'LIAWOC_RENEWAL_STATUS', index: 'LIAWOC_RENEWAL_STATUS', width: 150 },
+                    { name: 'LIAWOC_END_TYPE', index: 'LIAWOC_END_TYPE', width: 150 },
+                    { name: 'LIAWOC_LIAWOCROVE_DATE', index: 'LIAWOC_LIAWOCROVE_DATE', width: 150 },
+                    { name: 'LIAWOC_ACCT_DATE', index: 'LIAWOC_ACCT_DATE', width: 150 },
+                    { name: 'LIAWOC_CRTE_BY', index: 'LIAWOC_CRTE_BY', width: 150 },
+                    { name: 'LIAWOC_CRTE_DATE', index: 'LIAWOC_CRTE_DATE', width: 150 },
+                    { name: 'LIAWOC_MOD_BY', index: 'LIAWOC_MOD_BY', width: 150 },
+                    { name: 'LIAWOC_MOD_DATE', index: 'LIAWOC_MOD_DATE', width: 150 },
+                    { name: 'LIAWOC_STATUS', index: 'LIAWOC_STATUS', width: 150 },
+
+                    { name: 'LIAWOC_SYS_ID', index: 'LIAWOC_SYS_ID', width: 150 },
             ],
             //Retrive Grid data into form input fields on row click..
             function (sel_id) {
-                var grid = $scope.bond_grid;
+                var grid = $scope.liability_grid;
                 var sel_id = grid.jqGrid('getGridParam', 'selrow');
-                $("form input[name='BOND_SYS_ID']").data("update", true);
+                $("form input[name='LIAWOC_SYS_ID']").data("update", true);
                 u.fill_form({
-                    BOND_SYS_ID: grid.jqGrid('getCell', sel_id, 'BOND_SYS_ID'),
-                    BOND_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'BOND_POLH_SYS_ID'),
-                    BOND_POLH_DOC_NO: grid.jqGrid('getCell', sel_id, 'BOND_POLH_DOC_NO'),
-                    BOND_POLH_END_NO: grid.jqGrid('getCell', sel_id, 'BOND_POLH_END_NO'),
-                    BOND_PDT_CODE: grid.jqGrid('getCell', sel_id, 'BOND_PDT_CODE'),
-                    BOND_RISK_ID: grid.jqGrid('getCell', sel_id, 'BOND_RISK_ID'),
-                    BOND_CVR_CODE: grid.jqGrid('getCell', sel_id, 'BOND_CVR_CODE'),
-                    BOND_RENEWAL_STATUS: grid.jqGrid('getCell', sel_id, 'BOND_RENEWAL_STATUS'),
+                    LIAWOC_SYS_ID: grid.jqGrid('getCell', sel_id, 'LIAWOC_SYS_ID'),
+                    LIAWOC_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'LIAWOC_POLH_SYS_ID'),
+                    LIAWOC_POLH_DOC_NO: grid.jqGrid('getCell', sel_id, 'LIAWOC_POLH_DOC_NO'),
+                    LIAWOC_POLH_END_NO: grid.jqGrid('getCell', sel_id, 'LIAWOC_POLH_END_NO'),
+                    LIAWOC_PDT_CODE: grid.jqGrid('getCell', sel_id, 'LIAWOC_PDT_CODE'),
+                    LIAWOC_RISK_ID: grid.jqGrid('getCell', sel_id, 'LIAWOC_RISK_ID'),
+                    LIAWOC_CVR_CODE: grid.jqGrid('getCell', sel_id, 'LIAWOC_CVR_CODE'),
+                    LIAWOC_RENEWAL_STATUS: grid.jqGrid('getCell', sel_id, 'LIAWOC_RENEWAL_STATUS'),
 
-                    BOND_PRINCIPAL: grid.jqGrid('getCell', sel_id, 'BOND_PRINCIPAL'),
-                    BOND_CURRENCY: grid.jqGrid('getCell', sel_id, 'BOND_CURRENCY'),
-                    BOND_CURRENCY_RATE: grid.jqGrid('getCell', sel_id, 'BOND_CURRENCY_RATE'),
-                    BOND_START_DATE: grid.jqGrid('getCell', sel_id, 'BOND_START_DATE'),
-                    BOND_END_DATE: grid.jqGrid('getCell', sel_id, 'BOND_END_DATE'),
+                    LIAWOC_PRINCIPAL: grid.jqGrid('getCell', sel_id, 'LIAWOC_PRINCIPAL'),
+                    LIAWOC_CURRENCY: grid.jqGrid('getCell', sel_id, 'LIAWOC_CURRENCY'),
+                    LIAWOC_CURRENCY_RATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_CURRENCY_RATE'),
+                    LIAWOC_START_DATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_START_DATE'),
+                    LIAWOC_END_DATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_END_DATE'),
 
-                    BOND_SI_FC: grid.jqGrid('getCell', sel_id, 'BOND_SI_FC'),
-                    BOND_SI_BC: grid.jqGrid('getCell', sel_id, 'BOND_SI_BC'),
-                    BOND_TOT_PREM_FC: grid.jqGrid('getCell', sel_id, 'BOND_TOT_PREM_FC'),
-                    BOND_TOT_PREM_BC: grid.jqGrid('getCell', sel_id, 'BOND_TOT_PREM_BC'),                  
-                    BOND_RISK_PREM_FC: grid.jqGrid('getCell', sel_id, 'BOND_RISK_PREM_FC'),
-                    BOND_RISK_PREM_BC: grid.jqGrid('getCell', sel_id, 'BOND_RISK_PREM_BC'),
-                    BOND_ADJ_PREM_FC: grid.jqGrid('getCell', sel_id, 'BOND_ADJ_PREM_FC'),
+                    LIAWOC_SI_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_SI_FC'),
+                    LIAWOC_SI_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_SI_BC'),
+                    LIAWOC_TOT_PREM_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_TOT_PREM_FC'),
+                    LIAWOC_TOT_PREM_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_TOT_PREM_BC'),                  
+                    LIAWOC_RISK_PREM_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_RISK_PREM_FC'),
+                    LIAWOC_RISK_PREM_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_RISK_PREM_BC'),
+                    LIAWOC_ADJ_PREM_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_ADJ_PREM_FC'),
 
-                    BOND_ADJ_PREM_BC: grid.jqGrid('getCell', sel_id, 'BOND_ADJ_PREM_BC'),
-                    BOND_DISC_FC: grid.jqGrid('getCell', sel_id, 'BOND_DISC_FC'),
-                    BOND_DISC_BC: grid.jqGrid('getCell', sel_id, 'BOND_DISC_BC'),
-                    BOND_LOAD_FC: grid.jqGrid('getCell', sel_id, 'BOND_LOAD_FC'),
-                    BOND_LOAD_BC: grid.jqGrid('getCell', sel_id, 'BOND_LOAD_BC'),
-                    BOND_COMP_FEE_FC: grid.jqGrid('getCell', sel_id, 'BOND_COMP_FEE_FC'),
+                    LIAWOC_ADJ_PREM_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_ADJ_PREM_BC'),
+                    LIAWOC_DISC_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_DISC_FC'),
+                    LIAWOC_DISC_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_DISC_BC'),
+                    LIAWOC_LOAD_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_LOAD_FC'),
+                    LIAWOC_LOAD_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_LOAD_BC'),
+                    LIAWOC_COMP_FEE_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_COMP_FEE_FC'),
 
-                    BOND_COMP_FEE_BC: grid.jqGrid('getCell', sel_id, 'BOND_COMP_FEE_BC'),
-                    BOND_COMMISSION_FC: grid.jqGrid('getCell', sel_id, 'BOND_COMMISSION_FC'),
-                    BOND_COMMISSION_BC: grid.jqGrid('getCell', sel_id, 'BOND_COMMISSION_BC'),
-                    BOND_TXN_STATUS: grid.jqGrid('getCell', sel_id, 'BOND_TXN_STATUS'),
-                    BOND_RISK_STATE: grid.jqGrid('getCell', sel_id, 'BOND_RISK_STATE'),
-                    BOND_END_TYPE: grid.jqGrid('getCell', sel_id, 'BOND_END_TYPE'),
+                    LIAWOC_COMP_FEE_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_COMP_FEE_BC'),
+                    LIAWOC_COMMISSION_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_COMMISSION_FC'),
+                    LIAWOC_COMMISSION_BC: grid.jqGrid('getCell', sel_id, 'LIAWOC_COMMISSION_BC'),
+                    LIAWOC_TXN_STATUS: grid.jqGrid('getCell', sel_id, 'LIAWOC_TXN_STATUS'),
+                    LIAWOC_RISK_STATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_RISK_STATE'),
+                    LIAWOC_END_TYPE: grid.jqGrid('getCell', sel_id, 'LIAWOC_END_TYPE'),
 
-                    BOND_BONDROVE_DATE: grid.jqGrid('getCell', sel_id, 'BOND_BONDROVE_DATE'),
-                    BOND_ACCT_DATE: grid.jqGrid('getCell', sel_id, 'BOND_ACCT_DATE'),
-                    BOND_CRTE_BY: grid.jqGrid('getCell', sel_id, 'BOND_CRTE_BY'),
-                    BOND_CRTE_DATE: grid.jqGrid('getCell', sel_id, 'BOND_CRTE_DATE'),
-                    BOND_PERIOD_DAYS: grid.jqGrid('getCell', sel_id, 'BOND_PERIOD_DAYS'),
-                    BOND_RISK_NO: grid.jqGrid('getCell', sel_id, 'BOND_RISK_NO'),
+                    LIAWOC_LIAWOCROVE_DATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_LIAWOCROVE_DATE'),
+                    LIAWOC_ACCT_DATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_ACCT_DATE'),
+                    LIAWOC_CRTE_BY: grid.jqGrid('getCell', sel_id, 'LIAWOC_CRTE_BY'),
+                    LIAWOC_CRTE_DATE: grid.jqGrid('getCell', sel_id, 'LIAWOC_CRTE_DATE'),
+                    LIAWOC_PERIOD_DAYS: grid.jqGrid('getCell', sel_id, 'LIAWOC_PERIOD_DAYS'),
+                    LIAWOC_RISK_NO: grid.jqGrid('getCell', sel_id, 'LIAWOC_RISK_NO'),
 
-                    BOND_SUM_INSURED: grid.jqGrid('getCell', sel_id, 'BOND_SUM_INSURED'),
-                    BOND_PREMIUM_FC: grid.jqGrid('getCell', sel_id, 'BOND_PREMIUM_FC'),
-                    BOND_DESCRIPTION: grid.jqGrid('getCell', sel_id, 'BOND_DESCRIPTION'),
-                    BOND_STATUS: grid.jqGrid('getCell', sel_id, 'BOND_STATUS'),
+                    LIAWOC_SUM_INSURED: grid.jqGrid('getCell', sel_id, 'LIAWOC_SUM_INSURED'),
+                    LIAWOC_PREMIUM_FC: grid.jqGrid('getCell', sel_id, 'LIAWOC_PREMIUM_FC'),
+                    LIAWOC_DESCRIPTION: grid.jqGrid('getCell', sel_id, 'LIAWOC_DESCRIPTION'),
+                    LIAWOC_STATUS: grid.jqGrid('getCell', sel_id, 'LIAWOC_STATUS'),
 
-                }, "#bondForm");
+                }, "#LiabilityForm");
                 u.fill_form({
-                    RCOV_RISK_SYS_ID: grid.jqGrid('getCell', sel_id, 'BOND_SYS_ID'),
+                    RCOV_RISK_SYS_ID: grid.jqGrid('getCell', sel_id, 'LIAWOC_SYS_ID'),
                 }, "#coverForm");
 
                 u.fill_form({
-                    FINW_ORIG_SI_FC: grid.jqGrid("getCell", sel_id, "BOND_SI_FC"),
-                    FINW_ORIG_SI_BC: grid.jqGrid("getCell", sel_id, "BOND_SI_BC"),
-                    FINW_ORIG_PREM_FC: grid.jqGrid("getCell", sel_id, "BOND_TOT_PREM_FC"),
-                    FINW_ORIG_PREM_BC: grid.jqGrid("getCell", sel_id, "BOND_TOT_PREM_BC"),
+                    FINW_ORIG_SI_FC: grid.jqGrid("getCell", sel_id, "LIAWOC_SI_FC"),
+                    FINW_ORIG_SI_BC: grid.jqGrid("getCell", sel_id, "LIAWOC_SI_BC"),
+                    FINW_ORIG_PREM_FC: grid.jqGrid("getCell", sel_id, "LIAWOC_TOT_PREM_FC"),
+                    FINW_ORIG_PREM_BC: grid.jqGrid("getCell", sel_id, "LIAWOC_TOT_PREM_BC"),
                 }, "#facInwardForm");
 
                 u.fill_form({
-                    FOTW_SHARE_SI_FC: grid.jqGrid("getCell", sel_id, "BOND_SI_FC"),
-                    FOTW_SHARE_SI_BC: grid.jqGrid("getCell", sel_id, "BOND_SI_BC"),
-                    FOTW_SHARE_PREM_FC: grid.jqGrid("getCell", sel_id, "BOND_TOT_PREM_FC"),
-                    FOTW_SHARE_PREM_BC: grid.jqGrid("getCell", sel_id, "BOND_TOT_PREM_BC"),
+                    FOTW_SHARE_SI_FC: grid.jqGrid("getCell", sel_id, "LIAWOC_SI_FC"),
+                    FOTW_SHARE_SI_BC: grid.jqGrid("getCell", sel_id, "LIAWOC_SI_BC"),
+                    FOTW_SHARE_PREM_FC: grid.jqGrid("getCell", sel_id, "LIAWOC_TOT_PREM_FC"),
+                    FOTW_SHARE_PREM_BC: grid.jqGrid("getCell", sel_id, "LIAWOC_TOT_PREM_BC"),
 
                 }, "#CoinsLeaderForm");
 
             },
                 function (id) {
 
-                    var grid = $scope.bond_grid;
+                    var grid = $scope.liability_grid;
 
                     var sel_id = grid.jqGrid('getGridParam', 'selrow');
-                    var bondRiskID = grid.jqGrid('getCell', sel_id, 'BOND_SYS_ID');
+                    var bondRiskID = grid.jqGrid('getCell', sel_id, 'LIAWOC_SYS_ID');
 
-                    if (bondRiskID == $("#BOND_SYS_ID").val()) {
+                    if (bondRiskID == $("#LIAWOC_SYS_ID").val()) {
 
-                        $("#BondModal").modal();
+                        $("#LiabilityModal").modal();
 
                         //  $("#RiskCoverModal").modal();
 
@@ -168,7 +179,7 @@
                     }
                     else {
 
-                        u.growl_warning("No Bond Risk selected, Please check and try again");
+                        u.growl_warning("No Liability Risk selected, Please check and try again");
 
                     };
 
@@ -429,18 +440,18 @@
             [' Code', 'Fee Name', 'FC Amount', 'BC Amount',
                     'Polh SYS ID', 'Risk SYS ID', 'Risk N0', 'Risk Code', 'Polh End No.', 'Status', 'Fee SYS ID'],
             [
-                { name: 'BOND_FEE_CODE', index: 'BOND_FEE_CODE', width: 150 },
-                { name: 'BOND_FEE_NAME', index: 'BOND_FEE_NAME', width: 200 },
-                { name: 'BOND_FEE_FC_AMOUNT', index: 'BOND_FEE_FC_AMOUNT', width: 150 },
-                { name: 'BOND_FEE_BC_AMOUNT', index: 'BOND_FEE_BC_AMOUNT', width: 150 },
+                { name: 'LIAWOC_FEE_CODE', index: 'LIAWOC_FEE_CODE', width: 150 },
+                { name: 'LIAWOC_FEE_NAME', index: 'LIAWOC_FEE_NAME', width: 200 },
+                { name: 'LIAWOC_FEE_FC_AMOUNT', index: 'LIAWOC_FEE_FC_AMOUNT', width: 150 },
+                { name: 'LIAWOC_FEE_BC_AMOUNT', index: 'LIAWOC_FEE_BC_AMOUNT', width: 150 },
 
-                { name: 'BOND_FEE_POL_SYS_ID', index: 'BOND_FEE_POL_SYS_ID', width: 150 },
-                { name: 'BOND_FEE_RK_SYS_ID', index: 'BOND_FEE_RK_SYS_ID', width: 150 },
-                { name: 'BOND_FEE_RK_NO', index: 'BOND_FEE_RK_NO', width: 150 },
-                { name: 'BOND_FEE_RK_CODE', index: 'BOND_FEE_RK_CODE', width: 150 },
-                { name: 'BOND_FEE_END_NO', index: 'BOND_FEE_END_NO', width: 150 },
-                { name: 'BOND_FEE_STATUS', index: 'BOND_FEE_STATUS', width: 150 },
-                { name: 'BOND_FEE_SYS_ID', index: 'BOND_FEE_SYS_ID', width: 150 },
+                { name: 'LIAWOC_FEE_POL_SYS_ID', index: 'LIAWOC_FEE_POL_SYS_ID', width: 150 },
+                { name: 'LIAWOC_FEE_RK_SYS_ID', index: 'LIAWOC_FEE_RK_SYS_ID', width: 150 },
+                { name: 'LIAWOC_FEE_RK_NO', index: 'LIAWOC_FEE_RK_NO', width: 150 },
+                { name: 'LIAWOC_FEE_RK_CODE', index: 'LIAWOC_FEE_RK_CODE', width: 150 },
+                { name: 'LIAWOC_FEE_END_NO', index: 'LIAWOC_FEE_END_NO', width: 150 },
+                { name: 'LIAWOC_FEE_STATUS', index: 'LIAWOC_FEE_STATUS', width: 150 },
+                { name: 'LIAWOC_FEE_SYS_ID', index: 'LIAWOC_FEE_SYS_ID', width: 150 },
             ],
            //Retrive Grid data into form input fields on row click..
             function (sel_id) {
@@ -616,7 +627,7 @@
             }),
 
         // Product Risk Grid ****
-        $scope.prodRisks_grid = u.default_grid("#gridProdRisk", "#gridProdRiskPager", "Bond Risk",
+        $scope.prodRisks_grid = u.default_grid("#gridProdRisk", "#gridProdRiskPager", "Liability Risk",
             ['Code', 'Name'],
             [
                 { name: 'RISK_CODE', index: 'RISK_CODE', width: 150 },
@@ -1101,16 +1112,16 @@
                     //fill grid 
                     for (var i in result) {
 
-                        result[i]["BOND_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
-                        result[i]["BOND_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
-                        result[i]["BOND_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
-                        result[i]["BOND_FEE_RK_NO"] = result[i]["FEE_NAME"];
-                        result[i]["BOND_FEE_NAME"] = result[i]["PRF_SYS_ID"];
-                        result[i]["BOND_FEE_RK_CODE"] = $("#BOND_RISK_CODE").val();
-                        result[i]["BOND_FEE_RK_SYS_ID"] = $("#BOND_SYS_ID").val();
-                        result[i]["BOND_FEE_CRTE_BY"] = "Admin";
-                        result[i]["BOND_FEE_CRTE_DATE"] = Date.now();
-                        result[i]["BOND_FEE_STATUS"] = "U";
+                        result[i]["LIAWOC_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["LIAWOC_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["LIAWOC_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
+                        result[i]["LIAWOC_FEE_RK_NO"] = result[i]["FEE_NAME"];
+                        result[i]["LIAWOC_FEE_NAME"] = result[i]["PRF_SYS_ID"];
+                        result[i]["LIAWOC_FEE_RK_CODE"] = $("#LIAWOC_RISK_CODE").val();
+                        result[i]["LIAWOC_FEE_RK_SYS_ID"] = $("#LIAWOC_SYS_ID").val();
+                        result[i]["LIAWOC_FEE_CRTE_BY"] = "Admin";
+                        result[i]["LIAWOC_FEE_CRTE_DATE"] = Date.now();
+                        result[i]["LIAWOC_FEE_STATUS"] = "U";
                         //
                         // $scope.riskFees_grid.jqGrid('setCell', result[i], 'RISK_CODE', );
 
@@ -1121,14 +1132,14 @@
                 var compFeedata = u.get_grid_data($scope.riskFees_grid);
                 var linq = Enumerable.From(compFeedata);
                 var result =
-                    linq.GroupBy(function (x) { return x.BOND_FEE_CODE; })
+                    linq.GroupBy(function (x) { return x.LIAWOC_FEE_CODE; })
                         .Select(function (x) {
                             console.log(x);
                             return {
                                 POL_FEE_CODE: x.Key(),
-                                POL_FEE_NAME: x.source[0]["BOND_FEE_NAME"],
-                                POL_FEE_FC_AMOUNT: x.Sum(function (y) { return y.BOND_FEE_FC_AMOUNT | 0; }),
-                                POL_FEE_BC_AMOUNT: x.Sum(function (y) { return y.BOND_FEE_BC_AMOUNT | 0; }),
+                                POL_FEE_NAME: x.source[0]["LIAWOC_FEE_NAME"],
+                                POL_FEE_FC_AMOUNT: x.Sum(function (y) { return y.LIAWOC_FEE_FC_AMOUNT | 0; }),
+                                POL_FEE_BC_AMOUNT: x.Sum(function (y) { return y.LIAWOC_FEE_BC_AMOUNT | 0; }),
                                 POL_FEE_END_NO: 0 //$("#POL_END_NO").val()
                             };
                         }).ToArray();
@@ -1224,7 +1235,7 @@
                                 result[i]["RCOV_NAME"] = result[i]["MS_UDW_COVERS"]["CVR_NAME"];
                                 result[i]["RCOV_TYPE"] = result[i]["MS_UDW_COVERS"]["CVR_TYPE"];
 
-                                result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_BONDLICABLE"];
+                                result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_LIAWOCLICABLE"];
 
                                 result[i]["CVR_USER_PREMIUM"] = result[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
                                 result[i]["RCOV_PREM_REFUND"] = result[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
@@ -1232,13 +1243,13 @@
                                 result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
                                 result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
 
-                                result[i]["RCOV_RISK_SYS_ID"] = $("#BOND_SYS_ID").val();
-                                result[i]["RCOV_RISK_NO"] = $("#BOND_RISK_ID").val();
+                                result[i]["RCOV_RISK_SYS_ID"] = $("#LIAWOC_SYS_ID").val();
+                                result[i]["RCOV_RISK_NO"] = $("#LIAWOC_RISK_ID").val();
                                 result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
 
 
                                 var deftCoverCode = result[i].RCOV_CODE;
-                                var newRiskCode = $("#BOND_SYS_ID").val();
+                                var newRiskCode = $("#LIAWOC_SYS_ID").val();
 
                                 var verifyRiskCover = deftCoverCode + newRiskCode; //alert(verifyRiskCover);
 
@@ -1432,7 +1443,7 @@
             if (coverCode == $("#RCOV_SYS_ID").val()) {
 
                 //
-                CURR_RATE = parseFloat($("#BOND_CURRENCY_RATE").val()).toFixed(2);
+                CURR_RATE = parseFloat($("#LIAWOC_CURRENCY_RATE").val()).toFixed(2);
 
                 if (CURR_RATE == "" || CURR_RATE == 0) {
                     u.hide_confirm();
@@ -1530,28 +1541,28 @@
 
 
         /*--------------------------------------------------
-         * Bond Risk modal dialog
+         * Liability Risk modal dialog
          *------------------------------------------------*/
         //
-        $("#btn_open_bond_risk").click(function () {
+        $("#btn_open_liab_risk").click(function () {
             if (u.form_validation("#polheaderForm")) {
-                $("#BondModal").modal();
-                $("#BOND_CURRENCY").val($("#POLH_CURRENCY").val());
-                $("#BOND_CURRENCY_RATE").val($("#POLH_CURRENCY_RATE").val());
+                $("#LiabilityModal").modal();
+                $("#LIAWOC_CURRENCY").val($("#POLH_CURRENCY").val());
+                $("#LIAWOC_CURRENCY_RATE").val($("#POLH_CURRENCY_RATE").val());
             }
             else {
                 u.growl_warning("Please fill the Policy Header form and try again");
             };
-            //$("#BondModal").modal();
+            //$("#LiabilityModal").modal();
         });
 
 
         $("#btn_risk_cover").click(function () {
 
-            var grid = $("#gridBondRisks");
+            var grid = $("#gridLiabilityRisks");
             var sel_id = grid.jqGrid('getGridParam', 'selrow');
-            var RiskID = grid.jqGrid('getCell', sel_id, 'BOND_SYS_ID');
-            if (RiskID == $("#BOND_SYS_ID").val()) {
+            var RiskID = grid.jqGrid('getCell', sel_id, 'LIAWOC_SYS_ID');
+            if (RiskID == $("#LIAWOC_SYS_ID").val()) {
                 //Hide covers not related to selected risk
                 $scope.hideShowCovers();
                 $("#RiskCoverModal").modal();
@@ -1564,43 +1575,43 @@
         });
 
 
-        $("#btn_Bonds_OnClose").click(function () {
+        $("#btn_Liability_OnClose").click(function () {
 
-            if (u.grid_empty($scope.bond_grid)) {
+            if (u.grid_empty($scope.liability_grid)) {
                 u.modal_confirmation("The Grid is empty, do you want to close form?", function (e) {
-                    $("#BondModal").modal("hide");
+                    $("#LiabilityModal").modal("hide");
                     u.hide_confirm();
                 });
             }
             else {
-                $("#BondModal").modal("hide");
+                $("#LiabilityModal").modal("hide");
             }
 
         });
 
         /*--------------------------------------------------
-          * Adding Bond Risk Details
+          * Adding Liability Risk Details
           *------------------------------------------------*/
         //
-        $("#btn_add_bond_details").on('click', function () {
+        $("#btn_add_liab_details").on('click', function () {
 
-            if (u.form_validation("#bondForm")) {
+            if (u.form_validation("#LiabilityForm")) {
 
                 //if ($("input[name='VEH_RISK_NO']").val() === "") return u.modal_alert("Please Enter Risk No");
 
-                $("#BOND_SYS_ID").val("");
+                $("#LIAWOC_SYS_ID").val("");
 
-                if ($("#BOND_SYS_ID").val() == "") {
-                    RetnSequenceNo("BONDS_SEQ", getVehSeqNo);
+                if ($("#LIAWOC_SYS_ID").val() == "") {
+                    RetnSequenceNo("INS_UDW_LIABILITY_WKS_SEQ", getVehSeqNo);
 
                     function getVehSeqNo(data) {
-                        $("#BOND_SYS_ID").val(data);
+                        $("#LIAWOC_SYS_ID").val(data); 
                     }
                 }
 
-                u.modal_confirmation("Are you sure you want to add the Bond Details?", function () {
+                u.modal_confirmation("Are you sure you want to add the Liability Details?", function () {
 
-                    var rowIds = $scope.bond_grid.jqGrid('getDataIDs');
+                    var rowIds = $scope.liability_grid.jqGrid('getDataIDs');
 
                     /*----------------------------------------------
                      * declare array to contain the codes to verify
@@ -1619,7 +1630,7 @@
                          * get value of the cell or column in an array
                          *----------------------------------------------*/
                         //
-                        var cellValue = $scope.bond_grid.jqGrid('getCell', currRow, 'BOND_SYS_ID');
+                        var cellValue = $scope.liability_grid.jqGrid('getCell', currRow, 'LIAWOC_SYS_ID');
 
                         Code.push(cellValue);
                     }
@@ -1628,25 +1639,25 @@
                      * add if code is not found in the Grid
                      *--------------------------------------*/
                     //
-                    if ($.inArray($('#BOND_SYS_ID').val(), Code) < 0) {
+                    if ($.inArray($('#LIAWOC_SYS_ID').val(), Code) < 0) {
 
-                        var FormData = u.parse_form("#bondForm");
-                        FormData.BOND_STATUS = "U";                       
-                        FormData.BOND_CRTE_BY = "Admin";
-                        FormData.BOND_CRTE_DATE = u.get_date();
-                        //$scope.bond_grid.addRowData(FormData.ID, FormData);
-                        $scope.bond_grid.addRowData(FormData.BOND_SYS_ID, FormData);
+                        var FormData = u.parse_form("#LiabilityForm");
+                        FormData.LIAWOC_STATUS = "U";                       
+                        FormData.LIAWOC_CRTE_BY = "Admin";
+                        FormData.LIAWOC_CRTE_DATE = u.get_date();
+                        //$scope.liability_grid.addRowData(FormData.ID, FormData);
+                        $scope.liability_grid.addRowData(FormData.LIAWOC_SYS_ID, FormData);
                         //Add defaulf covers afer adding the Risk
                         getDefaultRiskCovers();
                         getRiskComPulsoryFess();
                         u.hide_confirm();
-                        u.growl_success("BOND successfully added to grid");
+                        u.growl_success("LIAWOC successfully added to grid");
 
                        
                     }
                     else {
                         u.hide_confirm();
-                        u.growl_warning("BOND with code " + cellValue + " Already exists");
+                        u.growl_warning("LIAWOC with code " + cellValue + " Already exists");
                     }
                 });
 
@@ -1657,20 +1668,20 @@
 
 
         /*----------------------------------------------------
-        * Remove record or Mark for deletion from Bond Risk
+        * Remove record or Mark for deletion from Liability Risk
         *---------------------------------------------------*/
         //
-        $("#btn_remove_bond_risk").on('click', function () {
+        $("#btn_remove_liab_risk").on('click', function () {
 
-            if (u.grid_empty($scope.bond_grid)) return u.modal_alert("Grid is empty!!!");
+            if (u.grid_empty($scope.liability_grid)) return u.modal_alert("Grid is empty!!!");
 
-            var grid = $scope.bond_grid;
+            var grid = $scope.liability_grid;
 
             var row_id = grid.jqGrid('getGridParam', 'selrow');
 
-            var recordStatus = grid.jqGrid('getCell', row_id, 'BOND_STATUS');
+            var recordStatus = grid.jqGrid('getCell', row_id, 'LIAWOC_STATUS');
 
-            var RiskNo = grid.jqGrid('getCell', row_id, 'BOND_RISK_ID');
+            var RiskNo = grid.jqGrid('getCell', row_id, 'LIAWOC_RISK_ID');
 
             var covGrid = $scope.cover_grid;
 
@@ -1729,8 +1740,8 @@
                         }
                     }
 
-                    grid.jqGrid('setCell', row_id, 'BOND_STATUS', 'D');
-                    $('#' + row_id, '#gridBondRisks').css({ color: 'red' });
+                    grid.jqGrid('setCell', row_id, 'LIAWOC_STATUS', 'D');
+                    $('#' + row_id, '#gridLiabilityRisks').css({ color: 'red' });
 
                     u.hide_confirm();
                     u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
@@ -1752,8 +1763,8 @@
                         }
                     }
 
-                    $('#' + row_id, '#gridBondRisks').css({ color: 'black' });
-                    grid.jqGrid('setCell', row_id, 'BOND_STATUS', 'A');
+                    $('#' + row_id, '#gridLiabilityRisks').css({ color: 'black' });
+                    grid.jqGrid('setCell', row_id, 'LIAWOC_STATUS', 'A');
                     u.hide_confirm();
                     u.growl_hide("Data successfully restored");
                 }
@@ -1764,30 +1775,30 @@
 
 
         /*--------------------------------
-        * Edit/Update Function Bond Risk Details
+        * Edit/Update Function Liability Risk Details
         *------------------------------*/
         //
-        $("#btn_update_bond_risk").on('click', function () {
+        $("#btn_update_liab_risk").on('click', function () {
 
-            if (u.grid_empty($scope.bond_grid)) return u.growl_info("Bond grid is empty");
+            if (u.grid_empty($scope.liability_grid)) return u.growl_info("Liability grid is empty");
 
-            if (u.form_validation("#bondForm")) {
+            if (u.form_validation("#LiabilityForm")) {
 
                 u.modal_confirmation("Are you sure you want to update the selected Motor?", function () {
 
-                    var grid = $scope.bond_grid;
+                    var grid = $scope.liability_grid;
 
                     var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                    var code = grid.jqGrid("getCell", rowId, "BOND_RISK_ID");
+                    var code = grid.jqGrid("getCell", rowId, "LIAWOC_RISK_ID");
 
-                    if (code === $("#BOND_RISK_ID").val()) {
-                        var data = u.parse_form("#bondForm");
+                    if (code === $("#LIAWOC_RISK_ID").val()) {
+                        var data = u.parse_form("#LiabilityForm");
                         for (var i in data) {
                             grid.jqGrid("setCell", rowId, i, data[i]);
                         }
                         u.hide_confirm();
-                        u.growl_success("Bond Details updated");
+                        u.growl_success("Liability Details updated");
                     } else {
                         u.hide_confirm();
                         u.growl_warning("Please select the correct row to edit");
@@ -1801,11 +1812,11 @@
         /*-----------------------------------
          * exporting of the grid to excel Condition & Clauses
          *----------------------------------*/
-        $("#export-bond-btn").click(function () {
+        $("#export-liab-btn").click(function () {
             /*
              * function to export grid data into excel
              */
-            u.excel_export($scope.bond_grid, ["ID"], "Bond_List_Excel");
+            u.excel_export($scope.liability_grid, ["ID"], "Liability_List_Excel");
         });
 
 
@@ -2076,8 +2087,8 @@
                     return u.growl_warning("Please add Risk Cover");
                 }
 
-                if (u.grid_empty($scope.bond_grid)) {
-                    return u.growl_warning("Please add Bond Details");
+                if (u.grid_empty($scope.liability_grid)) {
+                    return u.growl_warning("Please add Liability Details");
                 }
 
                 //if (u.grid_empty($scope.intermCom_grid)) {
@@ -2093,21 +2104,31 @@
                     polhData.POLH_TXN_STATE = "S";
                     polhData.POLH_END_NO = 0;
 
-                    polhData.INS_UDW_BONDS = u.get_grid_data($scope.bond_grid);
+                    polhData.INS_UDW_LIABILITY_WKS_COMP = u.get_grid_data($scope.liability_grid);
 
                     var INS_UWD_RISK_COVERS = u.get_grid_data($scope.cover_grid);
 
-                    for (var i in polhData.INS_UDW_BONDS) {
+                    var INS_UDW_LIABILITY_FEES = u.get_grid_data($scope.riskFees_grid);
+
+                    for (var i in polhData.INS_UDW_LIABILITY_WKS_COMP) {
                         //loop through every risk and obtain the sys_id of the risk
-                        var id = polhData.INS_UDW_BONDS[i]["BOND_SYS_ID"];
-                        polhData.INS_UDW_BONDS[i]["INS_UWD_RISK_COVERS"] = [];
+                        var id = polhData.INS_UDW_LIABILITY_WKS_COMP[i]["LIAWOC_SYS_ID"];
+
+                        polhData.INS_UDW_LIABILITY_WKS_COMP[i]["INS_UWD_RISK_COVERS"] = [];
+
+                        polhData.INS_UDW_LIABILITY_WKS_COMP[i]["INS_UDW_LIABILITY_FEES"] = [];
 
                         for (var y in INS_UWD_RISK_COVERS) {                        
                                 //find covers which have the same the same risk sys_id
                                 if (INS_UWD_RISK_COVERS[y]["RCOV_RISK_SYS_ID"] === id) {
-                                    polhData.INS_UDW_BONDS[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);                                 
+                                    polhData.INS_UDW_LIABILITY_WKS_COMP[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);                                 
                                 }
-                           
+                                for (var x in INS_UDW_LIABILITY_FEES) {
+                                //find covers which have the same the same risk sys_id
+                                    if (INS_UDW_LIABILITY_FEES[x]["LIA_FEE_RK_SYS_ID"] === id) {
+                                        polhData.INS_UDW_LIABILITY_WKS_COMP[i]["INS_UDW_LIABILITY_FEES"].push(INS_UDW_LIABILITY_FEES[x]);
+                                }
+                            }
                         }
 
                     }
@@ -2122,7 +2143,7 @@
                     
                     console.log(polhData);
 
-                    polhData.INS_UDW_BOND_FEES = u.get_grid_data($scope.riskFees_grid);
+                    //polhData.INS_UDW_LIABILITY_FEES = u.get_grid_data($scope.riskFees_grid);
 
                     polhData.INS_UWD_INTERMEDIARY_COMM = u.get_grid_data($scope.intermCom_grid);
 
@@ -2140,21 +2161,21 @@
                             if (responseData.state) {
 
                                 var coverRowIds = $scope.cover_grid.jqGrid("getDataIDs");
-                                var bondRowIds = $scope.bond_grid.jqGrid("getDataIDs");
+                                var bondRowIds = $scope.liability_grid.jqGrid("getDataIDs");
                                 var covRecStatus;
                                 /*---------------------------------
                                  * update motor row status
                                  *-------------------------------*/
                                 for (var i = 0; i < bondRowIds.length; i++) {
-                                    covRecStatus = $scope.bond_grid.jqGrid("getCell", bondRowIds[i], "BOND_STATUS");
+                                    covRecStatus = $scope.liability_grid.jqGrid("getCell", bondRowIds[i], "LIAWOC_STATUS");
 
                                     //Delete row if it is marked for deletion
                                     if (covRecStatus === "D") {
-                                        $scope.bond_grid.jqGrid("delRowData", bondRowIds[i]);
+                                        $scope.liability_grid.jqGrid("delRowData", bondRowIds[i]);
                                     }
                                     //Update row status to Active (A) if it is newly added
                                     if (covRecStatus === "U") {
-                                        $scope.bond_grid.jqGrid("setCell", bondRowIds[i], "BOND_STATUS", "A");
+                                        $scope.liability_grid.jqGrid("setCell", bondRowIds[i], "LIAWOC_STATUS", "A");
                                     }
                                 }
 
@@ -2359,7 +2380,7 @@
 
                 //
 
-                var bondRowIds = $scope.bond_grid.jqGrid("getDataIDs");
+                var bondRowIds = $scope.liability_grid.jqGrid("getDataIDs");
                 var coverRowIds = $scope.cover_grid.jqGrid("getDataIDs");
                 var intermComIds = $scope.intermCom_grid.jqGrid("getDataIDs");
                 //var premiumregIds = $scope.premiumreg_grid.jqGrid("getDataIDs");
@@ -2370,10 +2391,10 @@
                     $scope.   
                      * update Endorsement No in the Grids
                      *-------------------------------*/
-                //Bond Risks
+                //Liability Risks
                 for (var i = 0; i < bondRowIds.length; i++) {
 
-                    $scope.bond_grid.jqGrid("setCell", bondRowIds[i], "BOND_POLH_END_NO", 22);
+                    $scope.liability_grid.jqGrid("setCell", bondRowIds[i], "LIAWOC_POLH_END_NO", 22);
                 }
                 //Risk Covers
                 for (var j = 0; j < coverRowIds.length; j++) {
@@ -2452,7 +2473,7 @@
             if (!u.form_validation("#receiptHeaderForm")) return u.growl_warning("Fields marked red are required");
 
             u.modal_confirmation("Are you sure you want to Approve ?", function () {
-                s.BondpolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
+                s.LiabilitypolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
                         //alert(JSON.stringify(response));
@@ -2527,9 +2548,9 @@
             u.modal_confirmation("Are you sure you want to clear all data from the form?", function (e) {
                 u.form_reset("#polheaderForm");
                 u.form_reset("#coverForm");
-                u.form_reset("#bondForm");
+                u.form_reset("#LiabilityForm");
                 $scope.cover_grid.jqGrid('clearGridData');
-                $scope.bond_grid.jqGrid('clearGridData');
+                $scope.liability_grid.jqGrid('clearGridData');
                 u.hide_warning();
                 u.growl_success("Form successfully cleared");
             });
@@ -2614,19 +2635,19 @@
 
         $scope.search_fill = function (policy) {
 
-            $scope.bond_grid.jqGrid("clearGridData");
+            $scope.liability_grid.jqGrid("clearGridData");
             $scope.cover_grid.jqGrid("clearGridData");
 
             u.fill_form(policy, "#polheaderForm");
 
-            u.clear_grid_data($scope.bond_grid);
-            for (var i in policy.INS_UDW_BONDS) {
-                $scope.bond_grid.addRowData(policy.INS_UDW_BONDS[i].ID, policy.INS_UDW_BONDS[i]);
+            u.clear_grid_data($scope.liability_grid);
+            for (var i in policy.INS_UDW_LIABILITY_WKS_COMP) {
+                $scope.liability_grid.addRowData(policy.INS_UDW_LIABILITY_WKS_COMP[i].ID, policy.INS_UDW_LIABILITY_WKS_COMP[i]);
 
                 //populate risk covers with covers from the bonds nd not the policy header
                 u.clear_grid_data($scope.cover_grid);
-                for (var x in policy.INS_UDW_BONDS[i].INS_UWD_RISK_COVERS) {
-                    $scope.cover_grid.addRowData(policy.INS_UDW_BONDS[i].INS_UWD_RISK_COVERS[x].RCOV_RISK_SYS_ID, policy.INS_UDW_BONDS[i].INS_UWD_RISK_COVERS[x]);
+                for (var x in policy.INS_UDW_LIABILITY_WKS_COMP[i].INS_UWD_RISK_COVERS) {
+                    $scope.cover_grid.addRowData(policy.INS_UDW_LIABILITY_WKS_COMP[i].INS_UWD_RISK_COVERS[x].RCOV_RISK_SYS_ID, policy.INS_UDW_LIABILITY_WKS_COMP[i].INS_UWD_RISK_COVERS[x]);
                 }
             }       
         };
@@ -2637,8 +2658,8 @@
       *------------------------------------*/
         u.set_datepicker("input[name='POLH_POL_START_DATE']");
         u.set_datepicker("input[name='POLH_POL_END_DATE']");
-        u.set_datepicker("input[name='BOND_START_DATE']");
-        u.set_datepicker("input[name='BOND_END_DATE']");
+        u.set_datepicker("input[name='LIAWOC_START_DATE']");
+        u.set_datepicker("input[name='LIAWOC_END_DATE']");
         u.set_datepicker("input[name='CUS_DOB']");
 
         u.set_datepicker("#ENDORSE_DATE");
@@ -2686,7 +2707,7 @@
             var grossPremBC = "";
             var NetPremFC = "";
             var NetPremBC = "";
-            var ExchangeRate = $('#BOND_CURRENCY_RATE').val();
+            var ExchangeRate = $('#LIAWOC_CURRENCY_RATE').val();
 
             if ($('#RCOV_SI_FC').val() == "" || $('#RCOV_SI_FC').val() == 0 || $('#RCOV_RATE').val() == "" || $('#RCOV_RATE').val() <= 0 || $('#RCOV_RATE').val() > 100) {
                 u.growl_warning("Please Check the RATE or SUM INSURED values");
@@ -2790,16 +2811,16 @@
             var EDate = $("#POLH_POL_END_DATE").val();
 
             //set the bond start date to same as policy start date
-            $("#BOND_START_DATE").val(SDate);
-            $("#BOND_END_DATE").val(EDate);
+            $("#LIAWOC_START_DATE").val(SDate);
+            $("#LIAWOC_END_DATE").val(EDate);
 
             var sdte = new Date(SDate);
             var polUWY = sdte.getFullYear();
             $("#POLH_POL_UW_YEAR").val(polUWY);
 
-            $("#BOND_UW_YEAR").val(polUWY);
+            $("#LIAWOC_UW_YEAR").val(polUWY);
 
-            //BOND_END_DATE
+            //LIAWOC_END_DATE
             var StartDate = new Date(SDate);
             var EndDate = new Date(EDate);
 
@@ -2807,7 +2828,7 @@
 
             if (polPeriodDays > 0) {
                 $("#POLH_POL_DAYS").val(polPeriodDays);
-                $("#BOND_PERIOD_DAYS").val(polPeriodDays);
+                $("#LIAWOC_PERIOD_DAYS").val(polPeriodDays);
             }
             else if ((polPeriodDays <= 0)) {
                 u.growl_warning("Policy End date cannot be less than or equal to start date");
@@ -2816,8 +2837,8 @@
                 $("#POLH_POL_END_DATE").val('');
                 $("#POLH_POL_DAYS").val('');
                 // 
-                $("#BOND_END_DATE").val('');
-                $("#BOND_PERIOD_DAYS").val('');
+                $("#LIAWOC_END_DATE").val('');
+                $("#LIAWOC_PERIOD_DAYS").val('');
             }
             else {
 
@@ -2825,15 +2846,15 @@
         }
 
         //---//Risk period days
-        document.getElementById("BOND_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
-        document.getElementById("BOND_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
+        document.getElementById("LIAWOC_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
+        document.getElementById("LIAWOC_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
         function fxnRiskPeriodDays() {
             //alert("Input field lost focus.");
             var polStartDate = new Date($("#POLH_POL_START_DATE").val());
             var PolEndDate = new Date($("#POLH_POL_END_DATE").val());
 
-            var riskStartDate = new Date($("#BOND_START_DATE").val());
-            var riskEndDate = new Date($("#BOND_END_DATE").val());
+            var riskStartDate = new Date($("#LIAWOC_START_DATE").val());
+            var riskEndDate = new Date($("#LIAWOC_END_DATE").val());
 
             var riskPeriodDays = u.get_dateDifference(riskStartDate, riskEndDate);
 
@@ -2846,7 +2867,7 @@
             else {
 
                 if (riskPeriodDays > 0) {
-                    $("#BOND_PERIOD_DAYS").val(riskPeriodDays);
+                    $("#LIAWOC_PERIOD_DAYS").val(riskPeriodDays);
                 }
             }
 
@@ -2855,8 +2876,8 @@
                 u.growl_warning("Risk End date cannot be less than or equal to start date");
 
                 //reset end date and no. of days
-                $("#BOND_START_DATE").val('');
-                $("#BOND_END_DATE").val('');
+                $("#LIAWOC_START_DATE").val('');
+                $("#LIAWOC_END_DATE").val('');
 
             }
             else if ((riskPeriodDays > 365)) {
@@ -2875,9 +2896,9 @@
         $scope.hideShowCovers = function  () {
 
             //get the selected Risk ID
-            var vehgrid = $scope.bond_grid;
+            var vehgrid = $scope.liability_grid;
             var selId = vehgrid.jqGrid("getGridParam", "selrow");
-            var vehRiskId = vehgrid.jqGrid("getCell", selId, "BOND_SYS_ID");
+            var vehRiskId = vehgrid.jqGrid("getCell", selId, "LIAWOC_SYS_ID");
 
             //get the Risk Cover data
             var covgrid = $scope.cover_grid;
@@ -2936,8 +2957,8 @@
             var sumDisFc = 0;
             var sumDisBc = 0;
 
-            //Risk/Bond Grid
-            var riskgrid = $scope.bond_grid;
+            //Risk/Liability Grid
+            var riskgrid = $scope.liability_grid;
 
             var rowIdRisk = riskgrid.jqGrid("getDataIDs");
 
@@ -2945,12 +2966,12 @@
 
             var rowIds = grid.jqGrid('getDataIDs');
 
-            //Risk/Bond Grid
-            var riskgrid = $scope.bond_grid;
+            //Risk/Liability Grid
+            var riskgrid = $scope.liability_grid;
 
             var riskRowId = riskgrid.jqGrid("getGridParam", "selrow");
 
-            var riskId = riskgrid.jqGrid("getCell", riskRowId, "BOND_SYS_ID");
+            var riskId = riskgrid.jqGrid("getCell", riskRowId, "LIAWOC_SYS_ID");
 
 
             // iterate through the rows and check if it exists each of them
@@ -3011,19 +3032,27 @@
 
             // set risk SI and Premiums vlues,
 
-            riskgrid.jqGrid("setCell", riskRowId, 'BOND_PREMIUM_FC', sumGrossPremFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, 'LIAWOC_PREMIUM_FC', sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, 'LIAWOC_PREMIUM_BC', sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_SUM_INSURED", riskSumSifc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_SI_FC", riskSumSifc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_SI_BC", riskSumSibc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_ANN_WAGES_FC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_ANN_WAGES_BC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_SI_FC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_SI_BC", riskSumSibc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_LOAD_FC", sumLoadFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_LOAD_BC", sumLoadBc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_LOAD_FC", sumLoadFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_LOAD_BC", sumLoadBc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_DISC_FC", sumDisFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "BOND_DISC_BC", sumDisBc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_DISC_FC", sumDisFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LIAWOC_DISC_BC", sumDisBc.toFixed(2));
+            //
+            $('#LIAWOC_ANN_WAGES_FC').val(riskSumSifc.toFixed(2));
+            $('#LIAWOC_ANN_WAGES_BC').val(riskSumSibc.toFixed(2));
+
+            $('#LIAWOC_PREMIUM_FC').val(sumGrossPremFc.toFixed(2));
+            $('#LIAWOC_PREMIUM_BC').val(sumGrossPremBc.toFixed(2));
 
             // Policy Level SI and premium Calculations 
             $scope.SumPolhAmounts();
@@ -3056,7 +3085,7 @@
             var polSifc = 0;
             var polSibc = 0;
             //
-            var polgrid = $scope.bond_grid;
+            var polgrid = $scope.liability_grid;
 
             var polrowIds = polgrid.jqGrid('getDataIDs');
 
@@ -3068,17 +3097,17 @@
 
                 // Sum risk level Amounts for Policy Level Amounts
 
-                polSifc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_SI_FC"));
-                polSibc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_SI_BC"));
+                polSifc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_SI_FC"));
+                polSibc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_SI_BC"));
 
-                polGrossPremFc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_TOT_PREM_FC"));
-                polGrossPremBc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_TOT_PREM_BC"));
+                polGrossPremFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_TOT_PREM_FC"));
+                polGrossPremBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_TOT_PREM_BC"));
 
-                polLoadFc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_LOAD_FC"));
-                polLoadBc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_LOAD_BC"));
+                polLoadFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_LOAD_FC"));
+                polLoadBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_LOAD_BC"));
 
-                polDisFc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_DISC_FC"));
-                polDisBc += parseFloat(polgrid.jqGrid('getCell', currRow, "BOND_DISC_BC"));
+                polDisFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_DISC_FC"));
+                polDisBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIAWOC_DISC_BC"));
 
             }
 
@@ -3202,13 +3231,13 @@
                             result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
                             result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
 
-                            result[i]["RCOV_RISK_SYS_ID"] = $("#BOND_SYS_ID").val();
-                            result[i]["RCOV_RISK_NO"] = $("#BOND_RISK_ID").val();
+                            result[i]["RCOV_RISK_SYS_ID"] = $("#LIAWOC_SYS_ID").val();
+                            result[i]["RCOV_RISK_NO"] = $("#LIAWOC_RISK_ID").val();
                             //result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
 
 
                             var deftCoverCode = result[i].RCOV_CODE;
-                            var newRiskCode = $("#BOND_SYS_ID").val();
+                            var newRiskCode = $("#LIAWOC_SYS_ID").val();
 
                             var verifyRiskCover = deftCoverCode + newRiskCode; //alert(verifyRiskCover);
 
@@ -3306,7 +3335,7 @@
                         else {
                             console.log(policyData);
                             var policyData = u.parse_form("#policyreportForm");
-                            window.open("/PolicySchedules/PolicyBondSchedule/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
+                            window.open("/PolicySchedules/PolicyLiabilitySchedule/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
                         }
                     });
                 }

@@ -1,16 +1,16 @@
 ﻿(function (s, u) {
     s.add({
-        save_policy: function (bonds, success, error) {
-            u.post("/api/policyhomeowners/save", bonds, success, error);
+        save_policy: function (liability, success, error) {
+            u.post("/api/policyliability/save", liability, success, error);
         },
         get_policys: function (success, error) {
-            u.get("/api/policyhomeowners", success, error);
+            u.get("/api/policyliability", success, error);
         },
         search_policy: function (query, success, error) {
-            u.get("/api/policyhomeowners/search/" + query, success, error);
+            u.get("/api/policyliability/search/" + query, success, error);
         },
         confirmPolicy: function (polId, success,error) {
-            u.get("/api/Confirmation/confirmHomeOwnersPolicy/" + polId, success, error);
+            u.get("/api/Confirmation/confirmLiabilityPolicy/" + polId, success, error);
         },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);
@@ -48,12 +48,7 @@
         get_lov_Intermediary_Comm: function (code, success, error) {
             u.post("/api/IntermediaryCommission/lov/", code, success, error);
         },
-        get_lov_section: function (success, error) {
-            u.get("/api/section/lov", success, error);
-        },
-        get_lov_location: function (success, error) {
-            u.get("/api/location/lov", success, error);
-        },
+
         get_lov_cedent: function (success, error) {
             u.get("/api/customercategory/lov", success, error);
         },
@@ -108,7 +103,7 @@
             u.post("/api/RisksCovers/additionalCovers", data, success, error);
         },
         getRiskDefaulCovers: function (data,success,error) {
-            u.post("/api/RisksCovers/HownrsdefaultCovers", data, success, error);
+            u.post("/api/RisksCovers/defaultCovers", data, success, error);
         },
 
         getRiskCoversLOV: function (data, success, error) {
@@ -127,13 +122,6 @@
         },
         getRiskFees: function (data, success, error) {
             u.post("/api/productriskfee/RiskFees", data, success, error)
-        },
-
-        search_section_hwnrs: function (query, success, error) {
-            u.get("/api/homeowners/search/" + query, success, error);
-        },
-        get_section_hwnrs: function (success, error) {
-            u.get("/api/homeowners", success, error);
         },
     });
 })(window.service, window.utility)

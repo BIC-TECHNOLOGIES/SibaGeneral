@@ -42,7 +42,7 @@
 
 
               $scope.estDtls_grid = u.default_grid("#grdEstimatesDtls", "#grdEstimatesDtlsPager", "Claim Estimate Details List",
-        ['Code', 'Name', 'Amount', ' OS Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
+       ['Code', 'Name', 'Amount', ' OS Amount', 'Status', 'Created By', 'Created Date', 'ID', 'Claim ID'],
        [
           { name: 'CLM_EST_TYPE', id: true, index: 'CLM_EST_TYPE' },
           { name: 'CLM_EST_NAME', index: 'CLM_EST_NAME', width: 200 },
@@ -115,12 +115,14 @@
                     CLM_CLT_CODE: grid.jqGrid('getCell', sel_id, 'POLH_CUST_CODE'),
                     CLM_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'POLH_SYS_ID'),
                 }, "#clmEstimateForm");
+
+                $scope.getClientLov();
                
             },
             //Retrive Grid data into form input fields on row double click.... XXX
             function (sel_id) {
 
-                var grid = $scope.polh_grid;
+                var grid = $scope.polh_grid; 
                 var sel_id = grid.jqGrid('getGridParam', 'selrow');
                 $("form input[name='POLH_SYS_ID']").data("update", true);
                 u.fill_form({
@@ -155,7 +157,7 @@
                         /*
                          * clear grid before populating
                          */
-                        $scope.polh_grid.jqGrid("clearGridData");
+                        $scope.polh_grid.jqGrid("clearGridData"); 
                         for (var i in result) {
                             $scope.polh_grid.addRowData(result[i].POLH_SYS_ID, result[i])
                         }
