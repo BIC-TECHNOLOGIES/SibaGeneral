@@ -1,19 +1,19 @@
 ﻿(function (s, u) {
     s.add({
-        save_policy: function (companys, success, error) {
-            u.post("/api/policyfire/save", companys, success, error);
+        save_policy: function (bonds, success, error) {
+            u.post("/api/policybond/save", bonds, success, error);
         },
-        get_fires: function (success, error) {
-            u.get("/api/policyfire", success, error);
+        get_policys: function (success, error) {
+            u.get("/api/policybond", success, error);
         },
         search_policy: function (query, success, error) {
-            u.get("/api/policyfire/search/" + query, success, error);
+            u.get("/api/policybond/search/" + query, success, error);
         },
-        confirmPolicy: function (polId, success, error) {
-            u.get("/api/Confirmation/confirmFirePolicy/" + polId, success, error);
+        confirmPolicy: function (polId, success,error) {
+            u.get("/api/Confirmation/confirmBondPolicy/" + polId, success, error);
         },
         risk_end_deletion: function (sysID, endNo, success, error) {
-            u.get("/api/policyfire/endDeletion/" + sysID + "/" + endNo, success, error);
+            u.get("/api/policybond/endDeletion/" + sysID + "/" + endNo, success, error);
         },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);
@@ -48,36 +48,10 @@
         get_lov_currency: function (success, error) {
             u.get("/api/exchangerate/lov", success, error);
         },
-        get_lov_makemodel: function (success, error) {
-            u.get("/api/makemodel/lov", success, error);
-        },
-        get_lov_motor_risks: function (success, error) {
-            u.get("/api/motorrisk/lov", success, error);
-        },
-        get_lov_area: function (success, error) {
-            u.get("/api/area/lov", success, error);
-        },
-        get_lov_location: function (success, error) {
-            u.get("/api/location/lov", success, error);
-        },
-        get_lov_region: function (success, error) {
-            u.get("/api/regions/lov", success, error);
-        },
-        get_lov_occupancy: function (success, error) {
-            u.get("/api/occupancy/lov", success, error);
-        },
-        get_lov_eqzone: function (success, error) {
-            u.get("/api/fireeqzone/lov", success, error);
-        },
-        get_lov_risk: function (success, error) {
-            u.get("/api/firerisk/lov", success, error);
-        },
-        get_customer: function (code, success, error) {
-            u.get("/api/Customer/" + code, success, error);
-        },
         get_lov_Intermediary_Comm: function (code, success, error) {
             u.post("/api/IntermediaryCommission/lov/", code, success, error);
         },
+
         get_lov_cedent: function (success, error) {
             u.get("/api/customercategory/lov", success, error);
         },
@@ -86,6 +60,15 @@
         },
         get_lov_member_com: function (success, error) {
             u.get("/api/customercategory/lov", success, error);
+        },
+        get_lov_regions: function (success, error) {
+            u.get("/api/regions/lov", success, error);
+        },
+        get_lov_occupancy: function (success, error) {
+            u.get("/api/occupancy/lov", success, error);
+        },
+        get_lov_eqzone: function (success, error) {
+            u.get("/api/fireeqzone/lov", success, error);
         },
 
         check_company_code: function (code, success, error) {
@@ -124,14 +107,8 @@
         check_occupancy_code: function (code, success, error) {
             u.get("/api/occupancy/check/" + code, success, error);
         },
-        check_eqzone_code: function (code, success, error) {
-            u.get("/api/fireeqzone/check/" + code, success, error);
-        },
-        check_fire_risk_code: function (code, success, error) {
-            u.get("/api/firerisk/check/" + code, success, error);
-        },
-        check_region_code: function (code, success, error) {
-            u.get("/api/regions/check/" + code, success, error);
+        get_customer: function (code, success, error) {
+            u.get("/api/Customer/" + code, success, error);
         },
 
         getAddRiskCovers: function (data, success, error) {
@@ -154,17 +131,14 @@
         getLocation: function (data, success, error) {
             u.post("/api/location/locationLov", data, success, error);
         },
-
         get_customers: function (success, error) {
             u.get("/api/customer", success, error);
         },
         search_customer: function (query, success, error) {
             u.get("/api/customer/search/" + query, success, error);
         },
-
         getRiskFees: function (data, success, error) {
             u.post("/api/productriskfee/RiskFees", data, success, error)
         },
-
     });
 })(window.service, window.utility)

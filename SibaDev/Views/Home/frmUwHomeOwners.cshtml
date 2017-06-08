@@ -471,11 +471,13 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-md-1">
-                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" />
+                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_BC" type="text" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
@@ -522,6 +524,7 @@
                                         <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
                                     </div>
 
+
                                     <div class="col-md-1">
                                         <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                     </div>
@@ -546,12 +549,11 @@
                                         <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_END_NO" type="text" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" />
+                                        <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" />
+                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                     </div>
-
                                 </div>
                                 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
@@ -765,7 +767,7 @@
                         <div class="col-md-5">
                             <button id="btn_add_HomeOwners_details" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
                             <button id="btn_update_HomeOwners_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
-                            <button id="" class="btn btn-default" type="reset"><i class="fa fa-trash-o text-danger"></i> Clear </button>
+                          
                         </div>                      
                     </div>
                 </div>
@@ -2343,19 +2345,21 @@
             </div>
 
             <div class="modal-body" style="padding: 40px 40px;">
-                <form id="endmentDeletionForm" name="confirmationForm">
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="">Endorment Deletion Reason</label>
-                            <div class="col-md-12">
-                                <textarea id="DEL_REASON" class="form-control center" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
-                            </div>
-                        </div>
-                    </div>
-
+                <form id="endmentDeletionForm" name="endmentDeletionForm">
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" id="btnEndDeletion" class="btn btn-info fa-pull-right">
+                            <label class="">Endorment Deletion Reason</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <textarea id="DEL_REASON" class="form-control" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button type="button" id="btnEndDeletion" class="btn btn-info">
                                 <i class="fa fa-edit " title="Approve" aria-hidden="true"></i> Delete Endorsement
                             </button>
                         </div>

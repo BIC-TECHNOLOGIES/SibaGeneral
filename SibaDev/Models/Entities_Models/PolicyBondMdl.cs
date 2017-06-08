@@ -560,7 +560,7 @@ namespace SibaDev.Models
                                 PR_TXN_REF = (int)SystemConstants.UnderwritingPremium,
                                 PR_UWD_ACCT_TYPE = viewPolh.POLH_INS_SOURCE
                             });
-                            db.SaveChanges();
+                           
 
                             break;
                         case "D":
@@ -578,7 +578,7 @@ namespace SibaDev.Models
                             }
                             break;
                     }
-
+                    db.SaveChanges();
                     trans.Commit();
                     return new INS_UWD_POLICY_HEAD
                     {
@@ -599,5 +599,79 @@ namespace SibaDev.Models
             }
 
         }
+
+
+        public static INS_UWD_POLICY_HEAD SaveEndsmntCancl(INS_UWD_POLICY_HEAD viewPolh)
+        {
+            var db = new SibaModel();
+            var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
+            if (dbPolh != null)
+            {
+                //update of policy header details
+                //db.INS_UWD_POLICY_HEAD.Attach(dbPolh);
+                dbPolh.Map(viewPolh);
+
+                /*----------------
+                 * risk update
+                 *--------------*/
+                foreach (var risk in viewPolh.INS_UDW_BONDS)
+                {
+                    var dbrisk = db.INS_UDW_BONDS.Find(risk.BOND_SYS_ID);
+                    switch (risk.BOND_STATUS)
+                    {
+                        case "A":
+                            if (dbrisk != null)
+                            {
+                                db.INS_UDW_BONDS.Attach(dbrisk);
+                                dbrisk.Map(risk);
+                            }
+
+                            break;
+                        case "U":
+                            risk.BOND_STATUS = "A";
+                            risk.BOND_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_BONDS.Add(risk);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_BONDS.Remove(db.INS_UDW_BONDS.Find(risk.BOND_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+                foreach (var fee in viewPolh.INS_UDW_POL_FEES)
+                {
+                    var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                    switch (fee.POL_FEE_STATUS)
+                    {
+                        case "A":
+                            if (dbFee != null)
+                            {
+                                db.INS_UDW_POL_FEES.Attach(dbFee);
+                                dbFee.Map(fee);
+                            }
+
+                            break;
+                        case "U":
+                            fee.POL_FEE_STATUS = "A";
+                            fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_POL_FEES.Add(fee);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                            break;
+                    }
+
+                }
+
+            }
+            db.SaveChanges();
+            return viewPolh;
+        }
+
+
     }
 }

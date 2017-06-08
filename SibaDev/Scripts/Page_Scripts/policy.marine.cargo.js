@@ -1,189 +1,185 @@
 ﻿(function ($, s, u, $scope) {
     $(function () {
 
-        // Liability Risk Grid
-        $scope.liability_grid = u.default_grid("#gridLiabilityRisks", "#gridLiabilityRisksPager", "Liability Policy",
+        // Home Owners Risk Grid
+        $scope.homeowners_grid = u.default_grid("#gridHomeOwnersRisks", "#gridHomeOwnersRisksPager", "Home Owners Policy",
             [
-             'Item', 'Description', 'Region Code', 'Region Name', 'Area Code', 'Area Name', 'Location Code', 'Location Name','Address','Eq Zone',
-             'Aggregate Limit FC', 'Aggregate Limit BC', 'Limit Occurance FC', 'Limit Occurance BC', 'Premium FC', 'Premium FC',
-             'SI FC', 'SI BC', 'Total Prm FC', 'Total Prm BC', 'Currrency', 'Exchange Rate', 'Start Date', 'End Date', 'Period Days',
-             'Uw Year', 'Risk Premium FC', 'Risk Premium BC', 'Adj Premium FC', 'Adj Premium BC', 'Discount FC', 'Discount BC',
-             'Load FC', 'Laod BC', 'Compulsory Fee FC', 'Compulsory Fee BC', 'Commossion FC', 'Commission BC', 'RI SI FC', 'RI SI BC',
-             'RI Prem FC', 'RI Prem BC', 'Txn Status', 'Risk State', 'Risk ID', 'PolID', 'polDocNo', 'Endorsement No.', 'Risk No', 'Product code',
-             'Cover Code', ' Renewal Status', 'Endorsement Type', 'Approval Date', 'Account Date',
-            'Create by', 'Create Date', 'Modified By', 'Modified Date', 'Status',
-            'Sys ID',
+            'Section Code', 'Section Name', 'Description', 'Location Code', 'Location Name', 'Sum Insured FC', 'Sum Insured BC', 'Premium FC', 'Premium BC',
+            'RI PML', 'PML', 'Geograhical Limit', 'SI FC', 'SI BC', 'Total Prm FC', 'Total Prm BC', 'Currrency', 'Currrency Rate', 'Start Date', 'End Date',
+            'Period Days', 'Uw Year',             
+            //
+            'Risk Premium FC', 'Risk Premium BC', 'Adj Premium FC', 'Adj Premium BC', 'Discount FC', 'Discount BC', 'Load FC', 'Laod BC',
+            'Compulsory Fee FC', 'Compulsory Fee BC', 'Commossion FC', 'Commission BC', 'RI SI FC', 'RI SI BC',
+            'RI Prem FC', 'RI Prem BC', 'Txn Status', 'Risk State',
+            //
+            'Risk ID', 'PolID', 'polDocNo', 'Endorsement No.', 'Risk No', 'Product code', 'Cover Code', ' Renewal Status', 'Endorsement Type', 'Approval Date',
+            'Account Date',  'Create by', 'Create Date', 'Modified By', 'Modified Date', 'Status', 'Sys ID'    
             ],
             [
-                { name: 'LIA_ITEM', index: 'LIA_ITEM', width: 150 },
-                { name: 'LIA_ITEM_DESC', index: 'LIA_ITEM_DESC', width: 150 },
+                    { name: 'HOP_SEC_CODE', index: 'HOP_SEC_CODE', width: 150 },
+                    { name: 'HOP_SEC_NAME', index: 'HOP_SEC_NAME', width: 150 },
+                    { name: 'HOP_DESC', index: 'HOP_DESC', width: 150 },
+                    { name: 'HOP_LOC_CODE', index: 'HOP_LOC_CODE', width: 150 },
+                    { name: 'HOP_LOC_NAME', index: 'HOP_LOC_NAME', width: 150 },                  
 
-                { name: 'LIA_REG_CODE', index: 'LIA_REG_CODE', width: 150 },
-                { name: 'LIA_REG_NAME', index: 'LIA_REG_NAME', width: 150 },
-                { name: 'LIA_AREA_CODE', index: 'LIA_AREA_CODE', width: 150 },
-                { name: 'LIA_AREA_NAME', index: 'LIA_AREA_NAME', width: 150 },
-                { name: 'LIA_LOC_CODE', index: 'LIA_AREA_CODE', width: 150 },
-                { name: 'LIA_LOC_NAME', index: 'LIA_AREA_NAME', width: 150 },
-                { name: 'LIA_LOC_ADDRS', index: 'LIA_LOC_ADDRS', width: 150 },
-                { name: 'LIA_EARTHQ_ZONE', index: 'LIA_EARTHQ_ZONE', width: 150 },
+                    { name: 'HOP_SUM_INSURED_FC', index: 'HOP_SUM_INSURED_FC', width: 150 },
+                    { name: 'HOP_SUM_INSURED_BC', index: 'HOP_SUM_INSURED_BC', width: 150 },
+                    { name: 'HOP_PREMIUM_FC', index: 'HOP_PREMIUM_FC', width: 150 },
+                    { name: 'HOP_PREMIUM_BC', index: 'HOP_PREMIUM_BC', width: 150 },
 
-                { name: 'LIA_AGG_LIM_FC', index: 'LIA_AGG_LIM_FC', width: 150 },
-                { name: 'LIA_AGG_LIM_BC', index: 'LIA_AGG_LIM_BC', width: 150 },
-                { name: 'LIA_LIM_OCCUR_FC', index: 'LIA_LIM_OCCUR_FC', width: 150 },
-                { name: 'LIA_LIM_OCCUR_BC', index: 'LIA_LIM_OCCUR_BC', width: 150 },
-                { name: 'LIA_PREMIUM_FC', index: 'LIA_PREMIUM_FC', width: 150, },
-                { name: 'LIA_PREMIUM_BC', index: 'LIA_PREMIUM_BC', width: 150 },
+                    { name: 'HOP_RIPML', index: 'HOP_RIPML', width: 150 },
+                    { name: 'HOP_PML', index: 'HOP_PML', width: 150 },
+                    { name: 'HOP_GEO_LIM', index: 'HOP_GEO_LIM', width: 150 },
 
-                { name: 'LIA_SI_FC', index: 'LIA_SI_FC', width: 150 },
-                { name: 'LIA_SI_BC', index: 'LIA_SI_BC', width: 150 },
-                { name: 'LIA_TOT_PREM_FC', index: 'LIA_TOT_PREM_FC', width: 150 },
-                { name: 'LIA_TOT_PREM_BC', index: 'LIA_TOT_PREM_BC', width: 150 },
-                { name: 'LIA_CURRENCY', index: 'LIA_CURRENCY', width: 150, },
-                { name: 'LIA_CURRENCY_RATE', index: 'LIA_CURRENCY_RATE', width: 150 },
-                { name: 'LIA_START_DATE', index: 'LIA_START_DATE', width: 150 },
-                { name: 'LIA_END_DATE', index: 'LIA_END_DATE', width: 150 },
-                { name: 'LIA_PERIOD_DAYS', index: 'LIA_PERIOD_DAYS', width: 150 },
-                { name: 'LIA_UW_YEAR', index: 'LIA_UW_YEAR', width: 150 },
+                    { name: 'HOP_SI_FC', index: 'HOP_SI_FC', width: 150 },
+                    { name: 'HOP_SI_BC', index: 'HOP_SI_BC', width: 150 },
+                    { name: 'HOP_TOT_PREM_FC', index: 'HOP_TOT_PREM_FC', width: 150 },
+                    { name: 'HOP_TOT_PREM_BC', index: 'HOP_TOT_PREM_BC', width: 150 },                             
+                    { name: 'HOP_CURRENCY', index: 'HOP_CURRENCY', width: 150, },
+                    { name: 'HOP_CURRENCY_RATE', index: 'HOP_CURRENCY_RATE', width: 150 },
+                    { name: 'HOP_START_DATE', index: 'HOP_START_DATE', width: 150 },
+                    { name: 'HOP_END_DATE', index: 'HOP_END_DATE', width: 150 },
+                    { name: 'HOP_PERIOD_DAYS', index: 'HOP_PERIOD_DAYS', width: 150 },
+                    { name: 'HOP_UW_YEAR', index: 'HOP_UW_YEAR', width: 150 },                 
+                   
+                    { name: 'HOP_RISK_PREM_FC', index: 'HOP_RISK_PREM_FC', width: 150 },
+                    { name: 'HOP_RISK_PREM_BC', index: 'HOP_RISK_PREM_BC', width: 150 },
+                    { name: 'HOP_ADJ_PREM_FC', index: 'HOP_ADJ_PREM_FC', width: 150 },
+                    { name: 'HOP_ADJ_PREM_BC', index: 'HOP_ADJ_PREM_BC', width: 150 },
+                    { name: 'HOP_DISC_FC', index: 'HOP_DISC_FC', width: 150 },
+                    { name: 'HOP_DISC_BC', index: 'HOP_DISC_BC', width: 150 },
+                    { name: 'HOP_LOAD_FC', index: 'HOP_LOAD_FC', width: 150 },
+                    { name: 'HOP_LOAD_BC', index: 'HOP_LOAD_BC', width: 150 },
+                    { name: 'HOP_COMP_FEE_FC', index: 'HOP_COMP_FEE_FC', width: 150 },
+                    { name: 'HOP_COMP_FEE_BC', index: 'HOP_COMP_FEE_BC', width: 150 },
+                    { name: 'HOP_COMMISSION_FC', index: 'HOP_COMMISSION_FC', width: 150 },
+                    { name: 'HOP_COMMISSION_BC', index: 'HOP_COMMISSION_BC', width: 150 },
+                    { name: 'HOP_RI_SI_FC', index: 'HOP_RI_SI_FC', width: 150 },
+                    { name: 'HOP_RI_SI_BC', index: 'HOP_RI_SI_BC', width: 150 },
+                    { name: 'HOP_RI_PREM_FC', index: 'HOP_RI_PREM_FC', width: 150 },
+                    { name: 'HOP_RI_PREM_BC', index: 'HOP_RI_PREM_BC', width: 150 },
 
-                { name: 'LIA_RISK_PREM_FC', index: 'LIA_RISK_PREM_FC', width: 150 },
-                { name: 'LIA_RISK_PREM_BC', index: 'LIA_RISK_PREM_BC', width: 150 },
-                { name: 'LIA_ADJ_PREM_FC', index: 'LIA_ADJ_PREM_FC', width: 150 },
-                { name: 'LIA_ADJ_PREM_BC', index: 'LIA_ADJ_PREM_BC', width: 150 },
-                { name: 'LIA_DISC_FC', index: 'LIA_DISC_FC', width: 150 },
-                { name: 'LIA_DISC_BC', index: 'LIA_DISC_BC', width: 150 },
-                { name: 'LIA_LOAD_FC', index: 'LIA_LOAD_FC', width: 150 },
-                { name: 'LIA_LOAD_BC', index: 'LIA_LOAD_BC', width: 150 },
-                { name: 'LIA_COMP_FEE_FC', index: 'LIA_COMP_FEE_FC', width: 150 },
-                { name: 'LIA_COMP_FEE_BC', index: 'LIA_COMP_FEE_BC', width: 150 },
-                { name: 'LIA_COMMISSION_FC', index: 'LIA_COMMISSION_FC', width: 150 },
-                { name: 'LIA_COMMISSION_BC', index: 'LIA_COMMISSION_BC', width: 150 },
-                { name: 'LIA_RI_SI_FC', index: 'LIA_RI_SI_FC', width: 150 },
-                { name: 'LIA_RI_SI_BC', index: 'LIA_RI_SI_BC', width: 150 },
-                { name: 'LIA_RI_PREM_FC', index: 'LIA_RI_PREM_FC', width: 150 },
-                { name: 'LIA_RI_PREM_BC', index: 'LIA_RI_PREM_BC', width: 150 },
+                    { name: 'HOP_TXN_STATUS', index: 'HOP_TXN_STATUS', width: 150 },
+                    { name: 'HOP_RISK_STATE', index: 'HOP_RISK_STATE', width: 150 },
 
-                { name: 'LIA_TXN_STATUS', index: 'LIA_TXN_STATUS', width: 150 },
-                { name: 'LIA_RISK_STATE', index: 'LIA_RISK_STATE', width: 150 },
+                    { name: 'HOP_RISK_ID', index: 'HOP_RISK_ID', width: 150, sorttype: "int" },
+                    { name: 'HOP_POLH_SYS_ID', index: 'HOP_POLH_SYS_ID', width: 150 },
+                    { name: 'HOP_POLH_DOC_NO', index: 'HOP_POLH_DOC_NO', width: 150 },
+                    { name: 'HOP_POLH_END_NO', index: 'HOP_POLH_END_NO', width: 150 },
+                    { name: 'HOP_RISK_NO', index: 'HOP_RISK_NO', width: 150 },
 
-                { name: 'LIA_RISK_ID', index: 'LIA_RISK_ID', width: 150, sorttype: "int" },
-                { name: 'LIA_POLH_SYS_ID', index: 'LIA_POLH_SYS_ID', width: 150 },
-                { name: 'LIA_POLH_DOC_NO', index: 'LIA_POLH_DOC_NO', width: 150 },
-                { name: 'LIA_POLH_END_NO', index: 'LIA_POLH_END_NO', width: 150 },
-                { name: 'LIA_RISK_NO', index: 'LIA_RISK_NO', width: 150 },
+                    { name: 'HOP_PDT_CODE', index: 'HOP_PDT_CODE', width: 150 },
+                    { name: 'HOP_CVR_CODE', index: 'HOP_CVR_CODE', width: 150 },
+                    { name: 'HOP_RENEWAL_STATUS', index: 'HOP_RENEWAL_STATUS', width: 150 },
+                    { name: 'HOP_END_TYPE', index: 'HOP_END_TYPE', width: 150 },
+                    { name: 'HOP_APPROVE_DATE', index: 'HOP_APPROVE_DATE', width: 150 },
+                    { name: 'HOP_ACCT_DATE', index: 'HOP_ACCT_DATE', width: 150 },
+                    { name: 'HOP_CRTE_BY', index: 'HOP_CRTE_BY', width: 150 },
+                    { name: 'HOP_CRTE_DATE', index: 'HOP_CRTE_DATE', width: 150 },
+                    { name: 'HOP_MOD_BY', index: 'HOP_MOD_BY', width: 150 },
+                    { name: 'HOP_MOD_DATE', index: 'HOP_MOD_DATE', width: 150 },
+                    { name: 'HOP_STATUS', index: 'HOP_STATUS', width: 150 },
 
-                { name: 'LIA_PDT_CODE', index: 'LIA_PDT_CODE', width: 150 },
-                { name: 'LIA_CVR_CODE', index: 'LIA_CVR_CODE', width: 150 },
-                { name: 'LIA_RENEWAL_STATUS', index: 'LIA_RENEWAL_STATUS', width: 150 },
-                { name: 'LIA_END_TYPE', index: 'LIA_END_TYPE', width: 150 },
-                { name: 'LIA_LIAROVE_DATE', index: 'LIA_LIAROVE_DATE', width: 150 },
-                { name: 'LIA_ACCT_DATE', index: 'LIA_ACCT_DATE', width: 150 },
-                { name: 'LIA_CRTE_BY', index: 'LIA_CRTE_BY', width: 150 },
-                { name: 'LIA_CRTE_DATE', index: 'LIA_CRTE_DATE', width: 150 },
-                { name: 'LIA_MOD_BY', index: 'LIA_MOD_BY', width: 150 },
-                { name: 'LIA_MOD_DATE', index: 'LIA_MOD_DATE', width: 150 },
-                { name: 'LIA_STATUS', index: 'LIA_STATUS', width: 150 },
-
-                { name: 'LIA_SYS_ID', index: 'LIA_SYS_ID', width: 150 },
+                    { name: 'HOP_SYS_ID', index: 'HOP_SYS_ID', width: 150 },
             ],
             //Retrive Grid data into form input fields on row click..
             function (sel_id) {
-                var grid = $scope.liability_grid;
+                var grid = $scope.homeowners_grid;
                 var sel_id = grid.jqGrid('getGridParam', 'selrow');
-                $("form input[name='LIA_SYS_ID']").data("update", true);
+                $("form input[name='HOP_SYS_ID']").data("update", true);
                 u.fill_form({
-                    LIA_SYS_ID: grid.jqGrid('getCell', sel_id, 'LIA_SYS_ID'),
-                    LIA_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'LIA_POLH_SYS_ID'),
-                    LIA_POLH_DOC_NO: grid.jqGrid('getCell', sel_id, 'LIA_POLH_DOC_NO'),
-                    LIA_POLH_END_NO: grid.jqGrid('getCell', sel_id, 'LIA_POLH_END_NO'),
-                    LIA_PDT_CODE: grid.jqGrid('getCell', sel_id, 'LIA_PDT_CODE'),
-                    LIA_RISK_ID: grid.jqGrid('getCell', sel_id, 'LIA_RISK_ID'),
-                    LIA_CVR_CODE: grid.jqGrid('getCell', sel_id, 'LIA_CVR_CODE'),
-                    LIA_RENEWAL_STATUS: grid.jqGrid('getCell', sel_id, 'LIA_RENEWAL_STATUS'),
+                    HOP_SEC_CODE: grid.jqGrid('getCell', sel_id, 'HOP_SEC_CODE'),
+                    HOP_SEC_NAME: grid.jqGrid('getCell', sel_id, 'HOP_SEC_NAME'),
+                    HOP_DESC: grid.jqGrid('getCell', sel_id, 'HOP_DESC'),
+                    HOP_LOC_CODE: grid.jqGrid('getCell', sel_id, 'HOP_LOC_CODE'),
+                    HOP_PML: grid.jqGrid('getCell', sel_id, 'HOP_PML'),
+                    HOP_GEO_LIM: grid.jqGrid('getCell', sel_id, 'HOP_GEO_LIM'),
 
-                    LIA_PRINCIPAL: grid.jqGrid('getCell', sel_id, 'LIA_PRINCIPAL'),
-                    LIA_CURRENCY: grid.jqGrid('getCell', sel_id, 'LIA_CURRENCY'),
-                    LIA_CURRENCY_RATE: grid.jqGrid('getCell', sel_id, 'LIA_CURRENCY_RATE'),
-                    LIA_START_DATE: grid.jqGrid('getCell', sel_id, 'LIA_START_DATE'),
-                    LIA_END_DATE: grid.jqGrid('getCell', sel_id, 'LIA_END_DATE'),
-                  
-                    LIA_SI_FC: grid.jqGrid('getCell', sel_id, 'LIA_SI_FC'),
-                    LIA_SI_BC: grid.jqGrid('getCell', sel_id, 'LIA_SI_BC'),
-                    LIA_TOT_PREM_FC: grid.jqGrid('getCell', sel_id, 'LIA_TOT_PREM_FC'),
-                    LIA_TOT_PREM_BC: grid.jqGrid('getCell', sel_id, 'LIA_TOT_PREM_BC'),
-                    LIA_RISK_PREM_FC: grid.jqGrid('getCell', sel_id, 'LIA_RISK_PREM_FC'),
-                    LIA_RISK_PREM_BC: grid.jqGrid('getCell', sel_id, 'LIA_RISK_PREM_BC'),
-                    LIA_ADJ_PREM_FC: grid.jqGrid('getCell', sel_id, 'LIA_ADJ_PREM_FC'),
+                    HOP_SYS_ID: grid.jqGrid('getCell', sel_id, 'HOP_SYS_ID'),
+                    HOP_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'HOP_POLH_SYS_ID'),
+                    HOP_POLH_DOC_NO: grid.jqGrid('getCell', sel_id, 'HOP_POLH_DOC_NO'),
+                    HOP_POLH_END_NO: grid.jqGrid('getCell', sel_id, 'HOP_POLH_END_NO'),
+                    HOP_PDT_CODE: grid.jqGrid('getCell', sel_id, 'HOP_PDT_CODE'),
+                    HOP_RISK_ID: grid.jqGrid('getCell', sel_id, 'HOP_RISK_ID'),
+                    HOP_CVR_CODE: grid.jqGrid('getCell', sel_id, 'HOP_CVR_CODE'),
+                    HOP_RENEWAL_STATUS: grid.jqGrid('getCell', sel_id, 'HOP_RENEWAL_STATUS'),
 
-                    LIA_ADJ_PREM_BC: grid.jqGrid('getCell', sel_id, 'LIA_ADJ_PREM_BC'),
-                    LIA_DISC_FC: grid.jqGrid('getCell', sel_id, 'LIA_DISC_FC'),
-                    LIA_DISC_BC: grid.jqGrid('getCell', sel_id, 'LIA_DISC_BC'),
-                    LIA_LOAD_FC: grid.jqGrid('getCell', sel_id, 'LIA_LOAD_FC'),
-                    LIA_LOAD_BC: grid.jqGrid('getCell', sel_id, 'LIA_LOAD_BC'),
-                    LIA_COMP_FEE_FC: grid.jqGrid('getCell', sel_id, 'LIA_COMP_FEE_FC'),
+                    HOP_LOC_NAME: grid.jqGrid('getCell', sel_id, 'HOP_LOC_NAME'),
+                    HOP_CURRENCY: grid.jqGrid('getCell', sel_id, 'HOP_CURRENCY'),
+                    HOP_CURRENCY_RATE: grid.jqGrid('getCell', sel_id, 'HOP_CURRENCY_RATE'),
+                    HOP_START_DATE: grid.jqGrid('getCell', sel_id, 'HOP_START_DATE'),
+                    HOP_END_DATE: grid.jqGrid('getCell', sel_id, 'HOP_END_DATE'),
 
-                    LIA_COMP_FEE_BC: grid.jqGrid('getCell', sel_id, 'LIA_COMP_FEE_BC'),
-                    LIA_COMMISSION_FC: grid.jqGrid('getCell', sel_id, 'LIA_COMMISSION_FC'),
-                    LIA_COMMISSION_BC: grid.jqGrid('getCell', sel_id, 'LIA_COMMISSION_BC'),
-                    LIA_TXN_STATUS: grid.jqGrid('getCell', sel_id, 'LIA_TXN_STATUS'),
-                    LIA_RISK_STATE: grid.jqGrid('getCell', sel_id, 'LIA_RISK_STATE'),
-                    LIA_END_TYPE: grid.jqGrid('getCell', sel_id, 'LIA_END_TYPE'),
+                    HOP_SI_FC: grid.jqGrid('getCell', sel_id, 'HOP_SI_FC'),
+                    HOP_SI_BC: grid.jqGrid('getCell', sel_id, 'HOP_SI_BC'),
+                    HOP_TOT_PREM_FC: grid.jqGrid('getCell', sel_id, 'HOP_TOT_PREM_FC'),
+                    HOP_TOT_PREM_BC: grid.jqGrid('getCell', sel_id, 'HOP_TOT_PREM_BC'),                  
+                    HOP_RISK_PREM_FC: grid.jqGrid('getCell', sel_id, 'HOP_RISK_PREM_FC'),
+                    HOP_RISK_PREM_BC: grid.jqGrid('getCell', sel_id, 'HOP_RISK_PREM_BC'),
+                    HOP_ADJ_PREM_FC: grid.jqGrid('getCell', sel_id, 'HOP_ADJ_PREM_FC'),
 
-                    LIA_ITEM: grid.jqGrid('getCell', sel_id, 'LIA_ITEM'),
-                    LIA_ITEM_DESC: grid.jqGrid('getCell', sel_id, 'LIA_ITEM_DESC'),
-                    LIA_CRTE_BY: grid.jqGrid('getCell', sel_id, 'LIA_CRTE_BY'),
-                    LIA_CRTE_DATE: grid.jqGrid('getCell', sel_id, 'LIA_CRTE_DATE'),
-                    LIA_AGG_LIM_FC: grid.jqGrid('getCell', sel_id, 'LIA_AGG_LIM_FC'),
-                    LIA_AGG_LIM_BC: grid.jqGrid('getCell', sel_id, 'LIA_AGG_LIM_BC'),
-                    LIA_LIM_OCCUR_FC: grid.jqGrid('getCell', sel_id, 'LIA_LIM_OCCUR_FC'),
-                    LIA_LIM_OCCUR_BC: grid.jqGrid('getCell', sel_id, 'LIA_LIM_OCCUR_BC'),
+                    HOP_ADJ_PREM_BC: grid.jqGrid('getCell', sel_id, 'HOP_ADJ_PREM_BC'),
+                    HOP_DISC_FC: grid.jqGrid('getCell', sel_id, 'HOP_DISC_FC'),
+                    HOP_DISC_BC: grid.jqGrid('getCell', sel_id, 'HOP_DISC_BC'),
+                    HOP_LOAD_FC: grid.jqGrid('getCell', sel_id, 'HOP_LOAD_FC'),
+                    HOP_LOAD_BC: grid.jqGrid('getCell', sel_id, 'HOP_LOAD_BC'),
+                    HOP_COMP_FEE_FC: grid.jqGrid('getCell', sel_id, 'HOP_COMP_FEE_FC'),
 
-                    LIA_PREMIUM_FC: grid.jqGrid('getCell', sel_id, 'LIA_PREMIUM_FC'),
-                    LIA_PREMIUM_BC: grid.jqGrid('getCell', sel_id, 'LIA_PREMIUM_BC'),
-                    LIA_STATUS: grid.jqGrid('getCell', sel_id, 'LIA_STATUS'),
+                    HOP_COMP_FEE_BC: grid.jqGrid('getCell', sel_id, 'HOP_COMP_FEE_BC'),
+                    HOP_COMMISSION_FC: grid.jqGrid('getCell', sel_id, 'HOP_COMMISSION_FC'),
+                    HOP_COMMISSION_BC: grid.jqGrid('getCell', sel_id, 'HOP_COMMISSION_BC'),
+                    HOP_TXN_STATUS: grid.jqGrid('getCell', sel_id, 'HOP_TXN_STATUS'),
+                    HOP_RISK_STATE: grid.jqGrid('getCell', sel_id, 'HOP_RISK_STATE'),
+                    HOP_END_TYPE: grid.jqGrid('getCell', sel_id, 'HOP_END_TYPE'),
 
-                }, "#interestForm");
+                    HOP_APPROVE_DATE: grid.jqGrid('getCell', sel_id, 'HOP_APPROVE_DATE'),
+                    HOP_ACCT_DATE: grid.jqGrid('getCell', sel_id, 'HOP_ACCT_DATE'),
+                    HOP_CRTE_BY: grid.jqGrid('getCell', sel_id, 'HOP_CRTE_BY'),
+                    HOP_CRTE_DATE: grid.jqGrid('getCell', sel_id, 'HOP_CRTE_DATE'),
+                    HOP_PERIOD_DAYS: grid.jqGrid('getCell', sel_id, 'HOP_PERIOD_DAYS'),
+                    HOP_RISK_NO: grid.jqGrid('getCell', sel_id, 'HOP_RISK_NO'),
 
-                 u.fill_form({
-                     LIA_REG_CODE: grid.jqGrid('getCell', sel_id, 'LIA_REG_CODE'),
-                     LIA_REG_NAME: grid.jqGrid('getCell', sel_id, 'LIA_REG_NAME'),
-                     LIA_AREA_CODE: grid.jqGrid('getCell', sel_id, 'LIA_AREA_CODE'),
-                     LIA_AREA_NAME: grid.jqGrid('getCell', sel_id, 'LIA_AREA_NAME'),
-                     LIA_LOC_CODE: grid.jqGrid('getCell', sel_id, 'LIA_LOC_CODE'),
-                     LIA_LOC_NAME: grid.jqGrid('getCell', sel_id, 'LIA_LOC_NAME'),
-                     LIA_LOC_ADDRS: grid.jqGrid('getCell', sel_id, 'LIA_LOC_ADDRS'),
-                     LIA_EARTHQ_ZONE: grid.jqGrid('getCell', sel_id, 'LIA_EARTHQ_ZONE'),
-                 }, "#blockForm");
+                    HOP_SUM_INSURED_FC: grid.jqGrid('getCell', sel_id, 'HOP_SUM_INSURED_FC'),
+                    HOP_SUM_INSURED_BC: grid.jqGrid('getCell', sel_id, 'HOP_SUM_INSURED_BC'),
+                    HOP_PREMIUM_FC: grid.jqGrid('getCell', sel_id, 'HOP_PREMIUM_FC'),
+                    HOP_PREMIUM_BC: grid.jqGrid('getCell', sel_id, 'HOP_PREMIUM_BC'),
+                    HOP_RIPML: grid.jqGrid('getCell', sel_id, 'HOP_RIPML'),
+                    HOP_PML: grid.jqGrid('getCell', sel_id, 'HOP_PML'),
+                    HOP_GEO_LIM: grid.jqGrid('getCell', sel_id, 'HOP_GEO_LIM'),
+                    HOP_DESCRIPTION: grid.jqGrid('getCell', sel_id, 'HOP_DESCRIPTION'),
+                    HOP_STATUS: grid.jqGrid('getCell', sel_id, 'HOP_STATUS'),
 
+                }, "#homeForm");
                 u.fill_form({
-                    RCOV_RISK_SYS_ID: grid.jqGrid('getCell', sel_id, 'LIA_SYS_ID'),
+                    RCOV_RISK_SYS_ID: grid.jqGrid('getCell', sel_id, 'HOP_SYS_ID'),
                 }, "#coverForm");
 
                 u.fill_form({
-                    FINW_ORIG_SI_FC: grid.jqGrid("getCell", sel_id, "LIA_SI_FC"),
-                    FINW_ORIG_SI_BC: grid.jqGrid("getCell", sel_id, "LIA_SI_BC"),
-                    FINW_ORIG_PREM_FC: grid.jqGrid("getCell", sel_id, "LIA_TOT_PREM_FC"),
-                    FINW_ORIG_PREM_BC: grid.jqGrid("getCell", sel_id, "LIA_TOT_PREM_BC"),
+                    FINW_ORIG_SI_FC: grid.jqGrid("getCell", sel_id, "HOP_SI_FC"),
+                    FINW_ORIG_SI_BC: grid.jqGrid("getCell", sel_id, "HOP_SI_BC"),
+                    FINW_ORIG_PREM_FC: grid.jqGrid("getCell", sel_id, "HOP_TOT_PREM_FC"),
+                    FINW_ORIG_PREM_BC: grid.jqGrid("getCell", sel_id, "HOP_TOT_PREM_BC"),
                 }, "#facInwardForm");
 
                 u.fill_form({
-                    FOTW_SHARE_SI_FC: grid.jqGrid("getCell", sel_id, "LIA_SI_FC"),
-                    FOTW_SHARE_SI_BC: grid.jqGrid("getCell", sel_id, "LIA_SI_BC"),
-                    FOTW_SHARE_PREM_FC: grid.jqGrid("getCell", sel_id, "LIA_TOT_PREM_FC"),
-                    FOTW_SHARE_PREM_BC: grid.jqGrid("getCell", sel_id, "LIA_TOT_PREM_BC"),
+                    FOTW_SHARE_SI_FC: grid.jqGrid("getCell", sel_id, "HOP_SI_FC"),
+                    FOTW_SHARE_SI_BC: grid.jqGrid("getCell", sel_id, "HOP_SI_BC"),
+                    FOTW_SHARE_PREM_FC: grid.jqGrid("getCell", sel_id, "HOP_TOT_PREM_FC"),
+                    FOTW_SHARE_PREM_BC: grid.jqGrid("getCell", sel_id, "HOP_TOT_PREM_BC"),
 
                 }, "#CoinsLeaderForm");
 
             },
                 function (id) {
 
-                    var grid = $scope.liability_grid;
+                    var grid = $scope.homeowners_grid;
 
                     var sel_id = grid.jqGrid('getGridParam', 'selrow');
-                    var bondRiskID = grid.jqGrid('getCell', sel_id, 'LIA_SYS_ID');
+                    var bondRiskID = grid.jqGrid('getCell', sel_id, 'HOP_SYS_ID');
 
-                    if (bondRiskID == $("#LIA_SYS_ID").val()) {
+                    if (bondRiskID == $("#HOP_SYS_ID").val()) {
 
-                        $("#LiabilityModal").modal();
+                        $("#HomeOwnersModal").modal();
 
                         //  $("#RiskCoverModal").modal();
 
@@ -192,7 +188,7 @@
                     }
                     else {
 
-                        u.growl_warning("No Liability Risk selected, Please check and try again");
+                        u.growl_warning("No Home Owners Risk selected, Please check and try again");
 
                     };
 
@@ -200,10 +196,43 @@
                 }),
 
 
+          // Section Details Grid
+            $scope.secdetails_grid = u.default_grid("#gridSecDetails", "#gridSecDetailsPager", "Risk Section Details",
+            [
+            'Risk sys ID', 'Sys ID', 'Item Name', 'Sum Insured', 'Quantity', 'Description',
+            'Created by', 'Post Date', 'Modified by', 'Modified Date', 'Status'
+            ],
+            [
+                { name: 'HODT_HOP_SYS_ID', index: 'HODT_HOP_SYS_ID', width: 200 },
+                { name: 'HODT_SYS_ID', index: 'HODT_SYS_ID', width: 200 },
+                { name: 'HODT_ITEM_NAME', index: 'HODT_ITEM_NAME', width: 200 },
+                { name: 'HODT_SUM_INSURED', index: 'HODT_SUM_INSURED', width: 200 },
+                { name: 'HODT_QTY', index: 'HODT_QTY', width: 200 },
+                { name: 'HODT_DESC', index: 'HODT_DESC', width: 200 },              
+                { name: 'HODT_CRTE_BY', index: 'HODT_CRTE_BY', width: 200 },
+                { name: 'HODT_CRTE_DATE', index: 'HODT_CRTE_DATE', width: 200 },
+                { name: 'HODT_MOD_BY', index: 'HODT_MOD_BY', width: 200 },
+                { name: 'HODT_MOD_DATE', index: 'HODT_MOD_DATE', width: 200 },
+                { name: 'HODT_STATUS', index: 'HODT_STATUS', width: 200 },
+            ],
+           //Retrive Grid data into form input fields on row click..
+            function (sel_id) {
+                var grid = $scope.secdetails_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow');
+                $("form input[name='HODT_SYS_ID']").data("update", true);
+                u.fill_form({
+                    HODT_ITEM_NAME: grid.jqGrid('getCell', sel_id, 'HODT_ITEM_NAME'),
+                    HODT_SUM_INSURED: grid.jqGrid('getCell', sel_id, 'HODT_SUM_INSURED'),
+                    HODT_QTY: grid.jqGrid('getCell', sel_id, 'HODT_QTY'),
+                    HODT_DESC: grid.jqGrid('getCell', sel_id, 'HODT_DESC'),
+                   
+                }, "#secdetailsForm");
+            }),
+
+
         // Cover Grid
         $scope.cover_grid = u.default_grid("#gridAppCovers", "#gridAppCoversPager", "Cover",
-            ['Cover Code', 'Cover Name',
-                'Cover Type', 'Sum Insured FC', 'Sum Insured BC', 'Rate',
+            ['Cover Code', 'Cover Name','Cover Type', 'Sum Insured FC', 'Sum Insured BC', 'Rate',              
                     'Gross Premium FC', 'Gross Premium BC', "Annual Premium FC", "Annual Premium BC", 'Net Premium FC', 'Net Premium BC',
                     'Discount Applicable', 'Discount FC', 'Discount BC', 'Load Apllicable', 'Load FC', 'Load BC',
                     'Cover id', 'Risk id', 'Cover No.',
@@ -453,18 +482,18 @@
             [' Code', 'Fee Name', 'FC Amount', 'BC Amount',
                     'Polh SYS ID', 'Risk SYS ID', 'Risk N0', 'Risk Code', 'Polh End No.', 'Status', 'Fee SYS ID'],
             [
-                { name: 'LIA_FEE_CODE', index: 'LIA_FEE_CODE', width: 150 },
-                { name: 'LIA_FEE_NAME', index: 'LIA_FEE_NAME', width: 200 },
-                { name: 'LIA_FEE_FC_AMOUNT', index: 'LIA_FEE_FC_AMOUNT', width: 150 },
-                { name: 'LIA_FEE_BC_AMOUNT', index: 'LIA_FEE_BC_AMOUNT', width: 150 },
+                { name: 'HOP_FEE_CODE', index: 'HOP_FEE_CODE', width: 150 },
+                { name: 'HOP_FEE_NAME', index: 'HOP_FEE_NAME', width: 200 },
+                { name: 'HOP_FEE_FC_AMOUNT', index: 'HOP_FEE_FC_AMOUNT', width: 150 },
+                { name: 'HOP_FEE_BC_AMOUNT', index: 'HOP_FEE_BC_AMOUNT', width: 150 },
 
-                { name: 'LIA_FEE_POL_SYS_ID', index: 'LIA_FEE_POL_SYS_ID', width: 150 },
-                { name: 'LIA_FEE_RK_SYS_ID', index: 'LIA_FEE_RK_SYS_ID', width: 150 },
-                { name: 'LIA_FEE_RK_NO', index: 'LIA_FEE_RK_NO', width: 150 },
-                { name: 'LIA_FEE_RK_CODE', index: 'LIA_FEE_RK_CODE', width: 150 },
-                { name: 'LIA_FEE_END_NO', index: 'LIA_FEE_END_NO', width: 150 },
-                { name: 'LIA_FEE_STATUS', index: 'LIA_FEE_STATUS', width: 150 },
-                { name: 'LIA_FEE_SYS_ID', index: 'LIA_FEE_SYS_ID', width: 150 },
+                { name: 'HOP_FEE_POL_SYS_ID', index: 'HOP_FEE_POL_SYS_ID', width: 150 },
+                { name: 'HOP_FEE_RK_SYS_ID', index: 'HOP_FEE_RK_SYS_ID', width: 150 },
+                { name: 'HOP_FEE_RK_NO', index: 'HOP_FEE_RK_NO', width: 150 },
+                { name: 'HOP_FEE_RK_CODE', index: 'HOP_FEE_RK_CODE', width: 150 },
+                { name: 'HOP_FEE_END_NO', index: 'HOP_FEE_END_NO', width: 150 },
+                { name: 'HOP_FEE_STATUS', index: 'HOP_FEE_STATUS', width: 150 },
+                { name: 'HOP_FEE_SYS_ID', index: 'HOP_FEE_SYS_ID', width: 150 },
             ],
            //Retrive Grid data into form input fields on row click..
             function (sel_id) {
@@ -472,11 +501,11 @@
             }),
 
 
-        // Applicable Policy Fees Summary
+           // Applicable Policy Fees Summary
         $scope.polfees_grid = u.default_grid("#gridPolFees", "#gridPolFeesPager", "Policy Fees Summary",
             ["Fee Code", "Fee Name", "FC Amount", "BC Amount", "Polh SYS ID", "Polh End No.", "Status",
                     "Created By", "Created Date", "Mod By", "Mod Date", "Fee SYS ID"],
-            [
+            [ 
                 { name: "POL_FEE_CODE", index: "POL_FEE_CODE", width: 150 },
                 { name: "POL_FEE_NAME", index: "POL_FEE_NAME", width: 200 },
                 { name: "POL_FEE_FC_AMOUNT", index: "POL_FEE_FC_AMOUNT", width: 150 },
@@ -640,7 +669,7 @@
             }),
 
         // Product Risk Grid ****
-        $scope.prodRisks_grid = u.default_grid("#gridProdRisk", "#gridProdRiskPager", "Liability Risk",
+        $scope.prodRisks_grid = u.default_grid("#gridProdRisk", "#gridProdRiskPager", "Home Owners Risk",
             ['Code', 'Name'],
             [
                 { name: 'RISK_CODE', index: 'RISK_CODE', width: 150 },
@@ -679,7 +708,7 @@
 
         // Customer Dialog
                 $scope.customer_grid = u.default_grid("#gridCustomer", "#gridCustomerPager", "Customer",
-            ['Code', 'Full Name', 'Date of Birth', 'Address', 'Tel no', 'Mobile', 'Created date', 'Created by'],
+            ['Code', 'Full Name', 'Date of Birth', 'Address', 'Tel no', 'Mobile', 'Created date','Created by'],
             [
                 { name: 'CUS_CODE', index: 'CUS_CODE', width: 150 },
                 { name: 'CUS_OFFICIAL_NAME', index: 'CUS_OFFICIAL_NAME', width: 150 },
@@ -931,78 +960,39 @@
             }),
 
 
-        
-                // Area Grid ****
-        $scope.area_grid = u.default_grid("#gridArea", "#gridAreaPager", "Area",
-            ["Code", "Name"],
+        // Section Details Grid ****
+        $scope.secrisks_grid = u.default_grid("#gridSecRisk", "#gridSecRiskPager", "Section Risk",
+            ['ID', 'Code', 'Name'],
             [
-                { name: "ARE_CODE", index: "ARE_CODE", width: 150 },
-                { name: "ARE_NAME", index: "ARE_NAME", width: 150 },
+                { name: 'HON_SYS_ID', index: 'HON_SYS_ID', width: 150 },
+                { name: 'HON_SEC_CODE', index: 'HON_SEC_CODE', width: 150 },
+                { name: 'HON_SEC_NAME', index: 'HON_SEC_NAME', width: 150 },
 
             ],
              //Retrive Grid data into form input fields on row click..
             function (sel_id) {
-
-                var grid = $scope.area_grid;
-                var sel_id = grid.jqGrid("getGridParam", "selrow");
-                $("form input[name='LIA_AREA_CODE']").data("update", true);
+                var grid = $scope.secrisks_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow');
+                $("form input[name='DL_CODE']").data("update", true);
                 u.fill_form({
-                    LIA_AREA_CODE: grid.jqGrid("getCell", sel_id, "ARE_CODE"),
-                    LIA_AREA_NAME: grid.jqGrid("getCell", sel_id, "ARE_NAME"),
-
-                }, "#blockForm");
+                    HOP_SEC_CODE: grid.jqGrid('getCell', sel_id, 'HON_SEC_CODE'),
+                    HOP_SEC_NAME: grid.jqGrid('getCell', sel_id, 'HON_SEC_NAME'),
+                    HON_SYS_ID: grid.jqGrid('getCell', sel_id, 'HON_SYS_ID'),
+                }, "#homeForm");
             },
-            //Retrive Grid data into form input fields on row double click.... 
+            //Retrive Grid data into form input fields on row double click.... XXX
             function (sel_id) {
-
-                var grid = $scope.area_grid;
-                var sel_id = grid.jqGrid("getGridParam", "selrow");
-                $("form input[name='LIA_AREA_CODE']").data("update", true);
+                var grid = $scope.secrisks_grid;
+                var sel_id = grid.jqGrid('getGridParam', 'selrow');
+                $("form input[name='DL_CODE']").data("update", true);
                 u.fill_form({
-                    LIA_AREA_CODE: grid.jqGrid("getCell", sel_id, "ARE_CODE"),
-                    LIA_AREA_NAME: grid.jqGrid("getCell", sel_id, "ARE_NAME"),
-
-                }, "#blockForm");
+                    HOP_SEC_CODE: grid.jqGrid('getCell', sel_id, 'HON_SEC_CODE'),
+                    HOP_SEC_NAME: grid.jqGrid('getCell', sel_id, 'HON_SEC_NAME'),
+                    HON_SYS_ID: grid.jqGrid('getCell', sel_id, 'HON_SYS_ID'),
+                }, "#homeForm");
 
                 // hide modal on double click
-                $("#areaLovModal").modal("hide");
-
-            }),
-
-
-        // Location Grid ****
-        $scope.loc_grid = u.default_grid("#gridLoc", "#gridLocPager", "Location",
-            ["Code", "Name"],
-            [
-                { name: "LOC_CODE", index: "LOC_CODE", width: 150 },
-                { name: "LOC_NAME", index: "LOC_NAME", width: 150 },
-            ],
-             //Retrive Grid data into form input fields on row click..
-            function (sel_id) {
-
-                var grid = $scope.loc_grid;
-                var sel_id = grid.jqGrid("getGridParam", "selrow");
-                $("form input[name='LIA_LOC_CODE']").data("update", true);
-                u.fill_form({
-                    LIA_LOC_CODE: grid.jqGrid("getCell", sel_id, "LOC_CODE"),
-                    LIA_LOC_NAME: grid.jqGrid("getCell", sel_id, "LOC_NAME"),
-
-                }, "#blockForm");
-            },
-            //Retrive Grid data into form input fields on row double click....
-            function (sel_id) {
-
-                var grid = $scope.loc_grid;
-                var sel_id = grid.jqGrid("getGridParam", "selrow");
-                $("form input[name='LIA_LOC_CODE']").data("update", true);
-                u.fill_form({
-                    LIA_LOC_CODE: grid.jqGrid("getCell", sel_id, "LOC_CODE"),
-                    LIA_LOC_NAME: grid.jqGrid("getCell", sel_id, "LOC_NAME"),
-
-                }, "#blockForm");
-
-                // hide modal on double click
-                $("#locationLovModal").modal("hide");
+                $("#secRiskLovModal").modal('hide');
 
             }),
 
@@ -1011,8 +1001,8 @@
 
 
         /*------------------------------------------
-         * Tabs Layout function call using Jquery 
-         *----------------------------------------*/
+ * Tabs Layout function call using Jquery 
+ *----------------------------------------*/
         //  
         $("#tabs").tabs({
             beforeLoad: function (event, ui) {
@@ -1022,11 +1012,9 @@
                       "If this wouldn't be a demo.");
                 });
             }
-        });
-
-        /*----------------------
-        * LOV initialization
-        *--------------------*/
+        }); /*----------------------
+ * LOV initialization
+ *--------------------*/
         $scope.lov = u.lov_init("#myLOVModal", "#grdLOVRegion", "#grdLOVRegionPager");
 
         /*-----------------------------------------
@@ -1065,7 +1053,7 @@
                     break;
                 case "btn_base_currency":
                     $scope.lov.call_dialog("Select Currency", "get_lov_currency", $scope.dialog_data);
-                    break;
+                    break;        
                 case "btn_risk":
                     $scope.lov.call_dialog("Select Risk", "get_lov_motor_risks", $scope.dialog_data);
                     break;
@@ -1081,111 +1069,14 @@
                 case "btn_member_code":
                     $scope.lov.call_dialog("Select RI Company", "get_lov_member_com", $scope.dialog_data);
                     break;
-                case "btn_region":
-                    $scope.lov.call_dialog("Select Region", "get_lov_regions", $scope.dialog_data);
+                case "btn_section":
+                    $scope.lov.call_dialog("Select Section", "get_lov_section", $scope.dialog_data);
+                    break;
+                case "btn_location":
+                    $scope.lov.call_dialog("Select Location", "get_lov_location", $scope.dialog_data);
                     break;
             }
         });
-
-
-
-        /*--------------------------------------------------
-        * Retrieving Area
-        *------------------------------------------------*/
-
-        $("#btn_Area").on("click", function () {
-
-            if ($("#LIA_REGION_CODE").val() == "") {
-
-                u.growl_warning("Region is not selected, Please check and try again");
-            }
-            else {
-                $scope.area_grid.jqGrid("clearGridData");
-                $("#areaLovModal").modal();
-
-            }
-
-        });
-
-        function getAreaLov() {
-            /*
-                obtain parameter for our request
-            */
-            var areaData = {
-                PRD_CODE: $("#LIA_REGION_CODE").val(),
-            }; //
-            var grid = $scope.area_grid;
-
-            var rowIds = grid.jqGrid("getDataIDs");
-
-            //send parameters and get motor Risks from the database
-            s.getArea(areaData, function (result) {
-                if (result && result.length && result.length > 0) {
-                    //clear Grid
-                    $scope.area_grid.jqGrid("clearGridData");
-                    //fill grid
-                    for (var i in result) {
-                        $scope.area_grid.addRowData(result[i]["ARE_CODE"], result[i]);
-                    }
-                }
-            });
-        }
-
-
-        $("#btnQueryArea").on("click", function () {
-
-            getAreaLov();
-        });
-
-
-        /*--------------------------------------------------
-        * add Location base on Area
-        *------------------------------------------------*/
-        //
-
-        $("#btn_Loc").on("click", function () {
-
-            if ($("#LIA_AREA_CODE").val() == "") {
-
-                u.growl_warning("Area is not selected, Please check and try again");
-            }
-            else {
-                $scope.loc_grid.jqGrid("clearGridData");
-                $("#locationLovModal").modal();
-
-            }
-
-        });
-
-        function getLocationLov() {
-            /*
-                obtain parameter for our request
-            */
-            var locationData = {
-                PRD_CODE: $("#LIA_AREA_CODE").val(),
-            }; //
-            var grid = $scope.loc_grid;
-
-            var rowIds = grid.jqGrid("getDataIDs");
-
-            //send parameters and get motor Risks from the database
-            s.getLocation(locationData, function (result) {
-                if (result && result.length && result.length > 0) {
-                    //clear Grid
-                    $scope.loc_grid.jqGrid("clearGridData");
-                    //fill grid
-                    for (var i in result) {
-                        $scope.loc_grid.addRowData(result[i]["LOC_CODE"], result[i]);
-                    }
-                }
-            });
-        }
-
-
-        $("#btnQueryLocation").on("click", function () {
-            getLocationLov();
-        });
-
 
         /*--------------------------------------------------
         * Retrieving customers on calling function
@@ -1267,6 +1158,45 @@
             });
         }
 
+
+        /*--------------------------------------------------
+        * Querying Section to retrieve covers
+        *------------------------------------------------*/
+        //
+
+        $("#btnQuerySecRisk").click(function () {
+            var queryTxt = $("#txtSechwnrsSearch").val();
+            if (queryTxt != null && queryTxt.length > 0) {
+                s.search_section_hwnrs(queryTxt,
+                    function (result) {
+                        /*
+                         * clear grid before populating
+                         */
+                        $scope.secrisks_grid.jqGrid("clearGridData");
+                        for (var i in result) {
+                            $scope.secrisks_grid.addRowData(result[i].HON_SYS_ID, result[i])
+                        }
+                    },
+                    function (err) {
+
+                    })
+            } else {
+                /*--------------------------------
+                 * clear grid before populating
+                 *------------------------------*/
+                $scope.secrisks_grid.jqGrid("clearGridData");
+
+                //fetch all
+                s.get_section_hwnrs(function (howners) {
+                    for (var i in howners) {
+                        $scope.secrisks_grid.addRowData(howners[i].HON_SYS_ID, howners[i]);
+                    }
+                })
+            }
+
+        })
+
+
         /*--------------------------------------------------
         * Retrieving products on calling getProductRiskLov function
         *------------------------------------------------*/
@@ -1289,7 +1219,7 @@
 
                 CLASS_CODE: $("#POLH_CLASS_CODE").val(),
                 PRD_CODE: $("#POLH_SUB_CLASS_CODE").val(),
-
+                
             }; //
             var grid = $scope.riskFees_grid;
 
@@ -1304,16 +1234,16 @@
                     //fill grid 
                     for (var i in result) {
 
-                        result[i]["LIA_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
-                        result[i]["LIA_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
-                        result[i]["LIA_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
-                        result[i]["LIA_FEE_RK_NO"] = result[i]["FEE_NAME"];
-                        result[i]["LIA_FEE_NAME"] = result[i]["PRF_SYS_ID"];
-                        result[i]["LIA_FEE_RK_CODE"] = $("#LIA_RISK_CODE").val();
-                        result[i]["LIA_FEE_RK_SYS_ID"] = $("#LIA_SYS_ID").val();
-                        result[i]["LIA_FEE_CRTE_BY"] = "Admin";
-                        result[i]["LIA_FEE_CRTE_DATE"] = Date.now();
-                        result[i]["LIA_FEE_STATUS"] = "U";
+                        result[i]["HOP_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["HOP_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
+                        result[i]["HOP_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
+                        result[i]["HOP_FEE_RK_NO"] = result[i]["FEE_NAME"];
+                        result[i]["HOP_FEE_NAME"] = result[i]["PRF_SYS_ID"];
+                        result[i]["HOP_FEE_RK_CODE"] = $("#HOP_RISK_CODE").val();
+                        result[i]["HOP_FEE_RK_SYS_ID"] = $("#HOP_SYS_ID").val();
+                        result[i]["HOP_FEE_CRTE_BY"] = "Admin";
+                        result[i]["HOP_FEE_CRTE_DATE"] = Date.now();
+                        result[i]["HOP_FEE_STATUS"] = "U";
                         //
                         // $scope.riskFees_grid.jqGrid('setCell', result[i], 'RISK_CODE', );
 
@@ -1324,14 +1254,14 @@
                 var compFeedata = u.get_grid_data($scope.riskFees_grid);
                 var linq = Enumerable.From(compFeedata);
                 var result =
-                    linq.GroupBy(function (x) { return x.LIA_FEE_CODE; })
+                    linq.GroupBy(function (x) { return x.HOP_FEE_CODE; })
                         .Select(function (x) {
                             console.log(x);
                             return {
                                 POL_FEE_CODE: x.Key(),
-                                POL_FEE_NAME: x.source[0]["LIA_FEE_NAME"],
-                                POL_FEE_FC_AMOUNT: x.Sum(function (y) { return y.LIA_FEE_FC_AMOUNT | 0; }),
-                                POL_FEE_BC_AMOUNT: x.Sum(function (y) { return y.LIA_FEE_BC_AMOUNT | 0; }),
+                                POL_FEE_NAME: x.source[0]["HOP_FEE_NAME"],
+                                POL_FEE_FC_AMOUNT: x.Sum(function (y) { return y.HOP_FEE_FC_AMOUNT | 0; }),
+                                POL_FEE_BC_AMOUNT: x.Sum(function (y) { return y.HOP_FEE_BC_AMOUNT | 0; }),
                                 POL_FEE_END_NO: 0 //$("#POL_END_NO").val()
                             };
                         }).ToArray();
@@ -1427,7 +1357,7 @@
                                 result[i]["RCOV_NAME"] = result[i]["MS_UDW_COVERS"]["CVR_NAME"];
                                 result[i]["RCOV_TYPE"] = result[i]["MS_UDW_COVERS"]["CVR_TYPE"];
 
-                                result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_LIALICABLE"];
+                                result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_HOPLICABLE"];
 
                                 result[i]["CVR_USER_PREMIUM"] = result[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
                                 result[i]["RCOV_PREM_REFUND"] = result[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
@@ -1435,13 +1365,13 @@
                                 result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
                                 result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
 
-                                result[i]["RCOV_RISK_SYS_ID"] = $("#LIA_SYS_ID").val();
-                                result[i]["RCOV_RISK_NO"] = $("#LIA_RISK_ID").val();
+                                result[i]["RCOV_RISK_SYS_ID"] = $("#HOP_SYS_ID").val();
+                                result[i]["RCOV_RISK_NO"] = $("#HOP_RISK_ID").val();
                                 result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
 
 
                                 var deftCoverCode = result[i].RCOV_CODE;
-                                var newRiskCode = $("#LIA_SYS_ID").val();
+                                var newRiskCode = $("#HOP_SYS_ID").val();
 
                                 var verifyRiskCover = deftCoverCode + newRiskCode; //alert(verifyRiskCover);
 
@@ -1452,12 +1382,12 @@
                                     //fill in default covers if not in the grid
 
                                     $scope.cover_grid.addRowData(result[i].ID, result[i]);
-
+                                    
                                     u.growl_success("Risk Cover successfully added");
                                     u.hide_confirm();
                                 }
                                 else {
-
+                                   
                                     u.growl_warning("Cover exists for this Risk, you cannot add same Cover " + deftCoverCode);
                                     u.hide_confirm();
                                 }
@@ -1635,7 +1565,7 @@
             if (coverCode == $("#RCOV_SYS_ID").val()) {
 
                 //
-                CURR_RATE = parseFloat($("#LIA_CURRENCY_RATE").val()).toFixed(2);
+                CURR_RATE = parseFloat($("#HOP_CURRENCY_RATE").val()).toFixed(2);
 
                 if (CURR_RATE == "" || CURR_RATE == 0) {
                     u.hide_confirm();
@@ -1733,32 +1663,32 @@
 
 
         /*--------------------------------------------------
-         * Liability Risk modal dialog
+         * Home Owners Risk modal dialog
          *------------------------------------------------*/
         //
-        $("#btn_open_interest_risk").click(function () {
-            if (u.form_validation("#polheaderForm")) {
-                $("#LiabilityModal").modal();
-                $("#LIA_CURRENCY").val($("#POLH_CURRENCY").val());
-                $("#LIA_CURRENCY_RATE").val($("#POLH_CURRENCY_RATE").val());
-            }
-            else {
-                u.growl_warning("Please fill the Policy Header form and try again");
-            };
-            //$("#LiabilityModal").modal();
+        $("#btn_open_HomeOwners_risk").click(function () {
+            //if (u.form_validation("#polheaderForm")) {
+            //    $("#HomeOwnersModal").modal();
+            //    $("#HOP_CURRENCY").val($("#POLH_CURRENCY").val());
+            //    $("#HOP_CURRENCY_RATE").val($("#POLH_CURRENCY_RATE").val());
+            //}
+            //else {
+            //    u.growl_warning("Please fill the Policy Header form and try again");
+            //};
+            $("#HomeOwnersModal").modal();
         });
 
 
         $("#btn_risk_cover").click(function () {
 
-            var grid = $("#gridLiabilityRisks");
+            var grid = $("#gridHomeOwnersRisks");
             var sel_id = grid.jqGrid('getGridParam', 'selrow');
-            var RiskID = grid.jqGrid('getCell', sel_id, 'LIA_SYS_ID');
-            if (RiskID == $("#LIA_SYS_ID").val()) {
+            var RiskID = grid.jqGrid('getCell', sel_id, 'HOP_SYS_ID');
+            if (RiskID == $("#HOP_SYS_ID").val()) {
                 //Hide covers not related to selected risk
                 $scope.hideShowCovers();
                 $("#RiskCoverModal").modal();
-
+              
             }
             else {
                 u.growl_warning("No Row selected");
@@ -1767,45 +1697,47 @@
         });
 
 
-        $("#btn_Interest_OnClose").click(function () {
+        $("#btn_HomeOwners_OnClose").click(function () {
 
-            //if (u.form_validation("#blockForm")) return u.growl_info("Block details form is empty");
-
-            if (u.grid_empty($scope.liability_grid)) {
+            if (u.grid_empty($scope.homeowners_grid)) {
                 u.modal_confirmation("The Grid is empty, do you want to close form?", function (e) {
-                    $("#LiabilityModal").modal("hide");
+                    $("#HomeOwnersModal").modal("hide");
                     u.hide_confirm();
                 });
             }
             else {
-                $("#LiabilityModal").modal("hide");
+                $("#HomeOwnersModal").modal("hide");
             }
 
         });
 
+        document.getElementById('HOP_RIPML').onchange = function () {
+            document.getElementById('HOP_PML').disabled = !this.checked;
+            };
+
         /*--------------------------------------------------
-          * Adding Liability Risk Details
+          * Adding Home Owners Risk Details
           *------------------------------------------------*/
         //
-        $("#btn_add_liability_details").on('click', function () {
+        $("#btn_add_HomeOwners_details").on('click', function () {
 
-            if (u.form_validation("#interestForm")) {
+            if (u.form_validation("#homeForm")) {
 
                 //if ($("input[name='VEH_RISK_NO']").val() === "") return u.modal_alert("Please Enter Risk No");
 
-                $("#LIA_SYS_ID").val("");
+                $("#HOP_SYS_ID").val("");
 
-                if ($("#LIA_SYS_ID").val() == "") {
-                    RetnSequenceNo("LIABILITY_SEQ", getVehSeqNo);
+                if ($("#HOP_SYS_ID").val() == "") {
+                    RetnSequenceNo("INS_UDW_HOME_OWNERS_SEQ", getVehSeqNo);
 
                     function getVehSeqNo(data) {
-                        $("#LIA_SYS_ID").val(data);
+                        $("#HOP_SYS_ID").val(data);
                     }
                 }
 
-                u.modal_confirmation("Are you sure you want to add the Liability Details?", function () {
+                u.modal_confirmation("Are you sure you want to add the Home Owners Details?", function () {
 
-                    var rowIds = $scope.liability_grid.jqGrid('getDataIDs');
+                    var rowIds = $scope.homeowners_grid.jqGrid('getDataIDs');
 
                     /*----------------------------------------------
                      * declare array to contain the codes to verify
@@ -1824,7 +1756,7 @@
                          * get value of the cell or column in an array
                          *----------------------------------------------*/
                         //
-                        var cellValue = $scope.liability_grid.jqGrid('getCell', currRow, 'LIA_SYS_ID');
+                        var cellValue = $scope.homeowners_grid.jqGrid('getCell', currRow, 'HOP_SYS_ID');
 
                         Code.push(cellValue);
                     }
@@ -1833,29 +1765,26 @@
                      * add if code is not found in the Grid
                      *--------------------------------------*/
                     //
-                    if ($.inArray($('#LIA_SYS_ID').val(), Code) < 0) {
+                    if ($.inArray($('#HOP_SYS_ID').val(), Code) < 0) {
 
-                        var FormData = u.parse_form("#interestForm");
-                        var FormData1 = u.parse_form("#blockForm");
-                        for (var i in FormData1) {
-                            FormData[i] = FormData1[i];
-                        }
-                        FormData.LIA_STATUS = "U";
-                        FormData.LIA_CRTE_BY = "Admin";
-                        FormData.LIA_CRTE_DATE = u.get_date();
-                        //$scope.liability_grid.addRowData(FormData.ID, FormData);
-                        $scope.liability_grid.addRowData(FormData.LIA_SYS_ID, FormData);
+                        var FormData = u.parse_form("#homeForm");
+                        FormData.HOP_STATUS = "U";                       
+                        FormData.HOP_CRTE_BY = "Admin";
+                        FormData.HOP_RIPML = ($("#HOP_RIPML").is(':checked')) ? 'Y' : 'N';
+                        FormData.HOP_CRTE_DATE = u.get_date(); 
+                        //$scope.homeowners_grid.addRowData(FormData.ID, FormData);
+                        $scope.homeowners_grid.addRowData(FormData.HOP_SYS_ID, FormData);
                         //Add defaulf covers afer adding the Risk
                         getDefaultRiskCovers();
                         getRiskComPulsoryFess();
                         u.hide_confirm();
-                        u.growl_success("LIA successfully added to grid");
+                        u.growl_success("HOP successfully added to grid");
 
-
+                       
                     }
                     else {
                         u.hide_confirm();
-                        u.growl_warning("LIA with code " + cellValue + " Already exists");
+                        u.growl_warning("HOP with code " + cellValue + " Already exists");
                     }
                 });
 
@@ -1866,20 +1795,20 @@
 
 
         /*----------------------------------------------------
-        * Remove record or Mark for deletion from Liability Risk
+        * Remove record or Mark for deletion from HomeOwners Risk
         *---------------------------------------------------*/
         //
-        $("#btn_remove_liability_risk").on('click', function () {
+        $("#btn_remove_HomeOwners_risk").on('click', function () {
 
-            if (u.grid_empty($scope.liability_grid)) return u.modal_alert("Grid is empty!!!");
+            if (u.grid_empty($scope.homeowners_grid)) return u.modal_alert("Grid is empty!!!");
 
-            var grid = $scope.liability_grid;
+            var grid = $scope.homeowners_grid;
 
             var row_id = grid.jqGrid('getGridParam', 'selrow');
 
-            var recordStatus = grid.jqGrid('getCell', row_id, 'LIA_STATUS');
+            var recordStatus = grid.jqGrid('getCell', row_id, 'HOP_STATUS');
 
-            var RiskNo = grid.jqGrid('getCell', row_id, 'LIA_RISK_ID');
+            var RiskNo = grid.jqGrid('getCell', row_id, 'HOP_SYS_ID');
 
             var covGrid = $scope.cover_grid;
 
@@ -1938,8 +1867,8 @@
                         }
                     }
 
-                    grid.jqGrid('setCell', row_id, 'LIA_STATUS', 'D');
-                    $('#' + row_id, '#gridLiabilityRisks').css({ color: 'red' });
+                    grid.jqGrid('setCell', row_id, 'HOP_STATUS', 'D');
+                    $('#' + row_id, '#gridHomeOwnersRisks').css({ color: 'red' });
 
                     u.hide_confirm();
                     u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
@@ -1961,8 +1890,8 @@
                         }
                     }
 
-                    $('#' + row_id, '#gridLiabilityRisks').css({ color: 'black' });
-                    grid.jqGrid('setCell', row_id, 'LIA_STATUS', 'A');
+                    $('#' + row_id, '#gridHomeOwnersRisks').css({ color: 'black' });
+                    grid.jqGrid('setCell', row_id, 'HOP_STATUS', 'A');
                     u.hide_confirm();
                     u.growl_hide("Data successfully restored");
                 }
@@ -1973,36 +1902,30 @@
 
 
         /*--------------------------------
-        * Edit/Update Function Liability Risk Details
+        * Edit/Update Function Home Owners Risk Details
         *------------------------------*/
         //
-        $("#btn_update_liability_risk").on('click', function () {
+        $("#btn_update_HomeOwners_risk").on('click', function () {
 
-            if (u.grid_empty($scope.liability_grid)) return u.growl_info("Liability grid is empty");
+            if (u.grid_empty($scope.homeowners_grid)) return u.growl_info("Home Owners grid is empty");
 
-            if (u.form_validation("#interestForm")) {
+            if (u.form_validation("#homeForm")) {
 
-                u.modal_confirmation("Are you sure you want to update the selected Row?", function () {
+                u.modal_confirmation("Are you sure you want to update the selected Motor?", function () {
 
-                    var grid = $scope.liability_grid;
+                    var grid = $scope.homeowners_grid;
 
                     var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                    var code = grid.jqGrid("getCell", rowId, "LIA_RISK_ID");
+                    var code = grid.jqGrid("getCell", rowId, "HOP_RISK_ID");
 
-                    if (code === $("#LIA_RISK_ID").val()) {
-                        var FormData = u.parse_form("#interestForm");
-
-                        var FormData1 = u.parse_form("#blockForm");
-                        for (var i in FormData1) {
-                            FormData[i] = FormData1[i];
-                            grid.jqGrid("setCell", rowId, i, FormData[i]);
+                    if (code === $("#HOP_RISK_ID").val()) {
+                        var data = u.parse_form("#homeForm");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
                         }
-                        //for (var i in data) {
-                        //    grid.jqGrid("setCell", rowId, i, data[i]);
-                        //}
                         u.hide_confirm();
-                        u.growl_success("Liability Details updated");
+                        u.growl_success("Home Owners Details updated");
                     } else {
                         u.hide_confirm();
                         u.growl_warning("Please select the correct row to edit");
@@ -2016,36 +1939,210 @@
         /*-----------------------------------
          * exporting of the grid to excel Condition & Clauses
          *----------------------------------*/
-        $("#export-liability-btn").click(function () {
+        $("#export-bond-btn").click(function () {
             /*
              * function to export grid data into excel
              */
-            u.excel_export($scope.liability_grid, ["ID"], "Liability_List_Excel");
+            u.excel_export($scope.homeowners_grid, ["ID"], "HomeOwners_List_Excel");
         });
 
 
-        $("#btn_open_block_details").click(function () {
+        $("#btnHownrsSec").on('click', function () {
+            $("#secRiskLovModal").modal();
+        });
 
-            $("#BlockDetailsModal").modal();
+        $("#").on('click', function () {
+            getsectionRiskLov();
+        });
+
+        /*--------------------------------------------------
+        * Adding Section Risk Details
+        *------------------------------------------------*/
+        //
+        $("#btn_add_section_details").on('click', function () {
+
+            if (u.form_validation("#secdetailsForm")) {
+
+                if ($("input[name='HODT_ITEM_NAME']").val() === "") return u.modal_alert("Please Enter Item Name");
+             
+                u.modal_confirmation("Are you sure you want to add the Sections Details?", function () {
+
+                    var rowIds = $scope.secdetails_grid.jqGrid('getDataIDs');
+
+                    /*----------------------------------------------
+                     * declare array to contain the codes to verify
+                     *--------------------------------------------*/
+                    //
+                    var Code = [];
+
+                    /*------------------------------------------------------------
+                     * iterate through the rows and check duplicate each of them
+                     *----------------------------------------------------------*/
+                    //
+                    for (var i = 0, len = rowIds.length; i < len; i++) {
+                        var currRow = rowIds[i];
+
+                        /*------------------------------------------------
+                         * get value of the cell or column in an array
+                         *----------------------------------------------*/
+                        //
+                        var cellValue = $scope.secdetails_grid.jqGrid('getCell', currRow, 'HODT_ITEM_NAME');
+
+                        Code.push(cellValue);
+                    }
+
+                    /*----------------------------------------
+                     * add if code is not found in the Grid
+                     *--------------------------------------*/
+                    //
+                    if ($.inArray($('#HODT_ITEM_NAME').val(), Code) < 0) {
+
+                        var FormData = u.parse_form("#secdetailsForm");
+                        FormData.HODT_STATUS = "U";
+                        FormData.HODT_CRTE_BY = "Admin";
+                        FormData.HODT_CRTE_DATE = u.get_date();
+                        $scope.secdetails_grid.addRowData(FormData.HODT_ITEM_NAME, FormData);
+                        u.hide_confirm();
+                        u.growl_success("Section Details  successfully added to grid");
+
+                    }
+                    else {
+                        u.hide_confirm();
+                        u.growl_warning("Section Details with code " + cellValue + " Already exists");
+                    }
+                });
+
+            } else {
+                u.growl_error("Please fill out the fields that are marked red");
+            }
+        });
+
+
+        /*----------------------------------------------------
+        * Remove record or Mark for deletion from Section Details
+        *---------------------------------------------------*/
+        //
+        $("#btn_remove_section_details").on('click', function () {
+
+            if (u.grid_empty($scope.secdetails_grid)) return u.growl_info("The grid is empty");
+
+            var grid = $scope.secdetails_grid;
+
+            var row_id = grid.jqGrid('getGridParam', 'selrow');
+
+            var recordStatus = grid.jqGrid('getCell', row_id, 'HODT_STATUS');
+
+            var Code = grid.jqGrid('getCell', row_id, 'HODT_ITEM_NAME');
+
+            var message = "";
+
+            /*---------------------------------
+             * Display modal message
+             *------------------------------*/
+            //
+            u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
+
+                /*--------------------------------------------
+                 * Remove newly added record before saving
+                 *------------------------------------------*/
+                // 
+                if (recordStatus == "U") {
+
+                    grid.jqGrid('delRowData', row_id);
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully deleted");
+                }
+
+                /*----------------------------------------
+                 * Mark a record for deletion on saving
+                 *--------------------------------------*/
+                // 
+                if (recordStatus == "A") {
+
+                    grid.jqGrid('setCell', row_id, 'HODT_STATUS', 'D');
+                    $('#' + row_id, '#gridSecDetails').css({ color: 'red' });
+
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
+
+                } else if (recordStatus == "D") {
+
+                    $('#' + row_id, '#gridSecDetails').css({ color: 'black' });
+                    grid.jqGrid('setCell', row_id, 'HODT_STATUS', 'A');
+                    u.hide_confirm();
+                    u.growl_hide("Data successfully restored");
+                }
+
+            });
 
         });
 
-        $("#btn_block_OnClose").click(function () {
 
-            //if (u.form_validation("#blockForm")) return u.growl_info("Block details form is empty");
+        /*------------------------------------
+        * Edit/Update Function Section Details
+        *------------------------------------*/
+        //
+        $("#btn_update_section_details").on('click', function () {
 
-            if (u.form_validation("#blockForm")) {
-                u.modal_confirmation("Do you want to close form?", function (e) {
-                    $("#BlockDetailsModal").modal("hide");
+            if (u.grid_empty($scope.secdetails_grid)) return u.growl_info("Section details grid is empty");
+
+            if (u.form_validation("#secdetailsForm")) {
+
+                u.modal_confirmation("Are you sure you want to update the selected?", function () {
+
+                    var grid = $scope.secdetails_grid;
+
+                    var rowId = grid.jqGrid("getGridParam", "selrow");
+
+                    var code = grid.jqGrid("getCell", rowId, "HODT_ITEM_NAME");
+
+                    if (code === $("#HODT_ITEM_NAME").val()) {
+                        var data = u.parse_form("#secdetailsForm");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
+                        }
+                        u.hide_confirm();
+                        u.growl_success("Section Details updated");
+                    } else {
+                        u.hide_confirm();
+                        u.growl_warning("Please select the correct row to edit");
+                    }
+                });
+            }
+
+        });
+
+
+        $("#btn_open_section_details").click(function () {
+
+            //var grid = $scope.homeowners_grid;
+            //var sel_id = grid.jqGrid('getGridParam', 'selrow');
+            //var RiskID = grid.jqGrid('getCell', sel_id, 'HOP_SYS_ID');
+            //if (RiskID == $("#HOP_SYS_ID").val()) {
+            //    //Hide covers not related to selected risk
+            //    //$scope.hideShowCovers();
+            //    $("#SecDetailsModal").modal();
+
+            //}
+            //else {
+            //    u.growl_warning("No Row selected");
+            //}
+            $("#SecDetailsModal").modal();
+        });
+
+        $("#btn_secdetails_OnClose").click(function () {
+
+            if (u.grid_empty($scope.secdetails_grid)) {
+                u.modal_confirmation("The Grid is empty, do you want to close form?", function (e) {
+                    $("#SecDetailsModal").modal("hide");
                     u.hide_confirm();
                 });
             }
             else {
-                $("#BlockDetailsModal").modal("hide");
+                $("#SecDetailsModal").modal("hide");
             }
 
         });
-
 
 
         /*-----------------------------------
@@ -2305,7 +2402,6 @@
                 return u.growl_warning("Coinsurance Member is selected, Please add Coinsurance Member details to it's grid");
             }
 
-
             if (!u.form_validation("#polheaderForm")) {
                 return u.growl_warning("Please fill the fields that are marked red");
             }
@@ -2314,10 +2410,15 @@
                 return u.growl_warning("Please add Risk Cover");
             }
 
-            if (u.grid_empty($scope.liability_grid)) {
-                return u.growl_warning("Please add Liability Details");
+            if (u.grid_empty($scope.homeowners_grid)) {
+                return u.growl_warning("Please add Home Owners Details");
             }
-         
+
+            //if (u.grid_empty($scope.secdetails_grid)) {
+            //    return u.growl_warning("Please add Home Owners Details")
+            //}
+
+
             u.modal_confirmation("Are you sure you want to save?", function (e) {
 
                 var polhData = u.parse_form("#polheaderForm");
@@ -2326,30 +2427,38 @@
                 //polhData.POLH_TXN_STATE = "S";
                 //polhData.POLH_END_NO = 0;
 
-                polhData.INS_UDW_LIABILITY = u.get_grid_data($scope.liability_grid);
+                polhData.INS_UDW_HOME_OWNERS = u.get_grid_data($scope.homeowners_grid);
 
                 var INS_UWD_RISK_COVERS = u.get_grid_data($scope.cover_grid);
+                var INS_UDW_HOME_OWNERS_DETAILS = u.get_grid_data($scope.secdetails_grid);
+                var INS_UDW_HOME_OWNERS_FEES = u.get_grid_data($scope.riskFees_grid);
 
-                var INS_UDW_LIABILITY_FEES = u.get_grid_data($scope.riskFees_grid);
-
-                for (var i in polhData.INS_UDW_LIABILITY) {
+                for (var i in polhData.INS_UDW_HOME_OWNERS) {
                     //loop through every risk and obtain the sys_id of the risk
-                    var id = polhData.INS_UDW_LIABILITY[i]["LIA_SYS_ID"];
+                    var id = polhData.INS_UDW_HOME_OWNERS[i]["HOP_SYS_ID"];
 
-                    polhData.INS_UDW_LIABILITY[i]["INS_UWD_RISK_COVERS"] = [];
-
-                    polhData.INS_UDW_LIABILITY[i]["INS_UDW_LIABILITY_FEES"] = [];
+                    polhData.INS_UDW_HOME_OWNERS[i]["INS_UWD_RISK_COVERS"] = [];
+                    polhData.INS_UDW_HOME_OWNERS[i]["INS_UDW_HOME_OWNERS_DETAILS"] = [];
+                    polhData.INS_UDW_HOME_OWNERS[i]["INS_UDW_HOME_OWNERS_FEES"] = [];
 
                     for (var y in INS_UWD_RISK_COVERS) {
                         //find covers which have the same the same risk sys_id
                         if (INS_UWD_RISK_COVERS[y]["RCOV_RISK_SYS_ID"] === id) {
-                            polhData.INS_UDW_LIABILITY[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);
+                            polhData.INS_UDW_HOME_OWNERS[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);
                         }
-                        for (var x in INS_UDW_LIABILITY_FEES) {
-                            //find covers which have the same the same risk sys_id
-                            if (INS_UDW_LIABILITY_FEES[x]["LIA_FEE_RK_SYS_ID"] === id) {
-                                polhData.INS_UDW_LIABILITY[i]["INS_UDW_LIABILITY_FEES"].push(INS_UDW_LIABILITY_FEES[x]);
-                            }
+                    }
+
+                    for (var x in INS_UDW_HOME_OWNERS_DETAILS) {
+                        //find details which have the same the same risk sys_id
+                        if (INS_UDW_HOME_OWNERS_DETAILS[x]["HODT_HOP_SYS_ID"] === id) {
+                            polhData.INS_UDW_HOME_OWNERS[i]["INS_UDW_HOME_OWNERS_DETAILS"].push(INS_UDW_HOME_OWNERS_DETAILS[x]);
+                        }
+                    }
+
+                    for (var x in INS_UDW_HOME_OWNERS_FEES) {
+                        //find fees which have the same the same risk sys_id
+                        if (INS_UDW_HOME_OWNERS_FEES[x]["HOP_FEE_RK_SYS_ID"] === id) {
+                            polhData.INS_UDW_HOME_OWNERS[i]["INS_UDW_HOME_OWNERS_FEES"].push(INS_UDW_HOME_OWNERS_FEES[x]);
                         }
                     }
 
@@ -2364,6 +2473,8 @@
                 }
 
                 console.log(polhData);
+
+                //polhData.INS_UDW_HOME_OWNERS_FEES = u.get_grid_data($scope.riskFees_grid);
 
                 polhData.INS_UWD_INTERMEDIARY_COMM = u.get_grid_data($scope.intermCom_grid);
 
@@ -2381,21 +2492,21 @@
                         if (responseData.state) {
 
                             var coverRowIds = $scope.cover_grid.jqGrid("getDataIDs");
-                            var riskRowIds = $scope.liability_grid.jqGrid("getDataIDs");
+                            var riskRowIds = $scope.homeowners_grid.jqGrid("getDataIDs");
                             var covRecStatus;
                             /*---------------------------------
                              * update motor row status
                              *-------------------------------*/
                             for (var i = 0; i < riskRowIds.length; i++) {
-                                covRecStatus = $scope.liability_grid.jqGrid("getCell", riskRowIds[i], "LIA_STATUS");
+                                covRecStatus = $scope.homeowners_grid.jqGrid("getCell", riskRowIds[i], "HOP_STATUS");
 
                                 //Delete row if it is marked for deletion
                                 if (covRecStatus === "D") {
-                                    $scope.liability_grid.jqGrid("delRowData", riskRowIds[i]);
+                                    $scope.homeowners_grid.jqGrid("delRowData", riskRowIds[i]);
                                 }
                                 //Update row status to Active (A) if it is newly added
                                 if (covRecStatus === "U") {
-                                    $scope.liability_grid.jqGrid("setCell", riskRowIds[i], "LIA_STATUS", "A");
+                                    $scope.homeowners_grid.jqGrid("setCell", riskRowIds[i], "HOP_STATUS", "A");
                                 }
                             }
 
@@ -2590,7 +2701,7 @@
         //
         $("#btnEndorse").on('click', function () {
             u.modal_confirmation("Are you sure you want to pass an endorsement on the Policy?", function (e) {
-
+               
                 // Reset the Policy header to endorsement state
                 var endNo = parseInt($("#POLH_END_NO").val()) + 1;
 
@@ -2599,7 +2710,7 @@
 
                 //
 
-                var riskRowIds = $scope.liability_grid.jqGrid("getDataIDs");
+                var riskRowIds = $scope.homeowners_grid.jqGrid("getDataIDs");
                 var coverRowIds = $scope.cover_grid.jqGrid("getDataIDs");
                 var intermComIds = $scope.intermCom_grid.jqGrid("getDataIDs");
                 var premiumregIds = $scope.premiumreg_grid.jqGrid("getDataIDs");
@@ -2613,12 +2724,12 @@
                 //Risks
                 for (var i = 0; i < riskRowIds.length; i++) {
 
-                    $scope.liability_grid.jqGrid("setCell", riskRowIds[i], "LIA_POLH_END_NO", endNo);
+                    $scope.homeowners_grid.jqGrid("setCell", riskRowIds[i], "HOP_POLH_END_NO", endNo);
                 }
                 //Risk Covers
                 for (var j = 0; j < coverRowIds.length; j++) {
 
-                    $scope.liability_grid.jqGrid("setCell", coverRowIds[j], "RPCOV_END_NO", endNo);
+                    $scope.homeowners_grid.jqGrid("setCell", coverRowIds[j], "RPCOV_END_NO", endNo);
                 }
                 //Commissions
                 for (var k = 0; k < intermComIds.length; k++) {
@@ -2633,7 +2744,7 @@
                 ////Risk Fees
                 for (var m = 0; m < riskFeesIds.length; m++) {
 
-                    $scope.riskFees_grid.jqGrid("setCell", riskFeesIds[m], "LIA_FEE_END_NO", endNo);
+                    $scope.riskFees_grid.jqGrid("setCell", riskFeesIds[m], "HOP_FEE_END_NO", endNo);
                 }
                 ////Pol fees summary
                 for (var n = 0; n < polfeesIds.length; n++) {
@@ -2725,7 +2836,7 @@
             if (!u.form_validation("#receiptHeaderForm")) return u.growl_warning("Fields marked red are required");
 
             u.modal_confirmation("Are you sure you want to Approve ?", function () {
-                s.LiabilitypolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
+                s.HomeOwnerspolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
                         //alert(JSON.stringify(response));
@@ -2800,9 +2911,9 @@
             u.modal_confirmation("Are you sure you want to clear all data from the form?", function (e) {
                 u.form_reset("#polheaderForm");
                 u.form_reset("#coverForm");
-                u.form_reset("#interestForm");
+                u.form_reset("#homeForm");
                 $scope.cover_grid.jqGrid('clearGridData');
-                $scope.liability_grid.jqGrid('clearGridData');
+                $scope.homeowners_grid.jqGrid('clearGridData');
                 u.hide_warning();
                 u.growl_success("Form successfully cleared");
             });
@@ -2853,7 +2964,7 @@
                         } else {
 
                             $scope.search_fill(result[0]);
-                            
+                           
                         }
                     } else {
                         u.growl_info("Policy No. not found, please make sure you enter the correct Policy No!");
@@ -2870,15 +2981,15 @@
 
         $scope.search_fill = function (policy) {
 
-            $scope.liability_grid.jqGrid("clearGridData");
+            $scope.homeowners_grid.jqGrid("clearGridData");
             $scope.cover_grid.jqGrid("clearGridData");
 
             u.fill_form(policy, "#polheaderForm");
 
-            u.clear_grid_data($scope.liability_grid);
-            if (policy.INS_UDW_LIABILITY) {
-                for (var i in policy.INS_UDW_LIABILITY) {
-                    $scope.liability_grid.addRowData(policy.INS_UDW_LIABILITY[i].ID, policy.INS_UDW_LIABILITY[i]);
+            u.clear_grid_data($scope.homeowners_grid);
+            if (policy.INS_UDW_HOME_OWNERS) {
+                for (var i in policy.INS_UDW_HOME_OWNERS) {
+                    $scope.homeowners_grid.addRowData(policy.INS_UDW_HOME_OWNERS[i].ID, policy.INS_UDW_HOME_OWNERS[i]);
                 }
 
                 if (policy["POLH_TXN_STATE"] === "X") {
@@ -2903,16 +3014,15 @@
                     u.form_text_Gold_color();
                     // u.formReadWrite();
                 }
-
             }
-        
-            //populate risk covers with covers from the Liability nd not the policy header
+           
+            //populate risk covers with covers from the home owners and not the policy header
             u.clear_grid_data($scope.cover_grid);
-            for (var x in policy.INS_UDW_LIABILITY[i].INS_UWD_RISK_COVERS) {
+            for (var x in policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS) {
                 //get Cover Names
-                policy.INS_UDW_LIABILITY[i].INS_UWD_RISK_COVERS[x]["RCOV_NAME"] = policy.INS_UDW_LIABILITY[i].INS_UWD_RISK_COVERS[x]["MS_UDW_COVERS"]["CVR_NAME"];
+                policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS[x]["RCOV_NAME"] = policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS[x]["MS_UDW_COVERS"]["CVR_NAME"];
                 //get Covers
-                $scope.cover_grid.addRowData(policy.INS_UDW_LIABILITY[i].INS_UWD_RISK_COVERS[x].RCOV_RISK_SYS_ID, policy.INS_UDW_LIABILITY[i].INS_UWD_RISK_COVERS[x]);
+                $scope.cover_grid.addRowData(policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS[x].RCOV_RISK_SYS_ID, policy.INS_UDW_HOME_OWNERS[i].INS_UWD_RISK_COVERS[x]);
             }
         };
 
@@ -2922,8 +3032,8 @@
       *------------------------------------*/
         u.set_datepicker("input[name='POLH_POL_START_DATE']");
         u.set_datepicker("input[name='POLH_POL_END_DATE']");
-        u.set_datepicker("input[name='LIA_START_DATE']");
-        u.set_datepicker("input[name='LIA_END_DATE']");
+        u.set_datepicker("input[name='HOP_START_DATE']");
+        u.set_datepicker("input[name='HOP_END_DATE']");
         u.set_datepicker("input[name='CUS_DOB']");
 
         u.set_datepicker("#ENDORSE_DATE");
@@ -2943,7 +3053,6 @@
         u.lovCodeVal("form input[name='POLH_INS_SOURCE']", "check_insurance_source_code", "form input[name='INSUR_NAME']");
         u.lovCodeVal("form input[name='POLH_CHANNEL_CODE']", "check_channel_code", "form input[name='MSC_NAME']");
         u.lovCodeVal("form input[name='POLH_BIZ_SOURCE']", "check_business_source_code", "form input[name='SRB_NAME']");
-        u.lovCodeVal("form input[name='POLH_CURRENCY']", "check_currency_code", "form input[name='']");
 
         u.lovCodeVal("input[name='POLH_CUST_CODE']", "check_customer_code", "input[name='CUS_OFFICIAL_NAME']", function (code) {
             /*fetch customer details after successful validation*/
@@ -2972,7 +3081,7 @@
             var grossPremBC = "";
             var NetPremFC = "";
             var NetPremBC = "";
-            var ExchangeRate = $('#LIA_CURRENCY_RATE').val();
+            var ExchangeRate = $('#HOP_CURRENCY_RATE').val();
 
             if ($('#RCOV_SI_FC').val() == "" || $('#RCOV_SI_FC').val() == 0 || $('#RCOV_RATE').val() == "" || $('#RCOV_RATE').val() <= 0 || $('#RCOV_RATE').val() > 100) {
                 u.growl_warning("Please Check the RATE or SUM INSURED values");
@@ -3019,14 +3128,14 @@
         * //Add new customer modal dialog form
         *---------------------------*/
 
-        $("#customerSetupBtn").click(function () {
-            /*obtain the customer code*/
-            u.form_reset("#customerForm");
-            if (!u.field_empty("input[name='POLH_CUST_CODE']")) {
-                s.get_customer($("input[name='POLH_CUST_CODE']").val(),
-             function (response) {
-                 u.fill_form(response, "#customerForm");
-             });
+           $("#customerSetupBtn").click(function() {
+               /*obtain the customer code*/
+               u.form_reset("#customerForm");
+               if (!u.field_empty("input[name='POLH_CUST_CODE']")) {
+                   s.get_customer($("input[name='POLH_CUST_CODE']").val(),
+                function (response) {
+                    u.fill_form(response, "#customerForm");
+                });
             }
 
             /*open the customer setup modal*/
@@ -3076,16 +3185,16 @@
             var EDate = $("#POLH_POL_END_DATE").val();
 
             //set the bond start date to same as policy start date
-            $("#LIA_START_DATE").val(SDate);
-            $("#LIA_END_DATE").val(EDate);
+            $("#HOP_START_DATE").val(SDate);
+            $("#HOP_END_DATE").val(EDate);
 
             var sdte = new Date(SDate);
             var polUWY = sdte.getFullYear();
             $("#POLH_POL_UW_YEAR").val(polUWY);
 
-            $("#LIA_UW_YEAR").val(polUWY);
+            $("#HOP_UW_YEAR").val(polUWY);
 
-            //LIA_END_DATE
+            //HOP_END_DATE
             var StartDate = new Date(SDate);
             var EndDate = new Date(EDate);
 
@@ -3093,7 +3202,7 @@
 
             if (polPeriodDays > 0) {
                 $("#POLH_POL_DAYS").val(polPeriodDays);
-                $("#LIA_PERIOD_DAYS").val(polPeriodDays);
+                $("#HOP_PERIOD_DAYS").val(polPeriodDays);
             }
             else if ((polPeriodDays <= 0)) {
                 u.growl_warning("Policy End date cannot be less than or equal to start date");
@@ -3102,8 +3211,8 @@
                 $("#POLH_POL_END_DATE").val('');
                 $("#POLH_POL_DAYS").val('');
                 // 
-                $("#LIA_END_DATE").val('');
-                $("#LIA_PERIOD_DAYS").val('');
+                $("#HOP_END_DATE").val('');
+                $("#HOP_PERIOD_DAYS").val('');
             }
             else {
 
@@ -3111,15 +3220,15 @@
         }
 
         //---//Risk period days
-        document.getElementById("LIA_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
-        document.getElementById("LIA_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
+        document.getElementById("HOP_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
+        document.getElementById("HOP_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
         function fxnRiskPeriodDays() {
             //alert("Input field lost focus.");
             var polStartDate = new Date($("#POLH_POL_START_DATE").val());
             var PolEndDate = new Date($("#POLH_POL_END_DATE").val());
 
-            var riskStartDate = new Date($("#LIA_START_DATE").val());
-            var riskEndDate = new Date($("#LIA_END_DATE").val());
+            var riskStartDate = new Date($("#HOP_START_DATE").val());
+            var riskEndDate = new Date($("#HOP_END_DATE").val());
 
             var riskPeriodDays = u.get_dateDifference(riskStartDate, riskEndDate);
 
@@ -3132,7 +3241,7 @@
             else {
 
                 if (riskPeriodDays > 0) {
-                    $("#LIA_PERIOD_DAYS").val(riskPeriodDays);
+                    $("#HOP_PERIOD_DAYS").val(riskPeriodDays);
                 }
             }
 
@@ -3141,8 +3250,8 @@
                 u.growl_warning("Risk End date cannot be less than or equal to start date");
 
                 //reset end date and no. of days
-                $("#LIA_START_DATE").val('');
-                $("#LIA_END_DATE").val('');
+                $("#HOP_START_DATE").val('');
+                $("#HOP_END_DATE").val('');
 
             }
             else if ((riskPeriodDays > 365)) {
@@ -3158,12 +3267,12 @@
         /*
         //Hide or show Covers in the Risk Covers (to filter out the covers for particular risk
         */
-        $scope.hideShowCovers = function () {
+        $scope.hideShowCovers = function  () {
 
             //get the selected Risk ID
-            var vehgrid = $scope.liability_grid;
-            var selId = vehgrid.jqGrid("getGridParam", "selrow");
-            var vehRiskId = vehgrid.jqGrid("getCell", selId, "LIA_SYS_ID");
+            var riskgrid = $scope.homeowners_grid;
+            var selId = riskgrid.jqGrid("getGridParam", "selrow");
+            var RiskId = riskgrid.jqGrid("getCell", selId, "HOP_SYS_ID");
 
             //get the Risk Cover data
             var covgrid = $scope.cover_grid;
@@ -3180,13 +3289,13 @@
                 var getRiskCovId = covgrid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
 
 
-                if (getRiskCovId != vehRiskId) {
+                if (getRiskCovId != RiskId) {
 
                     //hide if covers are not for the selected risk 
                     $("#" + currRow).hide();
 
                 }
-                else if (getRiskCovId == vehRiskId) {
+                else if (getRiskCovId == RiskId) {
 
                     //Show if covers are for the selected risk 
                     $("#" + currRow).show();
@@ -3222,8 +3331,8 @@
             var sumDisFc = 0;
             var sumDisBc = 0;
 
-            //Risk/Liability Grid
-            var riskgrid = $scope.liability_grid;
+            //Risk/Home Owners Grid
+            var riskgrid = $scope.homeowners_grid;
 
             var rowIdRisk = riskgrid.jqGrid("getDataIDs");
 
@@ -3231,12 +3340,12 @@
 
             var rowIds = grid.jqGrid('getDataIDs');
 
-            //Risk/Liability Grid
-            var riskgrid = $scope.liability_grid;
+            //Risk/Home Owners Grid
+            var riskgrid = $scope.homeowners_grid;
 
             var riskRowId = riskgrid.jqGrid("getGridParam", "selrow");
 
-            var riskId = riskgrid.jqGrid("getCell", riskRowId, "LIA_SYS_ID");
+            var riskId = riskgrid.jqGrid("getCell", riskRowId, "HOP_SYS_ID");
 
 
             // iterate through the rows and check if it exists each of them
@@ -3297,27 +3406,26 @@
 
             // set risk SI and Premiums vlues,
 
-            riskgrid.jqGrid("setCell", riskRowId, 'LIA_PREMIUM_FC', sumGrossPremFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, 'HOP_PREMIUM_FC', sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_PREMIUM_BC", sumGrossPremBc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_SUM_INSURED", riskSumSifc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_SI_FC", riskSumSifc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_SI_BC", riskSumSibc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_SUM_INSURED_FC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_SUM_INSURED_BC", riskSumSibc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_SI_FC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_SI_BC", riskSumSibc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_LOAD_FC", sumLoadFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_LOAD_BC", sumLoadBc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_LOAD_FC", sumLoadFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_LOAD_BC", sumLoadBc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_DISC_FC", sumDisFc.toFixed(2));
-            riskgrid.jqGrid("setCell", riskRowId, "LIA_DISC_BC", sumDisBc.toFixed(2));
-            //
-            $('#LIA_AGG_LIM_FC').val(riskSumSifc.toFixed(2));
-            $('#LIA_AGG_LIM_BC').val(riskSumSibc.toFixed(2));
-            $('#LIA_LIM_OCCUR_FC').val(riskSumSifc.toFixed(2));
-            $('#LIA_LIM_OCCUR_BC').val(riskSumSibc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_DISC_FC", sumDisFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "HOP_DISC_BC", sumDisBc.toFixed(2));
 
-            $('#LIA_PREMIUM_FC').val(sumGrossPremFc.toFixed(2));
-            $('#LIA_PREMIUM_BC').val(sumGrossPremBc.toFixed(2));
+            $("#HOP_SUM_INSURED_FC").val(riskSumSifc.toFixed(2));
+            $("#HOP_SUM_INSURED_BC").val(riskSumSibc.toFixed(2));
+            $("#HOP_PREMIUM_FC").val(sumGrossPremFc.toFixed(2));
+            $("#HOP_PREMIUM_BC").val(sumGrossPremBc.toFixed(2));
 
             // Policy Level SI and premium Calculations 
             $scope.SumPolhAmounts();
@@ -3350,7 +3458,7 @@
             var polSifc = 0;
             var polSibc = 0;
             //
-            var polgrid = $scope.liability_grid;
+            var polgrid = $scope.homeowners_grid;
 
             var polrowIds = polgrid.jqGrid('getDataIDs');
 
@@ -3362,17 +3470,17 @@
 
                 // Sum risk level Amounts for Policy Level Amounts
 
-                polSifc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_SI_FC"));
-                polSibc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_SI_BC"));
+                polSifc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_SI_FC"));
+                polSibc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_SI_BC"));
 
-                polGrossPremFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_TOT_PREM_FC"));
-                polGrossPremBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_TOT_PREM_BC"));
+                polGrossPremFc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_TOT_PREM_FC"));
+                polGrossPremBc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_TOT_PREM_BC"));
 
-                polLoadFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_LOAD_FC"));
-                polLoadBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_LOAD_BC"));
+                polLoadFc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_LOAD_FC"));
+                polLoadBc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_LOAD_BC"));
 
-                polDisFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_DISC_FC"));
-                polDisBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LIA_DISC_BC"));
+                polDisFc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_DISC_FC"));
+                polDisBc += parseFloat(polgrid.jqGrid('getCell', currRow, "HOP_DISC_BC"));
 
             }
 
@@ -3439,7 +3547,7 @@
         */
         function getDefaultRiskCovers() {
 
-            if ($("#POLH_SUB_CLASS_CODE").val() == "") {
+            if ($("#HON_SYS_ID").val() == "") {
 
                 u.growl_warning("The Risk Code cannot be null, Please check and try again");
 
@@ -3450,7 +3558,7 @@
                */
                 var productRiskData = {
 
-                    PRD_CODE: $("#POLH_SUB_CLASS_CODE").val(),
+                    HOWNRS_CODE: $("#HON_SYS_ID").val(),
                     CUR_RATE: $("#POLH_CURRENCY_RATE").val(),
                 }; //
 
@@ -3473,7 +3581,7 @@
 
                     var riskCov = coverCode + RiskCode;
 
-                    //alert(riskCov);
+                     //alert(riskCov);
                     CodeArray.push(riskCov);
                 }
 
@@ -3496,13 +3604,13 @@
                             result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
                             result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
 
-                            result[i]["RCOV_RISK_SYS_ID"] = $("#LIA_SYS_ID").val();
-                            result[i]["RCOV_RISK_NO"] = $("#LIA_RISK_ID").val();
+                            result[i]["RCOV_RISK_SYS_ID"] = $("#HOP_SYS_ID").val();
+                            result[i]["RCOV_RISK_NO"] = $("#HOP_RISK_ID").val();
                             //result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
 
 
                             var deftCoverCode = result[i].RCOV_CODE;
-                            var newRiskCode = $("#LIA_SYS_ID").val();
+                            var newRiskCode = $("#HOP_SYS_ID").val();
 
                             var verifyRiskCover = deftCoverCode + newRiskCode; //alert(verifyRiskCover);
 
@@ -3588,7 +3696,7 @@
                 else {
                     u.modal_warning("Policy is not Approved");
                 }
-
+       
             }
 
             else if (polreports == "Schedule") {
@@ -3623,7 +3731,7 @@
                 else {
                     u.modal_warning("Policy is not Approved");
                 }
-
+              
             }
 
         });
@@ -3690,41 +3798,41 @@
         * FAC Inward Modal
         *-------------------------*/
 
-        $("#btnFACInward").on("click", function () {
+            $("#btnFACInward").on("click", function () {
 
-            $("#MemberIwardModal").modal();
-            var message = "FAC Inward Details";
+                $("#MemberIwardModal").modal();
+                var message = "FAC Inward Details";
 
-            $("#textCoinsMember").text(message);
+                $("#textCoinsMember").text(message);
 
-        });
+            });
 
         /*-------------------------
         * FAC Inward Modal
         *-------------------------*/
 
-        $("#btnCoInsMember").on("click", function () {
+            $("#btnCoInsMember").on("click", function () {
 
-            $("#MemberIwardModal").modal();
+                $("#MemberIwardModal").modal();
 
-            //$('#FINW_CEDANT_CODE').val($('#POLH_CMP_CODE').val());
-            //$('#FINW_CEDANT_NAME').val($('#CMP_NAME').val());
+                //$('#FINW_CEDANT_CODE').val($('#POLH_CMP_CODE').val());
+                //$('#FINW_CEDANT_NAME').val($('#CMP_NAME').val());
 
-            var message = "Co-Insurance Details";
+                var message = "Co-Insurance Details";
 
-            $("#textCoinsMember").text(message);
+                $("#textCoinsMember").text(message);
 
-        });
+            });
 
         /*-------------------------
         * Coinsurance Leader Modal
         *-------------------------*/
 
-        $("#btnCoInsLeader").on("click", function () {
+            $("#btnCoInsLeader").on("click", function () {
 
-            $("#CoInsLeaderModal").modal();
+                $("#CoInsLeaderModal").modal();
 
-        });
+            });
 
 
         /*-----------------------------------
@@ -3847,15 +3955,15 @@
 
             if (u.form_validation("#facInwardForm")) {
 
-                //    $("#FINW_SYS_ID").val("");
+            //    $("#FINW_SYS_ID").val("");
 
-                //    if ($("#FINW_SYS_ID").val() == "") {
-                //        RetnSequenceNo("INS_RI_FAC_INWARD_SEQ", getVehSeqNo);
+            //    if ($("#FINW_SYS_ID").val() == "") {
+            //        RetnSequenceNo("INS_RI_FAC_INWARD_SEQ", getVehSeqNo);
 
-                //        function getVehSeqNo(data) {
-                //            $("#FINW_SYS_ID").val(data);
-                //        }
-                //    }
+            //        function getVehSeqNo(data) {
+            //            $("#FINW_SYS_ID").val(data);
+            //        }
+            //    }
 
                 u.modal_confirmation("Are you sure you want to add RI FAC Inward Details to the grid?", function () {
 

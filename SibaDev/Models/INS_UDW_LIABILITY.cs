@@ -161,11 +161,9 @@ namespace SibaDev.Models
 
         public int? LIA_POLH_END_NO { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string LIA_PDT_CODE { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string LIA_CVR_CODE { get; set; }
 
@@ -200,8 +198,7 @@ namespace SibaDev.Models
         [StringLength(1)]
         public string LIA_STATUS { get; set; }
 
-        [StringLength(1)]
-        public string LIA_PERIOD_DAYS { get; set; }
+        public int? LIA_PERIOD_DAYS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UWD_RISK_COVERS> INS_UWD_RISK_COVERS { get; set; }

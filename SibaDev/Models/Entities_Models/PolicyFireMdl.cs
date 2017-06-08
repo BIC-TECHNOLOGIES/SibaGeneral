@@ -635,8 +635,6 @@ namespace SibaDev.Models
                                 PR_UWD_ACCT_TYPE = viewPolh.POLH_INS_SOURCE
                             });
 
-                            db.SaveChanges();
-
                             break;
                         case "D":
                             {
@@ -653,7 +651,7 @@ namespace SibaDev.Models
                             }
                             break;
                     }
-
+                    db.SaveChanges();
                     trans.Commit();
                     return new INS_UWD_POLICY_HEAD
                     {
@@ -781,6 +779,79 @@ namespace SibaDev.Models
                 return null;
             }
         }
+
+
+        public static INS_UWD_POLICY_HEAD SaveEndsmntCancl(INS_UWD_POLICY_HEAD viewPolh)
+        {
+            var db = new SibaModel();
+            var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
+            if (dbPolh != null)
+            {
+                //update of policy header details
+                //db.INS_UWD_POLICY_HEAD.Attach(dbPolh);
+                dbPolh.Map(viewPolh);
+
+                /*----------------
+                 * risk update
+                 *--------------*/
+                foreach (var risk in viewPolh.INS_UWD_FIRE_LOCINT)
+                {
+                    var dbrisk = db.INS_UWD_FIRE_LOCINT.Find(risk.LINT_SYS_ID);
+                    switch (risk.LINT_STATUS)
+                    {
+                        case "A":
+                            if (dbrisk != null)
+                            {
+                                db.INS_UWD_FIRE_LOCINT.Attach(dbrisk);
+                                dbrisk.Map(risk);
+                            }
+
+                            break;
+                        case "U":
+                            risk.LINT_STATUS = "A";
+                            risk.LINT_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UWD_FIRE_LOCINT.Add(risk);
+
+                            break;
+                        case "D":
+                            db.INS_UWD_FIRE_LOCINT.Remove(db.INS_UWD_FIRE_LOCINT.Find(risk.LINT_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+                foreach (var fee in viewPolh.INS_UDW_POL_FEES)
+                {
+                    var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                    switch (fee.POL_FEE_STATUS)
+                    {
+                        case "A":
+                            if (dbFee != null)
+                            {
+                                db.INS_UDW_POL_FEES.Attach(dbFee);
+                                dbFee.Map(fee);
+                            }
+
+                            break;
+                        case "U":
+                            fee.POL_FEE_STATUS = "A";
+                            fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_POL_FEES.Add(fee);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                            break;
+                    }
+
+                }
+
+            }
+            db.SaveChanges();
+            return viewPolh;
+        }
+
 
     }
 

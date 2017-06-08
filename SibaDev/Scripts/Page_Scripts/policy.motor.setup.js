@@ -3278,7 +3278,6 @@
             },
 
 
-
             function (index) {
                 $scope.search_fill($scope.result[index]);
                 u.clear_grid_data($scope.search_grid);

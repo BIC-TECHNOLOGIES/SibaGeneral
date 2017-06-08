@@ -471,11 +471,13 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-md-1">
-                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" />
+                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_BC" type="text" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
@@ -522,6 +524,7 @@
                                         <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
                                     </div>
 
+
                                     <div class="col-md-1">
                                         <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                     </div>
@@ -546,12 +549,11 @@
                                         <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_END_NO" type="text" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" />
+                                        <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" />
+                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                     </div>
-
                                 </div>
 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
@@ -601,6 +603,8 @@
                                     <div class="btn-block">
                                         <button id="btn_open_ga_risk" name="btn_open_ga_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Add Risk</button>
 
+                                        <button id="btn_remove_garisk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+
                                         <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
 
                                         <button type="button" class="btn btn-default pull-right dialog-btn" id="export-ga-btn" title="Export Grid data to Excel">
@@ -609,16 +613,10 @@
                                     </div>
                                 </div>
 
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Risk Details</span>
-
-                                        <div class="row">
-                                            <table id="gridGa"></table>
-                                            <table id="gridGaPager"></table>
-                                        </div>
-
-                                    </div>
+                                <hr />
+                                <div class="row">
+                                    <table id="gridGa"></table>
+                                    <table id="gridGaPager"></table>
                                 </div>
 
                             </div>
@@ -765,7 +763,7 @@
                         <div class="col-md-12">
                             <button id="btn_add_garisk" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add Risk</button>
                             <button id="btn_update_garisk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
-                            <button id="btn_remove_garisk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -914,7 +912,7 @@
 
             <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">
 
-                <button id="btn_gar_OnClose" type="button" class="btn btn-danger pull right" data-dismiss="modal">Close</button>
+                <button id="btn_gar_OnClose" type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
             </div>
 
         </div>
@@ -2210,19 +2208,21 @@
             </div>
 
             <div class="modal-body" style="padding: 40px 40px;">
-                <form id="endmentDeletionForm" name="confirmationForm">
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="">Endorment Deletion Reason</label>
-                            <div class="col-md-12">
-                                <textarea id="DEL_REASON" class="form-control center" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
-                            </div>
-                        </div>
-                    </div>
-
+                <form id="endmentDeletionForm" name="endmentDeletionForm">
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" id="btnEndDeletion" class="btn btn-info fa-pull-right">
+                            <label class="">Endorment Deletion Reason</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <textarea id="DEL_REASON" class="form-control" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button type="button" id="btnEndDeletion" class="btn btn-info">
                                 <i class="fa fa-edit " title="Approve" aria-hidden="true"></i> Delete Endorsement
                             </button>
                         </div>

@@ -54,7 +54,6 @@
                                                class="form-control" type="text" name="txtSearch" placeholder="Search by Code">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -471,8 +470,9 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-md-1">
-                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" />
+                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
@@ -492,25 +492,21 @@
                                     <div class="col-md-1">
                                         <input id="POLH_POL_COMM_BC" type="text" name="POLH_POL_COMM_BC" class="form-control" min="12" title="POLH_POL_COMM_BC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_POL_DISC_FC" type="text" name="POLH_POL_DISC_FC" class="form-control" min="12" title="POLH_POL_DISC_FC" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_DISC_BC" type="text" name="POLH_POL_DISC_BC" class="form-control" min="12" title="POLH_POL_DISC_BC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_POL_LOAD_FC" type="text" name="POLH_POL_LOAD_FC" class="form-control" min="12" title="POLH_POL_LOAD_FC" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_LOAD_BC" type="text" name="POLH_POL_LOAD_BC" class="form-control" min="12" title="POLH_POL_LOAD_BC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_COINS_SI_FC" type="text" name="POLH_COINS_SI_FC" class="form-control" min="12" title="POLH_COINS_SI_FC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_COINS_SI_BC" type="text" name="POLH_COINS_SI_BC" class="form-control" min="12" title="POLH_COINS_SI_BC" />
                                     </div>
@@ -521,21 +517,18 @@
                                     <div class="col-md-1">
                                         <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_NET_SI_BC" type="text" name="POLH_NET_SI_BC" class="form-control" min="12" title="POLH_NET_SI_BC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_NET_PREM_FC" type="text" name="POLH_NET_PREM_FC" class="form-control" min="12" title="POLH_NET_PREM_FC" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_NET_PREM_BC" type="text" name="POLH_NET_PREM_BC" class="form-control" min="12" title="POLH_NET_PREM_BC" />
                                     </div>
-
                                     <div class="col-md-1">
                                         <input id="POLH_FEE_FC" type="text" name="POLH_FEE_FC" class="form-control" min="12" title="POLH_FEE_FC" />
                                     </div>
@@ -546,12 +539,11 @@
                                         <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_END_NO" type="text" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" />
+                                        <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" />
+                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                     </div>
-
                                 </div>
                                 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
@@ -2203,19 +2195,21 @@
             </div>
 
             <div class="modal-body" style="padding: 40px 40px;">
-                <form id="endmentDeletionForm" name="confirmationForm">
+                <form id="endmentDeletionForm" name="endmentDeletionForm">
                     <div class="row">
-                        <div class="form-group">
-                            <label class="">Endorment Deletion Reason</label>
-                            <div class="col-md-12">
-                                <textarea id="DEL_REASON" class="form-control center" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
-                            </div>
+                       <div class="col-lg-6">
+                           <label class="">Endorment Deletion Reason</label>
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <textarea id="DEL_REASON" class="form-control" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
                         </div>
                     </div>
-
+                    <hr />
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" id="btnEndDeletion" class="btn btn-info fa-pull-right">
+                            <button type="button" id="btnEndDeletion" class="btn btn-info">
                                 <i class="fa fa-edit " title="Approve" aria-hidden="true"></i> Delete Endorsement
                             </button>
                         </div>

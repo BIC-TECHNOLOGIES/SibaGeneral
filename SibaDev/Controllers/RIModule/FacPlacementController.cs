@@ -14,20 +14,20 @@ namespace SibaDev.Controllers.RIModule
     {
         // GET: TreatyArrangement
 
-        //[HttpGet]
-        //[Route("api/FacPlacement/search/{q}")]
-        //public object Search(string q)
-        //{
-        //    try
-        //    {
-        //        return FacPlacementMdl.se(q);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return new { state = false, message = "Server Error", exception = e };
-        //    }
+        [HttpGet]
+        [Route("api/FacPlacement/search/{q}")]
+        public object Search(int q)
+        {
+            try
+            {
+                return FacPlacementMdl.get_allocation(q);
+            }
+            catch (Exception e)
+            {
+                return new { state = false, message = "Server Error", exception = e };
+            }
 
-        //}
+        }
 
         //[HttpPost]
         //[Route("api/FacPlacement/save")]

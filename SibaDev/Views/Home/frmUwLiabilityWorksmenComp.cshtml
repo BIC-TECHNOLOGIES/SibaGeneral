@@ -173,9 +173,9 @@
                                                         <div class="col-md-4">
                                                             <span id="spry_polhsubclass">
                                                                 <div class="input-group">
-                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" title="Code" required />
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" title="Code" value="WKCOMP" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" id="btn_ProductRisk" name="btn_ProductRisk">
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" id="btn_ProductRisks" name="btn_ProductRisk">
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -184,7 +184,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" title="Name" />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" id="PDT_NAME" value="WORKSMEN COMPENSATION" title="Name" readonly />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -471,11 +471,13 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-md-1">
-                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" />
+                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_BC" type="text" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
@@ -522,6 +524,7 @@
                                         <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
                                     </div>
 
+
                                     <div class="col-md-1">
                                         <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                     </div>
@@ -546,12 +549,11 @@
                                         <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_END_NO" type="text" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" />
+                                        <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" />
+                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                     </div>
-
                                 </div>
 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
@@ -754,7 +756,7 @@
                 <div class="row bg-primary">
                     <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
                     <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
-                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial"> Risk Interest</strong>
+                    <h4>WORKSMEN COMPENSATION</h4>
                 </div>
 
                 <div class="row some-bg-color">
@@ -762,7 +764,7 @@
                         <div class="col-md-5">
                             <button id="btn_add_liab_details" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add Risk</button>
                             <button id="btn_update_liab_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
-                            <button id="btn_reset_liab_risk" type="reset" class="btn btn-default"><i class="fa fa-refresh" title="Reset" aria-hidden="true"></i> Clear</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -801,7 +803,7 @@
                                                     <div class="col-md-3">
                                                         <label class="required">Object</label>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-2">
                                                         <span id="spry_lovcode">
                                                             <div class="input-group">
                                                                 <input class="form-control" min="3" max-length="15" type="text" id="LIAWOC_OBJECT" name="LIAWOC_OBJECT" required />
@@ -814,7 +816,7 @@
                                                             <span class="textfieldRequiredMsg">Code is required.</span>
                                                         </span>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <span id="spry_baserate">
                                                             <input class="form-control" min="3" max-length="50" type="text" id="LIAWOC_OBJECT_NAME" name="LIAWOC_OBJECT_NAME" />
                                                             <span class="textfieldRequiredMsg">Name is required.</span>
@@ -863,7 +865,7 @@
                                                 <div class="col-md-3">
                                                     <label class="">Geo Limit</label>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <input class="form-control" min="3" max-length="15" type="text" id="LIAWOC_GEO_LIM" name="LIAWOC_GEO_LIM" />
                                                     </div>
@@ -874,7 +876,8 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input class="form-control" type="number" id="LIAWOC_NO_PERSONS" name="LIAWOC_NO_PERSONS" />
+                                                        <input class="form-control"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                           type="number" maxlength="4" id="LIAWOC_NO_PERSONS" name="LIAWOC_NO_PERSONS" />                                                                                                                       
                                                     </div>
                                                 </div>
 
@@ -888,7 +891,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input class="form-control" type="number" id="LIAWOC_NO_YEARS" name="LIAWOC_NO_YEARS" />
+                                                        <input class="form-control"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="2" id="LIAWOC_NO_YEARS" name="LIAWOC_NO_YEARS" />
                                                     </div>
                                                 </div>
 
@@ -2285,19 +2288,21 @@
             </div>
 
             <div class="modal-body" style="padding: 40px 40px;">
-                <form id="endmentDeletionForm" name="confirmationForm">
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="">Endorment Deletion Reason</label>
-                            <div class="col-md-12">
-                                <textarea id="DEL_REASON" class="form-control center" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
-                            </div>
-                        </div>
-                    </div>
-
+                <form id="endmentDeletionForm" name="endmentDeletionForm">
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" id="btnEndDeletion" class="btn btn-info fa-pull-right">
+                            <label class="">Endorment Deletion Reason</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <textarea id="DEL_REASON" class="form-control" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button type="button" id="btnEndDeletion" class="btn btn-info">
                                 <i class="fa fa-edit " title="Approve" aria-hidden="true"></i> Delete Endorsement
                             </button>
                         </div>

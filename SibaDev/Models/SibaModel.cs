@@ -13469,9 +13469,9 @@ namespace SibaDev.Models
                 .Property(e => e.LIA_STATUS)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<INS_UDW_LIABILITY>()
-               .Property(e => e.LIA_PERIOD_DAYS)
-               .IsUnicode(false);
+            //modelBuilder.Entity<INS_UDW_LIABILITY>()
+            //   .Property(e => e.LIA_PERIOD_DAYS)
+            //   .IsUnicode(false);
 
             modelBuilder.Entity<INS_UDW_LIABILITY>()
                 .HasMany(e => e.INS_UDW_LIABILITY_FEES)

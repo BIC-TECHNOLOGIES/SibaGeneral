@@ -9,6 +9,9 @@
         search_sourcebusiness: function (query, success, error) {
             u.get("/api/SourceBusiness/search/" + query, success, error);
         },
+        get_sourcebusiness_lov: function (success, error) {
+            u.get("/api/SourceBusiness/lov", success, error);
+        },
         check_sourcebusiness_code: function (code, success, error) {
             u.get("/api/sourcebusiness/check/" + code, success, error);
         }

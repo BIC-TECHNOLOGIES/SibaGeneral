@@ -12,6 +12,9 @@
         confirmPolicy: function (polId, success,error) {
             u.get("/api/Confirmation/confirmHomeOwnersPolicy/" + polId, success, error);
         },
+        risk_end_deletion: function (sysID, endNo, success, error) {
+            u.get("/api/policyhomeowners/endDeletion/" + sysID + "/" + endNo, success, error);
+        },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);
         },

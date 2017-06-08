@@ -83,7 +83,6 @@ namespace SibaDev.Models
                     POLH_CURRENCY_RATE = polh.POLH_CURRENCY_RATE,
                     INS_UDW_LIABILITY = polh.INS_UDW_LIABILITY != null ? polh.INS_UDW_LIABILITY.Select(r => get_riskd(r.LIA_SYS_ID)).ToList() : null,
 
-
                 }).Single();
             }
             catch (Exception e)
@@ -603,8 +602,7 @@ namespace SibaDev.Models
                                 PR_TTY_SOURCE = null,
                                 PR_TXN_REF = (int)SystemConstants.UnderwritingPremium,
                                 PR_UWD_ACCT_TYPE = viewPolh.POLH_INS_SOURCE
-                            });
-                            db.SaveChanges();
+                            });                            
 
                             break;
                         case "D":
@@ -622,7 +620,7 @@ namespace SibaDev.Models
                             }
                             break;
                     }
-
+                    db.SaveChanges();
                     trans.Commit();
                     return new INS_UWD_POLICY_HEAD
                     {
@@ -643,5 +641,78 @@ namespace SibaDev.Models
             }
 
         }
+
+
+        public static INS_UWD_POLICY_HEAD SaveEndsmntCancl(INS_UWD_POLICY_HEAD viewPolh)
+        {
+            var db = new SibaModel();
+            var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
+            if (dbPolh != null)
+            {
+                //update of policy header details
+
+                dbPolh.Map(viewPolh);
+
+                /*----------------
+                 * risk update
+                 *--------------*/
+                foreach (var risk in viewPolh.INS_UDW_LIABILITY) 
+                {
+                    var dbrisk = db.INS_UDW_LIABILITY.Find(risk.LIA_SYS_ID);
+                    switch (risk.LIA_STATUS)
+                    { 
+                        case "A":
+                            if (dbrisk != null)
+                            {
+                                db.INS_UDW_LIABILITY.Attach(dbrisk);
+                                dbrisk.Map(risk);
+                            }
+
+                            break;
+                        case "U":
+                            risk.LIA_STATUS = "A"; 
+                            risk.LIA_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_LIABILITY.Add(risk);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_LIABILITY.Remove(db.INS_UDW_LIABILITY.Find(risk.LIA_SYS_ID));
+                            break;
+                    }
+
+                }
+
+                foreach (var fee in viewPolh.INS_UDW_POL_FEES)
+                {
+                    var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                    switch (fee.POL_FEE_STATUS)
+                    {
+                        case "A":
+                            if (dbFee != null)
+                            {
+                                db.INS_UDW_POL_FEES.Attach(dbFee);
+                                dbFee.Map(fee);
+                            }
+
+                            break;
+                        case "U":
+                            fee.POL_FEE_STATUS = "A";
+                            fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_POL_FEES.Add(fee);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+            }
+            db.SaveChanges();
+            return viewPolh;
+        }
+
     }
 }

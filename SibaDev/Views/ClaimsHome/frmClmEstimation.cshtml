@@ -402,7 +402,7 @@
                                                    </div>
 
                                                    <div class="col-md-4">
-                                                       <span style="margin-left: -144px;"><label style="color: blue">Name</label></span>
+                                                       <span style="margin-left: -174px;"><label style="color: blue">Name</label></span>
                                                        <input class="form-control pull-left" type="text" id="CLM_EST_NAME" name="CLM_EST_NAME" title="" required />
                                                    </div>
 
@@ -453,7 +453,19 @@
                             </div>
 
                             <div id="tabs-3">
-
+                                <div class="row">
+                                   <div class="col-lg-11">
+                                       <div class="col-md-3">
+                                           <div class="btn-block">
+                                               <button id="" class="btn btn-info" type="button"><i class="fa fa-list-ul "></i> Upload Documents</button>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-5">
+                                           <input class="form-control" readonly />
+                                       </div>
+                                   </div>
+                                </div>
+                               
                             </div>
 
                         </div>
@@ -528,15 +540,15 @@
 
             <div class="modal-content">
 
-                <div class="modal-header bg-primary">
-                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                    <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
-                    <div class="row">
-                        <div class="col=md-12">
-                            <div class="col-md-4">
-                                <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Claim Expense detatils</strong>
-                            </div>
-                            <div class="col-md-4" style="background-color:white;">
+                <div class="modal-header">
+                    <div class="row modal-header-success">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">CLAIM EXPENSE DETAILS</h4>
+                    </div>
+
+                    <div class="row some-bg-color">
+                        <div style="margin-top: 10px;">
+                            <div class="col-md-12">
                                 <button id="btn_add_expense" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
                                 <button id="btn_update_expense" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
                                 <button id="" class="btn btn-default" type="reset"><i class="fa fa-trash-o text-danger"></i> Clear </button>
@@ -546,8 +558,8 @@
                     </div>
                 </div>
 
-                <div class="modal-body">
 
+                <div class="modal-body">
                    
                         <div class="row control-group form-padding">
                             <div class="container" style="width: 100%">

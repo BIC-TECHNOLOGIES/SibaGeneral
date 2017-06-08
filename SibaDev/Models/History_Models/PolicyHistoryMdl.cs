@@ -78,7 +78,7 @@ namespace SibaDev.Models.History_Models
                         POLH_CURRENCY = polh.POLH_CURRENCY,
                         POLH_CURRENCY_RATE = polh.POLH_CURRENCY_RATE,
                         //INS_UDW_BONDS = polh.INS_UDW_BONDS != null ? polh.INS_UDW_BONDS.Select(r => PolicyBondMdl.get_bond(r.BOND_SYS_ID)).ToList() : null,
-
+                        //INS_UDW_BONDS = RiskHistoryMdl.GetPolHistoryRisk(polh.POLH_SYS_ID, polh.POLH_END_NO).ToList(),
                         INS_UWD_VEHICLE_RISK = RiskHistoryMdl.GetPolHistoryRisk(polh.POLH_SYS_ID,polh.POLH_END_NO).ToList(),
 
                         //INS_UDW_TRAVEL_RISK_HEAD = polh.INS_UDW_TRAVEL_RISK_HEAD != null ? polh.INS_UDW_TRAVEL_RISK_HEAD.Select(r => PolicyTravelMdl.get_travel_head(r.TRAH_SYS_ID)).ToList() : null,

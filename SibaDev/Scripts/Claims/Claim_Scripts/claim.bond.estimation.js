@@ -112,7 +112,7 @@
                   CLM_CLT_CODE: grid.jqGrid('getCell', sel_id, 'POLH_CUST_CODE'),
                   CLM_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'POLH_SYS_ID'),
               }, "#clmEstimateForm");
-
+              //$scope.getClientLov();
           },
           //Retrive Grid data into form input fields on row double click.... XXX
           function (sel_id) {

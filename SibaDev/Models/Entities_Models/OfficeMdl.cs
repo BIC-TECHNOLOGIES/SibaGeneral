@@ -11,50 +11,50 @@ namespace SibaDev.Models
         public static MS_SYS_OFFICE get_office(string code)
         {
             var db = new SibaModel();
-            return (from office in db.MS_SYS_OFFICE where office.OFF_CODE == code select office).ToList().Select(o => new MS_SYS_OFFICE
+            return (from office in db.MS_SYS_OFFICE where office.OFF_CODE == code select office).ToList().Select(office => new MS_SYS_OFFICE
             {
-                OFF_CODE = o.OFF_CODE,
-                OFF_NAME = o.OFF_NAME,
-                OFF_DESC = o.OFF_DESC,
-                OFF_CHANEL = o.OFF_CHANEL,
-                OFF_ADDRESS1 = o.OFF_ADDRESS1,
-                OFF_PHYSICAL_LOCAT = o.OFF_PHYSICAL_LOCAT,
-                OFF_PHONE = o.OFF_PHONE,
-                OFF_MOBILE = o.OFF_MOBILE,
-                OFF_FAX = o.OFF_FAX,
-                OFF_EMAIL = o.OFF_EMAIL,
-                OFF_MANAGER = o.OFF_MANAGER,
-                OFF_CMP_CODE = o.OFF_CMP_CODE,
-                OFF_CRTE_BY = o.OFF_CRTE_BY,
-                OFF_CRTE_DATE = o.OFF_CRTE_DATE,
-                OFF_MOD_BY = o.OFF_MOD_BY,
-                OFF_MOD_DATE = o.OFF_MOD_DATE,
-                OFF_STATUS = o.OFF_STATUS
+                OFF_CODE = office.OFF_CODE,
+                OFF_NAME = office.OFF_NAME,
+                OFF_DESC = office.OFF_DESC,
+                OFF_CHANEL = office.OFF_CHANEL,
+                OFF_ADDRESS1 = office.OFF_ADDRESS1,
+                OFF_PHYSICAL_LOCAT = office.OFF_PHYSICAL_LOCAT,
+                OFF_PHONE = office.OFF_PHONE,
+                OFF_MOBILE = office.OFF_MOBILE,
+                OFF_FAX = office.OFF_FAX,
+                OFF_EMAIL = office.OFF_EMAIL,
+                OFF_MANAGER = office.OFF_MANAGER,
+                OFF_CMP_CODE = office.OFF_CMP_CODE,
+                OFF_CRTE_BY = office.OFF_CRTE_BY,
+                OFF_CRTE_DATE = office.OFF_CRTE_DATE,
+                OFF_MOD_BY = office.OFF_MOD_BY,
+                OFF_MOD_DATE = office.OFF_MOD_DATE,
+                OFF_STATUS = office.OFF_STATUS
             }).Single();
         }
 
         public static IEnumerable<MS_SYS_OFFICE> get_offices()
         {
             var db = new SibaModel();
-            return (from o in db.MS_SYS_OFFICE where o.OFF_STATUS == "A" select o).ToList().Select(o => new MS_SYS_OFFICE
+            return (from office in db.MS_SYS_OFFICE where office.OFF_STATUS == "A" select office).ToList().Select(office => new MS_SYS_OFFICE
             {
-                OFF_CODE = o.OFF_CODE,
-                OFF_NAME = o.OFF_NAME,
-                OFF_DESC = o.OFF_DESC,
-                OFF_CHANEL = o.OFF_CHANEL,
-                OFF_ADDRESS1 = o.OFF_ADDRESS1,
-                OFF_PHYSICAL_LOCAT = o.OFF_PHYSICAL_LOCAT,
-                OFF_PHONE = o.OFF_PHONE,
-                OFF_MOBILE = o.OFF_MOBILE,
-                OFF_FAX = o.OFF_FAX,
-                OFF_EMAIL = o.OFF_EMAIL,
-                OFF_MANAGER = o.OFF_MANAGER,
-                OFF_CMP_CODE = o.OFF_CMP_CODE,
-                OFF_CRTE_BY = o.OFF_CRTE_BY,
-                OFF_CRTE_DATE = o.OFF_CRTE_DATE,
-                OFF_MOD_BY = o.OFF_MOD_BY,
-                OFF_MOD_DATE = o.OFF_MOD_DATE,
-                OFF_STATUS = o.OFF_STATUS
+                OFF_CODE = office.OFF_CODE,
+                OFF_NAME = office.OFF_NAME,
+                OFF_DESC = office.OFF_DESC,
+                OFF_CHANEL = office.OFF_CHANEL,
+                OFF_ADDRESS1 = office.OFF_ADDRESS1,
+                OFF_PHYSICAL_LOCAT = office.OFF_PHYSICAL_LOCAT,
+                OFF_PHONE = office.OFF_PHONE,
+                OFF_MOBILE = office.OFF_MOBILE,
+                OFF_FAX = office.OFF_FAX,
+                OFF_EMAIL = office.OFF_EMAIL,
+                OFF_MANAGER = office.OFF_MANAGER,
+                OFF_CMP_CODE = office.OFF_CMP_CODE,
+                OFF_CRTE_BY = office.OFF_CRTE_BY,
+                OFF_CRTE_DATE = office.OFF_CRTE_DATE,
+                OFF_MOD_BY = office.OFF_MOD_BY,
+                OFF_MOD_DATE = office.OFF_MOD_DATE,
+                OFF_STATUS = office.OFF_STATUS
             });
         }
 

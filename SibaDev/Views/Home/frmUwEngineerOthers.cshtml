@@ -1,11 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Goods In Transit Policy";
+    ViewBag.Title = "Other Engineering Policy";
 }
 
-<script src="~/Scripts/Page_Scripts/policy.ga.transit.js"></script>
-<script src="~/Scripts/Services/policy.ga.transit.service.js"></script>
+<script src="~/Scripts/Page_Scripts/policy.engineering.others.js"></script>
+<script src="~/Scripts/Services/policy.engineering.others.service.js"></script>
 <script src="~/Scripts/Services/customers.service.js"></script>
-<script src="~/Scripts/Services/policy.approval.service.js"></script>
+
 <script src="~/Scripts/Libraries/SibaScript/getSequenceNo.js"></script>
 <script src="~/Scripts/Libraries/SibaScript/RetnSequenceNo.js"></script>
 
@@ -21,6 +21,7 @@
                     <div class="container" style="width: 100%;">
                         <div class="panel panel-default container-fluid">
                             <div class="panel-heading row">
+
                                 <div class="col-md-12 col-sm-12">
                                     <div class="col-md-4">
                                         <button type="button" class="btn btn-success" id="btn_Save">
@@ -79,7 +80,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CMP_CODE" name="POLH_CMP_CODE" value="MULTI" title="Code" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_companys", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_company", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -125,9 +126,9 @@
                                                         <div class="col-md-4">
                                                             <span id="spry_polhclass">
                                                                 <div class="input-group">
-                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="G/A" readonly />
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="BONDS" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -136,7 +137,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="GENERAL ACCIDENT" readonly />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="BONDS" readonly />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -173,9 +174,9 @@
                                                         <div class="col-md-4">
                                                             <span id="spry_polhsubclass">
                                                                 <div class="input-group">
-                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" title="Code" value="GIT" readonly />
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" title="Code" required />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" id="btn_ProductRisks" name="btn_ProductRisks">
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" id="btn_ProductRisk" name="btn_ProductRisk">
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -184,7 +185,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" id="PDT_NAME" title="Name" value="GOODS IN TRANSIT" readonly />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" title="Name" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -597,142 +598,338 @@
                                 <li><a href="#tabs-6">Claim History</a></li>
                             </ul>
 
-                            <div id="tabs-1">
-
+                                    <div id="tabs-1">
                                 <div class="row">
                                     <div class="btn-block">
-                                        <button id="btn_open_ga_risk" name="btn_open_ga_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Add Risk</button>
-
+                                        <button id="btn_open_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Risk</button>
                                         <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
-
-                                        <button type="button" class="btn btn-default pull-right dialog-btn" id="export-ga-btn" title="Export Grid data to Excel">
-                                            <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
-                                        </button>
                                     </div>
                                 </div>
-
-                               <hr />
-                                <div class="row">
-                                    <table id="gridGa"></table>
-                                    <table id="gridGaPager"></table>
-                                </div>
-
-                            </div>
-
-                            <div id="tabs-2">
-
                                 <div class="row control-group form-padding">
                                     <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Risk Premium Summary</span>
+                                        <span class="control-grp-lbl text-danger">Risk Form</span>
 
-                                        <div class="row">
-                                            <table id="gridRiskPremSummary"></table>
-                                            <table id="gridRiskPremSummaryPager"></table>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div id="tabs-3">
-
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger"></span>
-
-                                        <div class="row">
-                                            <button id="btn_GetCompFees" name="btn_GetCompFees" class="btn btn-default" type="button">
-                                                <i class="fa fa-trash-o text-danger"></i> Get Fees
-                                            </button>
-                                        </div>
-
-                                        <div class="row">
-                                            <table id="gridCompFees"></table>
-                                            <table id="gridCompFeesPager"></table>
-                                        </div>
-
-                                        <hr />
-                                        <div class="row">
-                                            <table id="gridPolFees"></table>
-                                            <table id="gridPolFeesPager"></table>
-                                        </div>
-                                        <hr />
-                                        <div class="row">
-                                            <table id="gridPremReg"></table>
-                                            <table id="gridPremRegPager"></table>
-                                        </div>
-
-                                        @*<hr />
+                                        <form id="engineeringForm" name="engineeringForm">
                                             <div class="row">
-                                                <table id="gridPremSum"></table>
-                                                <table id="gridPremSumPager"></table>
-                                            </div>*@
+                                                <input class="form-control" type="hidden" id="ENG_START_DATE" name="ENG_START_DATE" title="Date" />
+                                                <input class="form-control" type="hidden" id="ENG_END_DATE" name="ENG_END_DATE" title="Date" />
+                                                <input class="form-control" type="hidden" id="ENG_CURRENCY" name="ENG_CURRENCY" />
+                                                <input class="form-control" type="hidden" name="ENG_CURRENCY_RATE" />
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="required">Region</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span id="spry_lovcode">
+                                                            <div class="input-group">
+                                                                <input class="form-control" min="1" max-length="15" type="text" id="ENG_REGION_CODE" name="ENG_REGION_CODE" required />
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_region", "field1":"ENG_REGION_CODE", "field2":"ENG_REGION_NAME"}'>
+                                                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                            <span class="textfieldRequiredMsg">Code is required.</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span id="spry_baserate">
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="ENG_REGION_NAME" />
+                                                            <span class="textfieldRequiredMsg">Name is required.</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="required">Area</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span id="spry_lovcode">
+                                                            <div class="input-group">
+                                                                <input class="form-control" min="3" max-length="15" type="text" id="ENG_AREA_CODE" name="ENG_AREA_CODE" required />
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Area" name="btn_Area">
+                                                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                            <span class="textfieldRequiredMsg">Code is required.</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span id="spry_baserate">
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="ENG_AREA_NAME" />
+                                                            <span class="textfieldRequiredMsg">Name is required.</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="required">Location</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <span id="spry_lovcode">
+                                                            <div class="input-group">
+                                                                <input class="form-control" min="3" max-length="15" type="text" id="ENG_LOC_CODE" name="ENG_LOC_CODE" required />
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Loc" name="btn_Loc">
+                                                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                            <span class="textfieldRequiredMsg">Code is required.</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <span id="spry_baserate">
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="ENG_LOC_NAME" />
+                                                            <span class="textfieldRequiredMsg">Location name is required.</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="">EQ. Zone</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="input-group">
+                                                            <input class="form-control" min="3" max-length="15" type="text" id="ENG_EARTHQ_ZONE" name="ENG_EARTHQ_ZONE" required />
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_eqzone", "field1":"ENG_EARTHQ_ZONE", "field2":"EQZ_NAME"}'>
+                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="">Project</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="input-group">
+                                                            <input class="form-control" min="3" max-length="15" type="text" id="ENG_PROJ_CODE" name="ENG_PROJ_CODE" required />
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_occupancy", "field1":"ENG_PROJ_CODE", "field2":"ENG_PROJ_NAME"}'>
+                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input class="form-control" min="3" max-length="50" type="text" id="ENG_PROJ_NAME" name="ENG_PROJ_NAME" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="required">Description</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <textarea id="ENG_DESC" rows="2" cols="10" maxlength="100"
+                                                                  class="form-control" type="text" name="ENG_DESC" title="Description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="">Sum Insured</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_SI_FC" class="form-control" type="number" name="ENG_SI_FC" readonly />
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_SI_BC" class="form-control" type="number" name="ENG_SI_BC" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="">TPL Sum Insured</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_TPL_SI_FC" class="form-control" type="number" name="ENG_TPL_SI_FC" readonly />
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_TPL_SI_BC" class="form-control" type="number" name="ENG_TPL_SI_BC" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="">LOP Sum Insured</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_LOP_SI_FC" class="form-control" type="number" name="ENG_LOP_SI_FC" readonly />
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_LOP_SI_BC" class="form-control" type="number" name="ENG_LOP_SI_BC" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        <label class="">Premium</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_TOT_PREM_FC" class="form-control" type="number" name="ENG_TOT_PREM_FC" readonly />
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <input id="ENG_TOT_PREM_BC" class="form-control" type="number" name="ENG_TOT_PREM_BC" readonly />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
 
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div id="tabs-4">
+                                    <div id="tabs-2">
 
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Reinsurance Details</span>
+                                        <div class="row control-group form-padding">
+                                            <div class="container" style="width:100%">
+                                                <span class="control-grp-lbl text-danger">Risk Premium Summary</span>
 
-                                        <div class="row">
-                                            <button type="reset" class="btn btn-primary" id="btnTreatyAppor">
-                                                <i class="fa fa-list" title="" aria-hidden="true"></i>RI Apportionments
-                                            </button>
-                                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
-                                                <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
-                                            </button>
-                                        </div>
+                                                <div class="row">
+                                                    <table id="gridRiskPremSummary"></table>
+                                                    <table id="gridRiskPremSummaryPager"></table>
+                                                </div>
 
-                                        <div class="row">
-                                            <table id="gridRISummary"></table>
-                                            <table id="gridRISummaryPager"></table>
+                                            </div>
+
                                         </div>
 
                                     </div>
-                                </div>
 
-                            </div>
+                                    <div id="tabs-3">
 
-                            <div id="tabs-5">
+                                        <div class="row control-group form-padding">
+                                            <div class="container" style="width:100%">
+                                                <span class="control-grp-lbl text-danger"></span>
 
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Policy Details</span>
+                                                <div class="row">
+                                                    <button id="btn_GetCompFees" name="btn_GetCompFees" class="btn btn-default" type="button">
+                                                        <i class="fa fa-trash-o text-danger"></i> Get Fees
+                                                    </button>
+                                                </div>
 
-                                        <div class="row">
-                                            <table id="gridPremPmt"></table>
-                                            <table id="gridPremPmtPager"></table>
+                                                <div class="row">
+                                                    <table id="gridCompFees"></table>
+                                                    <table id="gridCompFeesPager"></table>
+                                                </div>
+
+                                                <hr />
+                                                <div class="row">
+                                                    <table id="gridPolFees"></table>
+                                                    <table id="gridPolFeesPager"></table>
+                                                </div>
+                                                <hr />
+                                                <div class="row">
+                                                    <table id="gridPremReg"></table>
+                                                    <table id="gridPremRegPager"></table>
+                                                </div>
+
+                                                @*<hr />
+                            <div class="row">
+                                <table id="gridPremSum"></table>
+                                <table id="gridPremSumPager"></table>
+                            </div>*@
+
+                                            </div>
                                         </div>
 
                                     </div>
-                                </div>
 
-                            </div>
+                                    <div id="tabs-4">
 
-                            <div id="tabs-6">
+                                        <div class="row control-group form-padding">
+                                            <div class="container" style="width:100%">
+                                                <span class="control-grp-lbl text-danger">Reinsurance Details</span>
 
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Claim</span>
-                                        <div class="row">
-                                            <table id="gridClaimsSummary"></table>
-                                            <table id="gridClaimsSummaryPager"></table>
+                                                <div class="row">
+                                                    <button type="reset" class="btn btn-primary" id="btnTreatyAppor">
+                                                        <i class="fa fa-list" title="" aria-hidden="true"></i>RI Apportionments
+                                                    </button>
+                                                    <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
+                                                        <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                                    </button>
+                                                </div>
+
+                                                <div class="row">
+                                                    <table id="gridRISummary"></table>
+                                                    <table id="gridRISummaryPager"></table>
+                                                </div>
+
+                                            </div>
                                         </div>
+
                                     </div>
+
+                                    <div id="tabs-5">
+
+                                        <div class="row control-group form-padding">
+                                            <div class="container" style="width:100%">
+                                                <span class="control-grp-lbl text-danger">Policy Details</span>
+
+                                                <div class="row">
+                                                    <table id="gridPremPmt"></table>
+                                                    <table id="gridPremPmtPager"></table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="tabs-6">
+
+                                        <div class="row control-group form-padding">
+                                            <div class="container" style="width:100%">
+                                                <span class="control-grp-lbl text-danger">Claim</span>
+                                                <div class="row">
+                                                    <table id="gridClaimsSummary"></table>
+                                                    <table id="gridClaimsSummaryPager"></table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
                             </div>
-
-                        </div>
-
-                    </div>
 
                 </div>
 
@@ -744,354 +941,238 @@
 </div>
 
 
-<!-- General Accident Type Modal Dialog -->
-
-<div class="modal draggable ui-accordion fade" id="garModal" role="dialog" data-backdrop="static" data-keyboard="true">
+<!-- Other Engineering Modal Dialog -->
+<div class="modal fade" id="otherEngModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
+
             <div class="modal-header">
                 <div class="row modal-header-success">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 id="textTRANS" class="modal-title"></h4>
+                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+                    <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
+                    <h4 class="modal-title"> OTHER ENGINEERING</h4>
                 </div>
-
                 <div class="row some-bg-color">
                     <div style="margin-top: 10px;">
-                        <div class="col-md-12">
-                            <button id="btn_add_garisk" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add Risk</button>
-                            <button id="btn_update_garisk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
-                            <button id="btn_remove_garisk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
-                        </div>
+                        <div class="col-md-7">
+                            <button id="btn_add_eng_details" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
+                            <button id="btn_update_eng_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
+                            <button id="btn_remove_eng_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                        </div>  
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-eng-btn" title="Export Grid data to Excel">
+                                <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                            </button>
+                        </div>                  
                     </div>
                 </div>
-            </div>
 
+            </div>
 
             <div class="modal-body">
                 <div class="row control-group form-padding">
                     <div class="container" style="width:100%">
-                        <span class="control-grp-lbl text-danger">Enter Risk Details</span>
+                        <span class="control-grp-lbl text-danger">Other Engineering Details</span>
 
-                        <div class="row">
-                            <form id="genaccidentForm" name="genaccidentForm">
-
-                                <input class="form-control" type="hidden" id="TRANS_SYS_ID" name="TRANS_SYS_ID" />
-
-
-                                <div class="row">
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-2">
-                                                <label class="required">Region</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <span id="spry_lovcode">
-                                                    <div class="input-group">
-                                                        <input class="form-control" min="3" max-length="15" type="text" id="TRANS_REGION_CODE" name="TRANS_REGION_CODE" required />
-                                                        <span class="input-group-btn">
-                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_region", "field1":"TRANS_REGION_CODE", "field2":"TRANS_REGION_NAME"}'>
-                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                            </button>
-                                                        </span>
-                                                    </div>
-                                                    <span class="textfieldRequiredMsg">Code is required.</span>
+                        <form id="engForm" name="engForm">
+                            <input id="ENG_OTHER_RISK_ID" type="hidden" class="form-control"
+                                   name="ENG_OTHER_RISK_ID" />
+                           
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Object Type</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span id="spry_lovcode">
+                                            <div class="input-group">
+                                                <input class="form-control" min="3" max-length="15" type="text" id="ENG_OTHER_OBJECT" name="ENG_OTHER_OBJECT" required />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_area", "field1":"ENG_OTHER_OBJECT", "field2":"ENG_OTHER_OBJECT_NAME"}'>
+                                                        <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
+                                                    </button>
                                                 </span>
                                             </div>
-                                            <div class="col-md-4">
-                                                <span id="spry_baserate">
-                                                    <input class="form-control" min="3" max-length="50" type="text" name="TRANS_REGION_NAME" />
-                                                    <span class="textfieldRequiredMsg">Name is required.</span>
-                                                </span>
-                                            </div>
-                                        </div>
+                                            <span class="textfieldRequiredMsg">Code is required.</span>
+                                        </span>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-2">
-                                                <label class="required">Area</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <span id="spry_lovcode">
-                                                    <div class="input-group">
-                                                        <input class="form-control" min="3" max-length="15" type="text" id="TRANS_AREA_CODE" name="TRANS_AREA_CODE" required />
-                                                        <span class="input-group-btn">
-                                                            <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Area" name="btn_Area">
-                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                            </button>
-                                                        </span>
-                                                    </div>
-                                                    <span class="textfieldRequiredMsg">Code is required.</span>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span id="spry_baserate">
-                                                    <input class="form-control" min="3" max-length="50" type="text" name="TRANS_AREA_NAME" />
-                                                    <span class="textfieldRequiredMsg">Name is required.</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-2">
-                                                <label class="required">Location</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <span id="spry_lovcode">
-                                                    <div class="input-group">
-                                                        <input class="form-control" min="3" max-length="15" type="text" id="TRANS_LOC_CODE" name="TRANS_LOC_CODE" required />
-                                                        <span class="input-group-btn">
-                                                            <button type="button" class="btn btn_lov btn-default pull-left" id="btn_Loc" name="btn_Loc">
-                                                                <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                            </button>
-                                                        </span>
-                                                    </div>
-                                                    <span class="textfieldRequiredMsg">Code is required.</span>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span id="spry_baserate">
-                                                    <input class="form-control" min="3" max-length="50" type="text" name="TRANS_LOC_NAME" />
-                                                    <span class="textfieldRequiredMsg">Location name is required.</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-2">
-                                                <label class="required">Loc Description</label>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <textarea id="TRANS_LOC_DESC" rows="2" cols="5" maxlength="100"
-                                                          class="form-control" type="text" name="TRANS_LOC_DESC" title="Description"></textarea>
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <label class="required">Loc Address</label>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <span id="spry_desc">
-                                                    <textarea id="TRANS_LOC_ADDRS" rows="2" cols="5" maxlength="100"
-                                                              class="form-control" type="text" name="TRANS_LOC_ADDRS" title="Description"></textarea>
-                                                    <span class="textfieldRequiredMsg">Address is required.</span>
-                                                </span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-2">
-                                                <label class="">Earthquake Zone</label>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <input id="TRANS_EARTHQ_ZONE" class="form-control" min="" maxlength="20"
-                                                       type="number" name="TRANS_EARTHQ_ZONE" title="Name" required />
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-
-                                                    <div class="col-md-2">
-                                                        <label class="required">Sum Insured</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <span id="spry_baserate">
-                                                            <input class="form-control" min="" max-length="10" type="number" id="TRANS_SUM_INSURED_FC" name="TRANS_SUM_INSURED_FC" readonly />
-                                                            <span class="textfieldRequiredMsg">Name is required.</span>
-                                                        </span>
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <span id="spry_baserate">
-                                                            <input class="form-control" min="" max-length="10" type="number" id="TRANS_SUM_INSURED_BC" name="TRANS_SUM_INSURED_BC" readonly />
-                                                            <span class="textfieldRequiredMsg">Name is required.</span>
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-
-                                                    <div class="col-md-2">
-                                                        <label class="required">Premium</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <span id="spry_baserate">
-                                                            <input class="form-control" min="" max-length="10" type="number" id="TRANS_PREMIUM_FC" name="TRANS_PREMIUM_FC" readonly />
-                                                            <span class="textfieldRequiredMsg">Name is required.</span>
-                                                        </span>
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <span id="spry_baserate">
-                                                            <input class="form-control" min="" max-length="10" type="number" id="TRANS_PREMIUM_BC" name="TRANS_PREMIUM_BC" readonly />
-                                                            <span class="textfieldRequiredMsg">Name is required.</span>
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-
-                                                    <div class="col-md-2">
-                                                        <label class="required">Limit per Loss</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <span id="spry_baserate">
-                                                            <input class="form-control" min="" max-length="10" type="number" id="TRANS_LIMIT_LOSS_FC" name="TRANS_LIMIT_LOSS_FC" />
-                                                            <span class="textfieldRequiredMsg">Name is required.</span>
-                                                        </span>
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <span id="spry_baserate">
-                                                            <input class="form-control" min="" max-length="10" type="number" id="TRANS_LIMIT_LOSS_BC" name="TRANS_LIMIT_LOSS_BC" />
-                                                            <span class="textfieldRequiredMsg">Name is required.</span>
-                                                        </span>
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="" max-length="10" type="hidden" id="TRANS_START_DATE" name="TRANS_START_DATE" />
-                                                        <input class="form-control" min="" max-length="10" type="hidden" id="TRANS_END_DATE" name="TRANS_END_DATE" />
-                                                        <input class="form-control" min="" max-length="10" type="hidden" id="TRANS_PERIOD_DAYS" name="TRANS_PERIOD_DAYS" />
-                                                        <input class="form-control" min="" max-length="10" type="hidden" id="TRANS_UW_YEAR" name="TRANS_UW_YEAR" />
-                                                        <input class="form-control" min="" max-length="10" type="hidden" id="TRANS_CURRENCY" name="TRANS_CURRENCY" />
-                                                        <input class="form-control" min="" max-length="10" type="hidden" id="TRANS_CURR_RATE" name="TRANS_CURR_RATE" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <hr />
-
-                                </div>
-
-
-                                <div class="row control-group form-padding">
-                                    <div class="container" style="width:100%">
-                                        <span class="control-grp-lbl text-danger">Enter Interest Details</span>
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Item</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <input class="form-control" min="3" max-length="50" type="text" id="TRANS_RISK_TYPE" name="TRANS_RISK_TYPE" readonly />
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input class="form-control" min="3" max-length="50" type="text" id="TRANS_RISK_NAME" name="TRANS_RISK_NAME" readonly />
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="required">Risk Description</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <span id="spry_baserate">
-                                                        <textarea id="TRANS_RISK_DESC" rows="2" cols="50" name="TRANS_RISK_DESC" class="form-control"></textarea>
-                                                        <span class="textfieldRequiredMsg">Name is required.</span>
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="">Annual Turnover</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <input id="TRANS_EARTHQ_ZONE" class="form-control" min="" maxlength="20"
-                                                           type="number" name="TRANS_EARTHQ_ZONE" title="Name" />
-                                                </div>
-
-                                                <div class="col-md-2">
-                                                    <input class="form-control" min="3" max-length="15" type="number" id="TRANS_FIRST_LOSS" name="TRANS_FIRST_LOSS" />
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label class="">Destination From</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input class="form-control" min="3" max-length="50" type="text" id="TRANS_DENT_FROM" name="TRANS_DENT_FROM" required />
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label class="">Destination To</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input class="form-control" min="3" max-length="50" type="text" id="TRANS_DENT_TO" name="TRANS_DENT_TO" required />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="">Distance</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input class="form-control" min="" max-length="10" type="number" id="TRANS_DISTANCE" name="TRANS_DISTANCE" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <input class="form-control" min="3" type="hidden" id="TRANS_START_DATE" name="TRANS_START_DATE" />
-                                                <input class="form-control" min="3" type="hidden" id="TRANS_END_DATE" name="TRANS_END_DATE" />
-                                                <input class="form-control" min="3" type="hidden" id="TRANS_PERIOD_DAYS" name="TRANS_PERIOD_DAYS" />
-                                                <input class="form-control" min="3" type="hidden" id="TRANS_CURRENCY" name="TRANS_CURRENCY" />
-                                                <input class="form-control" min="3" type="hidden" id="TRANS_CURRENCY_RATE" name="TRANS_CURRENCY_RATE" />
-                                                <input class="form-control" min="3" type="hidden" id="TRANS_UW_YEAR" name="TRANS_UW_YEAR" />
-                                            </div>
-                                        </div>
-
+                                    <div class="col-md-4">
+                                        <span id="spry_baserate">
+                                            <input class="form-control" min="3" max-length="50" type="text" id="ENG_OTHER_OBJECT_NAME" name="ENG_OTHER_OBJECT_NAME" />
+                                            <span class="textfieldRequiredMsg">Name is required.</span>
+                                        </span>
                                     </div>
                                 </div>
+                            </div>
 
-                            </form>
-                        </div>
+                            <hr />
+                            <div class="row">
+                                <div class="form-group">
+
+                                    <div class="col-md-2">
+                                        <label class="">Description</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <textarea name="ENG_OTHER_DESC" id="ENG_OTHER_DESC" class="form-control" cols="40" rows="2"></textarea>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label class="">Serial No.</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="form-control" min="3" max-length="15" type="text" id="ENG_OTHER_SERL_NO" name="ENG_OTHER_SERL_NO" title="Code" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Make &amp; Model</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span id="spry_lovcode">
+                                            <div class="form-group">
+                                                <input class="form-control" min="3" max-length="15" type="text" id="ENG_OTHER_MK_MODEL" name="ENG_OTHER_MK_MODEL" title="Code" required />
+                                            </div>
+                                            <span class="textfieldRequiredMsg">Name is required.</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label class="">Manufacturer</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_MANUF" class="form-control" maxlength="4" type="text" name="ENG_OTHER_MANUF" required />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Manuf Year</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input id="ENG_OTHER_MANUF_YR" class="form-control" maxlength="4" type="month" name="ENG_OTHER_MANUF_YR" required />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label>Stand by</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input class="checkbox checkbox-inline pull-left" type="checkbox" id="ENG_OTHER_STND_BY" name="ENG_OTHER_STND_BY" />
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label class="">Capacity</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input id="ENG_OTHER_CAP" class="form-control" maxlength="20" type="text" name="ENG_OTHER_CAP" disabled />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="required">Location</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="ENG_OTHER_LOC" name="ENG_OTHER_LOC" title="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Foundation</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_FUNDT_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_FUNDT_FC" />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_FUNDT_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_FUNDT_BC" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Transformer</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_TRANSF_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_TRANSF_FC" />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_TRANSF_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_TRANSF_BC" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Sum Insured FC</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_SUM_INSURED_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_SUM_INSURED_FC" />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_SUM_INSURED_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_SUM_INSURED_BC" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Premium FC</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_PREMIUM_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_PREMIUM_FC" />
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_PREMIUM_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_PREMIUM_BC" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label class="">Escalation</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input id="ENG_OTHER_ESCL" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_ESCL" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
 
                         <hr />
+                        <div class="row">
+                            <table id="gridEngOthers"></table>
+                            <table id="gridEngOthersPager"></table>
+                        </div>
 
                     </div>
                 </div>
@@ -1099,7 +1180,7 @@
 
             <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">
 
-                <button id="btn_gar_OnClose" type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+                <button id="" type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
             </div>
 
         </div>
@@ -1109,7 +1190,6 @@
 
 
 <!--Risk Cover Setup Modal -->
-
 <div class="modal draggable ui-accordion fade" id="RiskCoverModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
 
@@ -1280,9 +1360,7 @@
 </div>
 
 
-
 <!--Customer Setup Modal -->
-
 <div class="modal draggable ui-accordion fade" id="customerSetupModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
@@ -1605,9 +1683,7 @@
 </div>
 
 
-
 <!--Policy Search Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="mySearchResultModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1632,9 +1708,7 @@
 </div>
 
 
-
 <!--Agent/Broker Commission Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="agentcommModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1720,7 +1794,6 @@
 
 
 <!--  Risk Cover LOV Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="AddNewCoverModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1813,6 +1886,7 @@
     </div>
 </div>
 
+
 <!-- Treaty share among companies -->
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="treatyShareModal" role="dialog" data-backdrop="static" data-keyboard="true">
@@ -1846,7 +1920,6 @@
 
 
 <!--  Class of Business Modal -->
-
 <div class="modal draggable ui-accordion fade" id="prodRiskLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog">
 
@@ -1889,7 +1962,6 @@
 
 
 <!--  Customer Modal -->
-
 <div class="modal draggable ui-accordion fade" id="customerLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog">
 
@@ -1932,7 +2004,6 @@
 
 
 <!-- Policy Schedule Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="policyscheduleModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -2005,7 +2076,6 @@
 
 
 <!-- Policy Documents printing Modal -->
-
 <div class="modal fade draggable" id="PolicyDocsModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2051,7 +2121,6 @@
 
 
 <!-- Policy Processing Modal -->
-
 <div class="modal fade draggable" id="PolicyProcessingModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2098,7 +2167,6 @@
 
 
 <!-- Policy Approval Modal -->
-
 <div class="modal fade draggable" id="PolicyApprovalModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2216,7 +2284,6 @@
 
 
 <!-- Policy Endorsement Modal -->
-
 <div class="modal fade draggable" id="PolicyEndorsementModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2381,7 +2448,6 @@
 
 
 <!-- Policy Endorsement Cancellation  Modal -->
-
 <div class="modal fade draggable" id="EndmtDeletionModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2428,7 +2494,6 @@
 
 
 <!-- Policy Confirmation Modal -->
-
 <div class="modal fade draggable" id="PolConfirmModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2470,8 +2535,8 @@
     </div>
 </div>
 
-<!---  Intermediary Commission-->
 
+<!---  Intermediary Commission-->
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="interCommLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -2686,6 +2751,7 @@
     </div>
 </div>
 
+
 <!-- Inward/Coinsurance Member  Participating companies -->
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="PartipantsModal" role="dialog" data-backdrop="static" data-keyboard="true">
@@ -2768,6 +2834,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Coinsurance Leader or Outward Modal -------------------- -->
 <div class="container">
@@ -2911,7 +2978,7 @@
     </div>
 </div>
 
-<!--  Area Modal -->
+
 <div class="modal draggable ui-accordion fade" id="areaLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog">
 
@@ -2993,3 +3060,6 @@
 
     </div>
 </div>
+
+
+

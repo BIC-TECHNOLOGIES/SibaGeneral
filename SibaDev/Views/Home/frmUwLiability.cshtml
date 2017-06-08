@@ -78,7 +78,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CMP_CODE" name="POLH_CMP_CODE" value="MULTI" title="Code" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_company", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_companys", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -126,7 +126,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="LIABIL" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -159,7 +159,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" title="Name" />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" id="OFF_NAME" title="Name" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -470,11 +470,13 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="col-md-1">
-                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" />
+                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+
                                     </div>
                                     <div class="col-md-1">
                                         <input id="POLH_POL_SI_BC" type="text" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
@@ -521,6 +523,7 @@
                                         <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
                                     </div>
 
+
                                     <div class="col-md-1">
                                         <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                     </div>
@@ -545,12 +548,11 @@
                                         <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_END_NO" type="text" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" />
+                                        <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" />
+                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                     </div>
-
                                 </div>
 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
@@ -600,7 +602,7 @@
                                     <div class="btn-block">
                                         <div class="col-md-7">
                                             <button id="btn_open_interest_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Add Risk </button>
-                                            <button id="btn_remove_interest_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                                            <button id="btn_remove_liability_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
 
                                             <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover </button>
                                         </div>                                    
@@ -740,7 +742,7 @@
         </div>
     </div>
 
-</div>
+</div> 
 
 
 <!-- Interest Risk Modal Dialog -->
@@ -750,21 +752,28 @@
 
         <div class="modal-content">
 
-            <div class="modal-header bg-primary">
-                <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
-                <div class="row">
-                    <div class="col=md-12">
-                        <div class="col-md-4">
-                            <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Interest Risk Setup</strong>
-                        </div>
-                        <div class="col-md-4" style="background-color:white;">
+            <div class="modal-header">
+               <div class="row modal-header-success">
+                   <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+                   <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
+                   <h4 class="modal-title"> LIABILITY</h4> 
+               </div>
+                <div class="row some-bg-color">
+                    <div style="margin-top: 10px;">
+                        <div class="col-md-7">
                             <button id="btn_add_liability_details" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
                             <button id="btn_update_liability_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
-                            <button id="" class="btn btn-default" type="reset"><i class="fa fa-trash-o text-danger"></i> Clear </button>
+                           
                         </div>
+                        <div class="col-md-2">
+                            <button id="btn_open_block_details" name="btn_open_block_details" class="btn btn-default" type="button">
+                                <i class="fa fa-fire"></i> Add Block Details
+                            </button>
+                        </div>
+
                     </div>
                 </div>
+             
             </div>
 
             <div class="modal-body">
@@ -807,81 +816,64 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label class="required">Item</label>
+                                                    <label class="required">Description</label>
                                                 </div>
                                                 <div class="col-md-7">
-                                                    <textarea name="LIA_DESC" id="LIA_DESC" cols="5" rows="5" class="form-control"></textarea>
+                                                    <textarea name="LIA_ITEM_DESC" id="LIA_ITEM_DESC" cols="5" rows="5" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="required">Aggreate Limit</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_AGG_LIM_FC" name="LIA_AGG_LIM_FC" readonly />
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_AGG_LIM_BC" name="LIA_AGG_LIM_BC" readonly />
-                                                    </div>
-
-                                                </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label class="required">Aggreate Limit</label>
                                             </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control" min="3" max-length="50" type="number" id="LIA_AGG_LIM_FC" name="LIA_AGG_LIM_FC" readonly />
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <input class="form-control" min="3" max-length="50" type="number" id="LIA_AGG_LIM_BC" name="LIA_AGG_LIM_BC" readonly />
+                                            </div>
+
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="required">Limit per Occurance</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_LIM_OCCUR_FC" name="LIA_LIM_OCCUR_FC" readonly />
-                                                    </div>
-
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_LIM_OCCUR_BC" name="LIA_LIM_OCCUR_BC" readonly />
-                                                    </div>
-
-                                                </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label class="required">Limit per Occurance</label>
                                             </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control" min="3" max-length="50" type="number" id="LIA_LIM_OCCUR_FC" name="LIA_LIM_OCCUR_FC" readonly />
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <input class="form-control" min="3" max-length="50" type="number" id="LIA_LIM_OCCUR_BC" name="LIA_LIM_OCCUR_BC" readonly />
+                                            </div>
+
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-2">
-                                                        <label class="required">Premium FC</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="" max-length="10" type="number" id="LIA_PREMIUM_FC" name="LIA_PREMIUM_FC" readonly />
-                                                    </div>
+                                        <div class="form-group">
+                                            <div class="col-md-2">
+                                                <label class="required">Premium FC</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control" min="" max-length="10" type="number" id="LIA_PREMIUM_FC" name="LIA_PREMIUM_FC" readonly />
+                                            </div>
 
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" min="3" max-length="50" type="number" id="LIA_PREMIUM_BC" name="LIA_PREMIUM_BC" readonly />
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control" min="3" max-length="50" type="number" id="LIA_PREMIUM_BC" name="LIA_PREMIUM_BC" readonly />
                                             </div>
                                         </div>
                                     </div>
 
                                     <hr />
-                                    <div class="col-md-2">
-                                        <button id="btn_open_block_details" name="btn_open_block_details" class="btn btn-info" type="button">
-                                            <i class="fa fa-fire"></i> Add Block Details
-                                        </button>
-                                    </div>
-
+                                    
                                     <div class="row">
                                         <input class="form-control" type="hidden" id="LIA_START_DATE" name="LIA_START_DATE" title="Start Date" required />
                                         <input class="form-control" type="hidden" id="LIA_END_DATE" name="LIA_END_DATE" title="To Date" required />
@@ -1008,7 +1000,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <span id="spry_baserate">
-                                                        <input class="form-control" min="3" max-length="50" type="text" name="LIA_LOC_NAME" required />
+                                                        <input class="form-control" min="3" max-length="50" type="text" id="LIA_LOC_NAME" name="LIA_LOC_NAME" required />
                                                         <span class="textfieldRequiredMsg">Location name is required.</span>
                                                     </span>
                                                 </div>
@@ -1562,7 +1554,6 @@
 
 
 <!--Policy Search Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="mySearchResultModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1588,7 +1579,6 @@
 
 
 <!--Agent/Broker Commission Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="agentcommModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1674,7 +1664,6 @@
 
 
 <!--  Risk Cover LOV Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="AddNewCoverModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1801,7 +1790,6 @@
 
 
 <!--  Class of Business Modal -->
-
 <div class="modal draggable ui-accordion fade" id="prodRiskLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog">
 
@@ -1844,7 +1832,6 @@
 
 
 <!--  Customer Modal -->
-
 <div class="modal draggable ui-accordion fade" id="customerLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog">
 
@@ -1887,7 +1874,6 @@
 
 
 <!-- Policy Schedule Modal -->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="policyscheduleModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -1960,7 +1946,6 @@
 
 
 <!-- Policy Documents printing Modal -->
-
 <div class="modal fade draggable" id="PolicyDocsModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2006,7 +1991,6 @@
 
 
 <!-- Policy Processing Modal -->
-
 <div class="modal fade draggable" id="PolicyProcessingModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2053,7 +2037,6 @@
 
 
 <!-- Policy Approval Modal -->
-
 <div class="modal fade draggable" id="PolicyApprovalModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2171,7 +2154,6 @@
 
 
 <!-- Policy Endorsement Modal -->
-
 <div class="modal fade draggable" id="PolicyEndorsementModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2336,7 +2318,6 @@
 
 
 <!-- Policy Endorsement Cancellation  Modal -->
-
 <div class="modal fade draggable" id="EndmtDeletionModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2349,19 +2330,21 @@
             </div>
 
             <div class="modal-body" style="padding: 40px 40px;">
-                <form id="endmentDeletionForm" name="confirmationForm">
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="">Endorment Deletion Reason</label>
-                            <div class="col-md-12">
-                                <textarea id="DEL_REASON" class="form-control center" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
-                            </div>
-                        </div>
-                    </div>
-
+                <form id="endmentDeletionForm" name="endmentDeletionForm">
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" id="btnEndDeletion" class="btn btn-info fa-pull-right">
+                            <label class="">Endorment Deletion Reason</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <textarea id="DEL_REASON" class="form-control" name="NARRATION" placeholder="Please enter a reason for your action" required></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button type="button" id="btnEndDeletion" class="btn btn-info">
                                 <i class="fa fa-edit " title="Approve" aria-hidden="true"></i> Delete Endorsement
                             </button>
                         </div>
@@ -2381,7 +2364,6 @@
 
 
 <!-- Policy Confirmation Modal -->
-
 <div class="modal fade draggable" id="PolConfirmModal" role="dialog">
     <div class="modal-dialog">
 
@@ -2425,7 +2407,6 @@
 
 
 <!---  Intermediary Commission-->
-
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="interCommLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog">
@@ -2639,6 +2620,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Inward/Coinsurance Member  Participating companies -->
 <div class="container">

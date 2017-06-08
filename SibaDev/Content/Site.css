@@ -201,7 +201,7 @@ text-align: right;
 
 
 .modal .modal-body {
-max-height: 600px;
+max-height: 450px;
 overflow-y: auto;
 }
 
@@ -211,8 +211,6 @@ overflow-y: auto;
         /*max-height: 600px;*/
 	}
 }
-
-
 
 @media (min-width: 768px) {	
 	#customerSetupModal .modal-dialog  {
@@ -394,7 +392,7 @@ overflow-y: auto;
 
 @media (min-width: 768px) {	
 	#EARInterestModal .modal-dialog  {
-        width:1150px;
+        width:1000px;
         /*max-height: 600px;*/
 	}
 }
@@ -408,35 +406,35 @@ overflow-y: auto;
 
 @media (min-width: 768px) {	
 	#EARTPLModal .modal-dialog  {
-        width:1350px;
+        width:1150px;
         /*max-height: 600px;*/
 	}
 }
 
 @media (min-width: 768px) {	
 	#CARInterestModal .modal-dialog  {
-        width:1350px;
+        width:1150px;
         /*max-height: 600px;*/
 	}
 }
 
 @media (min-width: 768px) {	
 	#CARCPMModal .modal-dialog  {
-        width:1350px;
+        width:1150px;
         /*max-height: 600px;*/
 	}
 }
 
 @media (min-width: 768px) {	
 	#CARTPLModal .modal-dialog  {
-        width:1350px;
+        width:1150px;
         /*max-height: 600px;*/
 	}
 }
 
 @media (min-width: 768px) {	
 	#CARLossopModal .modal-dialog  {
-        width:1350px;
+        width:1150px;
         /*max-height: 600px;*/
 	}
 }
@@ -469,6 +467,33 @@ overflow-y: auto;
 	}
 }
 
+@media (min-width: 768px) {	
+	#PaModal .modal-dialog  {
+        width:1150px;
+        /*max-height: 600px;*/
+	}
+}
+
+@media (min-width: 768px) {	
+	#LiabilityModal .modal-dialog  {
+        width:1150px;
+        /*max-height: 600px;*/
+	}
+}
+
+@media (min-width: 768px) {	
+	#HomeOwnersModal .modal-dialog  {
+        width:1150px;
+        /*max-height: 600px;*/
+	}
+}
+
+@media (min-width: 768px) {	
+	#garModal .modal-dialog  {
+        width:1150px;
+        /*max-height: 600px;*/
+	}
+}
 
 @media (min-width: 768px) {	
     .item-container {

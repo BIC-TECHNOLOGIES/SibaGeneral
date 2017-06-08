@@ -1,4 +1,4 @@
-namespace SibaDev.Models
+namespace SibaDev.Models.History_Entities
 {
     using System;
     using System.Collections.Generic;
@@ -121,13 +121,9 @@ namespace SibaDev.Models
 
         public int? LIA_POLH_END_NO { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
         [StringLength(20)]
         public string LIA_PDT_CODE { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
         [StringLength(20)]
         public string LIA_CVR_CODE { get; set; }
 

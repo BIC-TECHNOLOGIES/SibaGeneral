@@ -11,7 +11,7 @@ namespace SibaDev.Models
 {
     public class PolicyPaMdl : Model
     {
-
+        private static SibaModel db = new SibaModel();
         public static INS_UWD_POLICY_HEAD get_policy(int code)
         {
             var db = new SibaModel();
@@ -80,141 +80,99 @@ namespace SibaDev.Models
                     POLH_STATUS = polh.POLH_STATUS,
                     POLH_CURRENCY = polh.POLH_CURRENCY,
                     POLH_CURRENCY_RATE = polh.POLH_CURRENCY_RATE,
-                    //MS_SYS_OFFICE = new MS_SYS_OFFICE { OFF_CODE = polh.MS_SYS_OFFICE.OFF_CODE, OFF_NAME = polh.MS_SYS_OFFICE.OFF_NAME },
-                    //MST_UWD_PRODUCT = new MST_UWD_PRODUCT { PDT_CODE = polh.MST_UWD_PRODUCT.PDT_CODE, PDT_NAME = polh.MST_UWD_PRODUCT.PDT_NAME },
-                    //MS_SYS_COMPANY = new MS_SYS_COMPANY { CMP_CODE = polh.MS_SYS_COMPANY.CMP_CODE, CMP_NAME = polh.MS_SYS_COMPANY.CMP_NAME },
-                    //MS_SYS_EXCHANGE_RATES = new MS_SYS_EXCHANGE_RATES { EXR_CODE = polh.MS_SYS_EXCHANGE_RATES.EXR_CODE, EXR_BASE_RATE = polh.MS_SYS_EXCHANGE_RATES.EXR_BASE_RATE },
-                    //MS_SYS_SOURCE_BUSINESS = new MS_SYS_SOURCE_BUSINESS { SRB_CODE = polh.MS_SYS_SOURCE_BUSINESS.SRB_CODE, SRB_NAME = polh.MS_SYS_SOURCE_BUSINESS.SRB_NAME },
-                    //MS_UDW_CUSTOMERS = new MS_UDW_CUSTOMERS { CUS_CODE = polh.MS_UDW_CUSTOMERS.CUS_CODE, CUS_OFFICIAL_NAME = polh.MS_UDW_CUSTOMERS.CUS_OFFICIAL_NAME },
-
-                    INS_UDW_PA_INDIVIDUAL = polh.INS_UDW_PA_INDIVIDUAL != null ? polh.INS_UDW_PA_INDIVIDUAL.Select(c =>
-                         new INS_UDW_PA_INDIVIDUAL
-                         {
-                             PA_IND_SYS_ID = c.PA_IND_SYS_ID,
-                             PA_IND_PA_SYS_ID = c.PA_IND_PA_SYS_ID,
-                             PA_IND_POLH_SYS_ID = c.PA_IND_POLH_SYS_ID,
-                             PA_IND_POLH_DOC_NO = c.PA_IND_POLH_DOC_NO,
-                             PA_IND_POLH_END_NO = c.PA_IND_POLH_END_NO,
-                             PA_IND_RISK_CLASSCODE = c.PA_IND_RISK_CLASSCODE,
-                             PA_IND_ISSUE_DATE = c.PA_IND_ISSUE_DATE,
-                             PA_IND_RETRO_DATE = c.PA_IND_RETRO_DATE,
-                             PA_IND_RISK_CLASSNAME = c.PA_IND_RISK_CLASSNAME,
-                             PA_IND_NAME_INSURED = c.PA_IND_NAME_INSURED,
-                             PA_IND_DOB = c.PA_IND_DOB,
-                             PA_IND_AGE = c.PA_IND_AGE,
-                             PA_IND_GENDER = c.PA_IND_GENDER,
-                             PA_IND_NAME_NOMINEE = c.PA_IND_NAME_NOMINEE,
-                             PA_IND_RELATION = c.PA_IND_RELATION,
-                             PA_IND_EARNING = c.PA_IND_EARNING,
-                             PA_IND_MONTHLY_INCOME = c.PA_IND_MONTHLY_INCOME,
-                             PA_IND_JOB_TYPE = c.PA_IND_JOB_TYPE,
-                             PA_IND_RATE = c.PA_IND_RATE,
-                             PA_IND_WEEKS = c.PA_IND_WEEKS,
-                             PA_IND_WEEKLY_BENEFIT = c.PA_IND_WEEKLY_BENEFIT,
-                             PA_IND_DESCRIPTION = c.PA_IND_DESCRIPTION,
-                             PA_IND_CRTE_BY = c.PA_IND_CRTE_BY,
-                             PA_IND_CRTE_DATE = c.PA_IND_CRTE_DATE,
-                             PA_IND_STATUS = c.PA_IND_STATUS,
-
-                         }).ToList() : null,
-                    INS_UDW_TRAVEL_RISK = polh.INS_UDW_TRAVEL_RISK != null ? polh.INS_UDW_TRAVEL_RISK.Select(c =>
-                         new INS_UDW_TRAVEL_RISK
-                         {
-                             TRA_SYS_ID = c.TRA_SYS_ID,
-                             TRA_POLH_SYS_ID = c.TRA_POLH_SYS_ID,
-                             TRA_POLH_DOC_NO = c.TRA_POLH_DOC_NO,
-                             TRA_POLH_END_NO = c.TRA_POLH_END_NO,
-                             TRA_FULL_NAME = c.TRA_FULL_NAME,
-                             TRA_DOB = c.TRA_DOB,
-                             TRA_AGE = c.TRA_AGE,
-                             TRA_GENDER = c.TRA_GENDER,
-                             TRA_OCCUPATION = c.TRA_OCCUPATION,
-                             TRA_NATIONALITY = c.TRA_NATIONALITY,
-                             TRA_NATIONAL_ID = c.TRA_NATIONAL_ID,
-                             TRA_PASSPORT_NO = c.TRA_PASSPORT_NO,
-                             TRA_ISSUING_CTY = c.TRA_ISSUING_CTY,
-                             TRA_EXPIRY_DATE = c.TRA_EXPIRY_DATE,
-                             TRA_COUNTRY_VISIT = c.TRA_COUNTRY_VISIT,
-                             TRA_DESTIN_ADDRESS = c.TRA_DESTIN_ADDRESS,
-                             TRA_DESTIN_PHONE = c.TRA_DESTIN_PHONE,
-                             TRA_BENFI_NAME = c.TRA_BENFI_NAME,
-                             TRA_RELATIONSHIP = c.TRA_RELATIONSHIP,
-                             TRA_CONTACT = c.TRA_CONTACT,
-                             TRA_DECLARATION = c.TRA_DECLARATION,
-                             TRA_DECLARATION_DTS = c.TRA_DECLARATION_DTS,
-                             TRA_RISK_PREM_FC = c.TRA_RISK_PREM_FC,
-                             TRA_RISK_PREM_BC = c.TRA_RISK_PREM_BC,
-                             TRA_ADJ_PREM_FC = c.TRA_ADJ_PREM_FC,
-                             TRA_ADJ_PREM_BC = c.TRA_ADJ_PREM_BC,
-                             TRA_DISC_FC = c.TRA_DISC_FC,
-                             TRA_DISC_BC = c.TRA_DISC_BC,
-                             TRA_LOAD_FC = c.TRA_LOAD_FC,
-                             TRA_LOAD_BC = c.TRA_LOAD_BC,
-                             TRA_COMP_FEE_FC = c.TRA_COMP_FEE_FC,
-                             TRA_COMP_FEE_BC = c.TRA_COMP_FEE_BC,
-                             TRA_COMMISSION_FC = c.TRA_COMMISSION_FC,
-                             TRA_COMMISSION_BC = c.TRA_COMMISSION_BC,
-                             TRA_TXN_STATUS = c.TRA_TXN_STATUS,
-                             TRA_RISK_STATE = c.TRA_RISK_STATE,
-                             TRA_RISK_NO = c.TRA_RISK_NO,
-                             TRA_PDT_CODE = c.TRA_PDT_CODE,
-                             TRA_CVR_CODE = c.TRA_CVR_CODE,
-                             TRA_RENEWAL_STATUS = c.TRA_RENEWAL_STATUS,
-                             TRA_END_TYPE = c.TRA_END_TYPE,
-                             TRA_APPROVE_DATE = c.TRA_APPROVE_DATE,
-                             TRA_ACCT_DATE = c.TRA_ACCT_DATE,
-                             TRA_CRTE_BY = c.TRA_CRTE_BY,
-                             TRA_CRTE_DATE = c.TRA_CRTE_DATE,
-                             TRA_MOD_BY = c.TRA_MOD_BY,
-                             TRA_MOD_DATE = c.TRA_MOD_DATE,
-                             TRA_STATUS = c.TRA_STATUS,
-                             TRA_SI_FC = c.TRA_SI_FC,
-                             TRA_SI_BC = c.TRA_SI_BC,
-                             TRA_TOT_PREM_FC = c.TRA_TOT_PREM_FC,
-                             TRA_TOT_PREM_BC = c.TRA_TOT_PREM_BC,
-                             TRA_POL_CANCELLED = c.TRA_POL_CANCELLED,
-                             TRA_CANCELLED_REASON = c.TRA_CANCELLED_REASON,
-
-                         }).ToList() : null,
-
-                    INS_UWD_RISK_COVERS = polh.INS_UWD_RISK_COVERS != null ? polh.INS_UWD_RISK_COVERS.Select(v =>
-                        new INS_UWD_RISK_COVERS
-                        {
-                            RCOV_SYS_ID = v.RCOV_SYS_ID,
-                            RCOV_RISK_SYS_ID = v.RCOV_RISK_SYS_ID,
-                            RCOV_RISK_NO = v.RCOV_RISK_NO,
-                            RCOV_POLH_DOC_NO = v.RCOV_POLH_DOC_NO,
-                            RPCOV_END_NO = v.RPCOV_END_NO,
-                            RCOV_CODE = v.RCOV_CODE,
-                            RCOV_NO = v.RCOV_NO,
-                            RCOV_SI_FC = v.RCOV_SI_FC,
-                            RCOV_SI_BC = v.RCOV_SI_BC,
-                            RCOV_RATE = v.RCOV_RATE,
-                            RCOV_GROSS_PREM_FC = v.RCOV_GROSS_PREM_FC,
-                            RCOV_GROSS_PREM_BC = v.RCOV_GROSS_PREM_BC,
-                            RCOV_NET_PREM_FC = v.RCOV_NET_PREM_FC,
-                            RCOV_NET_PREM_BC = v.RCOV_NET_PREM_BC,
-                            RCOV_RI_SI_YN = v.RCOV_RI_SI_YN,
-                            RCOV_RI_PREM_YN = v.RCOV_RI_PREM_YN,
-                            RCOV_TYPE = v.RCOV_TYPE,
-                            RCOV_DISC_YN = v.RCOV_DISC_YN,
-                            RCOV_DISC_FC = v.RCOV_DISC_FC,
-                            RCOV_DISC_BC = v.RCOV_DISC_BC,
-                            RCOV_LOAD_YN = v.RCOV_LOAD_YN,
-                            RCOV_LOAD_FC = v.RCOV_LOAD_FC,
-                            RCOV_LOAD_BC = v.RCOV_LOAD_BC,
-                            RCOV_TXN_STATE = v.RCOV_TXN_STATE,
-                            RCOV_CRTE_BY = v.RCOV_CRTE_BY,
-                            RCOV_CRTE_DATE = v.RCOV_CRTE_DATE,
-                            RCOV_MOD_BY = v.RCOV_MOD_BY,
-                            RCOV_MOD_DATE = v.RCOV_MOD_DATE,
-                            RCOV_STATUS = v.RCOV_STATUS,
-
-                        }).ToList() : null,
-
+                    INS_UDW_PERSONAL_ACCIDENT = polh.INS_UDW_PERSONAL_ACCIDENT != null ? polh.INS_UDW_PERSONAL_ACCIDENT.Select(r => get_risk(r.PA_SYS_ID)).ToList() : null,
                 }).Single();
             }
             catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public static INS_UDW_PERSONAL_ACCIDENT get_risk(int code)
+        {
+            var db = new SibaModel();
+            try
+            {
+                return (from c in db.INS_UDW_PERSONAL_ACCIDENT where c.PA_SYS_ID == code select c).ToList().Select(c => new INS_UDW_PERSONAL_ACCIDENT
+                {
+                    PA_SYS_ID = c.PA_SYS_ID,
+                    PA_POLH_SYS_ID = c.PA_POLH_SYS_ID,
+                    PA_POLH_DOC_NO = c.PA_POLH_DOC_NO,
+                    PA_POLH_END_NO = c.PA_POLH_END_NO,
+                    PA_ACCT_DATE = c.PA_ACCT_DATE,
+                    PA_ADJ_PREM_BC = c.PA_ADJ_PREM_BC,
+                    PA_ADJ_PREM_FC = c.PA_ADJ_PREM_FC,
+                    PA_AGE = c.PA_AGE,
+                    PA_ANN_BENCOV = c.PA_ANN_BENCOV,
+                    PA_ANN_SALARY = c.PA_ANN_SALARY,
+                    PA_APPROVE_DATE = c.PA_APPROVE_DATE,
+                    PA_COMMISSION_BC = c.PA_COMMISSION_BC,
+                    PA_COMMISSION_FC = c.PA_COMMISSION_FC,
+                    PA_COMP_FEE_BC = c.PA_COMP_FEE_BC,
+                    PA_COMP_FEE_FC = c.PA_COMP_FEE_FC,
+                    PA_CURRENCY = c.PA_CURRENCY,
+                    PA_CURRENCY_RATE = c.PA_CURRENCY_RATE,
+                    PA_DAYS = c.PA_DAYS,
+                    PA_DESCRIPTION = c.PA_DESCRIPTION,
+                    PA_DISC_BC = c.PA_DISC_BC,
+                    PA_DISC_FC = c.PA_DISC_FC,
+                    PA_DOB = c.PA_DOB,
+                    PA_CVR_CODE = c.PA_CVR_CODE,
+                    PA_EARNING = c.PA_EARNING,
+                    PA_END_DATE = c.PA_END_DATE,
+                    PA_END_TYPE = c.PA_END_TYPE,
+                    PA_EXCLUSIONS = c.PA_EXCLUSIONS,
+                    PA_GENDER = c.PA_GENDER,
+                    PA_GRP_ID = c.PA_GRP_ID,
+                    PA_GRP_NAME = c.PA_GRP_NAME,
+                    PA_JOB_TYPE = c.PA_JOB_TYPE,
+                    PA_ISSUE_DATE = c.PA_ISSUE_DATE,
+                    PA_LIM_EVENTS = c.PA_LIM_EVENTS,
+                    PA_LIM_LIFE = c.PA_LIM_LIFE,
+                    PA_LOAD_BC = c.PA_LOAD_BC,
+                    PA_LOAD_FC = c.PA_LOAD_FC,
+                    PA_MONTHLY_INCOME = c.PA_MONTHLY_INCOME,
+                    PA_NAME_INSURED = c.PA_NAME_INSURED,
+                    PA_NAME_NOMINEE = c.PA_NAME_NOMINEE,
+                    PA_NUM_PERSONS = c.PA_NUM_PERSONS,
+                    PA_OCCUPATION = c.PA_OCCUPATION,
+                    PA_PDT_CODE = c.PA_PDT_CODE,
+                    PA_RATE = c.PA_RATE,
+                    PA_RELATION = c.PA_RELATION,
+                    PA_RENEWAL_STATUS = c.PA_RENEWAL_STATUS,
+                    PA_RISK_CLASSCODE = c.PA_RISK_CLASSCODE,
+                    PA_RISK_CLASSNAME = c.PA_RISK_CLASSNAME,
+                    PA_RISK_ID = c.PA_RISK_ID,
+                    PA_RISK_NO = c.PA_RISK_NO,
+                    PA_RISK_PREM_BC = c.PA_RISK_PREM_BC,
+                    PA_RISK_PREM_FC = c.PA_RISK_PREM_FC,
+                    PA_RISK_STATE = c.PA_RISK_STATE,
+                    PA_RISK_TYPE = c.PA_RISK_TYPE,
+                    PA_RI_PREM_BC = c.PA_RI_PREM_BC,
+                    PA_RI_PREM_FC = c.PA_RI_PREM_FC,
+                    PA_RI_SI_BC = c.PA_RI_SI_BC,
+                    PA_RI_SI_FC = c.PA_RI_SI_FC,
+                    PA_SI_BC = c.PA_SI_BC,
+                    PA_SI_FC = c.PA_SI_FC,
+                    PA_TFE_SALARY = c.PA_TFE_SALARY,
+                    PA_TOT_PREM_BC = c.PA_TOT_PREM_BC,
+                    PA_TOT_PREM_FC = c.PA_TOT_PREM_FC,
+                    PA_TXN_STATUS = c.PA_TXN_STATUS,
+                    PA_WEEKLY_BENEFIT = c.PA_WEEKLY_BENEFIT,
+                    PA_UW_YEAR = c.PA_UW_YEAR,
+                    PA_WEEKS = c.PA_WEEKS,
+                    PA_RETRO_DATE = c.PA_RETRO_DATE,
+                    PA_START_DATE = c.PA_START_DATE,
+                    PA_CRTE_BY = c.PA_CRTE_BY,
+                    PA_CRTE_DATE = c.PA_CRTE_DATE,
+                    PA_MOD_BY = c.PA_MOD_BY,
+                    PA_MOD_DATE = c.PA_MOD_DATE,
+                    PA_STATUS = c.PA_STATUS,
+                    INS_UWD_RISK_COVERS = c.INS_UWD_RISK_COVERS != null ? c.INS_UWD_RISK_COVERS.Select(x => PolicyRiskCovers.get_riskcovers(x.RCOV_SYS_ID)).ToList() : null
+                }).Single();
+            }
+            catch (Exception)
             {
                 return null;
             }
@@ -524,8 +482,7 @@ namespace SibaDev.Models
                                 PR_TTY_SOURCE = null,
                                 PR_TXN_REF = (int)SystemConstants.UnderwritingPremium,
                                 PR_UWD_ACCT_TYPE = viewPolh.POLH_INS_SOURCE
-                            });
-                            db.SaveChanges();
+                            });                           
 
                             break;
                         case "D":
@@ -543,6 +500,7 @@ namespace SibaDev.Models
                             }
                             break;
                     }
+                    db.SaveChanges();
                     trans.Commit();
                     return new INS_UWD_POLICY_HEAD
                     {
@@ -562,5 +520,77 @@ namespace SibaDev.Models
                 }
             }
         }
+
+
+        public static INS_UWD_POLICY_HEAD SaveEndsmntCancl(INS_UWD_POLICY_HEAD viewPolh)
+        {
+            var db = new SibaModel();
+            var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
+            if (dbPolh != null)
+            {
+                //update of policy header details;
+                dbPolh.Map(viewPolh);
+
+                /*----------------
+                 * risk update
+                 *--------------*/
+                foreach (var risk in viewPolh.INS_UDW_PERSONAL_ACCIDENT)
+                {
+                    var dbrisk = db.INS_UDW_PERSONAL_ACCIDENT.Find(risk.PA_SYS_ID);
+                    switch (risk.PA_STATUS)
+                    {
+                        case "A":
+                            if (dbrisk != null)
+                            {
+                                db.INS_UDW_PERSONAL_ACCIDENT.Attach(dbrisk);
+                                dbrisk.Map(risk);
+                            }
+
+                            break;
+                        case "U":
+                            risk.PA_STATUS = "A";
+                            risk.PA_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_PERSONAL_ACCIDENT.Add(risk);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_PERSONAL_ACCIDENT.Remove(db.INS_UDW_PERSONAL_ACCIDENT.Find(risk.PA_SYS_ID));
+                            break;
+                    }
+
+                }
+
+                foreach (var fee in viewPolh.INS_UDW_POL_FEES)
+                {
+                    var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                    switch (fee.POL_FEE_STATUS)
+                    {
+                        case "A":
+                            if (dbFee != null)
+                            {
+                                db.INS_UDW_POL_FEES.Attach(dbFee);
+                                dbFee.Map(fee);
+                            }
+
+                            break;
+                        case "U":
+                            fee.POL_FEE_STATUS = "A";
+                            fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_POL_FEES.Add(fee);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+            }
+            db.SaveChanges();
+            return viewPolh;
+        }
+
     }
 }

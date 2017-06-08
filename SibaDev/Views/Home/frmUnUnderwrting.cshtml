@@ -1,4 +1,4 @@
-﻿<div class=" main">
+﻿<div class="main">
 
     <h2 style="border-bottom-color:red" class="sub-header">Products</h2>
 
@@ -67,7 +67,7 @@
         </div>
 
         <div class="col-xs-6 col-sm-3 placeholder">
-            <a href="~/Home/frmUwLiability"> <img src="~/Content/Images/liability.jpg" style="width:150px;height:150px;border:0" class="img-responsive" alt="Generic placeholder thumbnail"></a>
+            <a id="showliability"> <img src="~/Content/Images/liability.jpg" style="width:150px;height:150px;border:0" class="img-responsive" alt="Generic placeholder thumbnail"></a>
             <h5> Liability Insurance </h5>
             <span class="text-muted"></span>
         </div>
@@ -113,10 +113,48 @@
     </div>
 
 
+    <div class="modal draggable ui-accordion fade" id="liabilityLovModal" role="dialog" data-backdrop="static" data-keyboard="true">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center">Liability Risk</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-4 placeholder">
+                                <a href="~/Home/frmUwLiability"><img src="~/Content/Images/cash_in_transit.png" style="width:150px;height:150px;border:0" class="img-responsive" alt="Generic placeholder thumbnail"></a>
+                                <h5> Other Liabilities </h5>
+                            </div>
+                            <div class="col-md-4 placeholder">
+                                <a href="~/Home/frmUwLiabilityWorksmenComp"><img src="~/Content/Images/cargo.jpg" style="width:150px;height:150px;border:0" class="img-responsive" alt="Generic placeholder thumbnail"></a>
+                                <h5> Worksmen Compensation </h5>
+                            </div>                          
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 <script>
     $("#showga").click(function () {
         $("#gaLovModal").modal();
+    });
+
+    $("#showliability").click(function () {
+        $("#liabilityLovModal").modal();
     });
 </script>

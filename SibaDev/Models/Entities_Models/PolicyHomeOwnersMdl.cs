@@ -338,24 +338,24 @@ namespace SibaDev.Models
                                     dbPolh.Map(viewPolh);
 
                                     /*--------------------------------
-                                     * Bond
+                                     * Risk
                                      *-------------------------------*/
 
-                                    foreach (var bon in viewPolh.INS_UDW_HOME_OWNERS)
+                                    foreach (var risk in viewPolh.INS_UDW_HOME_OWNERS)
                                     {
-                                        var dbbon = db.INS_UDW_HOME_OWNERS.Find(bon.HOP_SYS_ID);
-                                        switch (bon.HOP_STATUS)
+                                        var dbrisk = db.INS_UDW_HOME_OWNERS.Find(risk.HOP_SYS_ID);
+                                        switch (risk.HOP_STATUS)
                                         {
                                             case "A":
-                                                if (dbbon != null)
+                                                if (dbrisk != null)
                                                 {
-                                                    db.INS_UDW_HOME_OWNERS.Attach(dbbon);
-                                                    dbbon.Map(bon);
+                                                    db.INS_UDW_HOME_OWNERS.Attach(dbrisk);
+                                                    dbrisk.Map(risk);
 
                                                     /*--------------------------------
                                                     * Risk Covers
                                                     *-------------------------------*/
-                                                    foreach (var cover in bon.INS_UWD_RISK_COVERS)
+                                                    foreach (var cover in risk.INS_UWD_RISK_COVERS)
                                                     {
                                                         var dbcovers = db.INS_UWD_RISK_COVERS.Find(cover.RCOV_SYS_ID);
                                                         switch (cover.RCOV_STATUS)
@@ -372,7 +372,7 @@ namespace SibaDev.Models
                                                             case "U":
                                                                 cover.RCOV_STATUS = "A";
                                                                 cover.RCOV_MOD_DATE = DateTime.Now;
-                                                                cover.RCOV_RISK_SYS_ID = bon.HOP_SYS_ID;
+                                                                cover.RCOV_RISK_SYS_ID = risk.HOP_SYS_ID;
                                                                 db.INS_UWD_RISK_COVERS.Add(cover);
                                                                 break;
 
@@ -391,7 +391,7 @@ namespace SibaDev.Models
                                                     /*--------------------------------
                                                     * Risk Details
                                                     *-------------------------------*/
-                                                    foreach (var detail in bon.INS_UDW_HOME_OWNERS_DETAILS)
+                                                    foreach (var detail in risk.INS_UDW_HOME_OWNERS_DETAILS)
                                                     {
                                                         var dbdetails = db.INS_UDW_HOME_OWNERS_DETAILS.Find(detail.HODT_SYS_ID);
                                                         switch (detail.HODT_STATUS)
@@ -408,7 +408,7 @@ namespace SibaDev.Models
                                                             case "U":
                                                                 detail.HODT_STATUS = "A";
                                                                 detail.HODT_MOD_DATE = DateTime.Now;
-                                                                detail.HODT_HOP_SYS_ID = bon.HOP_SYS_ID;
+                                                                detail.HODT_HOP_SYS_ID = risk.HOP_SYS_ID;
                                                                 db.INS_UDW_HOME_OWNERS_DETAILS.Add(detail);
                                                                 break;
 
@@ -427,7 +427,7 @@ namespace SibaDev.Models
                                                     /*--------------------------------
                                                      * Risk Fees
                                                      *-------------------------------*/
-                                                    foreach (var fee in bon.INS_UDW_HOME_OWNERS_FEES)
+                                                    foreach (var fee in risk.INS_UDW_HOME_OWNERS_FEES)
                                                     {
                                                         var dbFee = db.INS_UDW_HOME_OWNERS_FEES.Find(fee.HOP_FEE_SYS_ID);
                                                         switch (fee.HOP_FEE_STATUS)
@@ -442,7 +442,7 @@ namespace SibaDev.Models
                                                                 break;
                                                             case "U":
                                                                 fee.HOP_FEE_STATUS = "A";
-                                                                fee.HOP_FEE_RK_SYS_ID = bon.HOP_SYS_ID;
+                                                                fee.HOP_FEE_RK_SYS_ID = risk.HOP_SYS_ID;
                                                                 fee.HOP_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
                                                                 db.INS_UDW_HOME_OWNERS_FEES.Add(fee);
 
@@ -458,12 +458,12 @@ namespace SibaDev.Models
 
                                                 break;
                                             case "U":
-                                                bon.HOP_STATUS = "A";
-                                                bon.HOP_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                db.INS_UDW_HOME_OWNERS.Add(bon);
+                                                risk.HOP_STATUS = "A";
+                                                risk.HOP_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                                                db.INS_UDW_HOME_OWNERS.Add(risk);
                                                 break;
                                             case "D":
-                                                db.INS_UDW_HOME_OWNERS.Remove(db.INS_UDW_HOME_OWNERS.Find(bon.HOP_SYS_ID));
+                                                db.INS_UDW_HOME_OWNERS.Remove(db.INS_UDW_HOME_OWNERS.Find(risk.HOP_SYS_ID));
                                                 break;
                                         }
 
@@ -496,39 +496,6 @@ namespace SibaDev.Models
                                                 break;
                                         }
 
-                                    }
-
-                                    /*--------------------------------
-                                    * Risk Fees
-                                    *-------------------------------*/
-                                    foreach (var fees in viewPolh.INS_UDW_BOND_FEES)
-                                    {
-                                        var dbrkfees = db.INS_UDW_BOND_FEES.Find(fees.BOND_FEE_SYS_ID);
-                                        switch (fees.BOND_FEE_STATUS)
-                                        {
-                                            case "A":
-                                                if (dbrkfees != null)
-                                                {
-                                                    db.INS_UDW_BOND_FEES.Attach(dbrkfees);
-                                                    dbrkfees.Map(fees);
-                                                }
-                                                break;
-
-                                            case "U":
-                                                fees.BOND_FEE_STATUS = "A";
-                                                fees.BOND_FEE_CRTE_DATE = DateTime.Now;
-                                                fees.BOND_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                db.INS_UDW_BOND_FEES.Add(fees);
-                                                break;
-
-                                            case "D":
-                                                if (dbrkfees != null)
-                                                {
-                                                    db.INS_UDW_BOND_FEES.Attach(dbrkfees);
-                                                    dbrkfees.BOND_FEE_STATUS = "D";
-                                                }
-                                                break;
-                                        }
                                     }
 
                                     /*-------------------------------
@@ -673,8 +640,7 @@ namespace SibaDev.Models
                                 PR_TTY_SOURCE = null,
                                 PR_TXN_REF = (int)SystemConstants.UnderwritingPremium,
                                 PR_UWD_ACCT_TYPE = viewPolh.POLH_INS_SOURCE
-                            });
-                            db.SaveChanges();
+                            });                            
 
                             break;
                         case "D":
@@ -692,7 +658,7 @@ namespace SibaDev.Models
                             }
                             break;
                     }
-
+                    db.SaveChanges();
                     trans.Commit();
                     return new INS_UWD_POLICY_HEAD
                     {
@@ -713,5 +679,78 @@ namespace SibaDev.Models
             }
 
         }
+
+
+        public static INS_UWD_POLICY_HEAD SaveEndsmntCancl(INS_UWD_POLICY_HEAD viewPolh)
+        {
+            var db = new SibaModel();
+            var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
+            if (dbPolh != null)
+            {
+                //update of policy header details
+
+                dbPolh.Map(viewPolh);
+
+                /*----------------
+                 * risk update
+                 *--------------*/
+                foreach (var risk in viewPolh.INS_UDW_HOME_OWNERS)
+                {
+                    var dbrisk = db.INS_UDW_HOME_OWNERS.Find(risk.HOP_SYS_ID);
+                    switch (risk.HOP_STATUS)
+                    {
+                        case "A":
+                            if (dbrisk != null)
+                            {
+                                db.INS_UDW_HOME_OWNERS.Attach(dbrisk);
+                                dbrisk.Map(risk);
+                            }
+
+                            break;
+                        case "U":
+                            risk.HOP_STATUS = "A";
+                            risk.HOP_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_HOME_OWNERS.Add(risk);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_HOME_OWNERS.Remove(db.INS_UDW_HOME_OWNERS.Find(risk.HOP_SYS_ID));
+                            break;
+                    }
+
+                }
+
+                foreach (var fee in viewPolh.INS_UDW_POL_FEES)
+                {
+                    var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                    switch (fee.POL_FEE_STATUS)
+                    {
+                        case "A":
+                            if (dbFee != null)
+                            {
+                                db.INS_UDW_POL_FEES.Attach(dbFee);
+                                dbFee.Map(fee);
+                            }
+
+                            break;
+                        case "U":
+                            fee.POL_FEE_STATUS = "A";
+                            fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_POL_FEES.Add(fee);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+            }
+            db.SaveChanges();
+            return viewPolh;
+        }
+
     }
 }

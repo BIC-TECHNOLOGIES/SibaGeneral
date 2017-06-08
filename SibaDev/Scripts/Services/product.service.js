@@ -12,6 +12,9 @@
         get_lov_covers: function (success, error) {
             u.get("/api/cover/lov", success, error);
         },
+        get_product_lov: function (success, error) {
+            u.get("/api/product/lov", success, error);
+        },
         get_lov_conditionsclausescovers: function (success, error) {
             u.get("/api/conditionsclauses/lov", success, error);
         },

@@ -389,5 +389,20 @@ namespace SibaDev.Controllers
         {
             return View();
         }
+
+        public ActionResult frmUwMarineCargo()
+        {
+            return View();
+        }
+
+        public ActionResult frmUwEngineerOthers() 
+        {
+            return View();
+        }
+
+        public ActionResult frmUwEngineerCAR() 
+        {
+            return View();
+        }
     }
 }

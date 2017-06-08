@@ -12,6 +12,9 @@
         confirmPolicy: function (polId, success,error) {
             u.get("/api/Confirmation/confirmLiabilityPolicy/" + polId, success, error);
         },
+        risk_end_deletion: function (sysID, endNo, success, error) {
+            u.get("/api/policyliability/endDeletion/" + sysID + "/" + endNo, success, error);
+        },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);
         },
@@ -58,6 +61,9 @@
         get_lov_member_com: function (success, error) {
             u.get("/api/customercategory/lov", success, error);
         },
+        get_lov_regions: function (success, error) {
+            u.get("/api/regions/lov", success, error);
+        },
 
         check_company_code: function (code, success, error) {
             u.get("/api/company/check/" + code, success, error);
@@ -73,6 +79,9 @@
         },
         check_channel_code: function (code, success, error) {
             u.get("/api/channel/check/" + code, success, error);
+        },
+        check_currency_code: function (code, success, error) {
+            u.get("/api/exchangerate/check/" + code, success, error);
         },
         check_insurance_source_code: function (code, success, error) {
             u.get("/api/insurancesource/check/" + code, success, error);
@@ -113,7 +122,12 @@
         getProdtRisk: function (data, success, error) {
             u.post("/api/RisksCovers/productRisk", data, success, error);
         },
-
+        getArea: function (data, success, error) {
+            u.post("/api/area/areaLov", data, success, error);
+        },
+        getLocation: function (data, success, error) {
+            u.post("/api/location/locationLov", data, success, error);
+        },
         get_customers: function (success, error) {
             u.get("/api/customer", success, error);
         },

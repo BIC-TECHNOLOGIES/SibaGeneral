@@ -116,5 +116,32 @@ namespace SibaDev.Controllers
             return riskLst;
         }
 
+
+        [HttpGet]
+        [Route("api/policybond/endDeletion/{polSysId}/{endNo}")]
+        public object EndDeletionData(int polSysId, int endNo)
+        {
+
+            try
+            {
+                var risk = PolicyHistoryMdl.GetHPolicyHead(polSysId, endNo);
+                risk.POLH_TXN_STATE = "P";
+                var result = PolicyBondMdl.SaveEndsmntCancl(risk);
+
+
+                return new
+                {
+                    state = true,
+                    message = "Endorsement Successfully canceled",
+                    //data = motor
+                };
+            }
+            catch (Exception e)
+            {
+                return new { state = false, message = "Server Error", exception = e };
+            }
+
+        }
+
     }
 }

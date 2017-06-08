@@ -281,7 +281,7 @@ namespace SibaDev.Models.RI_Models
             {
                 return (from risk in db.INS_RI_TTY_ALLOCATION
                         join ttyhead in db.INS_RI_TTY_HEAD on risk.TTA_POLH_SYS_ID equals ttyhead.TTH_POLH_SYS_ID
-                        where risk.TTA_POLH_SYS_ID == TTA_POLH && (risk.TTA_TTY_TYPE == "FX" && risk.TTA_TTY_LIMIT_FC > 0)
+                        where risk.TTA_POLH_SYS_ID == TTA_POLH && (risk.TTA_TTY_TYPE == "FX" && risk.TTA_TTY_SI_FC > 0)
                         select new
                         {
                             TTA_POLH_SYS_ID = risk.TTA_POLH_SYS_ID,

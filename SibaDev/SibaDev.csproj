@@ -252,6 +252,7 @@
     <Compile Include="Controllers\AccountModule\AcctCategoryController.cs" />
     <Compile Include="Controllers\AccountModule\AcctIntegrationController.cs" />
     <Compile Include="Controllers\AccountModule\AcctTxnDocumentController.cs" />
+    <Compile Include="Controllers\AccountModule\PolicyLiabilityApprovalController.cs" />
     <Compile Include="Controllers\AccountModule\PolicyHomeOwnersApprovalController.cs" />
     <Compile Include="Controllers\AccountModule\PolicyTravelApprovalController.cs" />
     <Compile Include="Controllers\AccountModule\PolicyProfIndemnityApprovalController.cs" />
@@ -391,12 +392,13 @@
     <Compile Include="Models\History_Entities\INS_UDW_HPERSONAL_ACCIDENT.cs" />
     <Compile Include="Models\History_Entities\Model1.cs" />
     <Compile Include="Models\INS_CLM_PAYMENT_HEAD.cs" />
-    <Compile Include="Models\INS_UDW_HLIABILITY.cs" />
-    <Compile Include="Models\INS_UDW_HLIABILITY_FEES.cs" />
-    <Compile Include="Models\INS_UDW_HLIABILITY_WKS_COMP.cs" />
+    <Compile Include="Models\History_Entities\INS_UDW_HLIABILITY.cs" />
+    <Compile Include="Models\History_Entities\INS_UDW_HLIABILITY_FEES.cs" />
+    <Compile Include="Models\History_Entities\INS_UDW_HLIABILITY_WKS_COMP.cs" />
     <Compile Include="Models\INS_UDW_LIABILITY_FEES.cs" />
     <Compile Include="Models\INS_UDW_LIABILITY_WKS_COMP.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\PolicyApproval_Models\PolicyLiabilityApprovalMdl.cs" />
     <Compile Include="Models\PolicyApproval_Models\PolicyHomeOwnersApprovalMdl.cs" />
     <Compile Include="Models\PolicyApproval_Models\PolicyTravelApprovalMdl.cs" />
     <Compile Include="Models\Entities_Models\PolicyHomeOwnersMdl.cs" />
@@ -1104,6 +1106,9 @@
     <Content Include="Scripts\Claims\Claim_Scripts\claim.estimation.js" />
     <Content Include="Scripts\Page_Scripts\channel.setup.js" />
     <Content Include="Scripts\Page_Scripts\home.owners.setup.js" />
+    <Content Include="Scripts\Page_Scripts\policy.engineering.car.js" />
+    <Content Include="Scripts\Page_Scripts\policy.engineering.others.js" />
+    <Content Include="Scripts\Page_Scripts\policy.marine.cargo.js" />
     <Content Include="Scripts\Page_Scripts\policy.liability.js" />
     <Content Include="Scripts\Page_Scripts\policy.liability.worksmen.js" />
     <Content Include="Scripts\Page_Scripts\policy.home.owners.js" />
@@ -1229,6 +1234,7 @@
     <Content Include="Scripts\Page_Scripts\users.setup.js" />
     <Content Include="Scripts\Reinsurance\RI_Services\facplacement.service.js" />
     <Content Include="Scripts\Services\home.owners.service.js" />
+    <Content Include="Scripts\Services\policy.engineering.others.service.js" />
     <Content Include="Scripts\Services\policy.liability.service.js" />
     <Content Include="Scripts\Services\policy.liability.wks.comp.js" />
     <Content Include="Scripts\Services\policy.home.owners.service.js" />
@@ -1453,6 +1459,9 @@
     <Content Include="Views\Home\frmHomeOwners.cshtml" />
     <Content Include="Views\Home\frmUwHomeOwners.cshtml" />
     <Content Include="Views\Home\frmUwLiability.cshtml" />
+    <Content Include="Views\Home\frmUwMarineCargo.cshtml" />
+    <Content Include="Views\Home\frmUwEngineerOthers.cshtml" />
+    <Content Include="Views\Home\frmUwEngineerCAR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

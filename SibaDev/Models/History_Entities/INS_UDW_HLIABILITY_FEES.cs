@@ -1,4 +1,4 @@
-namespace SibaDev.Models
+namespace SibaDev.Models.History_Entities
 {
     using System;
     using System.Collections.Generic;

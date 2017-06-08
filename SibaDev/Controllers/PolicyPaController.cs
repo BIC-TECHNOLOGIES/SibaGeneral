@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SibaDev.Models;
+using SibaDev.Models.History_Models;
+using SibaDev.JSON_Templates;
 
 namespace SibaDev.Controllers
 {
@@ -80,6 +82,30 @@ namespace SibaDev.Controllers
             {
                 return new { state = false, message = e };
             }
+        }
+
+        [HttpGet]
+        [Route("api/policypa/endDeletion/{polSysId}/{endNo}")]
+        public object EndDeletionData(int polSysId, int endNo)
+        {
+            try
+            {
+                var risk = PolicyHistoryMdl.GetHPolicyHead(polSysId, endNo);
+                risk.POLH_TXN_STATE = "P";
+                var result = PolicyPaMdl.SaveEndsmntCancl(risk);
+
+                return new
+                {
+                    state = true,
+                    message = "Endorsement Successfully canceled",
+                    //data = motor
+                };
+            }
+            catch (Exception e)
+            {
+                return new { state = false, message = "Server Error", exception = e };
+            }
+
         }
 
     }

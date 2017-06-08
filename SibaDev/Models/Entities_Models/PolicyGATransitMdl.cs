@@ -277,16 +277,16 @@ namespace SibaDev.Models
             var db = new SibaModel();
             try
             {
-                return (from risk in db.INS_UDW_GA_PROF_INDEMNITY
-                        where risk.PRO_POLH_SYS_ID == ProdCode && risk.PRO_STATUS == "A"
+                return (from risk in db.INS_UDW_GA_TRANSIT
+                        where risk.TRANS_POLH_SYS_ID == ProdCode && risk.TRANS_STATUS == "A"
                         select new
                         {
-                            CLM_RISK_STATUS = risk.PRO_STATUS,
-                            CLM_RISK_DESCRIPTION = risk.PRO_ITEM_DESC,
-                            CLM_RISK_PRINCIPAL = risk.PRO_ITEM,
-                            CLM_RISK_SI = risk.PRO_SI_FC,
-                            CLM_EST_CRTE_BY = risk.PRO_CRTE_BY,
-                            CLM_EST_CRTE_DATE = risk.PRO_CRTE_DATE
+                            CLM_RISK_STATUS = risk.TRANS_STATUS,
+                            CLM_RISK_DESCRIPTION = risk.TRANS_RISK_NAME,
+                            CLM_RISK_PRINCIPAL = risk.TRANS_RISK_TYPE,
+                            CLM_RISK_SI = risk.TRANS_SI_FC,
+                            CLM_EST_CRTE_BY = risk.TRANS_CRTE_BY,
+                            CLM_EST_CRTE_DATE = risk.TRANS_CRTE_DATE
                         });
 
             }
@@ -586,8 +586,7 @@ namespace SibaDev.Models
                                 PR_TTY_SOURCE = null,
                                 PR_TXN_REF = (int)SystemConstants.UnderwritingPremium,
                                 PR_UWD_ACCT_TYPE = viewPolh.POLH_INS_SOURCE
-                            });
-                            db.SaveChanges();
+                            });                        
 
                             break;
                         case "D":
@@ -605,6 +604,7 @@ namespace SibaDev.Models
                             }
                             break;
                     }
+                    db.SaveChanges();
                     trans.Commit();
                     return new INS_UWD_POLICY_HEAD
                     {
@@ -624,6 +624,81 @@ namespace SibaDev.Models
                 }
             }
         }
+
+
+        public static INS_UWD_POLICY_HEAD SaveEndsmntCancl(INS_UWD_POLICY_HEAD viewPolh)
+        {
+            var db = new SibaModel();
+            var dbPolh = db.INS_UWD_POLICY_HEAD.Find(viewPolh.POLH_SYS_ID);
+            if (dbPolh != null)
+            {
+                //update of policy header details
+
+                dbPolh.Map(viewPolh);
+
+                /*----------------
+                 * risk update
+                 *--------------*/
+                foreach (var risk in viewPolh.INS_UDW_GA_TRANSIT)
+                {
+                    var dbrisk = db.INS_UDW_GA_TRANSIT.Find(risk.TRANS_SYS_ID);
+                    switch (risk.TRANS_STATUS)
+                    {
+                        case "A":
+                            if (dbrisk != null)
+                            {
+                                db.INS_UDW_GA_TRANSIT.Attach(dbrisk);
+                                dbrisk.Map(risk);
+                            }
+
+                            break;
+                        case "U":
+                            risk.TRANS_STATUS = "A";
+                            risk.TRANS_POLH_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_GA_TRANSIT.Add(risk);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_GA_TRANSIT.Remove(db.INS_UDW_GA_TRANSIT.Find(risk.TRANS_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+                foreach (var fee in viewPolh.INS_UDW_POL_FEES)
+                {
+                    var dbFee = db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID);
+                    switch (fee.POL_FEE_STATUS)
+                    {
+                        case "A":
+                            if (dbFee != null)
+                            {
+                                db.INS_UDW_POL_FEES.Attach(dbFee);
+                                dbFee.Map(fee);
+                            }
+
+                            break;
+                        case "U":
+                            fee.POL_FEE_STATUS = "A";
+                            fee.POL_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                            db.INS_UDW_POL_FEES.Add(fee);
+
+                            break;
+                        case "D":
+                            db.INS_UDW_POL_FEES.Remove(db.INS_UDW_POL_FEES.Find(fee.POL_FEE_SYS_ID));
+                            break;
+                    }
+
+
+                }
+
+            }
+            db.SaveChanges();
+            return viewPolh;
+
+        }
+
 
     }
 }

@@ -387,7 +387,7 @@
                     $scope.lov.call_dialog("Select Source Of Business", "get_sourcebusiness_lov", $scope.dialog_data);
                     break;
                 case "btn_office":
-                    $scope.lov.call_dialog("Select Office", "get_office_lov", $scope.dialog_data);
+                    $scope.lov.call_dialog("Select Office", "get_lov_office", $scope.dialog_data);
                     break;
                 case "btn_product":
                     $scope.lov.call_dialog("Select Product ", "get_product_lov", $scope.dialog_data);

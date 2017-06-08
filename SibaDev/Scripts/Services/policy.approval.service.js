@@ -24,5 +24,8 @@
         HomeOwnerspolicyApproval: function (data, success, error) {
             u.post("/api/policyhomeownersapproval", data, success, error)
         },
+        LiabilitypolicyApproval: function (data, success, error) {
+            u.post("/api/policyliabilityapproval", data, success, error)
+        },
     });
 })(window.service, window.utility)
