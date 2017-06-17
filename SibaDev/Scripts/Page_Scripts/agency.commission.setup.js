@@ -6,7 +6,7 @@
      ['Code', ' Name', 'Description', 'Percentage', 'Seqnum', 'B-Party Type',
                        'C-Party type', 'Status', 'Created By', 'Created Date'],
      [
-         { name: 'COM_CODE', id: true, index: 'COM_CODE' },
+        { name: 'COM_CODE', id: true, index: 'COM_CODE' },
         { name: 'COM_NAME', index: 'COM_NAME' },
         { name: 'COM_DESC', index: 'COM_DESC' },
         { name: 'COM_PERC', index: 'COM_PERC' },

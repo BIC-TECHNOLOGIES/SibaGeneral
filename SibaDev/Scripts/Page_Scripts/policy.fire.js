@@ -7,15 +7,15 @@
                       "Region Code", "Region Name", "Area Code", "Area Name", "Location Code", "Location Name", "Location Desc", "Location Address", "Loc No.",
                      "Occupancy Code", "Occupancy Name", "Occupancy Section", "Earthquake ", "RI EML", "EML", "UW Year", "Start Date", "End Date",
                      "Policy Cancelled", "Cancelled Reason",
-                     "Sum Insured FC", "Sum Insured BC", "Total Premium FC", "Total Premium BC", "Risk Premium FC", "Risk Premium BC", 
+                     "Sum Insured FC", "Sum Insured BC", "Total Premium FC", "Total Premium BC", "Risk Premium FC", "Risk Premium BC",
                     //                  
-                     "Adj Premium FC", "Adj Premium BC", "Discount FC", "Discount BC", "Load FC", "Load BC",                   
+                     "Adj Premium FC", "Adj Premium BC", "Discount FC", "Discount BC", "Load FC", "Load BC",
                     "Compulsory Fee FC", "Compulsory Fee BC", "Commossion FC", "Commission BC", "Terorism Prm FC", "Terorism Prm BC", "Txn Status", "Risk State",
                     //RI
                     "RI_Applicable", "RI Eff Date", "RI SI FC", "RI SI BC", "RI Premium FC", "RI Premium BC",
                      //                
-                    "Product code","Cover Code", " Renewal Status", "Endorsement Type", "Approval Date", "Account Date",                   
-                    "Create by", "Create Date", "Modified By", "Modified Date", "Status", 
+                    "Product code", "Cover Code", " Renewal Status", "Endorsement Type", "Approval Date", "Account Date",
+                    "Create by", "Create Date", "Modified By", "Modified Date", "Status",
                     "Sys ID", "Polh Sys ID", "PolDocNo", "Endorsement No.",
             ],
             [
@@ -27,14 +27,14 @@
                     { name: "PLOC_LOC_NAME", index: "PLOC_LOC_NAME", width: 150 },
                     { name: "PLOC_LOC_DESC", index: "PLOC_LOC_DESC", width: 150 },
                     { name: "PLOC_LOC_ADDRS", index: "PLOC_LOC_ADDRS", width: 150 },
-                    { name: "PLOC_RISK_NO", index: "PLOC_RISK_NO", width: 150 },                                  
+                    { name: "PLOC_RISK_NO", index: "PLOC_RISK_NO", width: 150 },
                     { name: "PLOC_OCCUP_CODE", index: "PLOC_OCCUP_CODE", width: 150 },
                     { name: "PLOC_OCCUP_NAME", index: "PLOC_OCCUP_NAME", width: 150 },
                     { name: "PLOC_OCCUP_SECTION", index: "PLOC_OCCUP_SECTION", width: 150 },
                     { name: "PLOC_EQZONE", index: "PLOC_EQZONE", width: 150 },
                     { name: "PLOC_RIEML", index: "PLOC_RIEML", width: 150 },
                     { name: "PLOC_EML", index: "PLOC_EML", width: 150 },
-                    
+
                     { name: "PLOC_START_DATE", index: "PLOC_START_DATE", width: 150 },
                     { name: "PLOC_END_DATE", index: "PLOC_END_DATE", width: 150 },
                     { name: "PLOC_UW_YEAR", index: "PLOC_UW_YEAR", width: 150 },
@@ -45,7 +45,7 @@
                     { name: "PLOC_TOT_PREM_FC", index: "PLOC_TOT_PREM_FC", width: 150 },
                     { name: "PLOC_TOT_PREM_BC", index: "PLOC_TOT_PREM_BC", width: 150 },
                     { name: "PLOC_RISK_PREM_FC", index: "PLOC_RISK_PREM_FC", width: 150 },
-                    { name: "PLOC_RISK_PREM_BC", index: "PLOC_RISK_PREM_BC", width: 150 },                          
+                    { name: "PLOC_RISK_PREM_BC", index: "PLOC_RISK_PREM_BC", width: 150 },
 
                     { name: "PLOC_ADJ_PREM_FC", index: "PLOC_ADJ_PREM_FC", width: 150 },
                     { name: "PLOC_ADJ_PREM_BC", index: "PLOC_ADJ_PREM_BC", width: 150 },
@@ -67,7 +67,7 @@
                     { name: "PLOC_RI_SI_FC", index: "PLOC_RI_SI_FC", width: 150 },
                     { name: "PLOC_RI_SI_BC", index: "PLOC_RI_SI_BC", width: 150 },
                     { name: "PLOC_RI_PREM_FC", index: "PLOC_RI_PREM_FC", width: 150 },
-                    { name: "PLOC_RI_PREM_BC", index: "PLOC_RI_PREM_BC", width: 150 },                   
+                    { name: "PLOC_RI_PREM_BC", index: "PLOC_RI_PREM_BC", width: 150 },
 
                     { name: "PLOC_PDT_CODE", index: "PLOC_PDT_CODE", width: 150 },
                     { name: "PLOC_CVR_CODE", index: "PLOC_CVR_CODE", width: 150 },
@@ -80,7 +80,7 @@
                     { name: "PLOC_MOD_BY", index: "PLOC_MOD_BY", width: 150 },
                     { name: "PLOC_MOD_DATE", index: "PLOC_MOD_DATE", width: 150 },
                     { name: "PLOC_STATUS", index: "PLOC_STATUS", width: 150 },
-               
+
                     { name: "PLOC_SYS_ID", index: "PLOC_SYS_ID", width: 150 },
                     { name: "PLOC_POLH_SYS_ID", index: "PLOC_POLH_SYS_ID", width: 150 },
                     { name: "PLOC_POLH_DOC_NO", index: "PLOC_POLH_DOC_NO", width: 150 },
@@ -113,7 +113,7 @@
                     PLOC_EQZONE: grid.jqGrid("getCell", sel_id, "PLOC_EQZONE"),
                     PLOC_RIEML: grid.jqGrid("getCell", sel_id, "PLOC_RIEML"),
                     PLOC_EML: grid.jqGrid("getCell", sel_id, "PLOC_EML"),
-                   
+
                     PLOC_UW_YEAR: grid.jqGrid("getCell", sel_id, "PLOC_UW_YEAR"),
                     PLOC_POL_CANCELLED: grid.jqGrid("getCell", sel_id, "PLOC_POL_CANCELLED"),
                     PLOC_CANCELLED_REASON: grid.jqGrid("getCell", sel_id, "PLOC_CANCELLED_REASON"),
@@ -180,7 +180,7 @@
 
                 }, "#CoinsLeaderForm");
 
-            }, 
+            },
                function (id) {
 
                    var grid = $scope.location_grid;
@@ -191,33 +191,38 @@
 
                        $("#LocationModal").modal();
 
-                    //Hide covers not related to selected risk
+                       //Hide covers not related to selected risk
 
-                }
-                else {
+                   }
+                   else {
 
-                    u.growl_warning("No Bond Risk selected, Please check and try again");
+                       u.growl_warning("No Bond Risk selected, Please check and try again");
 
-                };
+                   };
 
 
-            }),
+               }),
 
-           
+
 
         //Location Interest
                 $scope.interest_grid = u.default_grid("#gridInterest", "#gridInterestPager", "Location Interest",
             [
-                      "Risk Code", "Risk Name", " Description", " SI FC", "SI BC ", " Premium FC", " Premium BC ",
-                      "Loading FC", "Loading BC", "Discount FC", "Discount BC", "Sub Const ",
-                     "RI EML", "EML SI", "Sys ID", "Risk No",
-                    "Location ID", "Polh Sys ID",  "Polh Doc No", "Endorsement No.", "TXN Status", "Int State",
-                    "Int Status"                  
+                "Risk Code", "Risk Name", " Description", "Roofing Type", "Security", "Sub Const ", "RI EML", "EML SI",
+                "SI FC", "SI BC ", " Premium FC", " Premium BC ", "Loading FC", "Loading BC", "Discount FC", "Discount BC", 
+                 "Sys ID", "Risk No",
+                "Location ID", "Polh Sys ID", "Polh Doc No", "Endorsement No.", "TXN Status", "Int State",
+                "Int Status"
             ],
             [
                     { name: "LINT_RISK_CODE", index: "LINT_RISK_CODE", width: 150 },
                     { name: "LINT_RISK_NAME", index: "LINT_RISK_NAME", width: 150 },
                     { name: "LINT_DESC", index: "LINT_DESC", width: 150 },
+                    { name: "LINT_ROOF_TYPE", index: "LINT_ROOF_TYPE", width: 150 },
+                    { name: "LINT_SEC_TYPE", index: "LINT_SEC_TYPE", width: 150 },
+                    { name: "LINT_CONS_TYPE", index: "LINT_CONS_TYPE", width: 150 },
+                    { name: "LINT_RI_EML", index: "LINT_RI_EML", width: 150 },
+                    { name: "LINT_EML_SI", index: "LINT_EML_SI", width: 150 },
                     { name: "LINT_SI_FC", index: "LINT_SI_FC", width: 150 },
                     { name: "LINT_SI_BC", index: "LINT_SI_BC", width: 150 },
                     { name: "LINT_PRM_FC", index: "LINT_PRM_FC", width: 150 },
@@ -225,11 +230,7 @@
                     { name: "LINT_LOAD_FC", index: "LINT_LOAD_FC", width: 150 },
                     { name: "LINT_LOAD_BC", index: "LINT_LOAD_BC", width: 150 },
                     { name: "LINT_DISC_FC", index: "LINT_DISC_FC", width: 150 },
-                    { name: "LINT_DISC_BC", index: "LINT_DISC_BC", width: 150 },
-                    { name: "LINT_CONS_TYPE", index: "LINT_CONS_TYPE", width: 150 },
-                    { name: "LINT_RI_EML", index: "LINT_RI_EML", width: 150 },
-                    { name: "LINT_EML_SI", index: "LINT_EML_SI", width: 150 },
-                   
+                    { name: "LINT_DISC_BC", index: "LINT_DISC_BC", width: 150 },                  
                     { name: "LINT_SYS_ID", index: "LINT_SYS_ID", width: 150 },
                     { name: "LINT_RISK_NO", index: "LINT_RISK_NO", width: 150, sorttype: "int" },
                     { name: "LINT_PLOC_SYS_ID", index: "LINT_PLOC_SYS_ID", width: 150 },
@@ -239,7 +240,7 @@
                     { name: "LINT_TXN_STATUS", index: "LINT_TXN_STATUS", width: 150 },
                     { name: "LINT_RISK_STATE", index: "LINT_RISK_STATE", width: 150 },
                     { name: "LINT_STATUS", index: "LINT_STATUS", width: 150 },
-                   
+
             ],
            //Retrive Grid data into form input fields on row click..
             function (sel_id) {
@@ -257,7 +258,7 @@
                     LINT_PRM_FC: grid.jqGrid("getCell", sel_id, "LINT_PRM_FC"),
                     LINT_PRM_BC: grid.jqGrid("getCell", sel_id, "LINT_PRM_BC"),
                     LINT_CONS_TYPE: grid.jqGrid("getCell", sel_id, "LINT_CONS_TYPE"),
-                    LINT_EML_SI: grid.jqGrid("getCell", sel_id, "LINT_EML_SI"),             
+                    LINT_EML_SI: grid.jqGrid("getCell", sel_id, "LINT_EML_SI"),
 
                 }, "#interestForm");
                 u.fill_form({
@@ -266,33 +267,33 @@
             },
                function (id) {
 
-                    var grid = $scope.interest_grid;
-                    var sel_id = grid.jqGrid("getGridParam", "selrow");
-                    var inteRiskID = grid.jqGrid("getCell", sel_id, "LINT_SYS_ID");
+                   var grid = $scope.interest_grid;
+                   var sel_id = grid.jqGrid("getGridParam", "selrow");
+                   var inteRiskID = grid.jqGrid("getCell", sel_id, "LINT_SYS_ID");
 
-                if (inteRiskID == $("#LINT_SYS_ID").val()) {
+                   if (inteRiskID == $("#LINT_SYS_ID").val()) {
 
-                    $("#RiskCoverModal").modal();
+                       $("#RiskCoverModal").modal();
 
-                    //Hide covers not related to selected risk
+                       //Hide covers not related to selected risk
 
-                }
-                else {
+                   }
+                   else {
 
-                    u.growl_warning("No Bond Risk selected, Please check and try again");
+                       u.growl_warning("No Bond Risk selected, Please check and try again");
 
-                };
-
-
-            }),
+                   };
 
 
-                // Location Excess
+               }),
+
+
+        // Location Excess
         $scope.locationexcess_grid = u.default_grid("#grdLocationExcess", "#grdLocationExcessPager", "Location Excess",
             [" Code", "Type", "Narration", "Rate", "Amount", "Min Amount", "Max Amount", "Loc ID", "Loc Risk No.", "Policy ID",
              "Created by", "Created date", "Status"],
             [
-                { name: "EXS_CODE", index: "EXS_CODE", width: 150 },             
+                { name: "EXS_CODE", index: "EXS_CODE", width: 150 },
                 { name: "EXS_TYPE", index: "EXS_TYPE", width: 150 },
                 { name: "EXS_NART", index: "EXS_NART", width: 150 },
                 { name: "EXS_RATE", index: "EXS_RATE", hidden: false, width: 200 },
@@ -403,10 +404,10 @@
             }),
 
 
-                // Interest Discount/Loading
+        // Interest Discount/Loading
         $scope.interestdiscloading_grid = u.default_grid("#grdInterestDiscloading", "#grdInterestDiscloadingPager", "Interest Discount/Loading",
             [" Code", "Type", "Narration", "Rate", "Amount", "Min Amount", "Max Amount", "Interest ID", "Interest Risk No.", "Location ID",
-                "Policy ID","Created by", "Created date", "Status"],
+                "Policy ID", "Created by", "Created date", "Status"],
             [
                 { name: "DL_CODE", index: "DL_CODE", width: 150 },
                 { name: "DL_TYPE", index: "DL_TYPE", width: 150 },
@@ -445,7 +446,7 @@
         // Interest Cover
         $scope.interestcover_grid = u.default_grid("#grdInterestCover", "#grdInterestCoverPager", "Interest Cover",
             [" Code", "Type", "Rate", "SI FC", "SI BC", "Premium FC", "Premium BC", "Net Premium FC", "Net Premium BC", "Interest ID", "Interest Risk No.", "Location ID",
-                "Policy ID","Created by", "Created date", "Status"],
+                "Policy ID", "Created by", "Created date", "Status"],
             [
                 { name: "CVR_CODE", index: "CVR_CODE", width: 150 },
                 { name: "CVR_TYPE", index: "CVR_TYPE", width: 150 },
@@ -453,7 +454,7 @@
                 { name: "CVR_SI_FC", index: "CVR_SI_FC", hidden: false, width: 200 },
                 { name: "CVR_SI_BC", index: "CVR_SI_BC", width: 150 },
                 { name: "CVR_GROSS_PREM_FC", index: "CVR_GROSS_PREM_FC", width: 150 },
-                { name: "CVR_GROSS_PREM_BC", index: "CVR_GROSS_PREM_BC", width: 150 },              
+                { name: "CVR_GROSS_PREM_BC", index: "CVR_GROSS_PREM_BC", width: 150 },
                 { name: "CVR_NET_PREM_FC", index: "CVR_NET_PREM_FC", width: 150 },
                 { name: "CVR_NET_PREM_BC", index: "CVR_NET_PREM_BC", width: 150 },
                 { name: "CVR_LINT_SYS_ID", index: "CVR_LINT_SYS_ID", width: 150 },
@@ -548,49 +549,49 @@
            //Retrive Grid data into form input fields on row click..
                function (sel_id) {
 
-                var grid = $scope.cover_grid;
+                   var grid = $scope.cover_grid;
 
-                $("form input[name='RCOV_SYS_ID']").data("update", true);
-                u.fill_form({
-                    RCOV_SYS_ID: grid.jqGrid("getCell", sel_id, "RCOV_SYS_ID"),
-                    RCOV_RISK_SYS_ID: grid.jqGrid("getCell", sel_id, "RCOV_RISK_SYS_ID"),
-                    RCOV_RISK_NO: grid.jqGrid("getCell", sel_id, "RCOV_RISK_NO"),
-                    RCOV_POLH_DOC_NO: grid.jqGrid("getCell", sel_id, "RCOV_POLH_DOC_NO"),
-                    RPCOV_END_NO: grid.jqGrid("getCell", sel_id, "RPCOV_END_NO"),
-                    RCOV_CODE: grid.jqGrid("getCell", sel_id, "RCOV_CODE"),
-                    RCOV_NAME: grid.jqGrid("getCell", sel_id, "RCOV_NAME"),
-                    RCOV_SI_FC: grid.jqGrid("getCell", sel_id, "RCOV_SI_FC"),
+                   $("form input[name='RCOV_SYS_ID']").data("update", true);
+                   u.fill_form({
+                       RCOV_SYS_ID: grid.jqGrid("getCell", sel_id, "RCOV_SYS_ID"),
+                       RCOV_RISK_SYS_ID: grid.jqGrid("getCell", sel_id, "RCOV_RISK_SYS_ID"),
+                       RCOV_RISK_NO: grid.jqGrid("getCell", sel_id, "RCOV_RISK_NO"),
+                       RCOV_POLH_DOC_NO: grid.jqGrid("getCell", sel_id, "RCOV_POLH_DOC_NO"),
+                       RPCOV_END_NO: grid.jqGrid("getCell", sel_id, "RPCOV_END_NO"),
+                       RCOV_CODE: grid.jqGrid("getCell", sel_id, "RCOV_CODE"),
+                       RCOV_NAME: grid.jqGrid("getCell", sel_id, "RCOV_NAME"),
+                       RCOV_SI_FC: grid.jqGrid("getCell", sel_id, "RCOV_SI_FC"),
 
-                    RCOV_SI_BC: grid.jqGrid("getCell", sel_id, "RCOV_SI_BC"),
-                    RCOV_RATE: grid.jqGrid("getCell", sel_id, "RCOV_RATE"),
-                    RCOV_GROSS_PREM_FC: grid.jqGrid("getCell", sel_id, "RCOV_GROSS_PREM_FC"),
-                    RCOV_GROSS_PREM_BC: grid.jqGrid("getCell", sel_id, "RCOV_GROSS_PREM_BC"),
-                    RCOV_NET_PREM_FC: grid.jqGrid("getCell", sel_id, "RCOV_NET_PREM_FC"),
-                    RCOV_NET_PREM_BC: grid.jqGrid("getCell", sel_id, "RCOV_NET_PREM_BC"),
-                    RCOV_RI_SI_YN: grid.jqGrid("getCell", sel_id, "RCOV_RI_SI_YN"),
+                       RCOV_SI_BC: grid.jqGrid("getCell", sel_id, "RCOV_SI_BC"),
+                       RCOV_RATE: grid.jqGrid("getCell", sel_id, "RCOV_RATE"),
+                       RCOV_GROSS_PREM_FC: grid.jqGrid("getCell", sel_id, "RCOV_GROSS_PREM_FC"),
+                       RCOV_GROSS_PREM_BC: grid.jqGrid("getCell", sel_id, "RCOV_GROSS_PREM_BC"),
+                       RCOV_NET_PREM_FC: grid.jqGrid("getCell", sel_id, "RCOV_NET_PREM_FC"),
+                       RCOV_NET_PREM_BC: grid.jqGrid("getCell", sel_id, "RCOV_NET_PREM_BC"),
+                       RCOV_RI_SI_YN: grid.jqGrid("getCell", sel_id, "RCOV_RI_SI_YN"),
 
-                    RCOV_RI_PREM_YN: grid.jqGrid("getCell", sel_id, "RCOV_RI_PREM_YN"),
-                    RCOV_TYPE: grid.jqGrid("getCell", sel_id, "RCOV_TYPE"),
-                    RCOV_DISC_YN: grid.jqGrid("getCell", sel_id, "RCOV_DISC_YN"),
-                    RCOV_DISC_FC: grid.jqGrid("getCell", sel_id, "RCOV_DISC_FC"),
-                    RCOV_DISC_BC: grid.jqGrid("getCell", sel_id, "RCOV_DISC_BC"),
-                    RCOV_LOAD_YN: grid.jqGrid("getCell", sel_id, "RCOV_LOAD_YN"),
-                    RCOV_LOAD_FC: grid.jqGrid("getCell", sel_id, "RCOV_LOAD_FC"),
+                       RCOV_RI_PREM_YN: grid.jqGrid("getCell", sel_id, "RCOV_RI_PREM_YN"),
+                       RCOV_TYPE: grid.jqGrid("getCell", sel_id, "RCOV_TYPE"),
+                       RCOV_DISC_YN: grid.jqGrid("getCell", sel_id, "RCOV_DISC_YN"),
+                       RCOV_DISC_FC: grid.jqGrid("getCell", sel_id, "RCOV_DISC_FC"),
+                       RCOV_DISC_BC: grid.jqGrid("getCell", sel_id, "RCOV_DISC_BC"),
+                       RCOV_LOAD_YN: grid.jqGrid("getCell", sel_id, "RCOV_LOAD_YN"),
+                       RCOV_LOAD_FC: grid.jqGrid("getCell", sel_id, "RCOV_LOAD_FC"),
 
-                    RCOV_SI_CHANGE: grid.jqGrid("getCell", sel_id, "RCOV_SI_CHANGE"),
-                    RCOV_RATE_CHANGE: grid.jqGrid("getCell", sel_id, "RCOV_RATE_CHANGE"),
+                       RCOV_SI_CHANGE: grid.jqGrid("getCell", sel_id, "RCOV_SI_CHANGE"),
+                       RCOV_RATE_CHANGE: grid.jqGrid("getCell", sel_id, "RCOV_RATE_CHANGE"),
 
-                    RCOV_LOAD_BC: grid.jqGrid("getCell", sel_id, "RCOV_LOAD_BC"),
-                    RCOV_TXN_STATE: grid.jqGrid("getCell", sel_id, "RCOV_TXN_STATE"),
-                    RCOV_CRTE_BY: grid.jqGrid("getCell", sel_id, "RCOV_CRTE_BY"),
-                    RCOV_CRTE_DATE: grid.jqGrid("getCell", sel_id, "RCOV_CRTE_DATE"),
-                    RCOV_MOD_BY: grid.jqGrid("getCell", sel_id, "RCOV_MOD_BY"),
-                    RCOV_MOD_DATE: grid.jqGrid("getCell", sel_id, "RCOV_MOD_DATE"),
-                    RCOV_STATUS: grid.jqGrid("getCell", sel_id, "RCOV_STATUS"),
-                    RCOV_ANNL_PREM_FC: grid.jqGrid("getCell", sel_id, "RCOV_ANNL_PREM_FC"),
-                    RCOV_ANNL_PREM_BC: grid.jqGrid("getCell", sel_id, "RCOV_ANNL_PREM_BC")
-                }, "#coverForm");
-            }),
+                       RCOV_LOAD_BC: grid.jqGrid("getCell", sel_id, "RCOV_LOAD_BC"),
+                       RCOV_TXN_STATE: grid.jqGrid("getCell", sel_id, "RCOV_TXN_STATE"),
+                       RCOV_CRTE_BY: grid.jqGrid("getCell", sel_id, "RCOV_CRTE_BY"),
+                       RCOV_CRTE_DATE: grid.jqGrid("getCell", sel_id, "RCOV_CRTE_DATE"),
+                       RCOV_MOD_BY: grid.jqGrid("getCell", sel_id, "RCOV_MOD_BY"),
+                       RCOV_MOD_DATE: grid.jqGrid("getCell", sel_id, "RCOV_MOD_DATE"),
+                       RCOV_STATUS: grid.jqGrid("getCell", sel_id, "RCOV_STATUS"),
+                       RCOV_ANNL_PREM_FC: grid.jqGrid("getCell", sel_id, "RCOV_ANNL_PREM_FC"),
+                       RCOV_ANNL_PREM_BC: grid.jqGrid("getCell", sel_id, "RCOV_ANNL_PREM_BC")
+                   }, "#coverForm");
+               }),
 
 
         // Risk Covers ****
@@ -878,7 +879,7 @@
             }),
 
 
-       // Agent/Broker Commission
+        // Agent/Broker Commission
         $scope.intermCom_grid = u.default_grid("#grdIntermediaryComm", "#grdIntermediaryCommPager", "Agent/Broker Commission",
             ["Intermediary Code", "Name", "Premium Amt FC", "Premium Amt BC", "Comm Per(%)", "Comm. Amount FC", "Comm. Amount BC", "Status",
              "Pols_sysID", "Pol_end_No", "COB", "Office", "Comm Date", "Created_By", "Created_Date",
@@ -1129,7 +1130,7 @@
         $scope.grdfacInward_grid = u.default_grid("#grdfacInward", "#grdfacInwardPager", "FAC Inward Details",
             ["Cedant Code", "Cedant Name", "Referential No.", "Acceptance No.", "Comment", "Original SI FC", "Original SI BC",
              "Original Premium FC", "Original Premium BC", "Share %", "Commission %", "FAC Inward SI FC", "FAC Inward SI BC",
-             "FAC Inward Premium FC", "FAC Inward Premium BC", "FAC Inward Comm FC", "FAC Inward Comm FC", "Sys ID", "Polh ID", 
+             "FAC Inward Premium FC", "FAC Inward Premium BC", "FAC Inward Comm FC", "FAC Inward Comm FC", "Sys ID", "Polh ID",
              "Created by", "Created date", "Status", "Company"],
             [
                 { name: "FINW_CEDANT_CODE", index: "FINW_CEDANT_CODE", width: 150 },
@@ -1565,7 +1566,7 @@
                 u.growl_warning("Region is not selected, Please check and try again");
             }
             else {
-                 $scope.area_grid.jqGrid("clearGridData");
+                $scope.area_grid.jqGrid("clearGridData");
                 $("#areaLovModal").modal();
 
             }
@@ -1598,7 +1599,7 @@
 
 
         $("#btnQueryArea").on("click", function () {
-           
+
             getAreaLov();
         });
 
@@ -1675,7 +1676,7 @@
                         //PRD_CV_DFT: 'Y',   
                         CUR_RATE: $("#POLH_CURRENCY_RATE").val(),
                         RCOV_CODE: $("#RCOV_CODE").val(),
-                       
+
                     }; //
 
                     var grid = $scope.cover_grid;
@@ -1762,9 +1763,9 @@
 
 
 
-         /*--------------------------------------------------
-        *get Risks Cover lists fucnction
-        *------------------------------------------------*/
+        /*--------------------------------------------------
+       *get Risks Cover lists fucnction
+       *------------------------------------------------*/
         //
         function getRiskCoversLov() {
 
@@ -2001,15 +2002,27 @@
         *----------------------------------*/
 
         $("#btn_agent_comm").click(function () {
-            //if (u.grid_empty($scope.motor_grid)) return u.modal_alert("Motor Grid is empty!!!");
-            $("#agentcommModal").modal();
+
+            var Polbis = $("#POLH_BIZ_SOURCE").val();
+            if (u.grid_empty($scope.interest_grid)) return u.modal_alert("Location Interest Grid is empty!!!");
+            if (u.grid_empty($scope.cover_grid)) return u.modal_alert("Cover Grid is empty! Add Product Covers!");
+
+            if (Polbis === "") {
+                u.growl_warning("Source of business is not selected!");
+            }
+            else if (Polbis === "DIR") {
+                u.growl_warning("The business is Direct, No agency commission applicable!");
+            }
+            else if (Polbis === "BKM" || Polbis === "AGM") {
+                $("#agentcommModal").modal();
+            }
 
         });
 
 
         /*--------------------------------------------------
-  * Adding Agency/Broker Details
-  *------------------------------------------------*/
+        * Adding Agency/Broker Details
+        *------------------------------------------------*/
         //
         $("#btn_add_agencycomm").on('click', function () {
 
@@ -2175,7 +2188,7 @@
         });
 
 
-         $("#btn_Intermediary_comm").on("click", function () {
+        $("#btn_Intermediary_comm").on("click", function () {
 
             $("#interCommLovModal").modal();
 
@@ -2215,6 +2228,19 @@
             });
         });
 
+        function policydisplayno() {
+
+            var seqid = $("#PLOC_SYS_ID").val();
+            var office = $("#POLH_OFF_CODE").val();
+            var subclass = $("#POLH_SUB_CLASS_CODE").val();
+
+            var polyid = $("#POLHP").val();
+            var multi = $("#MULTI").val();
+            var polyear = $("#POLYEAR").val();
+
+            $("#POLH_DISPLAY_NO").val(polyid + ("-") + multi + ("-") + office + ("-") + subclass + ("-") + polyear + ("-") + seqid);
+        }
+
 
         $("#btn_risk_cover").click(function () {
 
@@ -2235,7 +2261,7 @@
                 u.growl_warning("No Vehicle Risk selected, Please check and try again");
 
             };
-            
+
         });
 
 
@@ -2246,7 +2272,7 @@
             else {
                 u.growl_warning("Please fill the Policy Header form and try again");
             };
-              //$("#LocationModal").modal();
+            //$("#LocationModal").modal();
         });
 
 
@@ -2831,7 +2857,7 @@
 
         });
 
-        
+
 
         /*
        //Hide or show Interest based on Location
@@ -3606,7 +3632,7 @@
         });
 
 
-         $("#btnTreatyAppor").click(function () {
+        $("#btnTreatyAppor").click(function () {
             //if (u.grid_empty($scope.motor_grid)) return u.modal_alert("Motor Grid is empty!!!");
             $("#treatyApportionmentModal").modal();
 
@@ -4020,9 +4046,9 @@
         });
 
 
-          /*---------------------------
-         *Endorsement Deletion process
-         *-------------------------*/
+        /*---------------------------
+       *Endorsement Deletion process
+       *-------------------------*/
         $("#btnEndDeletion").click(function () {
             u.modal_confirmation("Are you sure you want to delete Endorsement?", function () {
                 if (!u.field_empty("#POLH_SYS_ID") && !u.field_empty("#POLH_END_NO")) {
@@ -4096,9 +4122,6 @@
                 s.FirepolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: 0, TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
-                        //alert(JSON.stringify(response));
-
-                        //alert(JSON.stringify());
 
                         var txnState = response.result.POLH_TXN_STATE;
 
@@ -4106,9 +4129,7 @@
 
                         $("#POLH_TXN_STATE").val(txnState);
                         if (txnState === ("P")) {
-
                             u.form_text_Green_color();
-                            u.form_readonly();
                         }
 
                     } else {
@@ -4223,7 +4244,7 @@
                         } else {
 
                             $scope.search_fill(result[0]);
-                            
+
                         }
                     } else {
                         u.growl_info("Policy No. not found, please make sure you enter the correct Policy No!");
@@ -4275,7 +4296,7 @@
                 }
 
             }
-            
+
             u.clear_grid_data($scope.interest_grid);
             for (var i in policy.INS_UWD_FIRE_LOCINT) {
                 $scope.interest_grid.addRowData(policy.INS_UWD_FIRE_LOCINT[i].LINT_POLH_SYS_ID, policy.INS_UWD_FIRE_LOCINT[i]);
@@ -4426,7 +4447,7 @@
         /*-----------------------------
         *Policy Period days calculations
         *---------------------------*/
-               
+
         document.getElementById("POLH_POL_START_DATE").addEventListener("focusout", fxnPolPeriodDays);
         document.getElementById("POLH_POL_END_DATE").addEventListener("focusout", fxnPolPeriodDays);
 
@@ -4445,7 +4466,7 @@
             $("#POLH_POL_UW_YEAR").val(polUWY);
 
             $("#PLOC_UW_YEAR").val(polUWY);
-            
+
             //FIRE_LOC_END_DATE
             var StartDate = new Date(SDate);
             var EndDate = new Date(EDate);
@@ -4471,464 +4492,462 @@
             }
         }
 
-                    //---//Risk period days
-            document.getElementById("PLOC_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
-            document.getElementById("PLOC_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
-            function fxnRiskPeriodDays() {
-                //alert("Input field lost focus.");
-                var polStartDate = new Date($("#POLH_POL_START_DATE").val());
-                var PolEndDate = new Date($("#POLH_POL_END_DATE").val());
+        //---//Risk period days
+        document.getElementById("PLOC_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
+        document.getElementById("PLOC_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
+        function fxnRiskPeriodDays() {
+            //alert("Input field lost focus.");
+            var polStartDate = new Date($("#POLH_POL_START_DATE").val());
+            var PolEndDate = new Date($("#POLH_POL_END_DATE").val());
 
-                var riskStartDate = new Date($("#PLOC_START_DATE").val());
-                var riskEndDate = new Date($("#PLOC_END_DATE").val());
+            var riskStartDate = new Date($("#PLOC_START_DATE").val());
+            var riskEndDate = new Date($("#PLOC_END_DATE").val());
 
-                var riskPeriodDays = u.get_dateDifference(riskStartDate, riskEndDate);
+            var riskPeriodDays = u.get_dateDifference(riskStartDate, riskEndDate);
 
-                if (u.get_dateDifference(polStartDate, riskStartDate) < 0)
-                {
-                    u.growl_warning("Risk Start date cannot be less than Policy start date");
-                }
-                else if (u.get_dateDifference(PolEndDate, riskEndDate) > 0)
-                {
-                    u.growl_warning("Risk End date cannot be greater than Policy End date");
-                }
-                else {
-
-                    if (riskPeriodDays > 0) {
-                        $("#FIRE_PERIOD_DAYS").val(riskPeriodDays);
-                    }
-                }
-
-             
-               if ((riskPeriodDays <= 0 )) {
-                    u.growl_warning("Risk End date cannot be less than or equal to start date");
-
-                    //reset end date and no. of days
-                    $("#PLOC_START_DATE").val("");
-                    $("#PLOC_END_DATE").val("");
-
-                }
-                else if ((riskPeriodDays > 365)) {
-                    u.growl_warning("Risk period cannot be greater than 365 days, please check and try again");
-                }
-
-
-                // alert(diffDays(StartDate, EndDate));
+            if (u.get_dateDifference(polStartDate, riskStartDate) < 0) {
+                u.growl_warning("Risk Start date cannot be less than Policy start date");
             }
+            else if (u.get_dateDifference(PolEndDate, riskEndDate) > 0) {
+                u.growl_warning("Risk End date cannot be greater than Policy End date");
+            }
+            else {
+
+                if (riskPeriodDays > 0) {
+                    $("#FIRE_PERIOD_DAYS").val(riskPeriodDays);
+                }
+            }
+
+
+            if ((riskPeriodDays <= 0)) {
+                u.growl_warning("Risk End date cannot be less than or equal to start date");
+
+                //reset end date and no. of days
+                $("#PLOC_START_DATE").val("");
+                $("#PLOC_END_DATE").val("");
+
+            }
+            else if ((riskPeriodDays > 365)) {
+                u.growl_warning("Risk period cannot be greater than 365 days, please check and try again");
+            }
+
+
+            // alert(diffDays(StartDate, EndDate));
+        }
 
 
         /*
         //Hide or show Covers in the Risk Covers (to filter out the covers for particular risk
         */
-            $scope.hideShowCovers = function () {
+        $scope.hideShowCovers = function () {
 
-                //get the selected Risk ID
-                var vehgrid = $scope.interest_grid;
-                var sel_id = vehgrid.jqGrid("getGridParam", "selrow");
-                var vehRiskId = vehgrid.jqGrid("getCell", sel_id, "LINT_SYS_ID");
+            //get the selected Risk ID
+            var vehgrid = $scope.interest_grid;
+            var sel_id = vehgrid.jqGrid("getGridParam", "selrow");
+            var vehRiskId = vehgrid.jqGrid("getCell", sel_id, "LINT_SYS_ID");
 
-                //get the Risk Cover data
-                var covgrid = $scope.cover_grid;
-                var rowIds = covgrid.jqGrid("getDataIDs");
-
-
-                // iterate through the risk cover rows to hide or show covers 
-
-                for (var i = 0, len = rowIds.length; i < len; i++) {
-
-                    //get value of the cell or column in an array
-                    var currRow = rowIds[i];
-
-                    var getRiskCovId = covgrid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
+            //get the Risk Cover data
+            var covgrid = $scope.cover_grid;
+            var rowIds = covgrid.jqGrid("getDataIDs");
 
 
-                    if (getRiskCovId != vehRiskId) {
+            // iterate through the risk cover rows to hide or show covers 
 
-                        //hide if covers are not for the selected risk 
-                        $("#" + currRow).hide();
+            for (var i = 0, len = rowIds.length; i < len; i++) {
 
-                    }
-                    else if (getRiskCovId == vehRiskId) {
+                //get value of the cell or column in an array
+                var currRow = rowIds[i];
 
-                        //Show if covers are for the selected risk 
-                        $("#" + currRow).show();
+                var getRiskCovId = covgrid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
 
-                    }
+
+                if (getRiskCovId != vehRiskId) {
+
+                    //hide if covers are not for the selected risk 
+                    $("#" + currRow).hide();
+
                 }
+                else if (getRiskCovId == vehRiskId) {
 
-            };
+                    //Show if covers are for the selected risk 
+                    $("#" + currRow).show();
+
+                }
+            }
+
+        };
 
 
         // Cover level SI and Premium Calculations:
-            $("#btn_get_Cover_Premiums").click(function () {
-                $scope.SumCoverRiskValues();
-            });
+        $("#btn_get_Cover_Premiums").click(function () {
+            $scope.SumCoverRiskValues();
+        });
 
 
         // calculate sum of cover amounts
-            $scope.SumCoverRiskValues = function () {
+        $scope.SumCoverRiskValues = function () {
 
-                //Declare variables
-                var riskSumSifc = 0;
-                var riskSumSibc = 0;
+            //Declare variables
+            var riskSumSifc = 0;
+            var riskSumSibc = 0;
 
-                var sumGrossPremFc = 0;
-                var sumGrossPremBc = 0;
+            var sumGrossPremFc = 0;
+            var sumGrossPremBc = 0;
 
-                var sumNetPremFc = 0;
-                var sumNetPremBc = 0;
+            var sumNetPremFc = 0;
+            var sumNetPremBc = 0;
 
-                var sumLoadFc = 0;
-                var sumLoadBc = 0;
+            var sumLoadFc = 0;
+            var sumLoadBc = 0;
 
-                var sumDisFc = 0;
-                var sumDisBc = 0;
+            var sumDisFc = 0;
+            var sumDisBc = 0;
 
-               
-                //Risk/Interest Grid
-                var riskgrid = $scope.interest_grid;
 
-                var rowIdRisk = riskgrid.jqGrid("getDataIDs");
+            //Risk/Interest Grid
+            var riskgrid = $scope.interest_grid;
 
-                var grid = $scope.cover_grid;
+            var rowIdRisk = riskgrid.jqGrid("getDataIDs");
 
-                var rowIds = grid.jqGrid('getDataIDs');
+            var grid = $scope.cover_grid;
 
-                //Risk/Interest Grid
-                var riskgrid = $scope.interest_grid;
+            var rowIds = grid.jqGrid('getDataIDs');
 
-                var riskRowId = riskgrid.jqGrid("getGridParam", "selrow");
+            //Risk/Interest Grid
+            var riskgrid = $scope.interest_grid;
 
-                var riskId = riskgrid.jqGrid("getCell", riskRowId, "LINT_SYS_ID");
+            var riskRowId = riskgrid.jqGrid("getGridParam", "selrow");
 
+            var riskId = riskgrid.jqGrid("getCell", riskRowId, "LINT_SYS_ID");
 
-                // iterate through the rows and check if it exists each of them
-                for (var i = 0, len = rowIds.length; i < len; i++) {
-                    var currRow = rowIds[i];
 
-                    //get the risk sys ID from the covers grid
-                    var getbondID = grid.jqGrid('getCell', currRow, "RCOV_RISK_SYS_ID");
+            // iterate through the rows and check if it exists each of them
+            for (var i = 0, len = rowIds.length; i < len; i++) {
+                var currRow = rowIds[i];
 
-                    //get Cover type of the cover
-                    var coverType = grid.jqGrid('getCell', currRow, "COVER_TYPE");
+                //get the risk sys ID from the covers grid
+                var getbondID = grid.jqGrid('getCell', currRow, "RCOV_RISK_SYS_ID");
 
-                    if (getbondID != riskId) {
-                        $("#" + currRow).hide();
+                //get Cover type of the cover
+                var coverType = grid.jqGrid('getCell', currRow, "COVER_TYPE");
 
-                    }
-                    else {
-
-                        //
-                        $("#" + currRow).show();
-                        if (coverType == "O") {
-                            // if the cover type is own damage then the SI is added to to be considered as risk Sum insured
-                            riskSumSifc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_FC"));
-                            riskSumSibc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_BC"));
-                        }
-                        riskSumSifc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_FC"));
-                        riskSumSibc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_BC"));
-
-                        sumGrossPremFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_GROSS_PREM_FC"));
-                        sumGrossPremBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_GROSS_PREM_BC"));
-
-                        sumNetPremFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_NET_PREM_FC"));
-                        sumNetPremBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_NET_PREM_BC"));
-
-                        sumLoadFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_LOAD_FC"));
-                        sumLoadBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_LOAD_BC"));
-
-                        sumDisFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_DISC_FC"));
-                        sumDisBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_DISC_BC"));
-                    }
-                }
-
-                grid.jqGrid("footerData", "set", { 'RCOV_SI_FC': riskSumSifc.toFixed(2) });
-                grid.jqGrid("footerData", "set", { 'RCOV_SI_BC': riskSumSibc.toFixed(2) });
-
-                grid.jqGrid("footerData", "set", { 'RCOV_GROSS_PREM_FC': sumGrossPremFc.toFixed(2) });
-                grid.jqGrid("footerData", "set", { 'RCOV_GROSS_PREM_BC': sumGrossPremBc.toFixed(2) });
-
-                grid.jqGrid("footerData", "set", { 'RCOV_NET_PREM_FC': sumNetPremFc.toFixed(2) });
-                grid.jqGrid("footerData", "set", { 'RCOV_NET_PREM_BC': sumNetPremBc.toFixed(2) });
-
-                grid.jqGrid("footerData", "set", { 'RCOV_LOAD_FC': sumLoadFc.toFixed(2) });
-                grid.jqGrid("footerData", "set", { 'RCOV_LOAD_BC': sumLoadBc.toFixed(2) });
-
-                grid.jqGrid("footerData", "set", { 'RCOV_DISC_FC': sumDisFc.toFixed(2) });
-                grid.jqGrid("footerData", "set", { 'RCOV_DISC_BC': sumDisBc.toFixed(2) });
-
-
-                // set risk SI and Premiums values,
-
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_PRM_FC", sumGrossPremFc.toFixed(2));
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_PRM_BC", sumGrossPremBc.toFixed(2));
-
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_SI_FC", riskSumSifc.toFixed(2));
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_SI_BC", riskSumSibc.toFixed(2));
-
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_LOAD_FC", sumLoadFc.toFixed(2));
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_LOAD_BC", sumLoadBc.toFixed(2));
-
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_DISC_FC", sumDisFc.toFixed(2));
-                riskgrid.jqGrid("setCell", riskRowId, "LINT_DISC_BC", sumDisBc.toFixed(2));           
-
-                // Policy Level SI and premium Calculations 
-                $scope.SumPolhAmounts();
-
-            };
-        //Policy Level SI and premium Calculations
-
-        // calculate sum of Risk level amounts
-            $scope.SumPolhAmounts = function () {
-
-                //Declare variables
-                var polGrossPremFc = 0;
-                var polGrossPremBc = 0;
-
-                var polNetPremFc = 0;
-                var polNetPremBc = 0;
-
-                var polLoadFc = 0;
-                var polLoadBc = 0;
-
-                var polDisFc = 0;
-                var polDisBc = 0;
-
-                var polSifc = 0;
-                var polSibc = 0;
-
-                var polSifc = 0;
-                var polSibc = 0;
-
-                var polSifc = 0;
-                var polSibc = 0;
-                //
-                var polgrid = $scope.interest_grid;
-
-                var polrowIds = polgrid.jqGrid('getDataIDs');
-
-                // iterate through the rows and check if it exists each of them
-                for (var i = 0, len = polrowIds.length; i < len; i++) {
-
-                    var currRow = polrowIds[i];
-
-                    // Sum risk level Amounts for Policy Level Amounts
-
-                    polSifc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_SI_FC"));
-                    polSibc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_SI_BC"));
-
-                    polGrossPremFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_PRM_FC"));
-                    polGrossPremBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_PRM_BC"));
-
-                    polLoadFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_LOAD_FC"));
-                    polLoadBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_LOAD_BC"));
-
-                    polDisFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_DISC_FC"));
-                    polDisBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_DISC_BC"));
-
-                }
-
-                //Risk/Location Grid
-                var locgrid = $scope.location_grid;
-
-                var locIdRisk = locgrid.jqGrid("getDataIDs");
-
-                var locgrid = $scope.location_grid;
-
-                var locRowId = locgrid.jqGrid("getGridParam", "selrow");
-
-                var locId = locgrid.jqGrid("getCell", locRowId, "PLOC_SYS_ID");
-
-                // set Location SI and Premiums values,
-                locgrid.jqGrid("setCell", locRowId, "PLOC_TOT_PREM_FC", polGrossPremFc);
-                locgrid.jqGrid("setCell", locRowId, "PLOC_TOT_PREM_BC", polGrossPremBc);
-
-                locgrid.jqGrid("setCell", locRowId, "PLOC_SI_FC", polSifc);
-                locgrid.jqGrid("setCell", locRowId, "PLOC_SI_BC", polSibc);
-
-                locgrid.jqGrid("setCell", locRowId, "PLOC_LOAD_FC", polLoadFc);
-                locgrid.jqGrid("setCell", locRowId, "PLOC_LOAD_BC", polLoadBc);
-
-                locgrid.jqGrid("setCell", locRowId, "PLOC_DISC_FC", polDisFc);
-                locgrid.jqGrid("setCell", locRowId, "PLOC_DISC_BC", polDisBc);
-
-                $("#POLH_POL_SI_FC").val(polSifc);
-                $("#POLH_POL_SI_BC").val(polSibc);
-
-                $("#POLH_POL_PREM_FC").val(polGrossPremFc);
-                $("#POLH_POL_PREM_BC").val(polGrossPremBc);
-                //
-                $("#POLH_POL_LOAD_FC").val(polLoadFc);
-                $("#POLH_POL_LOAD_BC").val(polLoadBc);
-
-                $("#POLH_POL_DISC_FC").val(polDisFc);
-                $("#POLH_POL_DISC_BC").val(polDisBc);
-
-            };
-
-
-        //Commission Calculations
-
-            function calculateIntermediaryComm() {
-                //grdIntermediaryComm $scope.intermCom_grid
-                var commgrid = $scope.intermCom_grid;
-
-                var commrowIds = commgrid.jqGrid('getDataIDs');
-
-                var polPremFC = parseFloat($('#POLH_POL_PREM_FC').val() | 0);
-                var polPremBC = parseFloat($('#POLH_POL_PREM_BC').val() | 0);
-                // iterate through the rows 
-
-                if (polPremFC == 0) {
-
-                }
-                else if (u.grid_empty($scope.intermCom_grid)) {
+                if (getbondID != riskId) {
+                    $("#" + currRow).hide();
 
                 }
                 else {
 
-                    for (var i = 0, len = commrowIds.length; i < len; i++) {
-
-                        var currRow = commrowIds[i];
-
-                        // Sum risk level Amounts for Policy Level Amounts
-
-                        commgrid.jqGrid('setCell', currRow, 'CMM_PREM_AMT_FC', polPremFC.toFixed(2));
-                        commgrid.jqGrid('setCell', currRow, 'CMM_PREM_AMT_BC', polPremBC.toFixed(2));
-
-                        //
-                        comPerc = parseFloat(commgrid.jqGrid('getCell', currRow, 'CMM_COM_PERC') | 0);
-
-                        var CommAmountFC = parseFloat(polPremFC * comPerc / 100);
-                        var CommAmountBC = parseFloat(polPremBC * comPerc / 100);
-
-                        //CommAmountFC CommAmountBC
-                        commgrid.jqGrid('setCell', currRow, 'CMM_COM_AMT_FC', CommAmountFC.toFixed(2));
-                        commgrid.jqGrid('setCell', currRow, 'CMM_COM_AMT_BC', CommAmountBC.toFixed(2));
+                    //
+                    $("#" + currRow).show();
+                    if (coverType == "O") {
+                        // if the cover type is own damage then the SI is added to to be considered as risk Sum insured
+                        riskSumSifc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_FC"));
+                        riskSumSibc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_BC"));
                     }
+                    riskSumSifc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_FC"));
+                    riskSumSibc += parseFloat(grid.jqGrid('getCell', currRow, "RCOV_SI_BC"));
 
+                    sumGrossPremFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_GROSS_PREM_FC"));
+                    sumGrossPremBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_GROSS_PREM_BC"));
+
+                    sumNetPremFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_NET_PREM_FC"));
+                    sumNetPremBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_NET_PREM_BC"));
+
+                    sumLoadFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_LOAD_FC"));
+                    sumLoadBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_LOAD_BC"));
+
+                    sumDisFc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_DISC_FC"));
+                    sumDisBc += parseFloat(grid.jqGrid("getCell", currRow, "RCOV_DISC_BC"));
                 }
             }
+
+            grid.jqGrid("footerData", "set", { 'RCOV_SI_FC': riskSumSifc.toFixed(2) });
+            grid.jqGrid("footerData", "set", { 'RCOV_SI_BC': riskSumSibc.toFixed(2) });
+
+            grid.jqGrid("footerData", "set", { 'RCOV_GROSS_PREM_FC': sumGrossPremFc.toFixed(2) });
+            grid.jqGrid("footerData", "set", { 'RCOV_GROSS_PREM_BC': sumGrossPremBc.toFixed(2) });
+
+            grid.jqGrid("footerData", "set", { 'RCOV_NET_PREM_FC': sumNetPremFc.toFixed(2) });
+            grid.jqGrid("footerData", "set", { 'RCOV_NET_PREM_BC': sumNetPremBc.toFixed(2) });
+
+            grid.jqGrid("footerData", "set", { 'RCOV_LOAD_FC': sumLoadFc.toFixed(2) });
+            grid.jqGrid("footerData", "set", { 'RCOV_LOAD_BC': sumLoadBc.toFixed(2) });
+
+            grid.jqGrid("footerData", "set", { 'RCOV_DISC_FC': sumDisFc.toFixed(2) });
+            grid.jqGrid("footerData", "set", { 'RCOV_DISC_BC': sumDisBc.toFixed(2) });
+
+
+            // set risk SI and Premiums values,
+
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_PRM_FC", sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_PRM_BC", sumGrossPremBc.toFixed(2));
+
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_SI_FC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_SI_BC", riskSumSibc.toFixed(2));
+
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_LOAD_FC", sumLoadFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_LOAD_BC", sumLoadBc.toFixed(2));
+
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_DISC_FC", sumDisFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "LINT_DISC_BC", sumDisBc.toFixed(2));
+
+            // Policy Level SI and premium Calculations 
+            $scope.SumPolhAmounts();
+
+        };
+        //Policy Level SI and premium Calculations
+
+        // calculate sum of Risk level amounts
+        $scope.SumPolhAmounts = function () {
+
+            //Declare variables
+            var polGrossPremFc = 0;
+            var polGrossPremBc = 0;
+
+            var polNetPremFc = 0;
+            var polNetPremBc = 0;
+
+            var polLoadFc = 0;
+            var polLoadBc = 0;
+
+            var polDisFc = 0;
+            var polDisBc = 0;
+
+            var polSifc = 0;
+            var polSibc = 0;
+
+            var polSifc = 0;
+            var polSibc = 0;
+
+            var polSifc = 0;
+            var polSibc = 0;
+            //
+            var polgrid = $scope.interest_grid;
+
+            var polrowIds = polgrid.jqGrid('getDataIDs');
+
+            // iterate through the rows and check if it exists each of them
+            for (var i = 0, len = polrowIds.length; i < len; i++) {
+
+                var currRow = polrowIds[i];
+
+                // Sum risk level Amounts for Policy Level Amounts
+
+                polSifc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_SI_FC"));
+                polSibc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_SI_BC"));
+
+                polGrossPremFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_PRM_FC"));
+                polGrossPremBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_PRM_BC"));
+
+                polLoadFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_LOAD_FC"));
+                polLoadBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_LOAD_BC"));
+
+                polDisFc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_DISC_FC"));
+                polDisBc += parseFloat(polgrid.jqGrid('getCell', currRow, "LINT_DISC_BC"));
+
+            }
+
+            //Risk/Location Grid
+            var locgrid = $scope.location_grid;
+
+            var locIdRisk = locgrid.jqGrid("getDataIDs");
+
+            var locgrid = $scope.location_grid;
+
+            var locRowId = locgrid.jqGrid("getGridParam", "selrow");
+
+            var locId = locgrid.jqGrid("getCell", locRowId, "PLOC_SYS_ID");
+
+            // set Location SI and Premiums values,
+            locgrid.jqGrid("setCell", locRowId, "PLOC_TOT_PREM_FC", polGrossPremFc);
+            locgrid.jqGrid("setCell", locRowId, "PLOC_TOT_PREM_BC", polGrossPremBc);
+
+            locgrid.jqGrid("setCell", locRowId, "PLOC_SI_FC", polSifc);
+            locgrid.jqGrid("setCell", locRowId, "PLOC_SI_BC", polSibc);
+
+            locgrid.jqGrid("setCell", locRowId, "PLOC_LOAD_FC", polLoadFc);
+            locgrid.jqGrid("setCell", locRowId, "PLOC_LOAD_BC", polLoadBc);
+
+            locgrid.jqGrid("setCell", locRowId, "PLOC_DISC_FC", polDisFc);
+            locgrid.jqGrid("setCell", locRowId, "PLOC_DISC_BC", polDisBc);
+
+            $("#POLH_POL_SI_FC").val(polSifc);
+            $("#POLH_POL_SI_BC").val(polSibc);
+
+            $("#POLH_POL_PREM_FC").val(polGrossPremFc);
+            $("#POLH_POL_PREM_BC").val(polGrossPremBc);
+            //
+            $("#POLH_POL_LOAD_FC").val(polLoadFc);
+            $("#POLH_POL_LOAD_BC").val(polLoadBc);
+
+            $("#POLH_POL_DISC_FC").val(polDisFc);
+            $("#POLH_POL_DISC_BC").val(polDisBc);
+
+        };
+
+
+        //Commission Calculations
+
+        function calculateIntermediaryComm() {
+            //grdIntermediaryComm $scope.intermCom_grid
+            var commgrid = $scope.intermCom_grid;
+
+            var commrowIds = commgrid.jqGrid('getDataIDs');
+
+            var polPremFC = parseFloat($('#POLH_POL_PREM_FC').val() | 0);
+            var polPremBC = parseFloat($('#POLH_POL_PREM_BC').val() | 0);
+            // iterate through the rows 
+
+            if (polPremFC == 0) {
+
+            }
+            else if (u.grid_empty($scope.intermCom_grid)) {
+
+            }
+            else {
+
+                for (var i = 0, len = commrowIds.length; i < len; i++) {
+
+                    var currRow = commrowIds[i];
+
+                    // Sum risk level Amounts for Policy Level Amounts
+
+                    commgrid.jqGrid('setCell', currRow, 'CMM_PREM_AMT_FC', polPremFC.toFixed(2));
+                    commgrid.jqGrid('setCell', currRow, 'CMM_PREM_AMT_BC', polPremBC.toFixed(2));
+
+                    //
+                    comPerc = parseFloat(commgrid.jqGrid('getCell', currRow, 'CMM_COM_PERC') | 0);
+
+                    var CommAmountFC = parseFloat(polPremFC * comPerc / 100);
+                    var CommAmountBC = parseFloat(polPremBC * comPerc / 100);
+
+                    //CommAmountFC CommAmountBC
+                    commgrid.jqGrid('setCell', currRow, 'CMM_COM_AMT_FC', CommAmountFC.toFixed(2));
+                    commgrid.jqGrid('setCell', currRow, 'CMM_COM_AMT_BC', CommAmountBC.toFixed(2));
+                }
+
+            }
+        }
 
 
         /*
         Get default covers for the first time of loading the Risk Covers btn_add_motor_details
         */
-            function getDefaultRiskCovers() {
+        function getDefaultRiskCovers() {
 
-                if ($("#POLH_SUB_CLASS_CODE").val() == "") {
+            if ($("#POLH_SUB_CLASS_CODE").val() == "") {
 
-                    u.growl_warning("The Risk Code cannot be null, Please check and try again");
+                u.growl_warning("The Risk Code cannot be null, Please check and try again");
 
-                }
-                else {
-                    /*
-                       obtain parameter for our request
-                   */
-                    var productRiskData = {
-
-                        PRD_CODE: $("#POLH_SUB_CLASS_CODE").val(),
-                        CUR_RATE: $("#POLH_CURRENCY_RATE").val(),
-
-                    }; //
-
-
-                    var grid = $scope.cover_grid;
-
-                    var rowIds = grid.jqGrid("getDataIDs");
-
-                    //declare array to contain the codes to varify
-                    var CodeArray = [];
-
-                    // iterate through the rows in the grid and add Covers to Array
-                    for (var i = 0, len = rowIds.length; i < len; i++) {
-                        var currRow = rowIds[i];
-
-                        //get value of the cell or column in an array
-                        var coverCode = grid.jqGrid("getCell", currRow, "RCOV_CODE");
-
-                        var RiskCode = grid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
-
-                        var riskCov = coverCode + RiskCode;
-
-                        // alert(riskCov);
-                        CodeArray.push(riskCov);
-                    }
-
-                    //send parameters and get Default covers from the database
-                    s.getRiskDefaulCovers(productRiskData, function (result) {
-                        if (result && result.length && result.length > 0) {
-
-                            for (var i in result) {
-
-                                //alert(JSON.stringify(result));
-
-                                result[i]["RCOV_NAME"] = result[i]["MS_UDW_COVERS"]["CVR_NAME"];
-                                result[i]["RCOV_TYPE"] = result[i]["MS_UDW_COVERS"]["CVR_TYPE"];
-
-                                result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_APPLICABLE"];
-
-                                result[i]["RCOV_USER_PREM"] = result[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
-                                result[i]["RCOV_PREM_REFUND"] = result[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
-                                result[i]["RCOV_RATE_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_RATE_CHANGE"];
-                                result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
-                                result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
-
-                                result[i]["RCOV_RISK_SYS_ID"] = $("#LINT_SYS_ID").val();
-                                result[i]["RCOV_RISK_NO"] = $("#LINT_RISK_NO").val();
-                                //result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
-
-
-                                var deftCoverCode = result[i].RCOV_CODE;
-                                var newRiskCode = $("#LINT_SYS_ID").val();
-
-                                var verifyRiskCover = deftCoverCode + newRiskCode; //alert(verifyRiskCover);
-
-                                //add if Cover is not found in the Grid//
-
-                                if ($.inArray(verifyRiskCover, CodeArray) < 0) {
-
-                                    //fill in default covers if not in the grid
-
-                                    $scope.cover_grid.addRowData(result[i].ID, result[i]);
-                                }
-                                else {
-
-                                    u.growl_warning("Cover exists for this Risk, you cannot add same Cover " + deftCoverCode);
-                                }
-                            }
-                            //
-                        }
-                    });
-                }
             }
+            else {
+                /*
+                   obtain parameter for our request
+               */
+                var productRiskData = {
+
+                    PRD_CODE: $("#POLH_SUB_CLASS_CODE").val(),
+                    CUR_RATE: $("#POLH_CURRENCY_RATE").val(),
+
+                }; //
+
+
+                var grid = $scope.cover_grid;
+
+                var rowIds = grid.jqGrid("getDataIDs");
+
+                //declare array to contain the codes to varify
+                var CodeArray = [];
+
+                // iterate through the rows in the grid and add Covers to Array
+                for (var i = 0, len = rowIds.length; i < len; i++) {
+                    var currRow = rowIds[i];
+
+                    //get value of the cell or column in an array
+                    var coverCode = grid.jqGrid("getCell", currRow, "RCOV_CODE");
+
+                    var RiskCode = grid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
+
+                    var riskCov = coverCode + RiskCode;
+
+                    // alert(riskCov);
+                    CodeArray.push(riskCov);
+                }
+
+                //send parameters and get Default covers from the database
+                s.getRiskDefaulCovers(productRiskData, function (result) {
+                    if (result && result.length && result.length > 0) {
+
+                        for (var i in result) {
+
+                            //alert(JSON.stringify(result));
+
+                            result[i]["RCOV_NAME"] = result[i]["MS_UDW_COVERS"]["CVR_NAME"];
+                            result[i]["RCOV_TYPE"] = result[i]["MS_UDW_COVERS"]["CVR_TYPE"];
+
+                            result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_APPLICABLE"];
+
+                            result[i]["RCOV_USER_PREM"] = result[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
+                            result[i]["RCOV_PREM_REFUND"] = result[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
+                            result[i]["RCOV_RATE_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_RATE_CHANGE"];
+                            result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
+                            result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
+
+                            result[i]["RCOV_RISK_SYS_ID"] = $("#LINT_SYS_ID").val();
+                            result[i]["RCOV_RISK_NO"] = $("#LINT_RISK_NO").val();
+                            //result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
+
+
+                            var deftCoverCode = result[i].RCOV_CODE;
+                            var newRiskCode = $("#LINT_SYS_ID").val();
+
+                            var verifyRiskCover = deftCoverCode + newRiskCode; //alert(verifyRiskCover);
+
+                            //add if Cover is not found in the Grid//
+
+                            if ($.inArray(verifyRiskCover, CodeArray) < 0) {
+
+                                //fill in default covers if not in the grid
+
+                                $scope.cover_grid.addRowData(result[i].ID, result[i]);
+                            }
+                            else {
+
+                                u.growl_warning("Cover exists for this Risk, you cannot add same Cover " + deftCoverCode);
+                            }
+                        }
+                        //
+                    }
+                });
+            }
+        }
 
 
         //Get default Covers if not added
-            $("#btn_get_DeftCovers").click(function () {
+        $("#btn_get_DeftCovers").click(function () {
 
-                getDefaultRiskCovers();
+            getDefaultRiskCovers();
 
-            });
+        });
 
 
         //refresh Cover, Risk and policy Values on closing the Risk Cover Modal
-            $("#btn_CoverPrem_Onclose").click(function () {
+        $("#btn_CoverPrem_Onclose").click(function () {
 
-                if (u.grid_empty($scope.cover_grid)) {
-                    u.modal_confirmation("The Grid is empty, do you want to close form?", function (e) {
-                        $("#RiskCoverModal").modal("hide");
-                        u.hide_confirm();
-                    });
-                }
-                else {
-                    $scope.SumCoverRiskValues();
+            if (u.grid_empty($scope.cover_grid)) {
+                u.modal_confirmation("The Grid is empty, do you want to close form?", function (e) {
                     $("#RiskCoverModal").modal("hide");
-                }
-            });
-        
+                    u.hide_confirm();
+                });
+            }
+            else {
+                $scope.SumCoverRiskValues();
+                $("#RiskCoverModal").modal("hide");
+            }
+        });
 
-         //Policy Douments Modal
+
+        //Policy Douments Modal
         $("#btnViewDocuments").on('click', function () {
 
             $("#PolicyDocsModal").modal();
@@ -4939,459 +4958,459 @@
 
         $("#btnRunReports").click(function () {
 
-                var e = document.getElementById("Viewpolicyreports");
-                var polreports = e.options[e.selectedIndex].value;
-                var poltxnst = $('#POLH_TXN_STATE').val();
+            var e = document.getElementById("Viewpolicyreports");
+            var polreports = e.options[e.selectedIndex].value;
+            var poltxnst = $('#POLH_TXN_STATE').val();
 
-                if (polreports == "") {
-                    u.growl_warning("Nothing selected, Please select to view report");
-                }
+            if (polreports == "") {
+                u.growl_warning("Nothing selected, Please select to view report");
+            }
 
-                else if (polreports == "Debit") {
+            else if (polreports == "Debit") {
 
-                    if (poltxnst == "P" || poltxnst == "E") {
+                if (poltxnst == "P" || poltxnst == "E") {
 
-                        if (!u.field_empty("#POLH_SYS_ID")) {
+                    if (!u.field_empty("#POLH_SYS_ID")) {
 
-                            $("#policyscheduleModal").modal();
+                        $("#policyscheduleModal").modal();
 
-                            $("#PolicyDocsModal").modal("hide");
+                        $("#PolicyDocsModal").modal("hide");
 
-                            $("#POLH_ID").val($("#POLH_SYS_ID").val());
+                        $("#POLH_ID").val($("#POLH_SYS_ID").val());
 
-                            $("#btnQuerypolicyreport").click(function (e) {
+                        $("#btnQuerypolicyreport").click(function (e) {
 
-                                if (u.field_empty("#POLH_ID")) {
-                                    u.modal_warning("Policy No is not correct");
-                                }
-                                else {
-                                    console.log(policyData);
-                                    var policyData = u.parse_form("#policyreportForm");
-                                    window.open("/StaticReport/PolicyHeaderSchedule/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
-                                }
-                            });
-                        }
-                        else {
-                            u.modal_warning("There is no Policy to view");
-                        }
-
+                            if (u.field_empty("#POLH_ID")) {
+                                u.modal_warning("Policy No is not correct");
+                            }
+                            else {
+                                console.log(policyData);
+                                var policyData = u.parse_form("#policyreportForm");
+                                window.open("/StaticReport/PolicyHeaderSchedule/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
+                            }
+                        });
                     }
                     else {
-                        u.modal_warning("Policy is not Approved");
+                        u.modal_warning("There is no Policy to view");
                     }
 
                 }
+                else {
+                    u.modal_warning("Policy is not Approved");
+                }
 
-                else if (polreports == "Schedule") {
+            }
 
-                    if (poltxnst == "P" || poltxnst == "E") {
+            else if (polreports == "Schedule") {
 
-                        if (!u.field_empty("#POLH_SYS_ID")) {
+                if (poltxnst == "P" || poltxnst == "E") {
 
-                            $("#policyscheduleModal").modal();
+                    if (!u.field_empty("#POLH_SYS_ID")) {
 
-                            $("#PolicyDocsModal").modal("hide");
+                        $("#policyscheduleModal").modal();
 
-                            $("#POLH_ID").val($("#POLH_SYS_ID").val());
+                        $("#PolicyDocsModal").modal("hide");
 
-                            $("#btnQuerypolicyreport").click(function (e) {
+                        $("#POLH_ID").val($("#POLH_SYS_ID").val());
 
-                                if (u.field_empty("#POLH_ID")) {
-                                    u.modal_warning("Policy No is not correct");
-                                }
-                                else {
-                                    console.log(policyData);
-                                    var policyData = u.parse_form("#policyreportForm");
-                                    window.open("/PolicySchedules/PolicyFireSchedule/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
-                                }
-                            });
-                        }
-                        else {
-                            u.modal_warning("There is no Policy to view");
-                        }
+                        $("#btnQuerypolicyreport").click(function (e) {
 
+                            if (u.field_empty("#POLH_ID")) {
+                                u.modal_warning("Policy No is not correct");
+                            }
+                            else {
+                                console.log(policyData);
+                                var policyData = u.parse_form("#policyreportForm");
+                                window.open("/PolicySchedules/PolicyFireSchedule/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
+                            }
+                        });
                     }
                     else {
-                        u.modal_warning("Policy is not Approved");
+                        u.modal_warning("There is no Policy to view");
                     }
 
                 }
-             
-            });
+                else {
+                    u.modal_warning("Policy is not Approved");
+                }
+
+            }
+
+        });
 
 
         //Check box on enabling input fields
-            document.getElementById('LINT_RI_EML').onchange = function () {
-                document.getElementById('LINT_EML_SI').disabled = !this.checked;
-            };
+        document.getElementById('LINT_RI_EML').onchange = function () {
+            document.getElementById('LINT_EML_SI').disabled = !this.checked;
+        };
 
-            document.getElementById('PLOC_RIEML').onchange = function () {
-                document.getElementById('PLOC_EML').disabled = !this.checked;
-            };
+        document.getElementById('PLOC_RIEML').onchange = function () {
+            document.getElementById('PLOC_EML').disabled = !this.checked;
+        };
 
 
-              
+
         /*--------------------------------------------------
         * FAC Partiicpating company Details Modal 
         *------------------------------------------------*/
         //
-            $("#btn_Participant").click(function () {
+        $("#btn_Participant").click(function () {
 
-                //obthain the id of the selected fac details
-                var grid = $scope.grdfacInward_grid;
-                var selRow = $scope.selectedfac = grid.jqGrid("getGridParam", "selrow");
+            //obthain the id of the selected fac details
+            var grid = $scope.grdfacInward_grid;
+            var selRow = $scope.selectedfac = grid.jqGrid("getGridParam", "selrow");
 
-                if (selRow) {
-                    //obtain the companies that have been assigned to selected treaty details
-                    var facString = grid.jqGrid("getCell", selRow, "INS_RI_FAC_INW_COMPANY") || "[]";
+            if (selRow) {
+                //obtain the companies that have been assigned to selected treaty details
+                var facString = grid.jqGrid("getCell", selRow, "INS_RI_FAC_INW_COMPANY") || "[]";
 
-                    console.log(facString)
+                console.log(facString)
 
-                    var facJson = [];
-                    if (facString.length <= 0) {
-                    }
-                    facJson = JSON.parse(facString);
-                    console.log(facJson);
-
-                    for (var i in facJson) {
-                        $scope.grdInwdParticipant_grid.addRowData(facJson[i].ID, facJson[i]);
-                    }
-
-                    $("#PartipantsModal").modal();
+                var facJson = [];
+                if (facString.length <= 0) {
                 }
-                else {
-                    u.growl_warning("No FAC Detail selected, Please check and try again");
+                facJson = JSON.parse(facString);
+                console.log(facJson);
+
+                for (var i in facJson) {
+                    $scope.grdInwdParticipant_grid.addRowData(facJson[i].ID, facJson[i]);
                 }
 
-            });
+                $("#PartipantsModal").modal();
+            }
+            else {
+                u.growl_warning("No FAC Detail selected, Please check and try again");
+            }
 
-            $("#companyOk").click(function () {
+        });
 
-                if ($scope.selectedfac) {
-                    //obtain the compnaies that have been selected
-                    var companies = u.get_grid_data($scope.grdInwdParticipant_grid);
-                    console.log(companies);
-                    alert(JSON.stringify(companies))
-                    //assign the set companies to the selected treaty detials
-                    $scope.grdfacInward_grid.jqGrid("setCell", $scope.selectedfac, "INS_RI_FAC_INW_COMPANY", JSON.stringify(companies));
+        $("#companyOk").click(function () {
 
-                } else {
-                    u.growl_info("No selected FAC to update");
-                }
-                $("#PartipantsModal").modal("hide");
-                u.clear_grid_data($scope.grdInwdParticipant_grid);
-            });
+            if ($scope.selectedfac) {
+                //obtain the compnaies that have been selected
+                var companies = u.get_grid_data($scope.grdInwdParticipant_grid);
+                console.log(companies);
+                alert(JSON.stringify(companies))
+                //assign the set companies to the selected treaty detials
+                $scope.grdfacInward_grid.jqGrid("setCell", $scope.selectedfac, "INS_RI_FAC_INW_COMPANY", JSON.stringify(companies));
 
-            $("#PartipantsModal .close, #companyClose").click(function () {
-                u.clear_grid_data($scope.riCompany_grid);
-        
-            });
+            } else {
+                u.growl_info("No selected FAC to update");
+            }
+            $("#PartipantsModal").modal("hide");
+            u.clear_grid_data($scope.grdInwdParticipant_grid);
+        });
+
+        $("#PartipantsModal .close, #companyClose").click(function () {
+            u.clear_grid_data($scope.riCompany_grid);
+
+        });
 
         /*--------------------------
         * FAC Inward Modal
         *-------------------------*/
 
-            $("#btnFACInward").on("click", function () {
+        $("#btnFACInward").on("click", function () {
 
-                $("#MemberIwardModal").modal();
-                var message = "FAC Inward Details";
+            $("#MemberIwardModal").modal();
+            var message = "FAC Inward Details";
 
-                $("#textCoinsMember").text(message);
+            $("#textCoinsMember").text(message);
 
-            });
+        });
 
         /*-------------------------
         * FAC Inward Modal
          *-------------------------*/
 
-            $("#btnCoInsMember").on("click", function () {
+        $("#btnCoInsMember").on("click", function () {
 
-                $("#MemberIwardModal").modal();
+            $("#MemberIwardModal").modal();
 
-                var message = "Co-Insurance Details";
+            var message = "Co-Insurance Details";
 
-                $("#textCoinsMember").text(message);
+            $("#textCoinsMember").text(message);
 
-            });
+        });
 
         /*-------------------------
         * Coinsurance Leader Modal
         *-------------------------*/
 
-            $("#btnCoInsLeader").on("click", function () {
+        $("#btnCoInsLeader").on("click", function () {
 
-                $("#CoInsLeaderModal").modal();
+            $("#CoInsLeaderModal").modal();
 
-            });
+        });
 
         /*-----------------------------------
         * Fac Buttons Enable/Disable
         *----------------------------------*/
-            document.getElementById("POLH_INS_SOURCE").addEventListener("focusout", FacbuttonsDis);
-            function FacbuttonsDis() {
-                var Polins = $("#POLH_INS_SOURCE").val();
+        document.getElementById("POLH_INS_SOURCE").addEventListener("focusout", FacbuttonsDis);
+        function FacbuttonsDis() {
+            var Polins = $("#POLH_INS_SOURCE").val();
 
-                if (Polins === "") {
-                    u.growl_warning("Please select the Policy Insurance Source");
-                }
-                else if (Polins === "FAC-IN") {
-                    document.getElementById("btnFACInward").disabled = false;
-                    document.getElementById("btnCoInsMember").disabled = true
-                    document.getElementById("btnCoInsLeader").disabled = true;
-                }
-                else if (Polins === "CO-M") {
-                    document.getElementById("btnFACInward").disabled = true;
-                    document.getElementById("btnCoInsMember").disabled = false;
-                    document.getElementById("btnCoInsLeader").disabled = true;
-                }
-                else if (Polins === "CO-L") {
-                    document.getElementById("btnFACInward").disabled = true;
-                    document.getElementById("btnCoInsMember").disabled = true;
-                    document.getElementById("btnCoInsLeader").disabled = false;
-                }
+            if (Polins === "") {
+                u.growl_warning("Please select the Policy Insurance Source");
             }
+            else if (Polins === "FAC-IN") {
+                document.getElementById("btnFACInward").disabled = false;
+                document.getElementById("btnCoInsMember").disabled = true
+                document.getElementById("btnCoInsLeader").disabled = true;
+            }
+            else if (Polins === "CO-M") {
+                document.getElementById("btnFACInward").disabled = true;
+                document.getElementById("btnCoInsMember").disabled = false;
+                document.getElementById("btnCoInsLeader").disabled = true;
+            }
+            else if (Polins === "CO-L") {
+                document.getElementById("btnFACInward").disabled = true;
+                document.getElementById("btnCoInsMember").disabled = true;
+                document.getElementById("btnCoInsLeader").disabled = false;
+            }
+        }
 
 
         /*-----------------------------------
          * Fac Inward Calculations
          *----------------------------------*/
-            document.getElementById("FINW_SHARE_PERC").addEventListener("focusout", FacInwardCal);
-            document.getElementById("FINW_COMM_PERC").addEventListener("focusout", FacInwardCal);
+        document.getElementById("FINW_SHARE_PERC").addEventListener("focusout", FacInwardCal);
+        document.getElementById("FINW_COMM_PERC").addEventListener("focusout", FacInwardCal);
 
-            function FacInwardCal() {
-                var SharePremFC = "";
-                var SharePremBC = "";
-                var ShareSIFC = "";
-                var ShareSIBC = "";
-                var CommPercFC = "";
-                var CommPercBC = "";
+        function FacInwardCal() {
+            var SharePremFC = "";
+            var SharePremBC = "";
+            var ShareSIFC = "";
+            var ShareSIBC = "";
+            var CommPercFC = "";
+            var CommPercBC = "";
 
-                if ($('#FINW_SHARE_PERC').val == "" || $('#FINW_COMM_PERC').val == "") {
-                    u.growl_warning("FAC Share % and Commission % is null! ");
-                }
-                else {
-                    ShareSIFC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_SI_FC').val());
-                    ShareSIBC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_SI_BC').val());
+            if ($('#FINW_SHARE_PERC').val == "" || $('#FINW_COMM_PERC').val == "") {
+                u.growl_warning("FAC Share % and Commission % is null! ");
+            }
+            else {
+                ShareSIFC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_SI_FC').val());
+                ShareSIBC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_SI_BC').val());
 
-                    SharePremFC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_PREM_FC').val());
-                    SharePremBC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_PREM_BC').val());
-                    CommPercFC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_FC').val() / 100);
-                    CommPercBC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_BC').val() / 100);
+                SharePremFC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_PREM_FC').val());
+                SharePremBC = ($('#FINW_SHARE_PERC').val() / 100 * $('#FINW_ORIG_PREM_BC').val());
+                CommPercFC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_FC').val() / 100);
+                CommPercBC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_BC').val() / 100);
 
-                    $('#FINW_SI_FC').val(ShareSIFC);
-                    $('#FINW_SI_BC').val(ShareSIBC);
-                    $('#FINW_PREM_FC').val(SharePremFC);
-                    $('#FINW_PREM_BC').val(SharePremBC);
-                    $('#FINW_COMM_FC').val(CommPercFC);
-                    $('#FINW_COMM_BC').val(CommPercBC);
-                }
-            };
+                $('#FINW_SI_FC').val(ShareSIFC);
+                $('#FINW_SI_BC').val(ShareSIBC);
+                $('#FINW_PREM_FC').val(SharePremFC);
+                $('#FINW_PREM_BC').val(SharePremBC);
+                $('#FINW_COMM_FC').val(CommPercFC);
+                $('#FINW_COMM_BC').val(CommPercBC);
+            }
+        };
 
 
         /*-----------------------------------
         * Fac Outward Calculations
         *----------------------------------*/
-            document.getElementById("FOTW_SHARE_PERC").addEventListener("focusout", FacOutwardCal);
-            document.getElementById("FOTW_RI_COMM").addEventListener("focusout", FacOutwardCal);
+        document.getElementById("FOTW_SHARE_PERC").addEventListener("focusout", FacOutwardCal);
+        document.getElementById("FOTW_RI_COMM").addEventListener("focusout", FacOutwardCal);
 
-            function FacOutwardCal() {
-                var SharePremFC = "";
-                var SharePremBC = "";
-                var ShareSIFC = "";
-                var ShareSIBC = "";
-                var MemberSI = "";
-                var MemberPrem = "";
-                //var CommPercFC = "";
-                //var CommPercBC = "";           
+        function FacOutwardCal() {
+            var SharePremFC = "";
+            var SharePremBC = "";
+            var ShareSIFC = "";
+            var ShareSIBC = "";
+            var MemberSI = "";
+            var MemberPrem = "";
+            //var CommPercFC = "";
+            //var CommPercBC = "";           
 
-                if ($('#FOTW_SHARE_PERC').val == "" || $('#FOTW_MEM_SHARE_PERC').val == "") {
-                    u.growl_warning("FAC Share % and Commission % is null! ");
-                }
-                else {
-                    $('#FOTW_MEM_SHARE_PERC').val(100 - $('#FOTW_SHARE_PERC').val());
+            if ($('#FOTW_SHARE_PERC').val == "" || $('#FOTW_MEM_SHARE_PERC').val == "") {
+                u.growl_warning("FAC Share % and Commission % is null! ");
+            }
+            else {
+                $('#FOTW_MEM_SHARE_PERC').val(100 - $('#FOTW_SHARE_PERC').val());
 
-                    ShareSIFC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_SI_FC').val());
-                    ShareSIBC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_SI_BC').val());
+                ShareSIFC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_SI_FC').val());
+                ShareSIBC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_SI_BC').val());
 
-                    SharePremFC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_PREM_FC').val());
-                    SharePremBC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_PREM_BC').val());
+                SharePremFC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_PREM_FC').val());
+                SharePremBC = ($('#FOTW_SHARE_PERC').val() / 100 * $('#FOTW_SHARE_PREM_BC').val());
 
-                    MemberSI = ($('#FOTW_RI_PERC').val() / 100 * $('#FOTW_MEM_SI_FC').val());
-                    MemberPrem = ($('#FOTW_RI_PERC').val() / 100 * $('#FOTW_MEM_PREM_FC').val());
+                MemberSI = ($('#FOTW_RI_PERC').val() / 100 * $('#FOTW_MEM_SI_FC').val());
+                MemberPrem = ($('#FOTW_RI_PERC').val() / 100 * $('#FOTW_MEM_PREM_FC').val());
 
-                    //CommPercFC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_FC').val() / 100);
-                    //CommPercBC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_BC').val() / 100);
+                //CommPercFC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_FC').val() / 100);
+                //CommPercBC = ($('#FINW_COMM_PERC').val() * $('#FINW_ORIG_PREM_BC').val() / 100);
 
-                    $('#FOTW_MEM_SI_FC').val(ShareSIFC);
-                    $('#FOTW_MEM_SI_BC').val(ShareSIBC);
-                    $('#FOTW_MEM_PREM_FC').val(SharePremFC);
-                    $('#FOTW_MEM_PREM_BC').val(SharePremBC);
-                    $('#FOTW_RI_SHARE_SI').val(MemberSI);
-                    $('#FOTW_RI_SHARE_PREM').val(MemberPrem);
-                    //$('#FINW_COMM_FC').val(CommPercFC);
-                    //$('#FINW_COMM_BC').val(CommPercBC);
+                $('#FOTW_MEM_SI_FC').val(ShareSIFC);
+                $('#FOTW_MEM_SI_BC').val(ShareSIBC);
+                $('#FOTW_MEM_PREM_FC').val(SharePremFC);
+                $('#FOTW_MEM_PREM_BC').val(SharePremBC);
+                $('#FOTW_RI_SHARE_SI').val(MemberSI);
+                $('#FOTW_RI_SHARE_PREM').val(MemberPrem);
+                //$('#FINW_COMM_FC').val(CommPercFC);
+                //$('#FINW_COMM_BC').val(CommPercBC);
 
-                    $('#FOTW_RI_SHARE_COMM').val($('#FOTW_RI_COMM').val());
-                }
-            };
+                $('#FOTW_RI_SHARE_COMM').val($('#FOTW_RI_COMM').val());
+            }
+        };
 
 
         /*--------------------------------------------------
        * Add function to add records to  FAC Inward
        *------------------------------------------------*/
         //
-            $("#btn_add_MemberInward").on("click", function () {
+        $("#btn_add_MemberInward").on("click", function () {
 
-                if (u.form_validation("#facInwardForm")) {
+            if (u.form_validation("#facInwardForm")) {
 
-                    u.modal_confirmation("Are you sure you want to add RI FAC Inward Details to the grid?", function () {
+                u.modal_confirmation("Are you sure you want to add RI FAC Inward Details to the grid?", function () {
 
-                        var rowIds = $scope.grdfacInward_grid.jqGrid("getDataIDs");
+                    var rowIds = $scope.grdfacInward_grid.jqGrid("getDataIDs");
 
-                        /*----------------------------------------------
-                         * declare array to contain the codes to verify
-                         *--------------------------------------------*/
+                    /*----------------------------------------------
+                     * declare array to contain the codes to verify
+                     *--------------------------------------------*/
+                    //
+                    var code = [];
+
+                    /*------------------------------------------------------------
+                     * iterate through the rows and check duplicate each of them
+                     *----------------------------------------------------------*/
+                    // 
+                    for (var i = 0, len = rowIds.length; i < len; i++) {
+                        var currRow = rowIds[i];
+
+                        /*------------------------------------------------
+                         * get value of the cell or column in an array
+                         *----------------------------------------------*/
                         //
-                        var code = [];
+                        var cellValue = $scope.grdfacInward_grid.jqGrid("getCell", currRow, "FINW_CEDANT_CODE");
 
-                        /*------------------------------------------------------------
-                         * iterate through the rows and check duplicate each of them
-                         *----------------------------------------------------------*/
-                        // 
-                        for (var i = 0, len = rowIds.length; i < len; i++) {
-                            var currRow = rowIds[i];
+                        code.push(cellValue);
+                    }
 
-                            /*------------------------------------------------
-                             * get value of the cell or column in an array
-                             *----------------------------------------------*/
-                            //
-                            var cellValue = $scope.grdfacInward_grid.jqGrid("getCell", currRow, "FINW_CEDANT_CODE");
+                    /*----------------------------------------
+                     * add if code is not found in the Grid
+                     *--------------------------------------*/
+                    //
+                    if ($.inArray($("#FINW_CEDANT_CODE").val(), code) < 0) {
+                        var formData = u.parse_form("#facInwardForm");
+                        formData.FINW_STATUS = "U";
+                        formData.FINW_CRTE_BY = "Admin";
+                        formData.FINW_CRTE_DATE = u.get_date();
+                        $scope.grdfacInward_grid.addRowData(formData.FINW_CEDANT_CODE, formData);
+                        u.hide_confirm();
+                        u.growl_success("RI FAC Inward Details successfully added to grid");
+                    }
 
-                            code.push(cellValue);
-                        }
+                    else {
+                        u.hide_confirm();
+                        u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
+                    }
 
-                        /*----------------------------------------
-                         * add if code is not found in the Grid
-                         *--------------------------------------*/
-                        //
-                        if ($.inArray($("#FINW_CEDANT_CODE").val(), code) < 0) {
-                            var formData = u.parse_form("#facInwardForm");
-                            formData.FINW_STATUS = "U";
-                            formData.FINW_CRTE_BY = "Admin";
-                            formData.FINW_CRTE_DATE = u.get_date();
-                            $scope.grdfacInward_grid.addRowData(formData.FINW_CEDANT_CODE, formData);
-                            u.hide_confirm();
-                            u.growl_success("RI FAC Inward Details successfully added to grid");
-                        }
-
-                        else {
-                            u.hide_confirm();
-                            u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
-                        }
-
-                    });
-                }
-                else {
-                    u.growl_error("Please fill out the fields that are marked red");
-                }
+                });
+            }
+            else {
+                u.growl_error("Please fill out the fields that are marked red");
+            }
 
 
-            });
+        });
 
 
         /*--------------------------------
        * FAC Inward Edit/Update Function
        *------------------------------*/
         //
-            $("#btn_update_MemberInward").on("click", function () {
+        $("#btn_update_MemberInward").on("click", function () {
 
-                if (u.grid_empty($scope.grdfacInward_grid)) return u.growl_info("FAC Inward grid is empty");
+            if (u.grid_empty($scope.grdfacInward_grid)) return u.growl_info("FAC Inward grid is empty");
 
-                if (u.form_validation("#facInwardForm")) {
+            if (u.form_validation("#facInwardForm")) {
 
-                    u.modal_confirmation("Are you sure you want to update the selected FAC Inward?", function () {
+                u.modal_confirmation("Are you sure you want to update the selected FAC Inward?", function () {
 
-                        var grid = $scope.grdfacInward_grid;
+                    var grid = $scope.grdfacInward_grid;
 
-                        var rowId = grid.jqGrid("getGridParam", "selrow");
+                    var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                        var code = grid.jqGrid("getCell", rowId, "FINW_CEDANT_CODE");
+                    var code = grid.jqGrid("getCell", rowId, "FINW_CEDANT_CODE");
 
-                        if (code === $("#FINW_CEDANT_CODE").val()) {
-                            var data = u.parse_form("#facInwardForm");
-                            for (var i in data) {
-                                grid.jqGrid("setCell", rowId, i, data[i]);
-                            }
-                            u.hide_confirm();
-                            u.growl_success("FAC Inward updated");
-                        } else {
-                            u.hide_confirm();
-                            u.growl_warning("Please select the correct row to edit");
+                    if (code === $("#FINW_CEDANT_CODE").val()) {
+                        var data = u.parse_form("#facInwardForm");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
                         }
-                    });
-                }
+                        u.hide_confirm();
+                        u.growl_success("FAC Inward updated");
+                    } else {
+                        u.hide_confirm();
+                        u.growl_warning("Please select the correct row to edit");
+                    }
+                });
+            }
 
-            });
+        });
 
 
         /*----------------------------------------------------
         * Remove record or Mark for deletion from FAC Inward Grid
         *---------------------------------------------------*/
 
-            $("#btn_remove_MemberInward").on("click", function () {
+        $("#btn_remove_MemberInward").on("click", function () {
 
-                if (u.grid_empty($scope.grdfacInward_grid)) return u.growl_info("The grid is empty");
+            if (u.grid_empty($scope.grdfacInward_grid)) return u.growl_info("The grid is empty");
 
-                var grid = $scope.grdfacInward_grid;
+            var grid = $scope.grdfacInward_grid;
 
-                var rowId = grid.jqGrid("getGridParam", "selrow");
+            var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                var recordStatus = grid.jqGrid("getCell", rowId, "FINW_STATUS");
+            var recordStatus = grid.jqGrid("getCell", rowId, "FINW_STATUS");
 
-                var code = grid.jqGrid("getCell", rowId, "FINW_CEDANT_CODE");
+            var code = grid.jqGrid("getCell", rowId, "FINW_CEDANT_CODE");
 
-                var message = "";
+            var message = "";
 
-                /*---------------------------------
-                 * Display modal message
-                 *------------------------------*/
-                //
-                u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
+            /*---------------------------------
+             * Display modal message
+             *------------------------------*/
+            //
+            u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
 
-                    /*--------------------------------------------
-                     * Remove newly added record before saving
-                     *------------------------------------------*/
-                    // 
-                    if (recordStatus == "U") {
+                /*--------------------------------------------
+                 * Remove newly added record before saving
+                 *------------------------------------------*/
+                // 
+                if (recordStatus == "U") {
 
-                        grid.jqGrid("delRowData", rowId);
-                        u.hide_confirm();
-                        u.growl_hide("Selected row successfully deleted");
-                    }
+                    grid.jqGrid("delRowData", rowId);
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully deleted");
+                }
 
-                    /*----------------------------------------
-                     * Mark a record for deletion on saving
-                     *--------------------------------------*/
-                    // 
-                    if (recordStatus == "A") {
+                /*----------------------------------------
+                 * Mark a record for deletion on saving
+                 *--------------------------------------*/
+                // 
+                if (recordStatus == "A") {
 
-                        grid.jqGrid("setCell", rowId, "FINW_STATUS", "D");
-                        $("#" + rowId, "#grdfacInward").css({ color: "red" });
+                    grid.jqGrid("setCell", rowId, "FINW_STATUS", "D");
+                    $("#" + rowId, "#grdfacInward").css({ color: "red" });
 
-                        u.hide_confirm();
-                        u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
 
-                    } else if (recordStatus == "D") {
+                } else if (recordStatus == "D") {
 
-                        $("#" + rowId, "#grdfacInward").css({ color: "black" });
-                        grid.jqGrid("setCell", rowId, "FINW_STATUS", "A");
-                        u.hide_confirm();
-                        u.growl_hide("Data successfully restored");
-                    }
-
-                });
+                    $("#" + rowId, "#grdfacInward").css({ color: "black" });
+                    grid.jqGrid("setCell", rowId, "FINW_STATUS", "A");
+                    u.hide_confirm();
+                    u.growl_hide("Data successfully restored");
+                }
 
             });
+
+        });
 
 
 
@@ -5399,158 +5418,158 @@
          * Add function to add records to  FAC Inward Companies
          *------------------------------------------------*/
         //
-            $("#btn_add_facInwardComp").on("click", function () {
+        $("#btn_add_facInwardComp").on("click", function () {
 
-                if (u.form_validation("#InwardParticipantsForm")) {
+            if (u.form_validation("#InwardParticipantsForm")) {
 
-                    u.modal_confirmation("Are you sure you want to add RI FAC Inward Company Details to the grid?", function () {
+                u.modal_confirmation("Are you sure you want to add RI FAC Inward Company Details to the grid?", function () {
 
-                        var rowIds = $scope.grdInwdParticipant_grid.jqGrid("getDataIDs");
+                    var rowIds = $scope.grdInwdParticipant_grid.jqGrid("getDataIDs");
 
-                        /*----------------------------------------------
-                         * declare array to contain the codes to verify
-                         *--------------------------------------------*/
+                    /*----------------------------------------------
+                     * declare array to contain the codes to verify
+                     *--------------------------------------------*/
+                    //
+                    var code = [];
+
+                    /*------------------------------------------------------------
+                     * iterate through the rows and check duplicate each of them
+                     *----------------------------------------------------------*/
+                    // 
+                    for (var i = 0, len = rowIds.length; i < len; i++) {
+                        var currRow = rowIds[i];
+
+                        /*------------------------------------------------
+                         * get value of the cell or column in an array
+                         *----------------------------------------------*/
                         //
-                        var code = [];
+                        var cellValue = $scope.grdInwdParticipant_grid.jqGrid("getCell", currRow, "FINW_PAP_CODE");
 
-                        /*------------------------------------------------------------
-                         * iterate through the rows and check duplicate each of them
-                         *----------------------------------------------------------*/
-                        // 
-                        for (var i = 0, len = rowIds.length; i < len; i++) {
-                            var currRow = rowIds[i];
+                        code.push(cellValue);
+                    }
 
-                            /*------------------------------------------------
-                             * get value of the cell or column in an array
-                             *----------------------------------------------*/
-                            //
-                            var cellValue = $scope.grdInwdParticipant_grid.jqGrid("getCell", currRow, "FINW_PAP_CODE");
+                    /*----------------------------------------
+                     * add if code is not found in the Grid
+                     *--------------------------------------*/
+                    //
+                    if ($.inArray($("#FINW_PAP_CODE").val(), code) < 0) {
+                        var formData = u.parse_form("#InwardParticipantsForm");
+                        formData.FINW_PAP_STATUS = "U";
+                        formData.FINW_PAP_CRTE_BY = "Admin";
+                        formData.FINW_PAP_CRTE_DATE = u.get_date();
+                        $scope.grdInwdParticipant_grid.addRowData(formData.FINW_PAP_CODE, formData);
+                        u.hide_confirm();
+                        u.growl_success("RI FAC Inward Company Details successfully added to grid");
+                    }
 
-                            code.push(cellValue);
-                        }
+                    else {
+                        u.hide_confirm();
+                        u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
+                    }
 
-                        /*----------------------------------------
-                         * add if code is not found in the Grid
-                         *--------------------------------------*/
-                        //
-                        if ($.inArray($("#FINW_PAP_CODE").val(), code) < 0) {
-                            var formData = u.parse_form("#InwardParticipantsForm");
-                            formData.FINW_PAP_STATUS = "U";
-                            formData.FINW_PAP_CRTE_BY = "Admin";
-                            formData.FINW_PAP_CRTE_DATE = u.get_date();
-                            $scope.grdInwdParticipant_grid.addRowData(formData.FINW_PAP_CODE, formData);
-                            u.hide_confirm();
-                            u.growl_success("RI FAC Inward Company Details successfully added to grid");
-                        }
-
-                        else {
-                            u.hide_confirm();
-                            u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
-                        }
-
-                    });
-                }
-                else {
-                    u.growl_error("Please fill out the fields that are marked red");
-                }
+                });
+            }
+            else {
+                u.growl_error("Please fill out the fields that are marked red");
+            }
 
 
-            });
+        });
 
 
         /*--------------------------------
         * FAC Inward Companies Edit/Update Function
         *------------------------------*/
         //
-            $("#btn_update_facInwardComp").on("click", function () {
+        $("#btn_update_facInwardComp").on("click", function () {
 
-                if (u.grid_empty($scope.grdInwdParticipant_grid)) return u.growl_info("FAC Inward Company grid is empty");
+            if (u.grid_empty($scope.grdInwdParticipant_grid)) return u.growl_info("FAC Inward Company grid is empty");
 
-                if (u.form_validation("#facInwardForm")) {
+            if (u.form_validation("#facInwardForm")) {
 
-                    u.modal_confirmation("Are you sure you want to update the selected FAC Inward Company?", function () {
+                u.modal_confirmation("Are you sure you want to update the selected FAC Inward Company?", function () {
 
-                        var grid = $scope.grdInwdParticipant_grid;
+                    var grid = $scope.grdInwdParticipant_grid;
 
-                        var rowId = grid.jqGrid("getGridParam", "selrow");
+                    var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                        var code = grid.jqGrid("getCell", rowId, "FINW_PAP_CODE");
+                    var code = grid.jqGrid("getCell", rowId, "FINW_PAP_CODE");
 
-                        if (code === $("#FINW_PAP_CODE").val()) {
-                            var data = u.parse_form("#InwardParticipantsForm");
-                            for (var i in data) {
-                                grid.jqGrid("setCell", rowId, i, data[i]);
-                            }
-                            u.hide_confirm();
-                            u.growl_success("FAC Inward Company updated");
-                        } else {
-                            u.hide_confirm();
-                            u.growl_warning("Please select the correct row to edit");
+                    if (code === $("#FINW_PAP_CODE").val()) {
+                        var data = u.parse_form("#InwardParticipantsForm");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
                         }
-                    });
-                }
+                        u.hide_confirm();
+                        u.growl_success("FAC Inward Company updated");
+                    } else {
+                        u.hide_confirm();
+                        u.growl_warning("Please select the correct row to edit");
+                    }
+                });
+            }
 
-            });
+        });
 
 
         /*----------------------------------------------------
       * Remove record or Mark for deletion from FAC Inward Company Grid
       *---------------------------------------------------*/
 
-            $("#btn_remove_facInwardComp").on("click", function () {
+        $("#btn_remove_facInwardComp").on("click", function () {
 
-                if (u.grid_empty($scope.grdInwdParticipant_grid)) return u.growl_info("The grid is empty");
+            if (u.grid_empty($scope.grdInwdParticipant_grid)) return u.growl_info("The grid is empty");
 
-                var grid = $scope.grdInwdParticipant_grid;
+            var grid = $scope.grdInwdParticipant_grid;
 
-                var rowId = grid.jqGrid("getGridParam", "selrow");
+            var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                var recordStatus = grid.jqGrid("getCell", rowId, "FINW_PAP_STATUS");
+            var recordStatus = grid.jqGrid("getCell", rowId, "FINW_PAP_STATUS");
 
-                var code = grid.jqGrid("getCell", rowId, "FINW_PAP_CODE");
+            var code = grid.jqGrid("getCell", rowId, "FINW_PAP_CODE");
 
-                var message = "";
+            var message = "";
 
-                /*---------------------------------
-                 * Display modal message
-                 *------------------------------*/
-                //
-                u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
+            /*---------------------------------
+             * Display modal message
+             *------------------------------*/
+            //
+            u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
 
-                    /*--------------------------------------------
-                     * Remove newly added record before saving
-                     *------------------------------------------*/
-                    // 
-                    if (recordStatus == "U") {
+                /*--------------------------------------------
+                 * Remove newly added record before saving
+                 *------------------------------------------*/
+                // 
+                if (recordStatus == "U") {
 
-                        grid.jqGrid("delRowData", rowId);
-                        u.hide_confirm();
-                        u.growl_hide("Selected row successfully deleted");
-                    }
+                    grid.jqGrid("delRowData", rowId);
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully deleted");
+                }
 
-                    /*----------------------------------------
-                     * Mark a record for deletion on saving
-                     *--------------------------------------*/
-                    // 
-                    if (recordStatus == "A") {
+                /*----------------------------------------
+                 * Mark a record for deletion on saving
+                 *--------------------------------------*/
+                // 
+                if (recordStatus == "A") {
 
-                        grid.jqGrid("setCell", rowId, "FINW_PAP_STATUS", "D");
-                        $("#" + rowId, "#grdInwdParticipants").css({ color: "red" });
+                    grid.jqGrid("setCell", rowId, "FINW_PAP_STATUS", "D");
+                    $("#" + rowId, "#grdInwdParticipants").css({ color: "red" });
 
-                        u.hide_confirm();
-                        u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
 
-                    } else if (recordStatus == "D") {
+                } else if (recordStatus == "D") {
 
-                        $("#" + rowId, "#grdInwdParticipants").css({ color: "black" });
-                        grid.jqGrid("setCell", rowId, "FINW_PAP_STATUS", "A");
-                        u.hide_confirm();
-                        u.growl_hide("Data successfully restored");
-                    }
-
-                });
+                    $("#" + rowId, "#grdInwdParticipants").css({ color: "black" });
+                    grid.jqGrid("setCell", rowId, "FINW_PAP_STATUS", "A");
+                    u.hide_confirm();
+                    u.growl_hide("Data successfully restored");
+                }
 
             });
+
+        });
 
 
 
@@ -5558,156 +5577,156 @@
       * Add function to add records to  Co-Insurance Leader
       *------------------------------------------------*/
         //
-            $("#btn_add_CoinsLeader").on("click", function () {
+        $("#btn_add_CoinsLeader").on("click", function () {
 
-                if (u.form_validation("#CoinsLeaderForm")) {
+            if (u.form_validation("#CoinsLeaderForm")) {
 
-                    u.modal_confirmation("Are you sure you want to add RI Co-Insurance Leader to the grid?", function () {
+                u.modal_confirmation("Are you sure you want to add RI Co-Insurance Leader to the grid?", function () {
 
-                        var rowIds = $scope.grdCoinsLeader_grid.jqGrid("getDataIDs");
+                    var rowIds = $scope.grdCoinsLeader_grid.jqGrid("getDataIDs");
 
-                        /*----------------------------------------------
-                         * declare array to contain the codes to verify
-                         *--------------------------------------------*/
+                    /*----------------------------------------------
+                     * declare array to contain the codes to verify
+                     *--------------------------------------------*/
+                    //
+                    var code = [];
+
+                    /*------------------------------------------------------------
+                     * iterate through the rows and check duplicate each of them
+                     *----------------------------------------------------------*/
+                    // 
+                    for (var i = 0, len = rowIds.length; i < len; i++) {
+                        var currRow = rowIds[i];
+
+                        /*------------------------------------------------
+                         * get value of the cell or column in an array
+                         *----------------------------------------------*/
                         //
-                        var code = [];
+                        var cellValue = $scope.grdCoinsLeader_grid.jqGrid("getCell", currRow, "FOTW_RI_MEM_CODE");
 
-                        /*------------------------------------------------------------
-                         * iterate through the rows and check duplicate each of them
-                         *----------------------------------------------------------*/
-                        // 
-                        for (var i = 0, len = rowIds.length; i < len; i++) {
-                            var currRow = rowIds[i];
+                        code.push(cellValue);
+                    }
 
-                            /*------------------------------------------------
-                             * get value of the cell or column in an array
-                             *----------------------------------------------*/
-                            //
-                            var cellValue = $scope.grdCoinsLeader_grid.jqGrid("getCell", currRow, "FOTW_RI_MEM_CODE");
+                    /*----------------------------------------
+                     * add if code is not found in the Grid
+                     *--------------------------------------*/
+                    //
+                    if ($.inArray($("#FOTW_RI_MEM_CODE").val(), code) < 0) {
+                        var formData = u.parse_form("#CoinsLeaderForm");
+                        formData.FOTW_STATUS = "U";
+                        formData.FOTW_CRTE_BY = "Admin";
+                        formData.FOTW_CRTE_DATE = u.get_date();
+                        $scope.grdCoinsLeader_grid.addRowData(formData.FOTW_RI_MEM_CODE, formData);
+                        u.hide_confirm();
+                        u.growl_success("Co-Insurance Leader Details successfully added to grid");
+                    }
 
-                            code.push(cellValue);
-                        }
+                    else {
+                        u.hide_confirm();
+                        u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
+                    }
 
-                        /*----------------------------------------
-                         * add if code is not found in the Grid
-                         *--------------------------------------*/
-                        //
-                        if ($.inArray($("#FOTW_RI_MEM_CODE").val(), code) < 0) {
-                            var formData = u.parse_form("#CoinsLeaderForm");
-                            formData.FOTW_STATUS = "U";
-                            formData.FOTW_CRTE_BY = "Admin";
-                            formData.FOTW_CRTE_DATE = u.get_date();
-                            $scope.grdCoinsLeader_grid.addRowData(formData.FOTW_RI_MEM_CODE, formData);
-                            u.hide_confirm();
-                            u.growl_success("Co-Insurance Leader Details successfully added to grid");
-                        }
-
-                        else {
-                            u.hide_confirm();
-                            u.growl_warning("Code exists, you cannot add same Code :  " + cellValue);
-                        }
-
-                    });
-                }
-                else {
-                    u.growl_error("Please fill out the fields that are marked red");
-                }
-            });
+                });
+            }
+            else {
+                u.growl_error("Please fill out the fields that are marked red");
+            }
+        });
 
 
         /*--------------------------------
         * Co-Insurance Leader Edit/Update Function
         *------------------------------*/
         //
-            $("#btn_update_CoinsLeader").on("click", function () {
+        $("#btn_update_CoinsLeader").on("click", function () {
 
-                if (u.grid_empty($scope.grdCoinsLeader_grid)) return u.growl_info("Co-Insurance Leader grid is empty");
+            if (u.grid_empty($scope.grdCoinsLeader_grid)) return u.growl_info("Co-Insurance Leader grid is empty");
 
-                if (u.form_validation("#CoinsLeaderForm")) {
+            if (u.form_validation("#CoinsLeaderForm")) {
 
-                    u.modal_confirmation("Are you sure you want to update the selected Co-Insurance Leader?", function () {
+                u.modal_confirmation("Are you sure you want to update the selected Co-Insurance Leader?", function () {
 
-                        var grid = $scope.grdCoinsLeader_grid;
+                    var grid = $scope.grdCoinsLeader_grid;
 
-                        var rowId = grid.jqGrid("getGridParam", "selrow");
+                    var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                        var code = grid.jqGrid("getCell", rowId, "FOTW_RI_MEM_CODE");
+                    var code = grid.jqGrid("getCell", rowId, "FOTW_RI_MEM_CODE");
 
-                        if (code === $("#FOTW_RI_MEM_CODE").val()) {
-                            var data = u.parse_form("#CoinsLeaderForm");
-                            for (var i in data) {
-                                grid.jqGrid("setCell", rowId, i, data[i]);
-                            }
-                            u.hide_confirm();
-                            u.growl_success("FAC Inward updated");
-                        } else {
-                            u.hide_confirm();
-                            u.growl_warning("Please select the correct row to edit");
+                    if (code === $("#FOTW_RI_MEM_CODE").val()) {
+                        var data = u.parse_form("#CoinsLeaderForm");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
                         }
-                    });
-                }
+                        u.hide_confirm();
+                        u.growl_success("FAC Inward updated");
+                    } else {
+                        u.hide_confirm();
+                        u.growl_warning("Please select the correct row to edit");
+                    }
+                });
+            }
 
-            });
+        });
 
 
         /*----------------------------------------------------
        * Remove record or Mark for deletion from Co-Insurance Leader Grid
        *---------------------------------------------------*/
 
-            $("#btn_remove_CoinsLeader").on("click", function () {
+        $("#btn_remove_CoinsLeader").on("click", function () {
 
-                if (u.grid_empty($scope.grdCoinsLeader_grid)) return u.growl_info("The grid is empty");
+            if (u.grid_empty($scope.grdCoinsLeader_grid)) return u.growl_info("The grid is empty");
 
-                var grid = $scope.grdCoinsLeader_grid;
+            var grid = $scope.grdCoinsLeader_grid;
 
-                var rowId = grid.jqGrid("getGridParam", "selrow");
+            var rowId = grid.jqGrid("getGridParam", "selrow");
 
-                var recordStatus = grid.jqGrid("getCell", rowId, "FOTW_STATUS");
+            var recordStatus = grid.jqGrid("getCell", rowId, "FOTW_STATUS");
 
-                var code = grid.jqGrid("getCell", rowId, "FOTW_RI_MEM_CODE");
+            var code = grid.jqGrid("getCell", rowId, "FOTW_RI_MEM_CODE");
 
-                var message = "";
+            var message = "";
 
-                /*---------------------------------
-                 * Display modal message
-                 *------------------------------*/
-                //
-                u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
+            /*---------------------------------
+             * Display modal message
+             *------------------------------*/
+            //
+            u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
 
-                    /*--------------------------------------------
-                     * Remove newly added record before saving
-                     *------------------------------------------*/
-                    // 
-                    if (recordStatus == "U") {
+                /*--------------------------------------------
+                 * Remove newly added record before saving
+                 *------------------------------------------*/
+                // 
+                if (recordStatus == "U") {
 
-                        grid.jqGrid("delRowData", rowId);
-                        u.hide_confirm();
-                        u.growl_hide("Selected row successfully deleted");
-                    }
+                    grid.jqGrid("delRowData", rowId);
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully deleted");
+                }
 
-                    /*----------------------------------------
-                     * Mark a record for deletion on saving
-                     *--------------------------------------*/
-                    // 
-                    if (recordStatus == "A") {
+                /*----------------------------------------
+                 * Mark a record for deletion on saving
+                 *--------------------------------------*/
+                // 
+                if (recordStatus == "A") {
 
-                        grid.jqGrid("setCell", rowId, "FOTW_STATUS", "D");
-                        $("#" + rowId, "#grdCoinsLeader").css({ color: "red" });
+                    grid.jqGrid("setCell", rowId, "FOTW_STATUS", "D");
+                    $("#" + rowId, "#grdCoinsLeader").css({ color: "red" });
 
-                        u.hide_confirm();
-                        u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
 
-                    } else if (recordStatus == "D") {
+                } else if (recordStatus == "D") {
 
-                        $("#" + rowId, "#grdCoinsLeader").css({ color: "black" });
-                        grid.jqGrid("setCell", rowId, "FOTW_STATUS", "A");
-                        u.hide_confirm();
-                        u.growl_hide("Data successfully restored");
-                    }
-
-                });
+                    $("#" + rowId, "#grdCoinsLeader").css({ color: "black" });
+                    grid.jqGrid("setCell", rowId, "FOTW_STATUS", "A");
+                    u.hide_confirm();
+                    u.growl_hide("Data successfully restored");
+                }
 
             });
+
+        });
 
 
     });

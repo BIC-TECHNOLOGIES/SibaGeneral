@@ -12,13 +12,8 @@ namespace SibaDev.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INS_UDW_ENGINEER()
         {
-            INS_UDW_CAR_LOSS_OF_PROFIT = new HashSet<INS_UDW_CAR_LOSS_OF_PROFIT>();
-            INS_UDW_CAR_THIRD_PARTY_LOSS = new HashSet<INS_UDW_CAR_THIRD_PARTY_LOSS>();
-            INS_UDW_CARCON_INTEREST = new HashSet<INS_UDW_CARCON_INTEREST>();
-            INS_UDW_EAR_INTEREST = new HashSet<INS_UDW_EAR_INTEREST>();
-            INS_UDW_EAR_PERIOD_DATES = new HashSet<INS_UDW_EAR_PERIOD_DATES>();
+            INS_UDW_ENG_OTHER = new HashSet<INS_UDW_ENG_OTHER>();
         }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ENG_SYS_ID { get; set; }
@@ -57,7 +52,7 @@ namespace SibaDev.Models
         public string ENG_LOC_NAME { get; set; }
 
         [StringLength(100)]
-        public string ENG_LOC_DESC { get; set; }
+        public string ENG_DESC { get; set; }
 
         [StringLength(50)]
         public string ENG_LOC_ADDRS { get; set; }
@@ -170,20 +165,22 @@ namespace SibaDev.Models
 
         public short? ENG_UW_YEAR { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_CAR_LOSS_OF_PROFIT> INS_UDW_CAR_LOSS_OF_PROFIT { get; set; }
+        public decimal? ENG_TPL_SI_FC { get; set; }
+
+        public decimal? ENG_TPL_SI_BC { get; set; }
+
+        public decimal? ENG_LOP_SI_FC { get; set; }
+
+        public decimal? ENG_LOP_SI_BC { get; set; }
+
+        [StringLength(15)]
+        public string ENG_PROJ_CODE { get; set; }
+
+        [StringLength(50)]
+        public string ENG_PROJ_NAME { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_CAR_THIRD_PARTY_LOSS> INS_UDW_CAR_THIRD_PARTY_LOSS { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_CARCON_INTEREST> INS_UDW_CARCON_INTEREST { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_EAR_INTEREST> INS_UDW_EAR_INTEREST { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_EAR_PERIOD_DATES> INS_UDW_EAR_PERIOD_DATES { get; set; }
+        public virtual ICollection<INS_UDW_ENG_OTHER> INS_UDW_ENG_OTHER { get; set; }
 
         public virtual INS_UWD_POLICY_HEAD INS_UWD_POLICY_HEAD { get; set; }
     }

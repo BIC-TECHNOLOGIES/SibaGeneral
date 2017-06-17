@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> 
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                                                                         <div class="input-group">
                                                                             <input class="form-control" min="3" max-length="15" type="text" id="POLH_CMP_CODE" name="POLH_CMP_CODE" value="MULTI" title="Code" readonly />
                                                                             <span class="input-group-btn">
-                                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_company", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
+                                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_companys", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
                                                                                     <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                                 </button>
                                                                             </span>
@@ -130,9 +130,9 @@
                                                                 <div class="col-md-4">
                                                                     <span id="spry_polhclass">
                                                                         <div class="input-group">
-                                                                            <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="BONDS" readonly />
+                                                                            <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="ENGIN" readonly />
                                                                             <span class="input-group-btn">
-                                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                                     <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                                 </button>
                                                                             </span>
@@ -141,7 +141,7 @@
                                                                     </span>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="BONDS" readonly />
+                                                                    <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="ENGINEERING" readonly />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -608,8 +608,12 @@
                                     <div id="tabs-1">
                                 <div class="row">
                                     <div class="btn-block">
-                                        <button id="btn_open_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Risk</button>
-                                        <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
+                                        <button id="btn_open_car" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> CAR</button>
+                                        <button id="btn_open_car_cpm" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> CPM</button>
+                                        <button id="btn_open_car_tpl" class="btn btn-default" type="button"><i class="fa fa-plus-circle  text-success"></i> TPL</button>
+                                        <button id="btn_open_car_lop" class="btn btn-default" type="button"><i class="fa fa-plus-circle  text-success"></i> Loss of Profit</button>
+                                        <button id="btn_open_car_con" class="btn btn-default" type="button"><i class="fa fa-plus-circle  text-success"></i> Contractor</button>
+
                                     </div>
                                 </div>
                                 <div class="row control-group form-padding">
@@ -962,11 +966,18 @@
               </div>
                 <div class="row some-bg-color">
                     <div style="margin-top: 10px;">
-                        <div class="col-md-7">
-                            <button id="btn_open_car_cpm" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add EAR</button>
-                            <button id="btn_open_car_tpl" class="btn btn-default" type="button"><i class="fa fa-plus-circle  text-success"></i> CAR CPM</button>
-                            <button id="btn_open_car_lop" class="btn btn-default" type="button"><i class="fa fa-plus-circle  text-success"></i> CAR TPL</button>
-
+                        <div class="col-md-5">
+                            <button id="btn_add_car" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add CAR</button>
+                            <button id="btn_update_car" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                            <button id="btn_remove_car" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
+                                <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                            </button>
                         </div>
                     </div>
                 </div>  
@@ -982,7 +993,7 @@
                                 <input id="CAR_SYS_ID" type="hidden" class="form-control"
                                        name="CAR_SYS_ID" />
                             
-                                <div class="col-md-12">
+                                <div class="row">
                                     <div class="form-group">
                                         <div class="col-md-2">
                                             <label class="required">Risk Type</label>
@@ -999,7 +1010,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <span id="spry_baserate">
-                                                <input class="form-control" min="3" max-length="50" type="text" name="CAR_RISK_NAME" />
+                                                <input class="form-control" min="3" max-length="50" type="text" id="CAR_RISK_NAME" name="CAR_RISK_NAME" />
                                                 <span class="textfieldRequiredMsg">Name is required.</span>
                                             </span>
                                         </div>
@@ -1010,10 +1021,10 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <div class="col-md-2">
-                                            <label class="required">Description</label>
+                                            <label class="">Description</label>
                                         </div>
-                                        <div class="col-md-2">
-                                            <textarea name="CAR_DESCRIPTION" class="form-control" cols="40" rows="2"></textarea>
+                                        <div class="col-md-6">
+                                            <textarea id="CAR_DESCRIPTION" name="CAR_DESCRIPTION" class="form-control" cols="40" rows="2"></textarea>
                                         </div>
                                     </div>
                                 </div>                               
@@ -1096,18 +1107,7 @@
                             </form>
                         </div>
                         <hr />
-                        <div class="row">
-                            <div class="btn-block">
-                                <button id="btn_add_car" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add CAR</button>
-                                <button id="btn_update_car" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
-                                <button id="btn_remove_car" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
-                              
-                                <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
-                                    <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
-                                </button>
-                            </div>
-                        </div>
-
+                       
                         <div class="row">
                             <table id="gridCARInterest"></table>
                             <table id="gridCARInterestPager"></table>
@@ -1142,10 +1142,13 @@
                 </div>
                 <div class="row some-bg-color">
                     <div style="margin-top: 10px;">
-                        <div class="col-md-7">
+                        <div class="col-md-5">
                             <button id="btn_add_cpm" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add CPM</button>
                             <button id="btn_update_cpm" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
                             <button id="btn_remove_cpm" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>                           
+                        </div>
+                        <div class="col-md-2">
+                            <button id="btn_risk_cover1" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
                         </div>
                         <div class="col-lg-3">
                             <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cpm-btn" title="Export Grid data to Excel">
@@ -1192,7 +1195,7 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <div class="col-md-2">
-                                            <label class="required">Description</label>
+                                            <label class="">Description</label>
                                         </div>
                                         <div class="col-md-2">
                                             <textarea name="CPM_DESCRIPTION" class="form-control" cols="40" rows="2"></textarea>
@@ -1206,10 +1209,10 @@
                                             <label class="">Sum Insured</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="CAR_CPM_SI_FC" class="form-control" type="number" name="CAR_CPM_SI_FC" readonly />
+                                            <input id="CPM_CAR_SI_FC" class="form-control" type="number" name="CPM_CAR_SI_FC" readonly />
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="CAR_CPM_SI_BC" class="form-control" type="number" name="CAR_CPM_SI_BC" readonly />
+                                            <input id="CPM_CAR_SI_BC" class="form-control" type="number" name="CPM_CAR_SI_BC" readonly />
                                         </div>
                                     </div>
                                 </div>
@@ -1220,10 +1223,10 @@
                                             <label class="">Premium</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="CAR_CPM_TOT_PREM_FC" class="form-control" type="number" name="CAR_CPM_TOT_PREM_FC" readonly />
+                                            <input id="CPM_CAR_TOT_PREM_FC" class="form-control" type="number" name="CPM_CAR_TOT_PREM_FC" readonly />
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="CAR__CPM_TOT_PREM_BC" class="form-control" type="number" name="CAR__CPM_TOT_PREM_BC" readonly />
+                                            <input id="CPM_CAR_TOT_PREM_BC" class="form-control" type="number" name="CPM_CAR_TOT_PREM_BC" readonly />
                                         </div>
                                     </div>
                                 </div>
@@ -1594,6 +1597,89 @@
         </div>
 
     </div>
+</div>
+
+
+<!-- CAR Contractor Modal Dialog -->
+<div class="modal draggable ui-accordion fade" id="CARCONModal" role="dialog" data-backdrop="static" data-keyboard="true">
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="row modal-header-success">
+                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+                    <i class="fa ion-information-circled pull-left text-primary" style="font-size: 3rem;"></i>
+                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Contractor All Risk</strong>
+                </div>
+                <div class="row some-bg-color">
+                    <div style="margin-top: 10px;">
+                        <div class="col-md-7">
+                            <button id="btn_add_con" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add CPM</button>
+                            <button id="btn_update_con" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
+                            <button id="btn_remove_con" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-con-btn" title="Export Grid data to Excel">
+                                <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row control-group form-padding">
+                    <div class="container" style="width:100%">
+                        <span class="control-grp-lbl text-danger">CAR Contractor Plant Machinery Details</span>
+                        <div class="row">
+                            <form id="carconForm" name="carconForm">
+                                
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label class="required">Risk Type</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                                <input class="form-control" min="3" max-length="15" type="text" id="CONVAL_NAME" name="CONVAL_NAME" />
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label class="required">Description</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <textarea id="CONVAL_DESC" name="CONVAL_DESC" class="form-control" cols="40" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                            </form>
+                        </div>
+                        <hr />
+
+                    </div>
+
+                    <div class="row">
+                        <table id="gridCARCONInterest"></table>
+                        <table id="gridCARCONInterestPager"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="background-color:rgba(0, 0, 0, .1)">
+                <button id="" type="button" class="btn btn-primary pull right" data-dismiss="modal">Ok</button>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 

@@ -44,7 +44,7 @@ namespace SibaDev.Controllers
         public ActionResult PolicyMotorSchedule(int id)
         {
             var policy = PolicyMotorReportMdl.GetPolicySchedule(id);
-            return View("frmSchedule", policy);
+            return View("rptMotorScheduleOneVeh", policy);
         }
 
         public ActionResult PolicyMotorCertificate(int id)

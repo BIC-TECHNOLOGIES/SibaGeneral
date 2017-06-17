@@ -9,7 +9,7 @@
         { name: 'COM_INT_CODE', index: 'COM_INT_CODE' },
         { name: 'COM_INT_NAME', index: 'COM_INT_NAME' },
         { name: 'COM_PROD_CODE', index: 'COM_PROD_CODE' },
-         { name: 'COM_PROD_NAME', index: 'COM_PROD_NAME' },
+        { name: 'COM_PROD_NAME', index: 'COM_PROD_NAME' },
         { name: 'COM_DFT_PERC', index: 'COM_DFT_PERC' },
         { name: 'COM_NEW_PERC', index: 'COM_NEW_PERC' },
         { name: 'COM_RENEWAL_PERC', index: 'COM_RENEWAL_PERC' },
@@ -61,6 +61,7 @@
 
                 u.modal_confirmation("Are you sure you want to add Intermediary Commision to the grid?", function () {
 
+                    var covgrid = $scope.intermcomm_grid;
                     var rowIds = $scope.intermcomm_grid.jqGrid('getDataIDs');
 
                     /*----------------------------------------------
@@ -80,23 +81,39 @@
                          * get value of the cell or column in an array
                          *----------------------------------------------*/
                         //
-                        var cellValue = $scope.intermcomm_grid.jqGrid('getCell', currRow, 'COM_PROD_CODE');
+                        //var cellValue = $scope.intermcomm_grid.jqGrid('getCell', currRow, 'COM_PROD_CODE');
+
+                        //Code.push(cellValue);
+
+                        var covValue = covgrid.jqGrid('getCell', currRow, 'COM_PROD_CODE');
+
+                        var riskValue = covgrid.jqGrid('getCell', currRow, 'COM_INT_CODE');
+
+                        var cellValue = covValue + riskValue;
 
                         Code.push(cellValue);
+
                     }
+
+                    var CoverCode = $("#COM_PROD_CODE").val();
+
+                    var RiskCode = $("#COM_INT_CODE").val();
+
+                    var verifyRiskCover = CoverCode + RiskCode;
 
                     /*----------------------------------------
                      * add if code is not found in the Grid
                      *--------------------------------------*/
                     //
-                    if ($.inArray($('#COM_PROD_CODE').val(), Code) < 0) {
+                    if ($.inArray(verifyRiskCover, Code) < 0){
+                    //if ($.inArray($('#COM_PROD_CODE').val(), Code) < 0) {
 
                         var FormData = u.parse_form("#intermcommForm");
                         //var FormData1 = u.parse_form("#intermcommForm");
                         //for (var i in FormData1) {
                         //    FormData[i] = FormData1[i];
                         //}
-                        FormData.COM_STATUS = "U";
+                        FormData.COM_STATUS = "U";  
                      
                         FormData.COM_CRTE_BY = "Admin";
                         FormData.COM_CRTE_DATE = u.get_date();
@@ -339,7 +356,7 @@
         /*-----------------------------------
          * exporting of the grid to excel
          *----------------------------------*/
-        $("#export-btn").click(function () {
+        $("#export-interm-btn").click(function () {
             /*
              * function to export grid data into excel
              */
@@ -423,7 +440,7 @@
     * Code validation
      *-----------------------*/
         u.codeVal("form input[name='COM_INT_CODE']", "check_intermcommission_code");
-
+        u.lovCodeVal("form input[name='COM_PROD_CODE']", "check_subproduct_code", "form input[name='COM_PROD_NAME']");
 
     });
 

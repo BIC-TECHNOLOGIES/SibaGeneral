@@ -110,22 +110,14 @@ namespace SibaDev.Models
             return db.SaveChanges() > 0;
         }
 
+
         public static IEnumerable<MS_UDW_CUSTOMERS> search_customers(string q)
         {
             var db = new SibaModel();
             return (from are in db.MS_UDW_CUSTOMERS
-                    where (are.CUS_CODE.ToLower().Contains(q.ToLower()) || are.CUS_TYPE_CODE.ToLower().Contains(q.ToLower())
-                    || are.CUS_FIRST_NAME.ToLower().Contains(q.ToLower()) || are.CUS_LAST_NAME.ToLower().Contains(q.ToLower())
-                    || are.CUS_OTHER_NAME.ToLower().Contains(q.ToLower()) || are.CUS_ADDRS1.ToLower().Contains(q.ToLower())
-                    || are.CUS_ADDRS2.ToString().Contains(q.ToLower()) || are.CUS_BANK_NAME.ToLower().Contains(q.ToLower())
-                    || are.CUS_GENDER.ToString().Contains(q.ToLower()) || are.CUS_DOB.ToString().Contains(q.ToLower())
-                    || are.CUS_ACC_NUM.ToLower().Contains(q.ToLower()) || are.CUS_EMAIL.ToLower().Contains(q.ToLower())
-                    || are.CUS_PROFESSION.ToString().Contains(q.ToLower()) || are.CUS_TITLE.ToString().Contains(q.ToLower())
-                    || are.CUS_PHONE1.ToLower().Contains(q.ToLower()) || are.CUS_MOBILE.ToLower().Contains(q.ToLower())
-                    || are.CUS_PIN_NO.ToLower().Contains(q.ToLower()) || are.CUS_BANK_BRANCH.ToLower().Contains(q.ToLower())
-                    || are.CUS_OFFICIAL_NAME.ToLower().Contains(q.ToLower())) && are.CUS_STATUS == "A"
-                    select are).ToList();
-
+                    where (are.CUS_CODE.ToLower().Contains(q.ToLower()) || are.CUS_LAST_NAME.ToLower().Contains(q.ToLower())
+                    ) && are.CUS_STATUS == "A"
+                    select are.CUS_CODE).ToList().Select(get_customer);
         }
 
         public static IEnumerable<object> get_est_customer(string ProdCode)

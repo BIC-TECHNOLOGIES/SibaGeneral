@@ -2,12 +2,13 @@
     $(function () {
 
         $scope.intermediary_grid = u.default_grid("#grdIntermediary", "#grdIntermediaryPager", "Intermediary List",
-           ['Code', 'Company Code', 'Office Code', 'Official Name', 'Postal Address', 'Home Address', 'Phone No',
+           ['Code', 'Type', 'Company Code', 'Office Code', 'Official Name', 'Postal Address', 'Home Address', 'Phone No',
                 'Mobile No', 'Area Name', 'Contact Person', 'Email Address', 'Fax', 'Bank Number',
                 'Bank Name', 'Bank Branch', 'City Name', 'Gender', 'ID Type', 'ID No.', 'Other ID Type',
                 'ID No', 'Tin No', 'Registration No', 'Created by', 'Created Date', 'Status'],
            [
                 { name: 'INT_CODE', id: true, index: 'INT_CODE' },
+                { name: 'INT_CTP_CODE', id: true, index: 'INT_CTP_CODE', hidden: true},
                 { name: 'INT_CMP_CODE', index: 'INT_CMP_CODE' },
                 { name: 'INT_OFF_CODE', index: 'INT_OFF_CODE' },
                 { name: 'INT_OFFICIAL_NAME', index: 'INT_OFFICIAL_NAME' },
@@ -32,13 +33,14 @@
                 { name: 'INT_REG_NO', index: 'INT_REG_NO' },
                 { name: 'INT_CRTE_BY', index: 'INT_CRTE_BY' },
                 { name: 'INT_CRTE_DATE', index: 'INT_CRTE_DATE' },
-                 { name: 'INT_STATUS', index: 'INT_STATUS' }
+                { name: 'INT_STATUS', index: 'INT_STATUS' }
            ],
             function (sel_id) {
                 var grid = $scope.intermediary_grid;
                 var sel_id = grid.jqGrid("getGridParam", "selrow");
                 $("form input[name='INT_CODE']").data("update", true);
                 u.fill_form({
+                    INT_CTP_CODE: grid.jqGrid('getCell', sel_id, 'INT_CTP_CODE'),
                     INT_CODE: grid.jqGrid('getCell', sel_id, 'INT_CODE'),
                     INT_CMP_CODE: grid.jqGrid('getCell', sel_id, 'INT_CMP_CODE'),
                     INT_OFF_CODE: grid.jqGrid('getCell', sel_id, 'INT_OFF_CODE'),
@@ -77,11 +79,24 @@
 
             if (u.form_validation("#intermediaryForm")) {
 
-                if (u.field_empty("input[name='INT_PARTY_CODE']")) return u.growl_error
+                //if (u.field_empty("input[name='INT_CODE']")) return u.growl_error
 
-           ("The Form code field is empty, please fill and to add to the grid");
+                //("The Form code field is empty, please fill and to add to the grid");
+
+                $("#INT_SYS").val("");
+
+                if ($("#INT_SYS").val() == "") {
+                    RetnSequenceNo("INTERMEDIARY_SEQ", getVehSeqNo);
+
+                    function getVehSeqNo(data) {
+                        $("#INT_SYS").val(data);
+                    }
+                }
 
                 u.modal_confirmation("Are you sure you want to add Intermediary to the grid?", function () {
+
+                    var custtype = $("#INT_CTP_CODE").val();
+                    var sysid = $("#INT_SYS").val();
 
                     var rowIds = $scope.intermediary_grid.jqGrid('getDataIDs');
 
@@ -102,7 +117,7 @@
                          * get value of the cell or column in an array
                          *----------------------------------------------*/
                         //
-                        var cellValue = $scope.intermediary_grid.jqGrid('getCell', currRow, 'INT_PARTY_CODE');
+                        var cellValue = $scope.intermediary_grid.jqGrid('getCell', currRow, 'INT_CODE');
 
                         Code.push(cellValue);
                     }
@@ -111,13 +126,14 @@
                      * add if code is not found in the Grid
                      *--------------------------------------*/
                     //
-                    if ($.inArray($('#INT_PARTY_CODE').val(), Code) < 0) {
+                    if ($.inArray($('#INT_CODE').val(), Code) < 0) {
 
                         var FormData = u.parse_form("#intermediaryForm");
+                        FormData.INT_CODE = custtype + sysid;
                         FormData.INT_STATUS = "U";
                         FormData.INT_CRTE_BY = "Admin";
                         FormData.INT_CRTE_DATE = u.get_date();
-                        $scope.intermediary_grid.addRowData(FormData.INT_PARTY_CODE, FormData);
+                        $scope.intermediary_grid.addRowData(FormData.INT_CODE, FormData);
                         u.hide_confirm();
                         u.growl_success("Intermediary successfully added to grid");
                     }
@@ -151,6 +167,9 @@
                 case "btn_office":
                     $scope.lov.call_dialog("Select Branch", "get_lov_offices", $scope.dialog_data);
                     break;
+                case "btn_intermediary_type":
+                    $scope.lov.call_dialog("Select Intermediary type", "get_lov_inttypes", $scope.dialog_data);
+                    break;
             }
         }); /*----------------------------------------------------
          * Remove record or Mark for deletion from City Grid
@@ -166,7 +185,7 @@
 
             var recordStatus = grid.jqGrid('getCell', row_id, 'INT_STATUS');
 
-            var Code = grid.jqGrid('getCell', row_id, 'INT_PARTY_CODE');
+            var Code = grid.jqGrid('getCell', row_id, 'INT_CODE');
 
             var message = "";
 
@@ -216,6 +235,37 @@
          * Edit/Update Function
          *------------------------------*/
         //
+        //$("#btn_update_record").on('click', function () {
+
+        //    if (u.grid_empty($scope.intermediary_grid)) return u.growl_info("Intermediary grid is empty");
+
+        //    if (u.form_validation("#intermediaryForm")) {
+
+        //        u.modal_confirmation("Are you sure you want to update the selected Intermediary?", function () {
+
+        //            var grid = $scope.intermediary_grid;
+
+        //            var rowId = grid.jqGrid("getGridParam", "selrow");
+
+        //            var code = grid.jqGrid("getCell", rowId, "INT_CODE");
+
+        //            if (code === $("#INT_CODE").val()) {
+        //                var data = u.parse_form("#intermediaryForm");
+        //                for (var i in data) {
+        //                    grid.jqGrid("setCell", rowId, i, data[i]);
+        //                }
+        //                u.hide_confirm();
+        //                u.growl_success("Intermediary Details updated");
+        //            } else {
+        //                u.hide_confirm();
+        //                u.growl_warning("Please select the correct row to edit");
+        //            }
+        //        });
+        //    }
+
+        //});
+
+
         $("#btn_update_record").on('click', function () {
 
             if (u.grid_empty($scope.intermediary_grid)) return u.growl_info("The grid is empty");
@@ -230,6 +280,7 @@
 
             if (Code == $('#INT_CODE').val()) {
 
+                grid.jqGrid('setCell', row_id, 'INT_CTP_CODE', $('#INT_CTP_CODE').val());
                 grid.jqGrid('setCell', row_id, 'INT_CODE', $('#INT_CODE').val());
                 grid.jqGrid('setCell', row_id, 'INT_CMP_CODE', $('#INT_CMP_CODE').val());
                 grid.jqGrid('setCell', row_id, 'INT_OFF_CODE', $('#INT_OFF_CODE').val());
@@ -396,7 +447,7 @@
                          */
                         $scope.intermediary_grid.jqGrid('clearGridData');
                         for (var i in result) {
-                            $scope.intermediary_grid.addRowData(result[i].INT_PARTY_CODE, result[i]);
+                            $scope.intermediary_grid.addRowData(result[i].INT_CODE, result[i]);
                         }
                     },
                     function (err) {
@@ -411,7 +462,7 @@
                 //fetch all areas
                 s.get_intermediaries(function (intermediaries) {
                     for (var i in intermediaries) {
-                        $scope.intermediary_grid.addRowData(intermediaries[i].INT_PARTY_CODE, intermediaries[i]);
+                        $scope.intermediary_grid.addRowData(intermediaries[i].INT_CODE, intermediaries[i]);
                     }
                 });
             }
@@ -421,17 +472,13 @@
         /*-----------------------------
         * Code validation
         *-----------------------*/
-        u.codeVal("form input[name='INT_PARTY_CODE']", "check_intermediary_code");
+        u.codeVal("form input[name='INT_CODE']", "check_intermediary_code");
 
-        /*-----------------------------
-* Company LOV code validation
-*---------------------------*/
         u.lovCodeVal("form input[name='INT_CMP_CODE']", "check_company_code", "form input[name='CMP_NAME']");
 
-        /*-----------------------------
- * City LOV code validation
- *---------------------------*/
         u.lovCodeVal("form input[name='INT_OFF_CODE']", "check_office_code", "form input[name='OFF_NAME']");
+
+        u.lovCodeVal("form input[name='INT_CTP_CODE']", "check_customertype_code", "form input[name='INT_TYPE_NAME']");
 
     });
 

@@ -18,6 +18,9 @@
         get_lov_product: function (success, error) {
             u.get("/api/product/lov", success, error);
         },
+        check_subproduct_code: function (code, success, error) {
+            u.get("/api/product/check/" + code, success, error);
+        },
 
     })
 })(window.service, window.utility)

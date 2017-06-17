@@ -24,7 +24,7 @@ namespace SibaDev.Controllers
 
         public ActionResult PolicyHeadeReceipt(int id)
         {
-            var policy = PolicyHeaderMdl.GetPolicySchedule(id);
+            var policy = PolicyBondReportMdl.GetPolicySchedule(id);
             return View("rptReceiptVoucher", policy);
         }
 

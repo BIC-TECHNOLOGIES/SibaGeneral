@@ -13,7 +13,7 @@ namespace SibaDev.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INS_UWD_POLICY_HEAD()
         {
-            //INSURANCE_LEDGER = new HashSet<INSURANCE_LEDGER>();
+            INS_UDW_ENG_OTHER = new HashSet<INS_UDW_ENG_OTHER>();
             INS_UDW_LIABILITY = new HashSet<INS_UDW_LIABILITY>();
             INS_UDW_LIABILITY_WKS_COMP = new HashSet<INS_UDW_LIABILITY_WKS_COMP>();
             INS_UDW_HOME_OWNERS = new HashSet<INS_UDW_HOME_OWNERS>();
@@ -23,11 +23,6 @@ namespace SibaDev.Models
 
             INS_UDW_AGENCY_COMM = new HashSet<INS_UDW_AGENCY_COMM>();
             INS_UDW_BONDS = new HashSet<INS_UDW_BONDS>();
-            INS_UDW_CARCON_INTEREST = new HashSet<INS_UDW_CARCON_INTEREST>();
-            INS_UDW_CPM_INTEREST = new HashSet<INS_UDW_CPM_INTEREST>();
-            INS_UDW_EAR_CPM_INTEREST = new HashSet<INS_UDW_EAR_CPM_INTEREST>();
-            INS_UDW_EAR_INTEREST = new HashSet<INS_UDW_EAR_INTEREST>();
-            INS_UDW_EAR_PERIOD_DATES = new HashSet<INS_UDW_EAR_PERIOD_DATES>();
             INS_UDW_ENGINEER = new HashSet<INS_UDW_ENGINEER>();
             INS_UDW_FIRE_LOCINT_COVER = new HashSet<INS_UDW_FIRE_LOCINT_COVER>();
             INS_UDW_FIRE_LOCINT_DISCLOAD = new HashSet<INS_UDW_FIRE_LOCINT_DISCLOAD>();
@@ -189,8 +184,8 @@ namespace SibaDev.Models
         [StringLength(15)]
         public string POLH_CLASS_CODE { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<INSURANCE_LEDGER> INSURANCE_LEDGER { get; set; } 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INS_UDW_ENG_OTHER> INS_UDW_ENG_OTHER { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UDW_LIABILITY_WKS_COMP> INS_UDW_LIABILITY_WKS_COMP { get; set; }
@@ -211,22 +206,7 @@ namespace SibaDev.Models
         public virtual ICollection<INS_UDW_AGENCY_COMM> INS_UDW_AGENCY_COMM { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_BONDS> INS_UDW_BONDS { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_CARCON_INTEREST> INS_UDW_CARCON_INTEREST { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_CPM_INTEREST> INS_UDW_CPM_INTEREST { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_EAR_CPM_INTEREST> INS_UDW_EAR_CPM_INTEREST { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_EAR_INTEREST> INS_UDW_EAR_INTEREST { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INS_UDW_EAR_PERIOD_DATES> INS_UDW_EAR_PERIOD_DATES { get; set; }
+        public virtual ICollection<INS_UDW_BONDS> INS_UDW_BONDS { get; set; }       
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UDW_ENGINEER> INS_UDW_ENGINEER { get; set; }

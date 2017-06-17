@@ -81,7 +81,7 @@
                                         <hr />
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>Product</label>
+                                                <label class="required" style="margin-left: -59px;">Product</label>
                                                 <div class="input-group">
                                                     <input class="form-control" min="3" max-length="15" type="text" id="COM_PROD_CODE" name="COM_PROD_CODE" required />
                                                     <span class="input-group-btn">
@@ -95,24 +95,24 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>Product Name</label>
+                                                <label style="margin-left: -29px;">Product Name</label>
                                                 <input type="text" class="form-control" id="COM_PROD_NAME" name="COM_PROD_NAME" />
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>Default Comm. </label>
+                                                <label class="required" style="margin-left: -19px;">Default Comm. </label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <input type="checkbox" id="" style="" class="checkbox-inline" name="" placeholder="Search from DB">
                                                     </span>
-                                                    <input class="form-control" min="3" max-length="15" type="number" id="COM_DFT_PERC" name="COM_DFT_PERC" />
+                                                    <input class="form-control" min="3" max-length="15" type="number" id="COM_DFT_PERC" name="COM_DFT_PERC" required />
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-percent" title="Select" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>New Comm.</label>
+                                                <label style="margin-left: -49px;">New Comm.</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <input type="checkbox" id="" style="" class="checkbox-inline" name="" placeholder="Search from DB">
@@ -124,7 +124,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>Renewal Comm.</label>
+                                                <label style="margin-left: -29px;">Renewal Comm.</label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <input type="checkbox" id="" style="" class="checkbox-inline" name="" placeholder="Search from DB">
@@ -137,7 +137,7 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>Endorse Comm.</label>
+                                                <label style="margin-left: -29px;">Endorse Comm.</label>
 
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
@@ -158,13 +158,27 @@
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="col-md-2">
-                                                <label>From Date </label>
-                                                <input class="form-control" min="1" type="text" id="COM_FROM_DATE" name="COM_FROM_DATE" />
+                                                <label class="required" style="margin-left: -39px;">From Date </label>
+                                                <div class="input-group">
+                                                    <input class="form-control" min="1" type="text" id="COM_FROM_DATE" name="COM_FROM_DATE" required />
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-default">
+                                                            <i class="fa fa-calendar" title="Select" aria-hidden="true"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>To Date </label>
-                                                <input class="form-control" min="1" type="text" id="COM_TO_DATE" name="COM_TO_DATE" />
+                                                <label class="required" style="margin-left: -60px;">To Date </label>
+                                                <div class="input-group">
+                                                    <input class="form-control" min="1" type="text" id="COM_TO_DATE" name="COM_TO_DATE" required />
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-default">
+                                                            <i class="fa fa-calendar" title="Select" aria-hidden="true"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-2">
@@ -184,10 +198,9 @@
                                         <button id="btn_add_record" class="btn btn-default" type="button"> <i class="fa fa-plus-circle text-success"></i> Add </button>
                                         <button id="btn_update_record" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
                                         <button id="btn_remove_record" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
-                                        <button type="reset" class="btn btn-default"> <i class="fa fa-refresh" title="Reset" aria-hidden="true"></i> Reset </button>
-
-                                        <button type="button" class="btn btn-default pull-right dialog-btn" id="export-risk-accessories-btn" title="Export Grid data to Excel">
-                                            <img src="~/Content/Images/excel-icon-15.png" alt="Down Load" height="30" width="27" /> Export
+                                       
+                                        <button type="button" class="btn btn-default pull-right dialog-btn" id="export-interm-btn" title="Export Grid data to Excel">
+                                            <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="30" width="27" /> Export
                                         </button>
                                         &nbsp;
                                     </div>

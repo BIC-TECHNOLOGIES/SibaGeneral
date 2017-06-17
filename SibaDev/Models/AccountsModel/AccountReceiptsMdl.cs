@@ -138,9 +138,9 @@ namespace SibaDev.Models.AccountsEntitis.AccountsModel
                                     }
 
                                     //receipt details open entry adjusted amount
-                                    var totalAdjAmnt = json.ACCT_TXN_OPEN_ENTRY.Where(x => x.OE_TXN_REF_ID == rDetails.ARD_SYS_ID).ToList().Sum(x => x.OE_UNPOST_ADJ_FC_AMT);
+                                    var totalAdjAmnt = json.ACCT_TXN_OPEN_ENTRY.Where(x => x.OE_TXN_REF_ID == rDetails.ARD_SYS_ID.ToString()).ToList().Sum(x => x.OE_UNPOST_ADJ_FC_AMT);
                                     
-                                    foreach (var oe in db.ACCT_TXN_OPEN_ENTRY.Where(x => x.OE_TXN_REF_ID == rDetails.ARD_SYS_ID))
+                                    foreach (var oe in db.ACCT_TXN_OPEN_ENTRY.Where(x => x.OE_TXN_REF_ID == rDetails.ARD_SYS_ID.ToString()))
                                     {
                                         db.ACCT_TXN_OPEN_ENTRY.Attach(oe);
                                         oe.OE_UNPOST_ADJ_FC_AMT = totalAdjAmnt;
@@ -211,7 +211,7 @@ namespace SibaDev.Models.AccountsEntitis.AccountsModel
                                  
                                 db.ACCT_TXN_OPEN_ENTRY.Add(new ACCT_TXN_OPEN_ENTRY
                                 {
-                                    OE_TXN_REF_ID = r.ARD_SYS_ID,
+                                    OE_TXN_REF_ID = r.ARD_SYS_ID.ToString(),
                                     OE_R_BATCH_ID = receipt.ARH_BATCH_NO.ToString(),
                                     OE_DOC_TYPE = receipt.ARH_ATD_CODE,
                                     OE_DOC_NO = r.ARD_TXN_DOC_NO,

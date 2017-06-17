@@ -81,5 +81,19 @@ namespace SibaDev.Controllers
             var result = NoClaimDiscountMdl.get_noclaimdiscount_code(code);
             return result != null ? (object)new { state = true, name = result.NCD_DESC } : new { state = false };
         }
+
+        [HttpGet]
+        [Route("api/noclaimdiscount/product/percentage/{prdCode}")]
+        public object NcdProductPercentage([FromUri] string prdCode)
+        {
+            try
+            {
+                return NoClaimDiscountMdl.GetProductNCDRates(prdCode);
+            }
+            catch (Exception e)
+            {
+                return new {state = false, message = e.Message, exception = e};
+            }
+        }
     }
 }

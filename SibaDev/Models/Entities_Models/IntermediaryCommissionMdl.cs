@@ -57,7 +57,7 @@ namespace SibaDev.Models
                 CMM_PREM_AMT_FC = mdl.CMM_PREM_AMT_FC,
                 CMM_STATUS = mdl.CMM_STATUS,
                 MS_SYS_INTERMEDIARY = IntermediaryMdl.get_intermediary(mdl.CMM_INT_CODE),
-                //,PDT_NAME = mdl.MST_UWD_PRODUCT.PDT_NAME
+                //MST_UWD_PRODUCT = new MST_UWD_PRODUCT { PDT_CODE = mdl.COM_PROD_CODE }
             }).Single();
         }
 

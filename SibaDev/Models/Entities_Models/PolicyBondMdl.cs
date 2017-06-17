@@ -518,7 +518,7 @@ namespace SibaDev.Models
                         case "U":
 
                             viewPolh.POLH_STATUS = "A";
-                            viewPolh.POLH_DISPLAY_NO = viewPolh.POLH_CMP_CODE + viewPolh.POLH_SUB_CLASS_CODE + viewPolh.POLH_SYS_ID;
+                            //viewPolh.POLH_DISPLAY_NO = viewPolh.POLH_CMP_CODE + viewPolh.POLH_SUB_CLASS_CODE + viewPolh.POLH_SYS_ID;
                             viewPolh.POLH_QUT_SER_NO = viewPolh.POLH_SYS_ID;
 
                             /*-----------------------------------------

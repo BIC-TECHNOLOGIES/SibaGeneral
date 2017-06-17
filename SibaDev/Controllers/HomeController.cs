@@ -404,5 +404,21 @@ namespace SibaDev.Controllers
         {
             return View();
         }
+
+        public ActionResult frmUwMarineHull()
+        {
+            return View();
+        }
+
+        public ActionResult frmUwOilGas()
+        {
+            return View();
+        }
+
+        public ActionResult frmUwAviation()
+        {
+            return View();
+        }
+
     }
 }

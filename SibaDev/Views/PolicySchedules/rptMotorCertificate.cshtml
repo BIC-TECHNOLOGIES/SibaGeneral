@@ -23,14 +23,12 @@
     </button>
 </div>
 
-
-
     <div class="page">
         <div class="subpage">
 
             <div class="row">
                 <div class="col-md-12 center-block">
-                    <p style="text-align:center;"><img src="~/Content/Images/multi.jpg" height="100" /></p>
+                    <p style="text-align:center;"><img src="~/Content/Images/multi-main1.png" height="100" /></p>
                 </div>
             </div>
 
@@ -43,34 +41,34 @@
                 <div class="col-md-1"></div>
             </div>
             <hr />
-            <table style="width:100%;" height="86">
-                <tr>
-                    <td width="168"><strong>Policy No:</strong></td>
-                    <td width="370" class="info" style="text-align:left">@Model.POLH_DISPLAY_NO</td>
 
-                    <td width="138"><strong>Policy Cover:</strong></td>
-                    <td width="370" class="info" style="text-align:left">@Model.POLH_DISPLAY_NO</td>
+            <table style="width: 100%;" class="table table-bordered">
+                <tr>
+                    <td colspan="2"> <b>Policy No.: </b>@Model.POLH_DISPLAY_NO</td>
                 </tr>
                 <tr>
-                    <td width="168"><strong>Business Type:</strong></td>
-                    <td width="370" class="info" style="text-align:left"></td>
+                    <td colspan="2"> <b>Policy Cover:</b> @Model.MST_UWD_PRODUCT.PDT_NAME</td>
                 </tr>
                 <tr>
-                    <td width="168"><strong>Certificate No:</strong></td>
-                    <td width="370" class="info" style="text-align:left"></td>
+                    <td colspan="2"> <b>Business Type: </b>@Model.INS_UDW_INSUR_SOURCE.INSUR_NAME</td>
+                </tr>
 
-                    <td width="168"><strong>Seating Cap:</strong></td>
-                    <td width="370" class="info" style="text-align:left"></td>
-                </tr>
                 <tr>
-                    <td width="168"><strong>Usage Type:</strong></td>
-                    <td width="370" class="info" style="text-align:left"></td>
-
-                    <td width="138"><strong>Cert Type:</strong></td>
-                    <td width="370" class="info" style="text-align:left"></td>
+                    <td style="width: 50%"> <b>Certificate No: </b></td>
+                    <td style="width: 50%"> <b>Seating Cap:</b> @foreach (var rsk in Model.INS_UWD_VEHICLE_RISK)
+                    {@rsk.VEH_PASSENGERS}</td>
                 </tr>
+
+                <tr>
+                    <td style="width: 50%"> <b>Usage Type: </b> @foreach (var rsk in Model.INS_UWD_VEHICLE_RISK)
+                    { @rsk.MS_UDW_MOTOR_RISK.MRK_NAME }</td>
+                    <td style="width: 50%">
+                        <b>Cert Type:</b>
+                    </td>
+                </tr>
+
             </table>
-            &nbsp;
+
             <table style="width: 100%; margin-top: 20px;">
                 <tr>
                     <td style="width: 55%;">

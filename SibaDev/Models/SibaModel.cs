@@ -60,18 +60,8 @@ namespace SibaDev.Models
         public virtual DbSet<INS_UDW_AGENCY_COMM> INS_UDW_AGENCY_COMM { get; set; }
         public virtual DbSet<INS_UDW_BONDS> INS_UDW_BONDS { get; set; }
         public virtual DbSet<INS_UDW_BUSINESS_SOURCE> INS_UDW_BUSINESS_SOURCE { get; set; }
-        public virtual DbSet<INS_UDW_CAR_INTEREST> INS_UDW_CAR_INTEREST { get; set; }
-        public virtual DbSet<INS_UDW_CAR_LOSS_OF_PROFIT> INS_UDW_CAR_LOSS_OF_PROFIT { get; set; }
-        public virtual DbSet<INS_UDW_CAR_THIRD_PARTY_LOSS> INS_UDW_CAR_THIRD_PARTY_LOSS { get; set; }
-        public virtual DbSet<INS_UDW_CARCON_INTEREST> INS_UDW_CARCON_INTEREST { get; set; }
         public virtual DbSet<INS_UDW_COVER_DISCLOAD> INS_UDW_COVER_DISCLOAD { get; set; }
         public virtual DbSet<INS_UDW_COVER_EXCESS> INS_UDW_COVER_EXCESS { get; set; }
-        public virtual DbSet<INS_UDW_CPM_INTEREST> INS_UDW_CPM_INTEREST { get; set; }
-        public virtual DbSet<INS_UDW_EAR_CPM_INTEREST> INS_UDW_EAR_CPM_INTEREST { get; set; }
-        public virtual DbSet<INS_UDW_EAR_INTEREST> INS_UDW_EAR_INTEREST { get; set; }
-        public virtual DbSet<INS_UDW_EAR_PERIOD_DATES> INS_UDW_EAR_PERIOD_DATES { get; set; }
-        public virtual DbSet<INS_UDW_EAR_THIRD_PARTY_LOSS> INS_UDW_EAR_THIRD_PARTY_LOSS { get; set; }
-        public virtual DbSet<INS_UDW_ENGINEER> INS_UDW_ENGINEER { get; set; }
         public virtual DbSet<INS_UDW_FIRE_LOCINT_COVER> INS_UDW_FIRE_LOCINT_COVER { get; set; }
         public virtual DbSet<INS_UDW_FIRE_LOCINT_DISCLOAD> INS_UDW_FIRE_LOCINT_DISCLOAD { get; set; }
         public virtual DbSet<INS_UDW_FIRE_LOCINT_EXCESS> INS_UDW_FIRE_LOCINT_EXCESS { get; set; }
@@ -240,10 +230,61 @@ namespace SibaDev.Models
         public virtual DbSet<INS_UDW_LIABILITY_FEES> INS_UDW_LIABILITY_FEES { get; set; }
         public virtual DbSet<INS_UDW_LIABILITY_WKS_COMP> INS_UDW_LIABILITY_WKS_COMP { get; set; }
         public virtual DbSet<INS_UDW_HLIABILITY> INS_UDW_HLIABILITY { get; set; }
-
+        //
+        public virtual DbSet<INS_UDW_ENG_OTHER> INS_UDW_ENG_OTHER { get; set; }
+        public virtual DbSet<INS_UDW_ENGINEER> INS_UDW_ENGINEER { get; set; }
+        public virtual DbSet<INS_UDW_ENGINEER_FEES> INS_UDW_ENGINEER_FEES { get; set; }
+        public virtual DbSet<MS_CLM_DED_EXCESS> MS_CLM_DED_EXCESS { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_PROD_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_TYPE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_NART)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_AMOUNT)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_MIN_AMOUNT)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_MAX_AMOUNT)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_RATE)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_CRTE_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_MOD_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MS_CLM_DED_EXCESS>()
+                .Property(e => e.EXS_STATUS)
+                .IsUnicode(false);
+
+            ////////////////////////////////////////////////////////
             modelBuilder.Entity<INS_RI_FAC_INW_COMPANY>()
                 .Property(e => e.FINW_PAP_CODE)
                 .IsUnicode(false);
@@ -453,7 +494,7 @@ namespace SibaDev.Models
             modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
                .HasMany(e => e.INS_RI_FAC_OUTWARD)
                .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-               .HasForeignKey(e => e.FOTW_POLH_SYS_ID); 
+               .HasForeignKey(e => e.FOTW_POLH_SYS_ID);
 
             modelBuilder.Entity<INS_RI_FAC_HEAD>()
                 .Property(e => e.FAC_REF_ID)
@@ -1217,6 +1258,10 @@ namespace SibaDev.Models
             modelBuilder.Entity<INS_UWD_HVEHICLE_RISK>()
                 .Property(e => e.VEH_STATUS)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UWD_VEHICLE_RISK>()
+                .Property(e => e.VEH_ADD_TPPD)
+                .HasPrecision(19, 2);
 
             modelBuilder.Entity<INS_UWD_HVEHICLE_RISK>()
                 .Property(e => e.VEH_RISK_CODE)
@@ -2402,10 +2447,13 @@ namespace SibaDev.Models
                 .HasMany(e => e.ACCT_GL_DETAIL)
                 .WithOptional(e => e.ACCT_GL_HEAD)
                 .HasForeignKey(e => e.TD_TH_SYS_ID);
-            
 
             modelBuilder.Entity<ACCT_TXN_OPEN_ENTRY>()
                 .Property(e => e.OE_R_BATCH_ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ACCT_TXN_OPEN_ENTRY>()
+                .Property(e => e.OE_TXN_REF_ID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ACCT_TXN_OPEN_ENTRY>()
@@ -2496,7 +2544,7 @@ namespace SibaDev.Models
             modelBuilder.Entity<INSURANCE_LEDGER>()
                 .Property(e => e.IGL_DOC_NUMBER)
                 .IsUnicode(false);
-            
+
 
             modelBuilder.Entity<INSURANCE_LEDGER>()
                 .Property(e => e.IGL_NARRATION)
@@ -2582,7 +2630,7 @@ namespace SibaDev.Models
             modelBuilder.Entity<INSURANCE_SUB_LEDGER>()
                 .Property(e => e.ISL_NARRATION)
                 .IsUnicode(false);
-            
+
 
             modelBuilder.Entity<INSURANCE_SUB_LEDGER>()
                 .Property(e => e.ISL_CONTROL_ACT_YN)
@@ -3073,764 +3121,6 @@ namespace SibaDev.Models
             modelBuilder.Entity<INS_UDW_BUSINESS_SOURCE>()
                 .Property(e => e.BUSS_STATUS)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_INTEREST>()
-                .Property(e => e.CAR_RISK_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_INTEREST>()
-                .Property(e => e.CAR_RISK_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_INTEREST>()
-                .Property(e => e.CAR_DESCRIPTION)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_INTEREST>()
-                .Property(e => e.CAR_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_INTEREST>()
-                .Property(e => e.CAR_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_INTEREST>()
-                .Property(e => e.CAR_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_SI_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_SI_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_RATE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_GROSS_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_GROSS_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_NET_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_NET_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_DISC_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_DISC_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_DISC_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_LOAD_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_LOAD_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_LOAD_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_RI_SI_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSO_RI_PREM_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_RATE_CHANGE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_SI_CHANGE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_COVER_LEVEL)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_PREM_REFUND)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_RI_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_USER_PREM)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_TXN_STATE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_LOSS_OF_PROFIT>()
-                .Property(e => e.LOSSOP_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_SI_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_SI_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_RATE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_GROSS_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_GROSS_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_NET_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_NET_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_DISC_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_DISC_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_DISC_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_LOAD_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_LOAD_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_LOAD_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_RI_SI_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_RI_PREM_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_RATE_CHANGE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_SI_CHANGE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_COVER_LEVEL)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_PREM_REFUND)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_RI_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_USER_PREM)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_TXN_STATE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.CARTPL_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CARCON_INTEREST>()
-                .Property(e => e.CONVAL_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CARCON_INTEREST>()
-                .Property(e => e.CONVAL_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CARCON_INTEREST>()
-                .Property(e => e.CONVAL_VALUE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_CARCON_INTEREST>()
-                .Property(e => e.CONVAL_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CARCON_INTEREST>()
-                .Property(e => e.CONVAL_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CARCON_INTEREST>()
-                .Property(e => e.CONVAL_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_AMT_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_AMT_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_DISCLOAD>()
-                .Property(e => e.DL_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_NART)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_AMOUNT)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_MIN_AMOUNT)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_MAX_AMOUNT)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_COVER_EXCESS>()
-                .Property(e => e.EXS_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_RISK_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_RISK_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_DESCRIPTION)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_CONAR)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_CPM_INTEREST>()
-                .Property(e => e.CPM_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_CPM_INTEREST>()
-                .Property(e => e.EARCPM_RISK_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_CPM_INTEREST>()
-                .Property(e => e.EARCPM_RISK_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_CPM_INTEREST>()
-                .Property(e => e.EARCPM_DESCRIPTION)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_CPM_INTEREST>()
-                .Property(e => e.EARCPM_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_CPM_INTEREST>()
-                .Property(e => e.EARCPM_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_CPM_INTEREST>()
-                .Property(e => e.EARCPM_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_INTEREST>()
-                .Property(e => e.EAR_RISK_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_INTEREST>()
-                .Property(e => e.EAR_RISK_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_INTEREST>()
-                .Property(e => e.EAR_DESCRIPTION)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_INTEREST>()
-                .Property(e => e.EAR_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_INTEREST>()
-                .Property(e => e.EAR_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_INTEREST>()
-                .Property(e => e.EAR_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_PERIOD_DATES>()
-                .Property(e => e.PERIOD_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_PERIOD_DATES>()
-                .Property(e => e.PERIOD_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_PERIOD_DATES>()
-                .Property(e => e.PERIOD_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_PERIOD_DATES>()
-                .Property(e => e.PERIOD_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_SI_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_SI_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_RATE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_GROSS_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_GROSS_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_NET_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_NET_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_DISC_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_DISC_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_DISC_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_LOAD_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_LOAD_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_LOAD_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_RI_SI_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_RI_PREM_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_RATE_CHANGE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_SI_CHANGE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_COVER_LEVEL)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_PREM_REFUND)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_RI_YN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_USER_PREM)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_TXN_STATE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_EAR_THIRD_PARTY_LOSS>()
-                .Property(e => e.EARTPL_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_CURRENCY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_CURRENCY_RATE)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_REGION_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_REGION_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_AREA_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_AREA_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_LOC_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_LOC_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_LOC_DESC)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_LOC_ADDRS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_OCCUP_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_OCCUP_NAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_OCCUP_SECTION)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_EARTHQ_ZONE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RIEML)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_EML)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_TOT_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_TOT_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_SI_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_SI_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RISK_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RISK_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_ADJ_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_ADJ_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_DISC_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_DISC_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_LOAD_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_LOAD_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_COMP_FEE_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_COMP_FEE_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_COMMISSION_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_COMMISSION_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_TXN_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RISK_STATE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RI_SI_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RI_SI_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RI_PREM_FC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RI_PREM_BC)
-                .HasPrecision(19, 2);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RISK_NO)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_POLH_DOC_NO)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_POLH_END_NO)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_PDT_CODE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_RENEWAL_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_END_TYPE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_CRTE_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_MOD_BY)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .Property(e => e.ENG_STATUS)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .HasMany(e => e.INS_UDW_CAR_LOSS_OF_PROFIT)
-                .WithOptional(e => e.INS_UDW_ENGINEER)
-                .HasForeignKey(e => e.LOSSOP_ENG_SYS_ID);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .HasMany(e => e.INS_UDW_CAR_THIRD_PARTY_LOSS)
-                .WithOptional(e => e.INS_UDW_ENGINEER)
-                .HasForeignKey(e => e.CARTPL_ENG_SYS_ID);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .HasMany(e => e.INS_UDW_CARCON_INTEREST)
-                .WithRequired(e => e.INS_UDW_ENGINEER)
-                .HasForeignKey(e => e.CONVAL_ENG_SYS_ID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .HasMany(e => e.INS_UDW_EAR_INTEREST)
-                .WithOptional(e => e.INS_UDW_ENGINEER)
-                .HasForeignKey(e => e.EAR_ENG_SYS_ID);
-
-            modelBuilder.Entity<INS_UDW_ENGINEER>()
-                .HasMany(e => e.INS_UDW_EAR_PERIOD_DATES)
-                .WithOptional(e => e.INS_UDW_ENGINEER)
-                .HasForeignKey(e => e.PERIOD_ENG_SYSID);
 
             modelBuilder.Entity<INS_UDW_FIRE_LOCINT_COVER>()
                 .Property(e => e.INT_CVR_TYPE)
@@ -5109,6 +4399,14 @@ namespace SibaDev.Models
                .IsUnicode(false);
 
             modelBuilder.Entity<INS_UWD_FIRE_LOCINT>()
+              .Property(e => e.LINT_ROOF_TYPE)
+              .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UWD_FIRE_LOCINT>()
+              .Property(e => e.LINT_SEC_TYPE) 
+              .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UWD_FIRE_LOCINT>()
                 .HasMany(e => e.INS_UDW_FIRE_LOCINT_COVER)
                 .WithOptional(e => e.INS_UWD_FIRE_LOCINT)
                 .HasForeignKey(e => e.INT_CVR_LINT_SYS_ID);
@@ -5565,32 +4863,6 @@ namespace SibaDev.Models
                 .HasForeignKey(e => e.BOND_POLH_SYS_ID);
 
             modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-                .HasMany(e => e.INS_UDW_CARCON_INTEREST)
-                .WithRequired(e => e.INS_UWD_POLICY_HEAD)
-                .HasForeignKey(e => e.CONVAL_POLH_SYS_ID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-                .HasMany(e => e.INS_UDW_CPM_INTEREST)
-                .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-                .HasForeignKey(e => e.CPM_POLH_SYS_ID);
-
-            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-                .HasMany(e => e.INS_UDW_EAR_CPM_INTEREST)
-                .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-                .HasForeignKey(e => e.EARCPM_POLH_SYS_ID);
-
-            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-                .HasMany(e => e.INS_UDW_EAR_INTEREST)
-                .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-                .HasForeignKey(e => e.EAR_POLH_SYS_ID);
-
-            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-                .HasMany(e => e.INS_UDW_EAR_PERIOD_DATES)
-                .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-                .HasForeignKey(e => e.PERIOD_POLH_SYS_ID);
-
-            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
                 .HasMany(e => e.INS_UDW_ENGINEER)
                 .WithOptional(e => e.INS_UWD_POLICY_HEAD)
                 .HasForeignKey(e => e.ENG_POLH_SYS_ID);
@@ -5710,15 +4982,20 @@ namespace SibaDev.Models
               .WithOptional(e => e.INS_UWD_POLICY_HEAD)
               .HasForeignKey(e => e.HOP_POLH_SYS_ID);
 
-           modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-            .HasMany(e => e.INS_UDW_LIABILITY)
-            .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-            .HasForeignKey(e => e.LIA_POLH_SYS_ID);
+            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
+             .HasMany(e => e.INS_UDW_LIABILITY)
+             .WithOptional(e => e.INS_UWD_POLICY_HEAD)
+             .HasForeignKey(e => e.LIA_POLH_SYS_ID);
 
-           modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
-              .HasMany(e => e.INS_UDW_LIABILITY_WKS_COMP)
-              .WithOptional(e => e.INS_UWD_POLICY_HEAD)
-              .HasForeignKey(e => e.LIAWOC_POLH_SYS_ID);
+            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
+               .HasMany(e => e.INS_UDW_LIABILITY_WKS_COMP)
+               .WithOptional(e => e.INS_UWD_POLICY_HEAD)
+               .HasForeignKey(e => e.LIAWOC_POLH_SYS_ID);
+
+            modelBuilder.Entity<INS_UWD_POLICY_HEAD>()
+             .HasMany(e => e.INS_UDW_ENG_OTHER)
+             .WithOptional(e => e.INS_UWD_POLICY_HEAD)
+             .HasForeignKey(e => e.ENG_OTHER_POLH_SYS_ID);
 
             modelBuilder.Entity<INS_UWD_RISK_COVERS>()
                 .Property(e => e.RCOV_CODE)
@@ -6543,7 +5820,7 @@ namespace SibaDev.Models
                 .Property(e => e.SUB_MAIN_ACCT_STATUS)
                 .IsUnicode(false);
 
-            
+
 
             modelBuilder.Entity<MS_ACCT_SUB_MAIN_ACCOUNT>()
                 .Property(e => e.SUB_MAIN_ACTIVT_YN)
@@ -7112,7 +6389,7 @@ namespace SibaDev.Models
                 .HasMany(e => e.MS_ACCT_SERVICE_TAX)
                 .WithOptional(e => e.MS_CUSTOMER_CATEGORY)
                 .HasForeignKey(e => e.TX_CUST_CAT_CODE);
-            
+
 
             modelBuilder.Entity<MS_CUSTOMER_CATEGORY>()
                 .HasMany(e => e.MS_SYS_CUST_TYPES)
@@ -7354,7 +6631,7 @@ namespace SibaDev.Models
             modelBuilder.Entity<MS_MOTOR_RISK_COVER>()
               .Property(e => e.MRC_NCD_YN)
               .IsUnicode(false);
-            
+
 
             modelBuilder.Entity<MS_MOTOR_RISK_COVER>()
                 .Property(e => e.MRC_SEAT_LOAD)
@@ -7952,7 +7229,7 @@ namespace SibaDev.Models
             modelBuilder.Entity<MS_SYS_INTERMEDIARY>()
                 .HasMany(e => e.INS_UWD_INTERMEDIARY_COMM)
                 .WithOptional(e => e.MS_SYS_INTERMEDIARY)
-                .HasForeignKey(e => e.CMM_INT_CODE); 
+                .HasForeignKey(e => e.CMM_INT_CODE);
 
             modelBuilder.Entity<MS_SYS_INTERMEDIARY>()
                 .HasMany(e => e.INS_UWD_POLICY_HEAD)
@@ -9352,7 +8629,7 @@ namespace SibaDev.Models
                 .WithRequired(e => e.MST_UWD_PRODUCT)
                 .HasForeignKey(e => e.COM_PROD_CODE)
                 .WillCascadeOnDelete(false);
-       
+
             modelBuilder.Entity<MST_UWD_PRODUCT>()
                 .HasMany(e => e.MS_UDW_INTERMEDIARY_COMM)
                 .WithRequired(e => e.MST_UWD_PRODUCT)
@@ -10012,7 +9289,7 @@ namespace SibaDev.Models
             modelBuilder.Entity<MS_RI_PTTY_DETL>()
                 .HasMany(e => e.MS_RI_PTTY_COMPANY)
                 .WithOptional(e => e.MS_RI_PTTY_DETL)
-                .HasForeignKey(e => e.TCP_TD_SYS_ID);          
+                .HasForeignKey(e => e.TCP_TD_SYS_ID);
 
             modelBuilder.Entity<MS_RI_PTTY_HEAD>()
                 .Property(e => e.TH_TTY_CODE)
@@ -10125,7 +9402,7 @@ namespace SibaDev.Models
 
             modelBuilder.Entity<MS_RI_GROUP_HEAD>()
                 .Property(e => e.GP_CONFIRM)
-                .IsUnicode(false);         
+                .IsUnicode(false);
 
             modelBuilder.Entity<MS_RI_GROUP_HEAD>()
                .HasMany(e => e.MS_RI_GROUP_DETL)
@@ -13321,7 +12598,7 @@ namespace SibaDev.Models
                 .Property(e => e.LIA_AGGRET_LIMIT_FC)
                 .HasPrecision(19, 2);
 
-            modelBuilder.Entity<INS_UDW_LIABILITY>() 
+            modelBuilder.Entity<INS_UDW_LIABILITY>()
                .Property(e => e.LIA_AGGRET_LIMIT_FC)
                .HasPrecision(19, 2);
 
@@ -13887,6 +13164,469 @@ namespace SibaDev.Models
 
             modelBuilder.Entity<INS_UDW_HLIABILITY>()
                 .Property(e => e.LIA_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+    .Property(e => e.ENG_OTHER_POLH_END_NO)
+    .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_OBJECT)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_OBJECT_NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_DESC)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_SERL_NO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_MK_MODEL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_MANUF)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_MANUF_YR)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_STND_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_CAP)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_LOC)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_FUNDT_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_FUNDT_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_TRANSF_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_TRANSF_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_SUM_INSURED_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_SUM_INSURED_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_PREMIUM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_PREMIUM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_ESCL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_CURRENCY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_CURRENCY_RATE)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_PERIOD_DAYS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_TOT_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_TOT_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_SI_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_SI_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RISK_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RISK_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_ADJ_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_ADJ_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_DISC_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_DISC_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_LOAD_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_LOAD_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_COMP_FEE_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_COMP_FEE_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_COMMISSION_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_COMMISSION_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RI_SI_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RI_SI_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RI_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RI_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_TXN_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RISK_STATE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_PDT_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_CVR_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_RENEWAL_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_END_TYPE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_CRTE_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_MOD_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+                .Property(e => e.ENG_OTHER_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+               .HasMany(e => e.INS_UWD_RISK_COVERS)
+               .WithOptional(e => e.INS_UDW_ENG_OTHER)
+               .HasForeignKey(e => e.RCOV_RISK_SYS_ID);
+
+            modelBuilder.Entity<INS_UDW_ENG_OTHER>()
+               .HasMany(e => e.INS_UDW_ENGINEER_FEES)
+               .WithOptional(e => e.INS_UDW_ENG_OTHER)
+               .HasForeignKey(e => e.ENG_FEE_RK_SYS_ID);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_CURRENCY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_CURRENCY_RATE)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_REGION_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_REGION_NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_AREA_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_AREA_NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOC_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOC_NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_DESC)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOC_ADDRS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_OCCUP_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_OCCUP_NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_OCCUP_SECTION)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_EARTHQ_ZONE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RIEML)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_EML)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_TYPE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_TOT_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_TOT_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_SI_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_SI_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RISK_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RISK_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_ADJ_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_ADJ_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_DISC_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_DISC_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOAD_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOAD_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_COMP_FEE_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_COMP_FEE_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_COMMISSION_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_COMMISSION_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_TXN_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RISK_STATE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RI_SI_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RI_SI_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RI_PREM_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RI_PREM_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RISK_NO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_POLH_DOC_NO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_POLH_END_NO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_PDT_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_RENEWAL_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_END_TYPE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_CRTE_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_MOD_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_STATUS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_TPL_SI_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_TPL_SI_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOP_SI_FC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_LOP_SI_BC)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_PROJ_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+                .Property(e => e.ENG_PROJ_NAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER>()
+               .HasMany(e => e.INS_UDW_ENG_OTHER)
+               .WithOptional(e => e.INS_UDW_ENGINEER)
+               .HasForeignKey(e => e.ENG_OTHER_ENG_SYS_ID);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER_FEES>()
+                .Property(e => e.ENG_FEE_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER_FEES>()
+                .Property(e => e.ENG_FEE_FC_AMOUNT)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER_FEES>()
+                .Property(e => e.ENG_FEE_BC_AMOUNT)
+                .HasPrecision(19, 2);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER_FEES>()
+                .Property(e => e.ENG_FEE_RK_CODE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER_FEES>()
+                .Property(e => e.ENG_FEE_CRTE_BY)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<INS_UDW_ENGINEER_FEES>()
+                .Property(e => e.ENG_FEE_STATUS)
                 .IsUnicode(false);
 
         }

@@ -1300,9 +1300,22 @@
             u.excel_export($scope.cover_grid, ["ID"], "Cover_List_Excel");
         });
 
+        function policydisplayno() {
+
+            var seqid = $("#TRA_SYS_ID").val();
+            var office = $("#POLH_OFF_CODE").val();
+            var subclass = $("#POLH_SUB_CLASS_CODE").val();
+
+            var polyid = $("#POLHP").val();
+            var multi = $("#MULTI").val();
+            var polyear = $("#POLYEAR").val();
+
+            $("#POLH_DISPLAY_NO").val(polyid + ("-") + multi + ("-") + office + ("-") + subclass + ("-") + polyear + ("-") + seqid);
+        }
 
         $("#btn_risk_cover").click(function () {
 
+            policydisplayno();
             var grid = $scope.travel_grid;
             var sel_id = grid.jqGrid('getGridParam', 'selrow');
             var RiskID = grid.jqGrid('getCell', sel_id, 'TRA_SYS_ID');
@@ -1321,8 +1334,8 @@
 
 
         /*--------------------------------------------------
- * Travel Risk modal dialog
- *------------------------------------------------*/
+         * Travel Risk modal dialog
+         *------------------------------------------------*/
         //
         $("#btn_open_travel_form").click(function () {
             if (u.form_validation("#travelheadform")) {
@@ -2224,7 +2237,7 @@
                         if (txnState === ("P")) {
 
                             u.form_text_Green_color();
-                            u.form_readonly();
+                            //u.form_readonly();
                         }
 
                     } else {

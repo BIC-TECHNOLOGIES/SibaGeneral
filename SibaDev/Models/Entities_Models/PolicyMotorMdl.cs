@@ -66,7 +66,6 @@ namespace SibaDev.Models
                     POLH_NET_PREM_FC = polh.POLH_NET_PREM_FC,
                     POLH_NET_PREM_BC = polh.POLH_NET_PREM_BC,
 
-
                     POLH_FEE_FC = polh.POLH_FEE_FC,
                     POLH_FEE_BC = polh.POLH_FEE_BC,
                     POLH_RENEW_SER_NO = polh.POLH_RENEW_SER_NO,
@@ -156,7 +155,8 @@ namespace SibaDev.Models
                     VEH_ADJ_PREM_FC = c.VEH_ADJ_PREM_FC,
                     VEH_ADJ_PREM_BC = c.VEH_ADJ_PREM_BC,
                     VEH_DISC_FC = c.VEH_DISC_FC,
-
+                    VEH_ADD_TPPD = c.VEH_ADD_TPPD,
+                    VEH_UW_YEAR = c.VEH_UW_YEAR,
                     VEH_DISC_BC = c.VEH_DISC_BC,
                     VEH_LOAD_FC = c.VEH_LOAD_FC,
                     VEH_LOAD_BC = c.VEH_LOAD_BC,
@@ -504,7 +504,7 @@ namespace SibaDev.Models
                         case "U":
 
                             viewPolh.POLH_STATUS = "A";
-                            viewPolh.POLH_DISPLAY_NO = viewPolh.POLH_CMP_CODE + viewPolh.POLH_SUB_CLASS_CODE + viewPolh.POLH_SYS_ID;
+                            //viewPolh.POLH_DISPLAY_NO = viewPolh.POLH_CMP_CODE + viewPolh.POLH_SUB_CLASS_CODE + viewPolh.POLH_SYS_ID;
                             viewPolh.POLH_QUT_SER_NO = viewPolh.POLH_SYS_ID;
 
                             /*-----------------------------------------

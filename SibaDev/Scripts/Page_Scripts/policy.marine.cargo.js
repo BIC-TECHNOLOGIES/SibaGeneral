@@ -2,7 +2,7 @@
     $(function () {
 
         // Home Owners Risk Grid
-        $scope.homeowners_grid = u.default_grid("#gridHomeOwnersRisks", "#gridHomeOwnersRisksPager", "Home Owners Policy",
+        $scope.homeowners_grid = u.default_grid("#gridHomeOwnersRisks", "#gridHomeOwnersRisksPager", "Marine Cargo Details",
             [
             'Section Code', 'Section Name', 'Description', 'Location Code', 'Location Name', 'Sum Insured FC', 'Sum Insured BC', 'Premium FC', 'Premium BC',
             'RI PML', 'PML', 'Geograhical Limit', 'SI FC', 'SI BC', 'Total Prm FC', 'Total Prm BC', 'Currrency', 'Currrency Rate', 'Start Date', 'End Date',
@@ -197,7 +197,7 @@
 
 
           // Section Details Grid
-            $scope.secdetails_grid = u.default_grid("#gridSecDetails", "#gridSecDetailsPager", "Risk Section Details",
+            $scope.secdetails_grid = u.default_grid("#gridSecDetails", "#gridSecDetailsPager", "Vessel Details",
             [
             'Risk sys ID', 'Sys ID', 'Item Name', 'Sum Insured', 'Quantity', 'Description',
             'Created by', 'Post Date', 'Modified by', 'Modified Date', 'Status'

@@ -11,7 +11,7 @@
 
                 "Manufacture Year", "Chassis No.", "Cubic Capacity",
                 "Excess", "Excess Percentage", "Min Excess", "Max Excess", "Fix Excess",
-                "Additional TPPD", "TP Interest", "TP Details", "Proposal Declined", "Declined Reasons",
+                "Additional TPPD", "TPPD Amount", "TP Interest", "TP Details", "Proposal Declined", "Declined Reasons",
                 "Policy Cancelled", "Cancelled Reason",
 
                 "Premium Basis", "Risk Premium FC", "Risk Premium BC",
@@ -58,6 +58,7 @@
                     { name: "VEH_EXCESS_MAX", index: "VEH_EXCESS_MAX", width: 150 },
                     { name: "VEH_EXCESS_FIX", index: "VEH_EXCESS_FIX", width: 150 },
                     { name: "VEH_EXTRA_TPPD", index: "VEH_EXTRA_TPPD", width: 150 },
+                    { name: "VEH_ADD_TPPD", index: "VEH_ADD_TPPD", width: 150 },
                     { name: "VEH_TP_INTEREST", index: "VEH_TP_INTEREST", width: 150 },
                     { name: "VEH_TP_DETAILS", index: "VEH_TP_DETAILS", width: 150 },
                     { name: "VEH_PROP_DECLINED", index: "VEH_PROP_DECLINED", width: 150 },
@@ -1403,6 +1404,16 @@
                 case "btn_customer_type":
                     $scope.lov.call_dialog("Select Customer type", "get_lov_customertypes", $scope.dialog_data);
                     break;
+                case "excess_lov":
+                    if (u.field_empty("#POLH_SUB_CLASS_CODE")) return u.growl_info("Please select a product");
+                    $scope.lov.pcolName = ["Min Amount", "Max Amoount", "Narration"];
+                    $scope.lov.pcolMdls = [
+                        { name: "MIN", index: "MIN" },
+                        { name: "MAX", index: "MAX" },
+                        { name: "NARRATION", index: "NARRATION" }
+                    ];
+                    $scope.lov.call_dialog("Select Customer type", "getProdBuyBackExcessLov", $scope.dialog_data, $("#POLH_SUB_CLASS_CODE").val());
+                    break;
 
                     //added by toni 01-03-2017
                 case "btn_EndorsementType":
@@ -1592,6 +1603,8 @@
                 }
             });
         }
+
+
 
         /*--------------------------------------------------
       * Retrieving products on calling getProductRiskLov function
@@ -2275,11 +2288,24 @@
 
         });
 
+        function policydisplayno() {
+
+            var seqid = $("#VEH_SYS_ID").val();
+            var office = $("#POLH_OFF_CODE").val();
+            var subclass = $("#POLH_SUB_CLASS_CODE").val();
+
+            var polyid = $("#POLHP").val();
+            var multi = $("#MULTI").val();
+            var polyear = $("#POLYEAR").val();
+
+            $("#POLH_DISPLAY_NO").val(polyid + ("-") + multi + ("-") + office + ("-") + subclass + ("-") + polyear + ("-") + seqid);
+        }
+
         // Open the modal to Add Risk covers
 
         $("#btn_risk_cover").click(function () {
 
-
+            policydisplayno();
             var grid = $scope.motor_grid;
 
             var selId = grid.jqGrid("getGridParam", "selrow");
@@ -2652,8 +2678,19 @@
         *----------------------------------*/
 
         $("#btn_agent_comm").click(function () {
-            //if (u.grid_empty($scope.motor_grid)) return u.modal_alert("Motor Grid is empty!!!");
-            $("#agentcommModal").modal();
+            var Polbis = $("#POLH_BIZ_SOURCE").val();
+            if (u.grid_empty($scope.motor_grid)) return u.modal_alert("Motor Grid is empty!!!");
+            if (u.grid_empty($scope.cover_grid)) return u.modal_alert("Cover Grid is empty! Add Product Covers!");
+
+            if (Polbis === "") {
+                u.growl_warning("Source of business is not selected!");
+            }
+            else if (Polbis === "DIR") {
+                u.growl_warning("The business is Direct, No agency commission applicable!");
+            }
+            else if (Polbis === "BKM" || Polbis === "AGM") {
+                $("#agentcommModal").modal();
+            }
 
         });
 
@@ -2726,8 +2763,7 @@
             var Pol_Ins_Source = $("#POLH_INS_SOURCE").val();
             if (Pol_Txn_State === "C") return u.growl_warning("The Policy is already Confirmed, Please unconfirm before saving");
             if (Pol_Txn_State === "P") return u.growl_warning("The Policy is Approved, You cannot save the Policy");
-            if (Pol_Ins_Source === "FAC-IN" && u.grid_empty($scope.grdfacInward_grid))
-            {
+            if (Pol_Ins_Source === "FAC-IN" && u.grid_empty($scope.grdfacInward_grid)) {
                 return u.growl_warning("Facultative Inward is selected, Please add Fac Inward details to it's grid");
             }
             if (Pol_Ins_Source === "CO-L" && u.grid_empty($scope.grdCoinsLeader_grid)) {
@@ -3376,6 +3412,42 @@
         };
 
 
+        $("form select[name='VEH_CUBIC_CAP']").change(function () {
+            switch ($(this).val()) {
+                case "1":
+                    $("#VEH_CCL_PERC").val(0);
+                    break;
+                case "2":
+                    $("#VEH_CCL_PERC").val(5);
+                    break;
+                case "3":
+                    $("#VEH_CCL_PERC").val(10);
+                    break;
+            }
+        });
+
+        $("form select[name='VEH_EXCESS_APP']").change(function () {
+
+            if ($(this).val() === "Y") {
+                $("#btn_excess").removeAttr("disabled");
+            } else {
+                $("#VEH_EXCESS_PERC").val("")
+                $("#btn_excess").prop("disabled", "disabled");
+
+            }
+        });
+
+        $("#VEH_CLM_FREE_YRS").blur(function () {
+            if (parseInt($(this).val() || 0) === 0) { return $("#VEH_CLM_FREE_YRS").val(), $("#VEH_NCD_PERC").val(0); }
+            if (parseInt($(this).val() || 0) < 0) return $("#VEH_NCD_PERC").val("");
+            for (var i in $scope.ncdCache) {
+                if (parseInt($(this).val() || 0) > $scope.ncdCache[i]["NCD_DTLS_FROM_YEAR"] && parseInt($(this).val() || 0) <= $scope.ncdCache[i]["NCD_DTLS_TO_YEAR"]) {
+                    $("#VEH_NCD_PERC").val($scope.ncdCache[i]["NCD_DTLS_PERC"]);
+                }
+            }
+        });
+
+
         /*-------------------------------------
       * setting datepicker for date fields
       *------------------------------------*/
@@ -3388,13 +3460,19 @@
         u.set_datepicker("input[name='CUS_DOB']");
 
         /*-----------------------------
-* LOV code validation
-*---------------------------*/
+        * LOV code validation
+        *---------------------------*/
         u.lovCodeVal("form input[name='POLH_CMP_CODE']", "check_company_code", "form input[name='CMP_NAME']");
         u.lovCodeVal("form input[name='POLH_INTERMIDIARY']", "check_intermediary_code", "form input[name='INT_OFFICIAL_NAME']");
         u.lovCodeVal("form input[name='POLH_OFF_CODE']", "check_office_code", "form input[name='OFF_NAME']");
         u.lovCodeVal("form input[name='POLH_CLASS_CODE']", "check_product_code", "form input[name='COB_NAME']");
-        u.lovCodeVal("form input[name='POLH_SUB_CLASS_CODE']", "check_subproduct_code", "form input[name='PDT_NAME']");
+        u.lovCodeVal("form input[name='POLH_SUB_CLASS_CODE']", "check_subproduct_code", "form input[name='PDT_NAME']", function (code) {
+
+            s.getProductNCDRates(code, function (rates) {
+                console.log(rates);
+                $scope.ncdCache = rates;
+            });
+        });
         u.lovCodeVal("form input[name='POLH_INS_SOURCE']", "check_insurance_source_code", "form input[name='INS_NAME']");
         u.lovCodeVal("form input[name='POLH_CHANNEL_CODE']", "check_channel_code", "form input[name='MSC_NAME']");
         u.lovCodeVal("form input[name='POLH_BIZ_SOURCE']", "check_business_source_code", "form input[name='SRB_NAME']");
@@ -4795,7 +4873,7 @@
 
         $("form select[name='VEH_PREMIUM_BASIS']").on("change", function () {
 
-            alert("Change is happening");
+            //alert("Change is happening");
             if (!u.grid_empty($scope.cover_grid)) {
                 /*
              * obtain the the policy days
@@ -4832,7 +4910,7 @@
         $scope.getDefaultRiskCovers = function () {
 
 
-            if ($("#VEH_RISK_NO").val() == "") {
+            if ($("#VEH_RISK_NO").val() === "") {
 
                 u.growl_warning("The Risk Code cannot be null, Please check and try again");
 
@@ -4882,31 +4960,50 @@
 
                 //send parameters and get Default covers from the database
                 s.getRiskDefaulCovers(productRiskData, function (result) {
-                    if (result && result.length && result.length > 0) {
+                    if (result.DEFAULT_COVERS && result.DEFAULT_COVERS.length && result.DEFAULT_COVERS.length > 0) {
 
-                        for (var i in result) {
-                            result[i]["RCOV_NAME"] = result[i]["MS_UDW_COVERS"]["CVR_NAME"];
-                            result[i]["COVER_TYPE"] = result[i]["MS_UDW_COVERS"]["CVR_TYPE"];
+                        for (var i in result.DEFAULT_COVERS) {
 
-                            result[i]["RCOV_RI_YN"] = result[i]["MS_UDW_COVERS"]["CVR_RI_APPLICABLE"];
+                            result.DEFAULT_COVERS[i]["RCOV_NAME"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["CVR_NAME"];
+                            result.DEFAULT_COVERS[i]["COVER_TYPE"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["CVR_TYPE"];
+
+                            result.DEFAULT_COVERS[i]["RCOV_RI_YN"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["CVR_RI_APPLICABLE"];
 
 
-                            result[i]["RCOV_USER_PREM"] = result[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
-                            result[i]["RCOV_PREM_REFUND"] = result[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
-                            result[i]["RCOV_RATE_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_RATE_CHANGE"];
-                            result[i]["RCOV_SI_CHANGE"] = result[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
-                            result[i]["RCOV_COVER_LEVEL"] = result[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
+                            result.DEFAULT_COVERS[i]["RCOV_USER_PREM"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["CVR_USER_PREMIUM"];
+                            result.DEFAULT_COVERS[i]["RCOV_PREM_REFUND"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["RCOV_PREM_REFUND"];
+                            result.DEFAULT_COVERS[i]["RCOV_RATE_CHANGE"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["CVR_RATE_CHANGE"];
+                            result.DEFAULT_COVERS[i]["RCOV_SI_CHANGE"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["CVR_SI_CHANGE"];
+                            result.DEFAULT_COVERS[i]["RCOV_COVER_LEVEL"] = result.DEFAULT_COVERS[i]["MS_UDW_COVERS"]["RCOV_COVER_LEVEL"];
+
+                            for (var x in result.SEAT_COVERS) {
+                                if (result.DEFAULT_COVERS[i]["RCOV_CODE"] == result.SEAT_COVERS[x]["MRC_CVR_CODE"]) {
+
+                                    var minSeats = result.SEAT_COVERS[x]["MRC_MIN_SEATS"],
+                                     currRate = parseFloat($("#POLH_CURRENCY_RATE").val()),
+                                     perSeatLoad = result.SEAT_COVERS[x]["MRC_SEAT_LOAD"], noOfSeats = parseInt($("#VEH_PASSENGERS").val());
+                                    $("#SEAT_LOAD").val(perSeatLoad);
+                                    $("#MIN_SEATS").val(minSeats);
+                                    if (noOfSeats > minSeats) {
+                                        result.DEFAULT_COVERS[i]["RCOV_GROSS_PREM_FC"] = (((noOfSeats - minSeats) * perSeatLoad) / currRate).toFixed(2);
+                                        result.DEFAULT_COVERS[i]["RCOV_GROSS_PREM_BC"] = ((noOfSeats - minSeats) * perSeatLoad).toFixed(2);
+                                    }
+
+
+                                }
+                            }
 
                             // //  
-                            result[i]["RCOV_RISK_SYS_ID"] = $("#VEH_SYS_ID").val();
-                            result[i]["RCOV_RISK_NO"] = $("#VEH_RISK_NO").val();
-                            result[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
+                            result.DEFAULT_COVERS[i]["RCOV_RISK_SYS_ID"] = $("#VEH_SYS_ID").val();
+                            result.DEFAULT_COVERS[i]["RCOV_RISK_NO"] = $("#VEH_RISK_NO").val();
+                            result.DEFAULT_COVERS[i]["RCOV_SI_FC"] = $("#RCOV_SI_FC").val();
 
 
-                            var deftCoverCode = result[i].RCOV_CODE;
+                            var deftCoverCode = result.DEFAULT_COVERS[i].RCOV_CODE;
                             var newRiskCode = $("#VEH_SYS_ID").val();
 
                             var verifyRiskCover = deftCoverCode + newRiskCode;
+
 
                             //alert(verifyRiskCover);
 
@@ -4915,7 +5012,7 @@
 
                                 //fill in default covers if not in the grid
 
-                                $scope.cover_grid.addRowData(result[i].ID, result[i]);
+                                $scope.cover_grid.addRowData(result.DEFAULT_COVERS[i].ID, result.DEFAULT_COVERS[i]);
                             }
 
                             else {
@@ -4957,12 +5054,176 @@
 
         });
 
+        //refresh Cover, Risk and policy Values on closing the Risk Cover Modal
+        $("#btnCalcDisLoad").click(function () {
 
+
+            $scope.DiscountLoadingCal();
+
+        });
+
+
+
+
+        // Discount and Loading Calculation
+        $scope.DiscountLoadingCal = function () {
+
+
+            //Declare variables
+
+            var TPBasicPrem = 0;
+
+            var RiskPrem = 0;
+
+            var ccRate = 0;
+
+            var ncdRate;
+            var AgeLoadRate = 0;
+
+            var extraSeatValue = 0;
+
+            var AddTPPDPrem = 0;
+
+            var FeesPrem = 0;
+
+            var excessRate = 0;
+
+            var ecowasPrem = 0;
+
+            var PABenefitPrem = 0;
+
+            var ccLoadingPrem = 0;
+
+            var addPeril = 0;
+            //
+            var coverCode;
+            var coverPremium = 0;
+
+
+            //Risk/Vehicle Grid
+            var motorRisks_grid = $scope.motor_grid;
+
+            var rowIdRisk = motorRisks_grid.jqGrid("getDataIDs");
+
+            //Cover Grid
+            var Covgrid = $scope.cover_grid;
+
+            var rowIds = Covgrid.jqGrid("getDataIDs");
+
+
+            var riskRowId = motorRisks_grid.jqGrid("getGridParam", "selrow");
+
+            var riskId = motorRisks_grid.jqGrid("getCell", riskRowId, "VEH_SYS_ID");
+
+
+            // iterate through the rows and check if it exists
+            for (var i = 0, len = rowIds.length; i < len; i++) {
+                var currRow = rowIds[i];
+
+                //get the risk sys ID from the covers grid
+                var getvehId = Covgrid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
+
+                //get Cover type of the cover
+                var coverType = Covgrid.jqGrid("getCell", currRow, "COVER_TYPE");
+
+
+                // var vehID = $("#VEH_SYS_ID").val();
+
+                if (getvehId === riskId) {
+
+                    coverCode = Covgrid.jqGrid("getCell", currRow, "RCOV_CODE");
+                    coverPremium = parseFloat(Covgrid.jqGrid("getCell", currRow, "RCOV_GROSS_PREM_FC"));
+
+                    // Cover Basic Premium 
+                    if (coverCode === "0530") {
+
+
+                        RiskPrem = coverPremium;
+
+                    }
+
+                    // TPBasicPrem 
+                    if (coverCode === "0521") {
+
+                        TPBasicPrem = coverPremium;
+                    }
+
+                    // Additional Perils  premium
+                    if (coverCode === "0538") {
+
+                        addPeril = coverPremium;
+
+                    }
+
+                    // Ecowas Perils  premium
+                    if (coverCode === "") {
+
+                        ecowasPrem = coverPremium;
+                    }
+
+                    // PAB Limit  premium
+                    if (coverCode === "0549") {
+
+                        PABenefitPrem = coverPremium;
+
+                    }
+
+                    // Additional TPPD  premium
+                    if (coverCode === "0531") {
+
+                        AddTPPDPrem = coverPremium;
+
+                    }
+
+                    // ExtraSeat premium
+                    if (coverCode === "0537") {
+
+                        extraSeatPrem = coverPremium;
+
+                    }
+
+
+                }
+
+            }
+
+            // Discount Loading Calculation
+
+            ccRate = parseFloat($("#VEH_CCL_PERC").val());
+            ncdRate = parseFloat($("#VEH_NCD_PERC").val());
+            excessRate = parseFloat($("#VEH_EXCESS_PERC").val());
+
+            //
+            var currRate = parseFloat($("#POLH_CURRENCY_RATE").val());
+
+            ccLoadingPrem = RiskPrem * ccRate * 0.01;
+
+            var ageLoadPRem = RiskPrem * AgeLoadRate * 0.01;
+
+            var excessBoughtPrem = RiskPrem * excessRate * 0.01;
+            // 
+
+            var vehBasicPrem = RiskPrem + ccLoadingPrem + ageLoadPRem;
+
+            //
+            var cndPrem = (parseFloat(vehBasicPrem + TPBasicPrem) * parseFloat(ncdRate)) * 0.01;
+
+
+            //gross prem calculations  parseFloat(extraSeatPrem) +  + parseFloat(ecowasPrem) 
+
+            var NetPremFC = (parseFloat(vehBasicPrem) + parseFloat(TPBasicPrem) - parseFloat(cndPrem) + parseFloat(AddTPPDPrem) + parseFloat(addPeril) + parseFloat(PABenefitPrem) + parseFloat(excessBoughtPrem));
+
+            var NetPremBC = (NetPremFC * currRate);
+
+            //var grossPRem = parseFloat(AddTPPDPrem) + parseFloat(PABenefitPrem) + parseFloat(addPeril) + parseFloat(TPBasicPrem) + parseFloat(RiskPrem);
+
+
+            return [NetPremFC, NetPremBC];
+        }
 
         // Cover level SI and Premium Calculations:
 
         $("#btn_get_Cover_Premiums").click(function () {
-
 
             //TestSumValues();
             $scope.SumCoverRiskValues();
@@ -5065,9 +5326,13 @@
 
 
             // set risk SI and Premiums vlues,          
+            var netPremium = $scope.DiscountLoadingCal();
 
-            motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
-            motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
+            //motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
+            //motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
+
+            motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_TOT_PREM_FC", netPremium[0].toFixed(2));
+            motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_TOT_PREM_BC", netPremium[1].toFixed(2));
 
             motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_SI_FC", riskSumSifc.toFixed(2));
             motorRisks_grid.jqGrid("setCell", riskRowId, "VEH_SI_BC", riskSumSibc.toFixed(2));

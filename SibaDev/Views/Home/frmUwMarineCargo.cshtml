@@ -125,7 +125,7 @@
                                                         <div class="col-md-4">
                                                             <span id="spry_polhclass">
                                                                 <div class="input-group">
-                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="HONR" readonly />
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="MAR/CAR" readonly />
                                                                     <span class="input-group-btn">
                                                                         <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
@@ -136,7 +136,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="HOME OWNERS" readonly />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="MARINE CARGO" readonly />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -589,7 +589,7 @@
 
                         <div id="tabs">
                             <ul>
-                                <li><a href="#tabs-1">Home Owners Risk</a></li>
+                                <li><a href="#tabs-1">Marine Cargo Risk</a></li>
                                 <li><a href="#tabs-2">Risk Premium Summary</a></li>
                                 <li><a href="#tabs-3">Applicable Fees</a></li>
                                 <li><a href="#tabs-4">Reinsurance Details</a></li>
@@ -601,18 +601,20 @@
 
                                 <div class="row">
                                     <div class="btn-block">
-                                        <button id="btn_open_HomeOwners_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Risk </button>
-                                        <button id="btn_remove_HomeOwners_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                                        <div class="col-md-4">
+                                            <button id="btn_open_HomeOwners_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Risk </button>
+                                            <button id="btn_remove_HomeOwners_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
+                                        </div>
 
-                                        <button id="btn_open_section_details" class="btn btn-default" type="button">
-                                            <i class="fa fa-pull-right"></i> Section Details
-                                        </button>
+                                        <div class="col-md-3">
+                                            <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover </button>
+                                        </div>
 
-                                        <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover </button>
-
-                                        <button type="button" class="btn btn-default pull-right dialog-btn" id="export-bond-btn" title="Export Grid data to Excel">
-                                            <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
-                                        </button>
+                                        <div class="col-md-4">
+                                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-bond-btn" title="Export Grid data to Excel">
+                                                <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
+                                            </button>
+                                        </div>
                                     </div>
                                    
                                 </div>
@@ -621,7 +623,7 @@
                                     <table id="gridHomeOwnersRisks"></table>
                                     <table id="gridHomeOwnersRisksPager"></table>
                                 </div>
-
+                                 
                             </div>
 
                             <div id="tabs-2">
@@ -749,7 +751,7 @@
 </div>
 
 
-<!-- Home Owners Risk Modal Dialog -->
+<!-- Marine Cargo Risk Modal Dialog -->
 
 <div class="modal draggable ui-accordion fade" id="HomeOwnersModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
@@ -759,7 +761,7 @@
             <div class="modal-header">
                 <div class="row modal-header-success">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Home Owners Risk</strong>
+                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">MARINE CARGO</strong>
                 </div>
 
                 <div class="row some-bg-color">
@@ -768,7 +770,12 @@
                             <button id="btn_add_HomeOwners_details" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
                             <button id="btn_update_HomeOwners_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
                           
-                        </div>                      
+                        </div>  
+                        <div class="col-md-2">
+                            <button id="btn_open_section_details" class="btn btn-default" type="button">
+                                <i class="fa fa-pull-right"></i> Vessel Details
+                            </button>
+                        </div>                    
                     </div>
                 </div>
                
@@ -777,8 +784,7 @@
             <div class="modal-body">
                 <div class="row control-group form-padding">
                     <div class="container" style="width:100%">
-                        <span class="control-grp-lbl text-danger"> Home Owners Details</span>
-
+                        <span class="control-grp-lbl text-danger"> MARINE CARGO</span>
                         <form id="homeForm" name="homeForm">
                             <div class="row">
                                 <div class="col-md-8">
@@ -814,7 +820,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4">                                              
-                                                <textarea class="form-control" id="FAC_EXCESS_PERC" rows="3" name="FAC_EXCESS_PERC" title="" required readonly></textarea>      
+                                                <textarea class="form-control" id="FAC_EXCESS_PERC" rows="3" name="FAC_EXCESS_PERC" title="" readonly></textarea>      
                                             </div>
                                         </div>
                                     </div>
@@ -877,14 +883,14 @@
                                             <div class="col-md-2">
                                                 <label class="required">Sum Insured(Cargo)</label>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <input class="form-control" min="" max-length="10" type="number" id="HOP_SUM_INSURED_FC" name="HOP_SUM_INSURED_FC" readonly />
                                             </div>
 
                                             <div class="col-md-2">
                                                 <label class="required">Basis of Evaluation</label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-1">
                                                 <select class="form-control" id="ACCT_POST" name="ACCT_POST">
                                                     <option value="Y">YES</option>
                                                     <option value="N">NO</option>
@@ -903,14 +909,14 @@
                                             <div class="col-md-2">
                                                 <label class="required">Voyage From</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <input class="form-control" min="" max-length="10" type="number" id="HOP_PREMIUM_FC" name="HOP_PREMIUM_FC" readonly />
+                                            <div class="col-md-2">
+                                                <input class="form-control" type="text" id="HOP_PREMIUM_FC" name="HOP_PREMIUM_FC" />
                                             </div>
                                             <div class="col-md-2">
                                                 <label class="required">Voyage To</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <input class="form-control" min="3" max-length="50" type="number" id="HOP_PREMIUM_BC" name="HOP_PREMIUM_BC" readonly />
+                                            <div class="col-md-2">
+                                                <input class="form-control" type="text" id="HOP_PREMIUM_BC" name="HOP_PREMIUM_BC" />
                                             </div>
                                         </div>
                                     </div>
@@ -1046,15 +1052,15 @@
                                             <div class="col-md-2">
                                                 <label class="">Mark and Numbers</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <input class="form-control" min="" max-length="10" type="number" id="HOP_PREMIUM_FC" name="HOP_PREMIUM_FC" readonly />
+                                            <div class="col-md-2">
+                                                <input class="form-control" type="text" id="HOP_PREMIUM_FC" name="HOP_PREMIUM_FC" />
                                             </div>
 
                                             <div class="col-md-3">
                                                 <label class="">Sailing Date:On or About</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <input class="form-control" min="3" max-length="50" type="number" id="HOP_PREMIUM_BC" name="HOP_PREMIUM_BC" readonly />
+                                            <div class="col-md-2">
+                                                <input class="form-control" type="text" id="HOP_PREMIUM_BC" name="HOP_PREMIUM_BC" />
                                             </div>
                                         </div>
                                     </div>
@@ -1100,11 +1106,11 @@
                                             <div class="col-md-2">
                                                 <label class="">Total SI</label>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <input class="form-control" min="" max-length="10" type="number" id="HOP_PREMIUM_FC" name="HOP_PREMIUM_FC" readonly />
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <input class="form-control" min="3" max-length="50" type="number" id="HOP_PREMIUM_BC" name="HOP_PREMIUM_BC" readonly />
                                             </div>
                                         </div>
@@ -1115,11 +1121,11 @@
                                             <div class="col-md-2">
                                                 <label class="">Premium</label>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <input class="form-control" min="" max-length="10" type="number" id="HOP_PREMIUM_FC" name="HOP_PREMIUM_FC" readonly />
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <input class="form-control" min="3" max-length="50" type="number" id="HOP_PREMIUM_BC" name="HOP_PREMIUM_BC" readonly />
                                             </div>
                                         </div>
@@ -1165,7 +1171,7 @@
 </div>
 
 
-<!--Risk Section Details Modal -->
+<!--Vessel Details Modal -->
 
 <div class="modal draggable ui-accordion fade" id="SecDetailsModal" role="dialog" data-backdrop="static" data-keyboard="true">
     <div class="modal-dialog modal-lg">
@@ -1175,7 +1181,7 @@
             <div class="modal-header">
                 <div class="row modal-header-success">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Home Owners Section Details</strong>
+                    <strong style="font-size: 20px; color: white; line-height: 1.7; font-family: Arial">Vessel Details</strong>
                 </div>
 
                 <div class="row some-bg-color">
@@ -1195,7 +1201,7 @@
             <div class="modal-body">
                 <div class="row control-group form-padding">
                     <div class="container" style="width:100%">
-                        <span class="control-grp-lbl text-danger"> Home Owners Section Details</span>
+                        <span class="control-grp-lbl text-danger"> Vessel Details</span>
 
                         <form id="secdetailsForm" name="secdetailsForm">
                             <input class="form-control" type="hidden" id="HODT_HOP_SYS_ID" name="HODT_HOP_SYS_ID" title="Code" />
@@ -1227,13 +1233,13 @@
                                 
                                 <div class="col-md-2">
                                     <span style="margin-left: -40px"><label>Voyage No</label></span>
-                                    <input class="form-control" type="number" min="1" id="FAC_SI_FC" name="FAC_SI_FC" title="FAC SI FC" />                                  
+                                    <input class="form-control" type="text" min="1" id="FAC_SI_FC" name="FAC_SI_FC" title="" />                                  
                                 </div>
 
                                 <div class="col-md-2">
                                     <span style="margin-left: -50px"><label>Vessel</label></span>
                                     <div class="input-group">
-                                        <input class="form-control" min="3" max-length="15" type="text" id="HOP_LOC_CODE" name="HOP_LOC_CODE" title="Code" />
+                                        <input class="form-control" min="3" max-length="15" type="text" id="HOP_LOC_CODE" name="HOP_LOC_CODE" title="" />
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_location", "field1":"HOP_LOC_CODE", "field2":"HOP_LOC_NAME"}'>
                                                 <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
@@ -1245,7 +1251,7 @@
                                 <div class="col-md-2">
                                     <span style="margin-left: -30px"><label>Port of Loading</label></span>
                                     <div class="input-group">
-                                        <input class="form-control" min="3" max-length="15" type="text" id="HOP_LOC_CODE" name="HOP_LOC_CODE" title="Code" />
+                                        <input class="form-control" min="3" max-length="15" type="text" id="HOP_LOC_CODE" name="HOP_LOC_CODE" title="" />
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_location", "field1":"HOP_LOC_CODE", "field2":"HOP_LOC_NAME"}'>
                                                 <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
@@ -2017,7 +2023,8 @@
 </div>
 
 
-    <!-- Treaty Apportionment -->
+<!-- Treaty Apportionment -->
+
 <div class="container">
     <div class="modal draggable ui-accordion fade" id="treatyApportionmentModal" role="dialog" data-backdrop="static" data-keyboard="true">
         <div class="modal-dialog" style="width: 800px">

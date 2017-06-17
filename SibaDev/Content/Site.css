@@ -221,7 +221,7 @@ overflow-y: auto;
 
 @media (min-width: 768px) {	
 	#MotorRiskModal .modal-dialog  {
-        width:1450px;
+        width:1250px;
         /*max-height: 600px;*/
 	}
 }

@@ -1748,9 +1748,22 @@
             //$("#LiabilityModal").modal();
         });
 
+        function policydisplayno() {
+
+            var seqid = $("#LIA_SYS_ID").val();
+            var office = $("#POLH_OFF_CODE").val();
+            var subclass = $("#POLH_SUB_CLASS_CODE").val();
+
+            var polyid = $("#POLHP").val();
+            var multi = $("#MULTI").val();
+            var polyear = $("#POLYEAR").val();
+
+            $("#POLH_DISPLAY_NO").val(polyid + ("-") + multi + ("-") + office + ("-") + subclass + ("-") + polyear + ("-") + seqid);
+        }
 
         $("#btn_risk_cover").click(function () {
 
+            policydisplayno();
             var grid = $("#gridLiabilityRisks");
             var sel_id = grid.jqGrid('getGridParam', 'selrow');
             var RiskID = grid.jqGrid('getCell', sel_id, 'LIA_SYS_ID');
@@ -2053,8 +2066,20 @@
         *----------------------------------*/
 
         $("#btn_agent_comm").click(function () {
-            //if (u.grid_empty($scope.motor_grid)) return u.modal_alert("Motor Grid is empty!!!");
-            $("#agentcommModal").modal();
+
+            var Polbis = $("#POLH_BIZ_SOURCE").val();
+            if (u.grid_empty($scope.liability_grid)) return u.modal_alert("Liability Grid is empty!!!");
+            if (u.grid_empty($scope.cover_grid)) return u.modal_alert("Cover Grid is empty! Add Product Covers!");
+
+            if (Polbis === "") {
+                u.growl_warning("Source of business is not selected!");
+            }
+            else if (Polbis === "DIR") {
+                u.growl_warning("The business is Direct, No agency commission applicable!");
+            }
+            else if (Polbis === "BKM" || Polbis === "AGM") {
+                $("#agentcommModal").modal();
+            }
 
         });
 

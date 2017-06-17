@@ -188,6 +188,9 @@ namespace SibaDev.Models
         [StringLength(15)]
         public string VEH_RISK_CODE { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? VEH_ADD_TPPD { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INS_UDW_RISK_ACCESSORIES> INS_UDW_RISK_ACCESSORIES { get; set; }
 

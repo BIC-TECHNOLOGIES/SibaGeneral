@@ -596,7 +596,7 @@ namespace SibaDev.Models.PolicyApproval_Models
                             //insurance ledger header to open entry mapping
                             db.ACCT_TXN_OPEN_ENTRY.Add(new ACCT_TXN_OPEN_ENTRY
                             {
-                                OE_TXN_REF_ID = (int?)l.IGL_SYS_ID,
+                                OE_TXN_REF_ID = l.IGL_SYS_ID.ToString(),
                                 //OE_TXN_REF_ID = l.IGL_SYS_ID.ToString(),
                                 OE_R_BATCH_ID = null,
                                 OE_DOC_TYPE = l.IGL_TXN_DOC_TYPE,

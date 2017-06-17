@@ -7,7 +7,7 @@
                 'Profession', 'Pin No.', 'Phone No', 'Mobile No', 'Bank Name', 'Account Number', 'Branch', 'Status', 'Created by', 'Created Date'],
             [
                 { name: 'CUS_CODE', id: true, index: 'CUS_CODE' },
-                { name: 'CUS_TYPE_CODE', index: 'CUS_TYPE_CODE' },
+                { name: 'CUS_TYPE_CODE', index: 'CUS_TYPE_CODE', hidden: true },
                 { name: 'CUS_TITLE', index: 'CUS_TITLE' },
                 { name: 'CUS_FIRST_NAME', index: 'CUS_FIRST_NAME' },
                 { name: 'CUS_LAST_NAME', index: 'CUS_LAST_NAME' },
@@ -68,11 +68,24 @@
                
             if (u.form_validation("#customerForm")) {
 
-                if (u.field_empty("input[name='CUS_CODE']")) return u.growl_error
+                $("#CUS_SYS").val("");
 
-                ("The Form code field is empty, please fill and to add to the grid");
+                if ($("#CUS_SYS").val() == "") {
+                    RetnSequenceNo("CUSTOMERS_SEQ", getVehSeqNo);
+
+                    function getVehSeqNo(data) {
+                        $("#CUS_SYS").val(data);
+                    }
+                }
+
+                //if (u.field_empty("input[name='CUS_CODE']")) return u.growl_error
+
+                //("The Form code field is empty, please fill and to add to the grid");
 
                 u.modal_confirmation("Are you sure you want to add Customer to the grid?", function () {
+
+                    var custtype = $("#CUS_TYPE_CODE").val();
+                    var sysid = $("#CUS_SYS").val();              
 
                     var rowIds = $scope.customer_grid.jqGrid('getDataIDs');
 
@@ -105,6 +118,7 @@
                     if ($.inArray($('#CUS_CODE').val(), Code) < 0) {
 
                         var FormData = u.parse_form("#customerForm");
+                        FormData.CUS_CODE = custtype + sysid;
                         FormData.CUS_STATUS = "U";
                         FormData.CUS_CRTE_BY = "Admin";
                         FormData.CUS_CRTE_DATE = u.get_date();
@@ -415,8 +429,8 @@
         }
 
         /*-----------------------------
-* Code validation
-*-----------------------*/
+        * Code validation
+        *-----------------------*/
         u.codeVal("form input[name='CUS_CODE']", "check_customer_code");
         u.lovCodeVal("form input[name='CUS_TYPE_CODE']", "check_customertype_code", "form input[name='CUS_TYPE_NAME']");
     });

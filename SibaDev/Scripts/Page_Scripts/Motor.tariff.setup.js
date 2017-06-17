@@ -803,8 +803,6 @@
                 //populating child entities
               
                 for (var X in motortariff.MS_MOTOR_PROD_RISK[i].MS_MOTOR_RISK_COVER) {
-
-
                     $scope.Covers_grid.addRowData(motortariff.MS_MOTOR_PROD_RISK[i].MS_MOTOR_RISK_COVER[X].MRC_RK_CVR_SYS_ID, motortariff.MS_MOTOR_PROD_RISK[i].MS_MOTOR_RISK_COVER[X]);
                 }
             }

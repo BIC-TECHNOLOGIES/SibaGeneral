@@ -433,35 +433,35 @@ namespace SibaDev.Models
                                     /*--------------------------------
                                     * Risk Fees
                                     *-------------------------------*/
-                                    foreach (var fees in viewPolh.INS_UDW_BOND_FEES)
-                                    {
-                                        var dbrkfees = db.INS_UDW_BOND_FEES.Find(fees.BOND_FEE_SYS_ID);
-                                        switch (fees.BOND_FEE_STATUS)
-                                        {
-                                            case "A":
-                                                if (dbrkfees != null)
-                                                {
-                                                    db.INS_UDW_BOND_FEES.Attach(dbrkfees);
-                                                    dbrkfees.Map(fees);
-                                                }
-                                                break;
+                                    //foreach (var fees in viewPolh.INS_UDW_BOND_FEES)
+                                    //{
+                                    //    var dbrkfees = db.INS_UDW_BOND_FEES.Find(fees.BOND_FEE_SYS_ID);
+                                    //    switch (fees.BOND_FEE_STATUS)
+                                    //    {
+                                    //        case "A":
+                                    //            if (dbrkfees != null)
+                                    //            {
+                                    //                db.INS_UDW_BOND_FEES.Attach(dbrkfees);
+                                    //                dbrkfees.Map(fees);
+                                    //            }
+                                    //            break;
 
-                                            case "U":
-                                                fees.BOND_FEE_STATUS = "A";
-                                                fees.BOND_FEE_CRTE_DATE = DateTime.Now;
-                                                fees.BOND_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
-                                                db.INS_UDW_BOND_FEES.Add(fees);
-                                                break;
+                                    //        case "U":
+                                    //            fees.BOND_FEE_STATUS = "A";
+                                    //            fees.BOND_FEE_CRTE_DATE = DateTime.Now;
+                                    //            fees.BOND_FEE_POL_SYS_ID = viewPolh.POLH_SYS_ID;
+                                    //            db.INS_UDW_BOND_FEES.Add(fees);
+                                    //            break;
 
-                                            case "D":
-                                                if (dbrkfees != null)
-                                                {
-                                                    db.INS_UDW_BOND_FEES.Attach(dbrkfees);
-                                                    dbrkfees.BOND_FEE_STATUS = "D";
-                                                }
-                                                break;
-                                        }
-                                    }
+                                    //        case "D":
+                                    //            if (dbrkfees != null)
+                                    //            {
+                                    //                db.INS_UDW_BOND_FEES.Attach(dbrkfees);
+                                    //                dbrkfees.BOND_FEE_STATUS = "D";
+                                    //            }
+                                    //            break;
+                                    //    }
+                                    //}
 
                                     /*-------------------------------
                                     * FAC Inward/Co-insurance Member
@@ -562,7 +562,7 @@ namespace SibaDev.Models
                         case "U":
 
                             viewPolh.POLH_STATUS = "A";
-                            viewPolh.POLH_DISPLAY_NO = viewPolh.POLH_CMP_CODE + viewPolh.POLH_SUB_CLASS_CODE + viewPolh.POLH_SYS_ID;
+                            //viewPolh.POLH_DISPLAY_NO = viewPolh.POLH_CMP_CODE + viewPolh.POLH_SUB_CLASS_CODE + viewPolh.POLH_SYS_ID;
                             viewPolh.POLH_QUT_SER_NO = viewPolh.POLH_SYS_ID;
 
                             /*-----------------------------------------

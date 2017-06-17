@@ -371,22 +371,10 @@
                 </p>
             </td>
             <td width="11%" valign="top" style="border:1px #000 solid;">
-                    @foreach (var rsk in Model.INS_UDW_TRAVEL_RISK)
-                    {
-                        foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                        {
-                        <p>@cover.RCOV_SI_FC</p>
-                        }
-                    }
+                @Html.DisplayFor(m => m.POLH_POL_SI_FC)
             </td>
             <td width="6%" valign="top" style="border:1px #000 solid;">
-                    @foreach (var rsk in Model.INS_UDW_TRAVEL_RISK)
-                    {
-                        foreach (var cover in rsk.INS_UWD_RISK_COVERS)
-                        {
-                            <p>@cover.RCOV_GROSS_PREM_FC</p>
-                        }
-                    }
+                @Html.DisplayFor(m => m.POLH_POL_PREM_FC) 
             </td>
             <td width="7%" valign="top" style="border:1px #000 solid;">
                 <p>

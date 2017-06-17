@@ -12,8 +12,9 @@ namespace SibaDev.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OE_SYS_ID { get; set; }
-        
-        public int? OE_TXN_REF_ID { get; set; }
+
+        [StringLength(100)]
+        public string OE_TXN_REF_ID { get; set; }
 
         [StringLength(10)]
         public string OE_R_BATCH_ID { get; set; }

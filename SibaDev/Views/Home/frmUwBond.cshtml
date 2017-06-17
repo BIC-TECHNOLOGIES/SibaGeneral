@@ -78,7 +78,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CMP_CODE" name="POLH_CMP_CODE" value="MULTI" title="Code" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_company", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_companys", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -126,7 +126,7 @@
                                                                 <div class="input-group">
                                                                     <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="BONDS" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -472,84 +472,93 @@
                                 <div class="row">
 
                                     <div class="col-md-1">
-                                        <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
+                                        <input id="POLH_STATUS" type="hidden" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+                                        <input id="POLH_POL_SI_FC" type="hidden" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_POL_SI_BC" type="text" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
+                                        <input id="POLH_POL_SI_BC" type="hidden" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_POL_PREM_FC" type="text" name="POLH_POL_PREM_FC" class="form-control" min="12" title="POLH_POL_PREM_FC" />
+                                        <input id="POLH_POL_PREM_FC" type="hidden" name="POLH_POL_PREM_FC" class="form-control" min="12" title="POLH_POL_PREM_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_POL_PREM_BC" type="text" name="POLH_POL_PREM_BC" class="form-control" min="12" title="POLH_POL_PREM_BC" />
+                                        <input id="POLH_POL_PREM_BC" type="hidden" name="POLH_POL_PREM_BC" class="form-control" min="12" title="POLH_POL_PREM_BC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_POL_COMM_FC" type="text" name="POLH_POL_COMM_FC" class="form-control" min="12" title="POLH_POL_COMM_FC" />
+                                        <input id="POLH_POL_COMM_FC" type="hidden" name="POLH_POL_COMM_FC" class="form-control" min="12" title="POLH_POL_COMM_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_POL_COMM_BC" type="text" name="POLH_POL_COMM_BC" class="form-control" min="12" title="POLH_POL_COMM_BC" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_POL_DISC_FC" type="text" name="POLH_POL_DISC_FC" class="form-control" min="12" title="POLH_POL_DISC_FC" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_POL_DISC_BC" type="text" name="POLH_POL_DISC_BC" class="form-control" min="12" title="POLH_POL_DISC_BC" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_POL_LOAD_FC" type="text" name="POLH_POL_LOAD_FC" class="form-control" min="12" title="POLH_POL_LOAD_FC" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_POL_LOAD_BC" type="text" name="POLH_POL_LOAD_BC" class="form-control" min="12" title="POLH_POL_LOAD_BC" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_COINS_SI_FC" type="text" name="POLH_COINS_SI_FC" class="form-control" min="12" title="POLH_COINS_SI_FC" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_COINS_SI_BC" type="text" name="POLH_COINS_SI_BC" class="form-control" min="12" title="POLH_COINS_SI_BC" />
+                                        <input id="POLH_POL_COMM_BC" type="hidden" name="POLH_POL_COMM_BC" class="form-control" min="12" title="POLH_POL_COMM_BC" />
                                     </div>
 
                                     <div class="col-md-1">
-                                        <input id="POLH_COINS_PREM_FC" type="text" name="POLH_COINS_PREM_FC" class="form-control" min="12" title="POLH_COINS_PREM_FC" />
+                                        <input id="POLH_POL_DISC_FC" type="hidden" name="POLH_POL_DISC_FC" class="form-control" min="12" title="POLH_POL_DISC_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
+                                        <input id="POLH_POL_DISC_BC" type="hidden" name="POLH_POL_DISC_BC" class="form-control" min="12" title="POLH_POL_DISC_BC" />
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_POL_LOAD_FC" type="hidden" name="POLH_POL_LOAD_FC" class="form-control" min="12" title="POLH_POL_LOAD_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
+                                        <input id="POLH_POL_LOAD_BC" type="hidden" name="POLH_POL_LOAD_BC" class="form-control" min="12" title="POLH_POL_LOAD_BC" />
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_COINS_SI_FC" type="hidden" name="POLH_COINS_SI_FC" class="form-control" min="12" title="POLH_COINS_SI_FC" />
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_COINS_SI_BC" type="hidden" name="POLH_COINS_SI_BC" class="form-control" min="12" title="POLH_COINS_SI_BC" />
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_COINS_PREM_FC" type="hidden" name="POLH_COINS_PREM_FC" class="form-control" min="12" title="POLH_COINS_PREM_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_NET_SI_BC" type="text" name="POLH_NET_SI_BC" class="form-control" min="12" title="POLH_NET_SI_BC" />
+                                        <input id="POLH_COINS_PREM_BC" type="hidden" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
+                                    </div>
+
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_NET_SI_FC" type="hidden" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_NET_PREM_FC" type="text" name="POLH_NET_PREM_FC" class="form-control" min="12" title="POLH_NET_PREM_FC" />
+                                        <input id="POLH_NET_SI_BC" type="hidden" name="POLH_NET_SI_BC" class="form-control" min="12" title="POLH_NET_SI_BC" />
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_NET_PREM_FC" type="hidden" name="POLH_NET_PREM_FC" class="form-control" min="12" title="POLH_NET_PREM_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_NET_PREM_BC" type="text" name="POLH_NET_PREM_BC" class="form-control" min="12" title="POLH_NET_PREM_BC" />
+                                        <input id="POLH_NET_PREM_BC" type="hidden" name="POLH_NET_PREM_BC" class="form-control" min="12" title="POLH_NET_PREM_BC" />
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <input id="POLH_FEE_FC" type="hidden" name="POLH_FEE_FC" class="form-control" min="12" title="POLH_FEE_FC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_FEE_FC" type="text" name="POLH_FEE_FC" class="form-control" min="12" title="POLH_FEE_FC" />
+                                        <input id="POLH_FEE_BC" type="hidden" name="POLH_FEE_BC" class="form-control" min="12" title="POLH_FEE_BC" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_FEE_BC" type="text" name="POLH_FEE_BC" class="form-control" min="12" title="POLH_FEE_BC" />
+                                        <input id="POLH_SYS_ID" type="hidden" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
+                                        <input id="POLH_END_NO" type="hidden" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
                                     </div>
                                     <div class="col-md-1">
-                                        <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
+                                        <input id="POLH_TXN_STATE" type="hidden" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                     </div>
                                 </div>
                                 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
 
                                 <div class="row">
-                                    <div class="col-md-1">  </div>
+                                    <div class="col-md-2">  </div>
                                     <div class="col-md-2">
                                         <div class="input-group">
                                             <button type="button" id="btnFACInward" name="btnFACInward" disabled class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>FAC Inward </button>
@@ -569,7 +578,9 @@
                                 </div>
 
                                 <h4 style="border-bottom-color: blue" class="sub-header"></h4>
-
+                                <input class="form-control" type="hidden" id="POLHP" name="POLHP" value="P" />
+                                <input class="form-control" type="hidden" id="MULTI" name="MULTI" value="M" />
+                                <input class="form-control" type="hidden" id="POLYEAR" name="POLYEAR" value="17" />
                             </form>
                         </div>
                     </div>
@@ -1828,6 +1839,7 @@
                                 <option value="Endorsemetn">Endorsement Schedule</option>
                                 <option value="Debit">Debit Note</option>
                                 <option value="Credit">Credit Note</option>
+                                <option value="Receipt">Receipt</option>
                             </select>
                         </div>
                         <div class="col-lg-1">

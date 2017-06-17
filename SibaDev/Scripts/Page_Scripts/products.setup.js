@@ -83,32 +83,14 @@
                     PLDI_LDI_NAME: grid.jqGrid('getCell', sel_id, 'PLDI_LDI_NAME'),
                 }, "#discloadForm");
             }),
-
-
-        //Search grid
-        $scope.searchGrid = u.default_grid("#grdSearchResults", "#grdSearchResultsPager", "Product Search Result",
-            ["Index", "Product Code", "Product Name"],
-            [
-                { name: 'Index', id: true, index: 'Index', width: 150 },
-                { name: 'PCC_CODE', index: 'PCC_CODE', width: 150 },
-                { name: 'PCC_NAME', index: 'PCC_NAME', width: 150 },
-            ],
-              function (index) {
-                  $scope.selected_index = index;
-                  $scope.search_fill($scope.result[index]);
-              },
-                function (index) {
-                    $scope.search_fill($scope.result[index]);
-                    u.clear_grid_data($scope.searchGrid);
-                    $("#mySearchResultModal").modal("hide");
-        });
+       
 
             $scope.saving = false;
 
 
         /*------------------------------------------
- * Tabs Layout function call using Jquery 
- *----------------------------------------*/
+         * Tabs Layout function call using Jquery 
+         *----------------------------------------*/
         //  
         $("#tabs").tabs({
             beforeLoad: function (event, ui) {
@@ -118,9 +100,11 @@
                       "If this wouldn't be a demo.");
                 });
             }
-        }); /*----------------------
- * LOV initialization
- *--------------------*/
+        });
+
+        /*----------------------
+         * LOV initialization
+         *--------------------*/
         $scope.lov = u.lov_init("#myLOVModal", "#grdLOVRegion", "#grdLOVRegionPager");
 
         /*-----------------------------------------
@@ -144,6 +128,7 @@
             }
         });
         $scope.cov_id = 0;
+
         /*--------------------------------------------------
            * add Cover
            *------------------------------------------------*/
@@ -758,9 +743,9 @@
        * search grid
        *----------------*/
         $scope.search_grid = u.default_grid("#grdSearchResults", "#grdSearchResultsPager", "Product Search Results",
-            ["Code", "Product Name.", "Status", "index"],
+            ["Product Code", "Product Name", "Status", "index"],
             [
-                { name: "PDT_CODE", index: "PDT_CODE", hidden: true },
+                { name: "PDT_CODE", index: "PDT_CODE", hidden: false },
                 { name: "PDT_NAME", index: "PDT_NAME" },
                 { name: "PDT_STATUS", index: "PDT_STATUS" },
                 { name: "index", id: true, index: "index", hidden: true }
@@ -788,6 +773,7 @@
                     if (result.length > 0) {
                         if (result.length > 1) {
                             /*display result of the search to the user in a modal*/
+                            u.clear_grid_data($scope.search_grid);
                             for (var i in result) {
                                 result[i].index = i;
                                 $scope.search_grid.addRowData(result[i].index, result[i]);

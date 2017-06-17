@@ -126,9 +126,9 @@
                                                         <div class="col-md-4">
                                                             <span id="spry_polhclass">
                                                                 <div class="input-group">
-                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="BONDS" readonly />
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="ENGIN" readonly />
                                                                     <span class="input-group-btn">
-                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                        <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                         </button>
                                                                     </span>
@@ -137,7 +137,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="BONDS" readonly />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="COB_NAME" value="ENGINEERING" readonly />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,7 +174,7 @@
                                                         <div class="col-md-4">
                                                             <span id="spry_polhsubclass">
                                                                 <div class="input-group">
-                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" title="Code" required />
+                                                                    <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" value="OTHER" readonly />
                                                                     <span class="input-group-btn">
                                                                         <button type="button" class="btn btn_lov btn-default pull-left" id="btn_ProductRisk" name="btn_ProductRisk">
                                                                             <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
@@ -185,7 +185,7 @@
                                                             </span>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" title="Name" />
+                                                            <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" value="OTHER ENGINEERING" readonly />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -602,7 +602,7 @@
                                 <div class="row">
                                     <div class="btn-block">
                                         <button id="btn_open_risk" class="btn btn-info" type="button"><i class="fa fa-plus-circle"></i> Risk</button>
-                                        <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
+                                       
                                     </div>
                                 </div>
                                 <div class="row control-group form-padding">
@@ -955,11 +955,14 @@
                 </div>
                 <div class="row some-bg-color">
                     <div style="margin-top: 10px;">
-                        <div class="col-md-7">
+                        <div class="col-md-5">
                             <button id="btn_add_eng_details" type="button" class="btn btn-default"><i class="fa fa-plus-circle text-success"></i>  Add New </button>
                             <button id="btn_update_eng_risk" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update </button>
                             <button id="btn_remove_eng_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
                         </div>  
+                        <div class="col-md-2">
+                            <button id="btn_risk_cover" class="btn btn-danger" type="button"><i class="fa fa-umbrella"></i> Risk Cover</button>
+                        </div>
                         <div class="col-md-3">
                             <button type="button" class="btn btn-default pull-right dialog-btn" id="export-eng-btn" title="Export Grid data to Excel">
                                 <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
@@ -976,8 +979,8 @@
                         <span class="control-grp-lbl text-danger">Other Engineering Details</span>
 
                         <form id="engForm" name="engForm">
-                            <input id="ENG_OTHER_RISK_ID" type="hidden" class="form-control"
-                                   name="ENG_OTHER_RISK_ID" />
+                            <input id="ENG_OTHER_SYS_ID" type="hidden" class="form-control"
+                                   name="ENG_OTHER_SYS_ID" />
                            
                             <div class="row">
                                 <div class="form-group">
@@ -1057,7 +1060,7 @@
                                         <label class="">Manuf Year</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <input id="ENG_OTHER_MANUF_YR" class="form-control" maxlength="4" type="month" name="ENG_OTHER_MANUF_YR" required />
+                                        <input id="ENG_OTHER_MANUF_YR" class="form-control" maxlength="4" type="text" name="ENG_OTHER_MANUF_YR" required />
                                     </div>
 
                                     <div class="col-md-2">
@@ -1096,11 +1099,11 @@
                                         <label class="">Foundation</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_FUNDT_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_FUNDT_FC" />
+                                        <input id="ENG_OTHER_FUNDT_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_FUNDT_FC" readonly />
                                     </div>
 
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_FUNDT_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_FUNDT_BC" />
+                                        <input id="ENG_OTHER_FUNDT_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_FUNDT_BC" readonly />
                                     </div>
 
                                 </div>
@@ -1112,11 +1115,11 @@
                                         <label class="">Transformer</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_TRANSF_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_TRANSF_FC" />
+                                        <input id="ENG_OTHER_TRANSF_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_TRANSF_FC" readonly />
                                     </div>
 
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_TRANSF_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_TRANSF_BC" />
+                                        <input id="ENG_OTHER_TRANSF_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_TRANSF_BC" readonly />
                                     </div>
 
                                 </div>
@@ -1128,11 +1131,11 @@
                                         <label class="">Sum Insured FC</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_SUM_INSURED_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_SUM_INSURED_FC" />
+                                        <input id="ENG_OTHER_SUM_INSURED_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_SUM_INSURED_FC" readonly />
                                     </div>
 
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_SUM_INSURED_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_SUM_INSURED_BC" />
+                                        <input id="ENG_OTHER_SUM_INSURED_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_SUM_INSURED_BC" readonly />
                                     </div>
 
                                 </div>
@@ -1144,11 +1147,11 @@
                                         <label class="">Premium FC</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_PREMIUM_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_PREMIUM_FC" />
+                                        <input id="ENG_OTHER_PREMIUM_FC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_PREMIUM_FC" readonly />
                                     </div>
 
                                     <div class="col-md-3">
-                                        <input id="ENG_OTHER_PREMIUM_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_PREMIUM_BC" />
+                                        <input id="ENG_OTHER_PREMIUM_BC" class="form-control" min="12" maxlength="12" type="number" name="ENG_OTHER_PREMIUM_BC" readonly />
                                     </div>
 
                                 </div>

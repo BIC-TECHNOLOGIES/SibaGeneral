@@ -10,10 +10,13 @@
             u.get("/api/intermediary/search/" + query, success, error);
         },
         get_lov_companies: function (success, error) {
-        u.get("/api/company/lov", success, error);
+            u.get("/api/company/lov", success, error);
         },
         get_lov_offices: function (success, error) {
             u.get("/api/office/lov", success, error);
+        },
+        get_lov_inttypes: function (success, error) { 
+            u.get("/api/customertypes/lov", success, error);
         },
         check_intermediary_code: function (code, success, error) {
             u.get("/api/intermediary/check/" + code, success, error);
@@ -23,6 +26,9 @@
         },
         check_office_code: function (code, success, error) {
             u.get("/api/office/check/" + code, success, error);
-        }
+        },
+        check_customertype_code: function (code, success, error) {
+            u.get("/api/customertypes/check/" + code, success, error);
+        },
     });
 })(window.service, window.utility)

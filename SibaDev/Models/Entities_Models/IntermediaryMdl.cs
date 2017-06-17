@@ -17,7 +17,7 @@ namespace SibaDev.Models
                 {
                     INT_CODE = i.INT_CODE,
                     INT_CMP_CODE = i.INT_CMP_CODE,
-                    //INT_BRANCH_CODE = i.INT_BRANCH_CODE,
+                    INT_OFF_CODE = i.INT_OFF_CODE,
                     INT_OFFICIAL_NAME = i.INT_OFFICIAL_NAME,
                     INT_POSTAL_ADDRS = i.INT_POSTAL_ADDRS,
                     INT_HOME_ADDRS = i.INT_HOME_ADDRS,
@@ -63,6 +63,7 @@ namespace SibaDev.Models
             {
                 INT_CODE = i.INT_CODE,
                 INT_CMP_CODE = i.INT_CMP_CODE,
+                INT_CTP_CODE = i.INT_CTP_CODE,
                 INT_OFF_CODE = i.INT_OFF_CODE,
                 INT_OFFICIAL_NAME = i.INT_OFFICIAL_NAME,
                 INT_POSTAL_ADDRS = i.INT_POSTAL_ADDRS,
@@ -139,20 +140,8 @@ namespace SibaDev.Models
             var db = new SibaModel();
             return (from are in db.MS_SYS_INTERMEDIARY
                     where (are.INT_CODE.ToLower().Contains(q.ToLower()) || are.INT_CMP_CODE.ToLower().Contains(q.ToLower())
-                    ||
-                     //are.INT_BRANCH_CODE.ToLower().Contains(q.ToLower()) || are.INT_OFFICIAL_NAME.ToLower().Contains(q.ToLower()) ||
-                     are.INT_POSTAL_ADDRS.ToLower().Contains(q.ToLower()) || are.INT_HOME_ADDRS.ToLower().Contains(q.ToLower())
-                    || are.INT_PHONE1.ToLower().Contains(q.ToLower()) || are.INT_MOBILE.ToLower().Contains(q.ToLower())
-                    || are.INT_AREA_NAME.ToString().Contains(q.ToLower()) || are.INT_CONTACT_PERS.ToString().Contains(q.ToLower())
-                    || are.INT_PHONE.ToString().Contains(q.ToLower()) || are.INT_EMAIL.ToString().Contains(q.ToLower())
-                    || are.INT_FAX.ToLower().Contains(q.ToLower()) || are.INT_BANK_NUMBER.ToLower().Contains(q.ToLower())
-                    || are.INT_BANK_NAME.ToString().Contains(q.ToLower()) || are.INT_BANK_BRANCH.ToString().Contains(q.ToLower())
-                    || are.INT_CITY_NAME.ToLower().Contains(q.ToLower()) || are.INT_GENDER.ToLower().Contains(q.ToLower())
-                    || are.INT_ID1_TYPE.ToLower().Contains(q.ToLower()) || are.INT_ID1_NO.ToString().Contains(q.ToLower())
-                    || are.INT_ID2_TYPE.ToString().Contains(q.ToLower()) || are.INT_ID2_NO.ToString().Contains(q.ToLower())
-                    || are.INT_TIN_NO.ToLower().Contains(q.ToLower()) || are.INT_REG_NO.ToString().Contains(q.ToLower())) && are.INT_STATUS == "A"
-                    select are.INT_CODE).ToList().Select(get_intermediary);
-
+                    ) && are.INT_STATUS == "A" select are.INT_CODE).ToList().Select(get_intermediary);
         }
+
     }
 }

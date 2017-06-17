@@ -52,37 +52,38 @@
             <div class="col-sm-10">
                 <table height="75">
                     <tr valign="top">
-                        <td width="112" height="22">Branch</td>
+                        <td width="112" height="22"><b>Branch</b></td>
                         <td width="13" align="right">:</td>
                         <td width="465">@Model.MS_SYS_OFFICE.OFF_NAME</td>
-                        <td width="65" align="left">No.</td>
-                        <td width="38" align="center">:</td>
+                        <td width="65" align="left">No.:</td>
+                        <td width="38" align="center"></td>
                         <td width="225">[Receipt no]</td>
                     </tr>
                     <tr valign="top">
-                        <td height="22">Received From</td>
-                        <td align="right">:</td>
+                        <td height="22"><b>Received From</b>:</td>
+                        <td align="right"></td>
                         <td>@Model.MS_UDW_CUSTOMERS.CUS_OFFICIAL_NAME</td>
-                        <td align="left">Date</td>
-                        <td align="center">:</td>
-                        <td>@Model.POLH_CRTE_DATE</td>
+                        <td align="left"><b>Date:</b></td>
+                        <td align="center"></td>
+                        <td>@Html.DisplayFor(x => x.POLH_CRTE_DATE)</td>
                     </tr>
                 </table>
                 <table width="976" class="tbl2">
                     <tr>
                         <td height="110" colspan="3" align="left">
-                            <p>Policy No/Cert No : @Model.POLH_SYS_ID</p>
-                            <p>Sum Insured : @Model.POLH_POL_SI_FC</p>
-                            <p>Period of Insurance : [Insurance period]</p>
+                            <p><b>Policy No/Cert No</b> : @Model.POLH_DISPLAY_NO</p>
+                            <p><b>Sum Insured</b> : @Html.DisplayFor(m => m.POLH_POL_SI_FC)</p>
+                            <p><b>Period of Insurance</b> :@Html.DisplayFor(x => x.POLH_POL_START_DATE) - @Html.DisplayFor(x => x.POLH_POL_END_DATE)</p>
                         </td>
                         <td colspan="3" align="left">
-                            <p>Endorsement No : [endorsement no]</p>
-                            <p>Agency : [agency]</p>
+                            <p><b>Endorsement No</b> : [endorsement no]</p>
+                            <p><b>Agency</b> : @foreach (var rsk in Model.INS_UWD_INTERMEDIARY_COMM)
+                            { @rsk.MS_SYS_INTERMEDIARY.INT_OFFICIAL_NAME <br />}</p>
                             <p>&nbsp;</p>
                         </td>
                     </tr>
                     <tr style="border:1px solid #000;">
-                        <td height="44" colspan="2"><p>Amount :  [amount]</p></td>
+                        <td height="44" colspan="2"><p>Amount : @Html.DisplayFor(m => m.POLH_POL_PREM_FC)</p></td>
                         <td colspan="4"><p>[amount in words]</p></td>
                     </tr>
 
@@ -115,7 +116,7 @@
                         <td height="92">&nbsp;</td>
                         <td width="253" height="92" align="center">
                             <p><strong>Class of Business</strong></p>
-                            <p>[business]</p>
+                            <p>@Model.MS_UDW_CLASS_OF_BUSINESS.COB_NAME</p>
                         </td>
                         <td width="270" align="center">
                             <p><strong>Classification</strong></p>

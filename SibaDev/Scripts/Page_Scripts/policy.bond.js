@@ -1545,9 +1545,21 @@
             //$("#BondModal").modal();
         });
 
+        function policydisplayno() {
+
+            var seqid = $("#BOND_SYS_ID").val();
+            var office = $("#POLH_OFF_CODE").val();
+            var subclass = $("#POLH_SUB_CLASS_CODE").val();
+
+            var polyid = $("#POLHP").val();
+            var multi = $("#MULTI").val();
+            var polyear = $("#POLYEAR").val();
+
+            $("#POLH_DISPLAY_NO").val(polyid + ("-") + multi + ("-") + office + ("-") + subclass + ("-") + polyear + ("-") + seqid);
+        }
 
         $("#btn_risk_cover").click(function () {
-
+            policydisplayno();
             var grid = $("#gridBondRisks");
             var sel_id = grid.jqGrid('getGridParam', 'selrow');
             var RiskID = grid.jqGrid('getCell', sel_id, 'BOND_SYS_ID');
@@ -1574,6 +1586,7 @@
             }
             else {
                 $("#BondModal").modal("hide");
+                
             }
 
         });
@@ -1814,8 +1827,20 @@
         *----------------------------------*/
 
         $("#btn_agent_comm").click(function () {
-            //if (u.grid_empty($scope.motor_grid)) return u.modal_alert("Motor Grid is empty!!!");
-            $("#agentcommModal").modal();
+
+            var Polbis = $("#POLH_BIZ_SOURCE").val();
+            if (u.grid_empty($scope.bond_grid)) return u.modal_alert("Bond Grid is empty!!!");
+            if (u.grid_empty($scope.cover_grid)) return u.modal_alert("Cover Grid is empty! Add Product Covers!");
+
+            if (Polbis === "") {
+                u.growl_warning("Source of business is not selected!");
+            }
+            else if (Polbis === "DIR") {
+                u.growl_warning("The business is Direct, No agency commission applicable!");
+            }
+            else if (Polbis === "BKM" || Polbis === "AGM") {
+                $("#agentcommModal").modal();
+            }
 
         });
 
@@ -2216,7 +2241,6 @@
 
                 if (!u.field_empty("#POLH_SYS_ID")) {
 
-
                     if (polTxnState === "C") return u.growl_warning("The Policy is already Confirmed, You cannot Confirm them again");
                     if (polTxnState === "P") return u.growl_warning("The Policy is Approved, You cannot Confirm again");
                     if (polTxnState === "") return u.growl_warning("The Policy is not saved, You cannot Confirm it");
@@ -2309,7 +2333,6 @@
 
                     if (polTxnState === "C") {
 
-
                         $("#PolicyApprovalModal").modal();
 
                         var SYS_ID = $("#POLH_SYS_ID").val();
@@ -2350,7 +2373,6 @@
                 $("#POLH_TXN_STATE").val("E");
 
                 //
-
                 var bondRowIds = $scope.bond_grid.jqGrid("getDataIDs");
                 var coverRowIds = $scope.cover_grid.jqGrid("getDataIDs");
                 var intermComIds = $scope.intermCom_grid.jqGrid("getDataIDs");
@@ -2480,9 +2502,6 @@
                 s.BondpolicyApproval({ POL_SYS_ID: $("#POLH_SYS_ID").val(), POL_END_NO: $("#POL_END_NO").val(), TXN_TYPE: 1 }, function (response) {
                     if (response.state) {
                         u.growl_success("Policy successfully Approved");
-                        //alert(JSON.stringify(response));
-
-                        //alert(JSON.stringify());
 
                         var txnState = response.result.POLH_TXN_STATE;
 
@@ -2492,7 +2511,7 @@
                         if (txnState === ("P")) {
 
                             u.form_text_Green_color();
-                            u.form_readonly();
+                            //u.form_readonly();
                         }
 
                     } else {
@@ -3297,6 +3316,41 @@
 
             if (polreports == "") {
                 u.growl_warning("Nothing selected, Please select to view report");
+            }
+
+            else if (polreports == "Receipt") {
+
+                if (poltxnst == "P" || poltxnst == "E") {
+
+                    if (!u.field_empty("#POLH_SYS_ID")) {
+
+                        $("#policyscheduleModal").modal();
+
+                        $("#PolicyDocsModal").modal("hide");
+
+                        $("#POLH_ID").val($("#POLH_SYS_ID").val());
+
+                        $("#btnQuerypolicyreport").click(function (e) {
+
+                            if (u.field_empty("#POLH_ID")) {
+                                u.modal_warning("Policy No is not correct");
+                            }
+                            else {
+                                console.log(policyData);
+                                var policyData = u.parse_form("#policyreportForm");
+                                window.open("/StaticReport/PolicyHeadeReceipt/" + policyData["POLH_ID"], "result", "width=900,height=1000,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no,scrollbars=yes");
+                            }
+                        });
+                    }
+                    else {
+                        u.modal_warning("There is no Policy to view");
+                    }
+
+                }
+                else {
+                    u.modal_warning("Policy is not Approved");
+                }
+
             }
 
             else if (polreports == "Debit") {

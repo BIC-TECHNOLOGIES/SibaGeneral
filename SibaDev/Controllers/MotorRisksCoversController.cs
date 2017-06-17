@@ -32,8 +32,6 @@ namespace SibaDev.Controllers
 
             foreach (var cover in riskCovers)
             {
-
-
                 if (cover != null)
                 {
                     var seq = MotorRisksCoversMdl.GetRiskCoverSeq();
@@ -96,7 +94,7 @@ namespace SibaDev.Controllers
 
         [HttpPost]
         [Route("api/MotorRisksCovers/defaultCovers")]
-        public IEnumerable<INS_UWD_RISK_COVERS> getDeftCovers(MotorRisksCoversJSON defCoversJson)
+        public object getDeftCovers(MotorRisksCoversJSON defCoversJson)
         {
             /*---------------------------------------------------------------
              * logic for cover premium calculation
@@ -109,6 +107,9 @@ namespace SibaDev.Controllers
             //var MotorRisks = MotorRisksCoversMdl.get_MotorRisks(tarrifJson.PRD_CODE, tarrifJson.RISK_SYS_ID);
             var riskCovers = MotorRisksCoversMdl.GetMotorRiskCovers(defCoversJson.PROD_RISK_SYS_ID);
             var rskCoverList = new List<INS_UWD_RISK_COVERS>();
+
+            //
+            var motorRskCoverList = new List<motorRiskCoversJSON>();
 
             foreach (var cover in riskCovers)
             {
@@ -166,6 +167,8 @@ namespace SibaDev.Controllers
                                 CVR_USER_PREMIUM = CoverMdl.get_cover(cover.MRC_CVR_CODE).CVR_USER_PREMIUM,
                                 CVR_BASIC_COVER = CoverMdl.get_cover(cover.MRC_CVR_CODE).CVR_BASIC_COVER
                             },
+
+                          
                             RCOV_DISC_BC = 0,//todo: build logic to calculate base currency discounts for default covers
                             RCOV_DISC_FC = 0,//todo: build logic to calculate foreign currency discounts for default covers
                             RCOV_LOAD_BC = 0,//todo: build logic to calculate base currency loading for default covers
@@ -179,6 +182,7 @@ namespace SibaDev.Controllers
                             RCOV_NET_PREM_BC = Math.Round((decimal)((cover.MRC_DFT_PREM - 0 + 0) * 1), 2),
                             RCOV_NET_PREM_FC = Math.Round((decimal)((cover.MRC_DFT_PREM / defCoversJson.CUR_RATE - 0 + 0) / 1), 2),
                             RCOV_NO = 0,
+                            
                             RCOV_RATE = cover.MRC_DFT_RATE,
                             RCOV_RISK_NO = 0,
                             RCOV_RISK_SYS_ID = 0,
@@ -203,7 +207,7 @@ namespace SibaDev.Controllers
                 }
 
             }
-            return rskCoverList;
+            return new { DEFAULT_COVERS = rskCoverList, SEAT_COVERS = riskCovers.Where(c => c.MRC_MIN_SEATS != null && c.MRC_SEAT_LOAD != null).ToList()};
         }
 
         //Get Risks for Risk LOV

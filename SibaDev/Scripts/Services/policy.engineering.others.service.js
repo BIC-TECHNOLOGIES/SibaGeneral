@@ -1,19 +1,19 @@
 ﻿(function (s, u) {
     s.add({
-        save_policy: function (bonds, success, error) {
-            u.post("/api/policybond/save", bonds, success, error);
+        save_policy: function (engineer, success, error) {
+            u.post("/api/policyengother/save", engineer, success, error);
         },
         get_policys: function (success, error) {
-            u.get("/api/policybond", success, error);
+            u.get("/api/policyengother", success, error);
         },
         search_policy: function (query, success, error) {
-            u.get("/api/policybond/search/" + query, success, error);
+            u.get("/api/policyengother/search/" + query, success, error);
         },
         confirmPolicy: function (polId, success,error) {
             u.get("/api/Confirmation/confirmBondPolicy/" + polId, success, error);
         },
         risk_end_deletion: function (sysID, endNo, success, error) {
-            u.get("/api/policybond/endDeletion/" + sysID + "/" + endNo, success, error);
+            u.get("/api/policyengother/endDeletion/" + sysID + "/" + endNo, success, error);
         },
         get_customer: function (code, success, error) {
             u.get("/api/customer/", code, success, error);

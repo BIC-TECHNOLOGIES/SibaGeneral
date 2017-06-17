@@ -1304,10 +1304,10 @@
                         result[i]["ENG_FEE_FC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
                         result[i]["ENG_FEE_BC_AMOUNT"] = result[i]["PRF_FEE_AMOUNT"];
                         result[i]["ENG_FEE_CODE"] = result[i]["PRF_FEE_CODE"];
-                        result[i]["ENG_FEE_RK_NO"] = result[i]["FEE_NAME"];
-                        result[i]["ENG_FEE_NAME"] = result[i]["PRF_SYS_ID"];
-                        result[i]["ENG_FEE_RK_CODE"] = $("#ENG_RISK_CODE").val();
-                        result[i]["ENG_FEE_RK_SYS_ID"] = $("#ENG_SYS_ID").val();
+                        result[i]["ENG_FEE_RK_NO"] = result[i]["PRF_SYS_ID"];
+                        result[i]["ENG_FEE_NAME"] = result[i]["FEE_NAME"];
+                        result[i]["ENG_FEE_RK_CODE"] = $("#ENG_OTHER_RISK_CODE").val();
+                        result[i]["ENG_FEE_RK_SYS_ID"] = $("#ENG_OTHER_SYS_ID").val();
                         result[i]["ENG_FEE_CRTE_BY"] = "Admin";
                         result[i]["ENG_FEE_CRTE_DATE"] = Date.now();
                         result[i]["ENG_FEE_STATUS"] = "U";
@@ -1778,6 +1778,7 @@
 
         });
 
+
         /*--------------------------------------------------
           * Adding other Engineering Risk Details
           *------------------------------------------------*/
@@ -1791,7 +1792,7 @@
                 $("#ENG_OTHER_SYS_ID").val("");
 
                 if ($("#ENG_OTHER_SYS_ID").val() == "") {
-                    RetnSequenceNo("ENG_OTHERS_SEQ", getVehSeqNo);
+                    RetnSequenceNo("INS_UDW_ENG_OTHER_SEQ", getVehSeqNo);
 
                     function getVehSeqNo(data) {
                         $("#ENG_OTHER_SYS_ID").val(data);
@@ -2290,24 +2291,61 @@
                 engineer_data.ENG_POLH_END_NO = 0;
                 polhData.INS_UDW_ENGINEER = [engineer_data];
 
-                polhData.INS_UDW_ENG_OTHERS = u.get_grid_data($scope.eng_grid);
+                polhData.INS_UDW_ENG_OTHER = u.get_grid_data($scope.eng_grid);
 
                 var INS_UWD_RISK_COVERS = u.get_grid_data($scope.cover_grid);
 
-                for (var i in polhData.INS_UDW_ENG_OTHERS) {
+                var INS_UDW_ENGINEER_FEES = u.get_grid_data($scope.riskFees_grid);
+
+                for (var i in polhData.INS_UDW_ENG_OTHER) {
                     //loop through every risk and obtain the sys_id of the risk
-                    var id = polhData.INS_UDW_ENG_OTHERS[i]["ENG_OTHER_SYS_ID"];
-                    polhData.INS_UDW_ENG_OTHERS[i]["INS_UWD_RISK_COVERS"] = [];
+                    var id = polhData.INS_UDW_ENG_OTHER[i]["ENG_OTHER_SYS_ID"];
+
+                    polhData.INS_UDW_ENG_OTHER[i]["INS_UWD_RISK_COVERS"] = [];
+                    polhData.INS_UDW_ENG_OTHER[i]["INS_UDW_ENGINEER_FEES"] = [];
 
                     for (var y in INS_UWD_RISK_COVERS) {
                         //find covers which have the same the same risk sys_id
                         if (INS_UWD_RISK_COVERS[y]["RCOV_RISK_SYS_ID"] === id) {
-                            polhData.INS_UDW_ENG_OTHERS[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);
+                            polhData.INS_UDW_ENG_OTHER[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);
+                        }
+
+                            for (var x in INS_UDW_ENGINEER_FEES) {
+                            //find covers which have the same the same risk sys_id
+                            if (INS_UDW_ENGINEER_FEES[x]["ENG_FEE_RK_SYS_ID"] === id) {
+                                polhData.INS_UDW_ENG_OTHER[i]["INS_UDW_ENGINEER_FEES"].push(INS_UDW_ENGINEER_FEES[x]);
+                            }
                         }
 
                     }
 
                 }
+
+                //var INS_UDW_ENGINEER_FEES = u.get_grid_data($scope.riskFees_grid);
+
+                //for (var i in polhData.INS_UDW_ENG_OTHER) {
+                //    //loop through every risk and obtain the sys_id of the risk
+                //    var id = polhData.INS_UDW_ENG_OTHER[i]["ENG_SYS_ID"];
+
+                //    polhData.INS_UDW_ENG_OTHER[i]["INS_UWD_RISK_COVERS"] = [];
+
+                //    polhData.INS_UDW_ENG_OTHER[i]["INS_UDW_ENGINEER_FEES"] = [];
+
+                //    for (var y in INS_UWD_RISK_COVERS) {
+                //        //find covers which have the same the same risk sys_id
+                //        if (INS_UWD_RISK_COVERS[y]["RCOV_RISK_SYS_ID"] === id) {
+                //            polhData.INS_UDW_ENG_OTHER[i]["INS_UWD_RISK_COVERS"].push(INS_UWD_RISK_COVERS[y]);
+                //        }
+                    
+                //        for (var x in INS_UDW_ENGINEER_FEES) {
+                //            //find covers which have the same the same risk sys_id
+                //            if (INS_UDW_ENGINEER_FEES[x]["ENG_FEE_RK_SYS_ID"] === id) {
+                //                polhData.INS_UDW_ENG_OTHER[i]["INS_UDW_ENGINEER_FEES"].push(INS_UDW_ENGINEER_FEES[x]);
+                //            }
+                //        }
+                //    }
+
+                //}
 
                 polhData.INS_RI_FAC_INWARD = u.get_grid_data($scope.grdfacInward_grid);
 
@@ -2318,8 +2356,6 @@
                 }
 
                 console.log(polhData);
-
-                polhData.INS_UDW_ENGINEER_FEES = u.get_grid_data($scope.riskFees_grid);
 
                 polhData.INS_UWD_INTERMEDIARY_COMM = u.get_grid_data($scope.intermCom_grid);
 
@@ -3071,9 +3107,9 @@
         //    document.getElementById('ENG_EML').disabled = !this.checked;
         //};
 
-        //document.getElementById('ENG_OTHER_STND_BY').onchange = function () {
-        //    document.getElementById('ENG_OTHER_CAP').disabled = !this.checked;
-        //};
+        document.getElementById('ENG_OTHER_STND_BY').onchange = function () {
+            document.getElementById('ENG_OTHER_CAP').disabled = !this.checked;
+        };
 
         /*
         //Hide or show Covers in the Risk Covers (to filter out the covers for particular risk
@@ -3218,10 +3254,12 @@
             // set risk SI and Premiums vlues,
 
             riskgrid.jqGrid("setCell", riskRowId, 'ENG_OTHER_PREMIUM_FC', sumGrossPremFc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, 'ENG_OTHER_PREMIUM_BC', sumGrossPremBc.toFixed(2));
             riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_TOT_PREM_FC", sumGrossPremFc.toFixed(2));
             riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_TOT_PREM_BC", sumGrossPremBc.toFixed(2));
 
-            riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_SUM_INSURED", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_SUM_INSURED_FC", riskSumSifc.toFixed(2));
+            riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_SUM_INSURED_BC", riskSumSibc.toFixed(2));
             riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_SI_FC", riskSumSifc.toFixed(2));
             riskgrid.jqGrid("setCell", riskRowId, "ENG_OTHER_SI_BC", riskSumSibc.toFixed(2));
 
@@ -3299,6 +3337,18 @@
 
             $("#POLH_POL_DISC_FC").val(polDisFc);
             $("#POLH_POL_DISC_BC").val(polDisBc);
+            //
+            $("#ENG_SI_FC").val(polSifc);
+            $("#ENG_SI_BC").val(polSibc);
+
+            $("#ENG_TOT_PREM_FC").val(polGrossPremFc);
+            $("#ENG_TOT_PREM_BC").val(polGrossPremBc);
+            //
+            $("#ENG_OTHER_SUM_INSURED_FC").val(polSifc);
+            $("#ENG_OTHER_SUM_INSURED_BC").val(polSibc);
+
+            $("#ENG_OTHER_PREMIUM_FC").val(polGrossPremFc);
+            $("#ENG_OTHER_PREMIUM_BC").val(polGrossPremBc);
 
         };
 

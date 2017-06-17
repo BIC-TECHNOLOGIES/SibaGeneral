@@ -67,6 +67,25 @@ namespace SibaDev.Models
                 return null;
             }
         }
+
+
+        public static IEnumerable<MS_NCD_DTLS> GetProductNCDRates(string prdCode)
+        {
+            var  db = new SibaModel();
+            return (from n in db.MS_NCD_DTLS where n.NCD_DTLS_PRD_CODE == prdCode select n).ToList().Select(n => new MS_NCD_DTLS
+            {
+                NCD_DTLS_FROM_YEAR = n.NCD_DTLS_FROM_YEAR,
+                NCD_DTLS_TO_YEAR = n.NCD_DTLS_TO_YEAR,
+                NCD_DTLS_PERC = n.NCD_DTLS_PERC,
+                NCD_DTLS_PRD_CODE = n.NCD_DTLS_PRD_CODE,
+                MS_NCD_RISKS = new MS_NCD_RISKS
+                {
+                    NCD_CODE = n.MS_NCD_RISKS.NCD_CODE,
+                    NCD_DESC = n.MS_NCD_RISKS.NCD_DESC
+                }
+            });
+        } 
+
          
         public static MS_NCD_RISKS get_noclaimdiscount_code(string code)
         {

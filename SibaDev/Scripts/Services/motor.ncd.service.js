@@ -15,6 +15,9 @@
 
         check_product_code: function (code, success, error) {
             u.get("/api/product/check/" + code, success, error);
+        },
+        getProductNCDRates: function(prdCode, success,error) {
+            u.get("/api/noclaimdiscount/product/percentage/" + prdCode, success, error);
         }
     });
 })(window.service, window.utility)

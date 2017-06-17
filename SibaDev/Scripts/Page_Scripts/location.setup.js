@@ -1,18 +1,20 @@
 ﻿(function ($, s, u, $scope) {
     $(function () {
 
-                /*--------------------------------------------------
-  * Grid definition
-  *------------------------------------------------*/
+        /*--------------------------------------------------
+        * Grid definition
+        *------------------------------------------------*/
 
         $scope.location_grid = u.default_grid("#grdLocation", "#grdLocationPager", "Location List",
-          ['Code', 'Name', 'Description', 'Area Code', 'Loc Address', 'Postal Address',
+          ['Code', 'Name', 'Description', 'Area Code', 'Latitude', 'Longitude', 'Loc Address', 'Postal Address',
             'Created by', 'Created date', 'Status'],
           [
                 { name: 'LOC_CODE', index: 'LOC_CODE', width: 100 },
                 { name: 'LOC_NAME', index: 'LOC_NAME', width: 200 },
                 { name: 'LOC_DESC', index: 'LOC_DESC', width: 300 },
                 { name: 'LOC_ARE_CODE', index: 'LOC_ARE_CODE', width: 100 },
+                { name: 'LOC_LATTD', index: 'LOC_LATTD', width: 200 },
+                { name: 'LOC_LOGTD', index: 'LOC_LOGTD', width: 200 },
                 { name: 'LOC_ADDR1', index: 'LOC_ADDR1', width: 200 },
                 { name: 'LOC_ADDR2', index: 'LOC_ADDR2', width: 200 },
                 { name: 'LOC_STATUS', index: 'LOC_STATUS', width: 100 },

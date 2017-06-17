@@ -3,12 +3,22 @@
 
         // CAR Interest
           $scope.carinterest_grid = u.default_grid("#gridCARInterest", "#gridCARInterestPager", "CAR Interest",
-            ['Risk type', 'Risk Name', ' Description', 'Sys ID', 'Status', 'Created by', 'Created date',
-                    'Modified by', 'Modified date', 'Eng Sys ID', 'Polh Sys ID'],
+            ['Risk type', 'Risk Name', ' Description', 'Contract Price FC', 'Contract Price BC', 'Items Supplied FC', 'Items Supplied BC', 'Debris FC', 'Debris BC', 'Sum Insured FC', 'Sum Insured BC', 'Premium FC', 'Premium BC',
+                'Sys ID', 'Status', 'Created by', 'Created date', 'Modified by', 'Modified date', 'Eng Sys ID', 'Polh Sys ID'],
             [
                     { name: 'CAR_RISK_TYPE', index: 'CAR_RISK_TYPE', width: 300 },
                     { name: 'CAR_RISK_NAME', index: 'CAR_RISK_NAME', width: 300 },
                     { name: 'CAR_DESCRIPTION', index: 'CAR_DESCRIPTION', width: 500 },
+                    { name: 'CAR_CON_PRICE_FC', index: 'CAR_CON_PRICE_FC', width: 200 },
+                    { name: 'CAR_CON_PRICE_BC', index: 'CAR_CON_PRICE_BC', width: 200 },
+                    { name: 'CAR_ITEMS_SUPPLIED_FC', index: 'CAR_ITEMS_SUPPLIED_FC', width: 300 },
+                    { name: 'CAR_ITEMS_SUPPLIED_BC', index: 'CAR_ITEMS_SUPPLIED_BC', width: 300 },
+                    { name: 'CAR_DEBRIS_FC', index: 'CAR_DEBRIS_FC', width: 300 },
+                    { name: 'CAR_DEBRIS_BC', index: 'CAR_DEBRIS_BC', width: 300 },
+                    { name: 'CAR_SI_FC', index: 'CAR_SI_FC', width: 300 },
+                    { name: 'CAR_SI_BC', index: 'CAR_SI_BC', width: 300 },
+                    { name: 'CAR_TOT_PREM_FC', index: 'CAR_TOT_PREM_FC', width: 300 },
+                    { name: 'CAR_TOT_PREM_BC', index: 'CAR_TOT_PREM_BC', width: 300 },
                     { name: 'CAR_SYS_ID', index: 'CAR_SYS_ID', width: 200 },
                     { name: 'CAR_STATUS', index: 'CAR_STATUS', width: 200 },
                     { name: 'CAR_CRTE_BY', index: 'CAR_CRTE_BY', width: 300 },
@@ -22,34 +32,34 @@
            function (sel_id) {
                var grid = $scope.carinterest_grid;
                var sel_id = grid.jqGrid('getGridParam', 'selrow');
-               $("form input[name='EAR_SYS_ID']").data("update", true);
+               $("form input[name='CAR_SYS_ID']").data("update", true);
                u.fill_form({
                    CAR_SYS_ID: grid.jqGrid('getCell', sel_id, 'CAR_SYS_ID'),
                    CAR_RISK_TYPE: grid.jqGrid('getCell', sel_id, 'CAR_RISK_TYPE'),
                    CAR_RISK_NAME: grid.jqGrid('getCell', sel_id, 'CAR_RISK_NAME'),
-                   CAR_DESCRIPTION: grid.jqGrid('getCell', sel_id, 'CAR_DESCRIPTION'),
-                   CAR_STATUS: grid.jqGrid('getCell', sel_id, 'CAR_STATUS'),
+                   CAR_DESCRIPTION: grid.jqGrid('getCell', sel_id, 'CAR_DESCRIPTION'),                
                    CAR_ENG_SYS_ID: grid.jqGrid('getCell', sel_id, 'CAR_ENG_SYS_ID'),
-                   CAR_ENG_SYS_ID: grid.jqGrid('getCell', sel_id, 'CAR_ENG_SYS_ID'),
-
+                   
                }, "#carinterestForm");
            }),
 
 
         // CAR CPM
-         $scope.carcpm_grid = u.default_grid("#gridCARCPMInterest", "#gridCARCPMInterestPager", "CAR Contractor Plant Machinery",
-           ['Sys ID', 'Risk type', 'Risk Name', ' Description', 'Status', 'Created by', 'Created date',
-                    'Modified by', 'Modified date', 'Eng Loc ID', 'Polh Sys ID'],
+         $scope.carcpm_grid = u.default_grid("#gridCARCPMInterest", "#gridCARCPMInterestPager", "Contractor Plant Machinery",
+           ['Sys ID', 'Risk type', 'Risk Name', ' Description', 'Sum Insured FC', 'Sum Insured BC', 'Premium FC', 'Premium BC',
+               'Status', 'Created by', 'Created date', 'Eng Loc ID', 'Polh Sys ID'],
            [
                     { name: 'CPM_SYS_ID', index: 'CPM_SYS_ID', width: 100 },
                     { name: 'CPM_RISK_TYPE', index: 'CPM_RISK_TYPE', width: 300 },
                     { name: 'CPM_RISK_NAME', index: 'CPM_RISK_NAME', width: 300 },
                     { name: 'CPM_DESCRIPTION', index: 'CPM_DESCRIPTION', width: 300 },
+                    { name: 'CPM_CAR_SI_FC', index: 'CPM_CAR_SI_FC', width: 150 },
+                    { name: 'CPM_CAR_SI_BC', index: 'CPM_CAR_SI_BC', width: 150 },
+                    { name: 'CPM_CAR_TOT_PREM_FC', index: 'CPM_CAR_TOT_PREM_FC', width: 150 },
+                    { name: 'CPM_CAR_TOT_PREM_BC', index: 'CPM_CAR_TOT_PREM_BC', width: 150 },
                     { name: 'CPM_STATUS', index: 'CPM_STATUS', width: 100 },
-                    { name: 'CPM_CRTE_BY', index: 'CPM_CRTE_BY', width: 300 },
-                    { name: 'CPM_CRTE_DATE', index: 'CPM_CRTE_DATE', width: 300 },
-                    { name: 'CPM_MOD_BY', index: 'CPM_MOD_BY', width: 3000 },
-                    { name: 'CPM_MOD_DATE', index: 'CPM_MOD_DATE', width: 300 },
+                    { name: 'CPM_CRTE_BY', index: 'CPM_CRTE_BY', width: 150 },
+                    { name: 'CPM_CRTE_DATE', index: 'CPM_CRTE_DATE', width: 150 },                  
                     { name: 'CPM_ENG_SYS_ID', index: 'CPM_ENG_SYS_ID', width: 200 },
                     { name: 'CPM_POLH_SYS_ID', index: 'CPM_POLH_SYS_ID', width: 200 },
            ],
@@ -57,7 +67,7 @@
          function (sel_id) {
              var grid = $scope.carcpm_grid;
              var sel_id = grid.jqGrid('getGridParam', 'selrow');
-             $("form input[name='EARCPM_SYS_ID']").data("update", true);
+             $("form input[name='CPM_SYS_ID']").data("update", true);
              u.fill_form({
                  CPM_SYS_ID: grid.jqGrid('getCell', sel_id, 'CPM_SYS_ID'),
                  CPM_RISK_TYPE: grid.jqGrid('getCell', sel_id, 'CPM_RISK_TYPE'),
@@ -68,6 +78,33 @@
                  CPM_POLH_SYS_ID: grid.jqGrid('getCell', sel_id, 'CPM_POLH_SYS_ID'),
 
              }, "#carcpmForm");
+         }),
+
+
+        // CAR Contractor
+         $scope.carcon_grid = u.default_grid("#gridCARCONInterest", "#gridCARCONInterestPager", "Contractor Plant Machinery",
+           ['Sys ID', 'Risk Name', ' Description',
+            'Status', 'Created by', 'Created date', 'Eng Loc ID', 'Polh Sys ID'],
+           [
+                    { name: 'CONVAL_SYS_ID', index: 'CONVAL_SYS_ID', width: 100 },
+                    { name: 'CONVAL_NAME', index: 'CONVAL_NAME', width: 150 },
+                    { name: 'CONVAL_DESC', index: 'CONVAL_DESC', width: 150 },
+                    { name: 'CONVAL_STATUS', index: 'CONVAL_STATUS', width: 100 },
+                    { name: 'CONVAL_CRTE_BY', index: 'CONVAL_CRTE_BY', width: 150 },
+                    { name: 'CONVAL_CRTE_DATE', index: 'CONVAL_CRTE_DATE', width: 150 },
+                    { name: 'CONVAL_ENG_SYS_ID', index: 'CONVAL_ENG_SYS_ID', width: 200 },
+                    { name: 'CONVAL_POLH_SYS_ID', index: 'CONVAL_POLH_SYS_ID', width: 200 },
+           ],
+                //Retrive Grid data into form input fields on row click..
+         function (sel_id) {
+             var grid = $scope.carcon_grid;
+             var sel_id = grid.jqGrid('getGridParam', 'selrow');
+             $("form input[name='CONVAL_SYS_ID']").data("update", true);
+             u.fill_form({
+                 CONVAL_SYS_ID: grid.jqGrid('getCell', sel_id, 'CONVAL_SYS_ID'),
+                 CONVAL_NAME: grid.jqGrid('getCell', sel_id, 'CONVAL_NAME'),
+                 CONVAL_DESC: grid.jqGrid('getCell', sel_id, 'CONVAL_DESC'),
+             }, "#carconForm");
          }),
 
 
@@ -1516,7 +1553,7 @@
             if (coverCode == $("#RCOV_SYS_ID").val()) {
 
                 //
-                CURR_RATE = parseFloat($("#ENG_OTHER_CURRENCY_RATE").val()).toFixed(2);
+                CURR_RATE = parseFloat($("#POLH_CURRENCY_RATE").val()).toFixed(2);
 
                 if (CURR_RATE == "" || CURR_RATE == 0) {
                     u.hide_confirm();
@@ -1612,25 +1649,57 @@
             }
         });
 
+        $("#btn_risk_cover").click(function () {
+            var grid = $("#gridCARInterest");
+            var sel_id = grid.jqGrid('getGridParam', 'selrow');
+            var RiskID = grid.jqGrid('getCell', sel_id, 'CAR_SYS_ID');
+            if (RiskID == $("#CAR_SYS_ID").val()) {
+                //Hide covers not related to selected risk
+                $scope.hideShowCovers();
+                $("#RiskCoverModal").modal();
+            }
+            else {
+                u.growl_warning("No Row selected");
+            }
+        });
 
+        $("#btn_risk_cover1").click(function () {
+            var grid = $("#gridCARCPMInterest");
+            var sel_id = grid.jqGrid('getGridParam', 'selrow');
+            var RiskID = grid.jqGrid('getCell', sel_id, 'CPM_SYS_ID');
+            if (RiskID == $("#CPM_SYS_ID").val()) {
+                //Hide covers not related to selected risk
+                $scope.hideCPMShowCovers();
+                $("#RiskCoverModal").modal();
+            }
+            else {
+                u.growl_warning("No Row selected");
+            }
+        });
+
+
+        
         /*--------------------------------------------------
-         * Bond Risk modal dialog
+         * Risk modal dialog
          *------------------------------------------------*/
         //
-        $("#btn_open_risk").click(function () {
-            //if (u.form_validation("#polheaderForm")) {
+        $("#btn_open_car").click(function () {
+            //if (u.form_validation("#engineeringForm")) {
             //    $("#CARInterestModal").modal();
-            //    $("#ENG_OTHER_CURRENCY").val($("#POLH_CURRENCY").val());
-            //    $("#ENG_OTHER_CURRENCY_RATE").val($("#POLH_CURRENCY_RATE").val());
             //}
             //else {
-            //    u.growl_warning("Please fill the Policy Header form and try again");
+            //    u.growl_warning("Please fill the Engineering Header form and try again");
             //};
             $("#CARInterestModal").modal();
         });
 
         $("#btn_open_car_cpm").click(function () {
-
+            //if (u.form_validation("#engineeringForm")) {
+            //    $("#CARCPMModal").modal();
+            //}
+            //else {
+            //    u.growl_warning("Please fill the Engineering Header form and try again");
+            //};
             $("#CARCPMModal").modal();
         });
 
@@ -1644,23 +1713,11 @@
             $("#CARLossopModal").modal();
         });
 
+        $("#btn_open_car_con").click(function () {
 
-        $("#btn_risk_cover").click(function () {
-
-            var grid = $("#gridBondRisks");
-            var sel_id = grid.jqGrid('getGridParam', 'selrow');
-            var RiskID = grid.jqGrid('getCell', sel_id, 'ENG_OTHER_SYS_ID');
-            if (RiskID == $("#ENG_OTHER_SYS_ID").val()) {
-                //Hide covers not related to selected risk
-                $scope.hideShowCovers();
-                $("#RiskCoverModal").modal();
-
-            }
-            else {
-                u.growl_warning("No Row selected");
-            }
-
+            $("#CARCONModal").modal();
         });
+
 
 
         $("#btn_Bonds_OnClose").click(function () {
@@ -1981,7 +2038,6 @@
         });
 
 
-
         /*--------------------------------
         * Edit/Update Function CPM Interest
         *------------------------------*/
@@ -2015,7 +2071,6 @@
             }
 
         });
-
 
 
         /*----------------------------------------------------
@@ -2136,6 +2191,210 @@
             u.excel_export($scope.carcpm_grid, ["ID"], "CPM_List_Excel");
         });
 
+
+
+        /*--------------------------------------------------
+        * Adding CON Interest Risk Details
+        *------------------------------------------------*/
+        //
+        $("#btn_add_con").on('click', function () {
+
+            if (u.form_validation("#carcpmForm")) {
+
+                if ($("#CONVAL_NAME").val() === "") return u.modal_alert("Please Enter CON risk type");
+
+                u.modal_confirmation("Are you sure you want to add the CON Period Details?", function () {
+
+                    var rowIds = $scope.carcon_grid.jqGrid('getDataIDs');
+
+                    /*----------------------------------------------
+                     * declare array to contain the codes to verify
+                     *--------------------------------------------*/
+                    //
+                    var Code = [];
+
+                    /*------------------------------------------------------------
+                     * iterate through the rows and check duplicate each of them
+                     *----------------------------------------------------------*/
+                    // 
+                    for (var i = 0, len = rowIds.length; i < len; i++) {
+                        var currRow = rowIds[i];
+
+                        /*------------------------------------------------
+                         * get value of the cell or column in an array
+                         *----------------------------------------------*/
+                        //
+                        var cellValue = $scope.carcon_grid.jqGrid('getCell', currRow, 'CONVAL_NAME');
+
+                        Code.push(cellValue);
+                    }
+
+                    /*----------------------------------------
+                     * add if code is not found in the Grid
+                     *--------------------------------------*/
+                    //
+                    if ($.inArray($('#CONVAL_NAME').val(), Code) < 0) {
+
+                        var FormData = u.parse_form("#carconForm");
+                        FormData.CON_STATUS = "U";
+                        FormData.CON_CRTE_BY = "Admin";
+                        FormData.CON_CRTE_DATE = u.get_date();
+                        $scope.carcon_grid.addRowData(FormData.CONVAL_NAME, FormData);
+                        u.hide_confirm();
+                        u.growl_success("CON successfully added to grid");
+                    }
+                    else {
+                        u.hide_confirm();
+                        u.growl_warning("CON with code " + cellValue + " Already exists");
+                    }
+                });
+
+            } else {
+                u.growl_error("Please fill out the fields that are marked red");
+            }
+        });
+
+
+        /*--------------------------------
+        * Edit/Update Function CPM Interest
+        *------------------------------*/
+        //
+        $("#btn_update_con").on('click', function () {
+
+            if (u.grid_empty($scope.carcon_grid)) return u.growl_info("CON Interest grid is empty");
+
+            if (u.form_validation("#carconForm")) {
+
+                u.modal_confirmation("Are you sure you want to update the selected CON Interest?", function () {
+
+                    var grid = $scope.carcon_grid;
+
+                    var rowId = grid.jqGrid("getGridParam", "selrow");
+
+                    var code = grid.jqGrid("getCell", rowId, "CONVAL_NAME");
+
+                    if (code === $("#CONVAL_NAME").val()) {
+                        var data = u.parse_form("#carconForm");
+                        for (var i in data) {
+                            grid.jqGrid("setCell", rowId, i, data[i]);
+                        }
+                        u.hide_confirm();
+                        u.growl_success("CON Interest Details updated");
+                    } else {
+                        u.hide_confirm();
+                        u.growl_warning("Please select the correct row to edit");
+                    }
+                });
+            }
+
+        });
+
+
+        /*----------------------------------------------------
+        * Remove record or Mark for deletion from CPM Interest
+        *---------------------------------------------------*/
+        //
+        $("#btn_remove_con").on('click', function () {
+
+            if (u.grid_empty($scope.carcon_grid)) return u.modal_alert("Grid is empty!!!");
+
+            var grid = $scope.carcon_grid;
+
+            var row_id = grid.jqGrid('getGridParam', 'selrow');
+
+            var recordStatus = grid.jqGrid('getCell', row_id, 'CON_STATUS');
+
+            var RiskNo = grid.jqGrid('getCell', row_id, 'CONVAL_NAME');
+
+            var covGrid = $scope.cover_grid;
+
+            var covRowIds = covGrid.jqGrid('getDataIDs');
+
+            var message = "";
+
+            /*---------------------------------
+             * Display modal message
+             *------------------------------*/
+            //
+            u.modal_confirmation("Are you sure you want to remove the Record?", function (e) {
+
+                /*--------------------------------------------
+                 * Remove newly added record before saving
+                 *------------------------------------------*/
+                // 
+                if (recordStatus == "U") {
+
+                    for (var i = 0, len = covRowIds.length; i < len; i++) {
+                        var covCurrRow = covRowIds[i];
+
+                        //get value of the cell or column in an array
+
+                        var getCovRiskID = covGrid.jqGrid('getCell', covCurrRow, 'RCOV_RISK_SYS_ID');
+
+                        if (getCovRiskID == RiskNo) {
+
+                            covGrid.jqGrid('delRowData', covCurrRow);
+                        }
+                    }
+
+                    grid.jqGrid('delRowData', row_id);
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully deleted");
+                }
+
+                /*----------------------------------------
+                 * Mark a record for deletion on saving
+                 *--------------------------------------*/
+                // 
+                if (recordStatus == "A") {
+
+                    for (var i = 0, len = covRowIds.length; i < len; i++) {
+                        var covCurrRow = covRowIds[i];
+
+                        //get value of the cell or column in an array
+
+                        var getCovRiskID = covGrid.jqGrid('getCell', covCurrRow, 'RCOV_RISK_SYS_ID');
+
+                        if (getCovRiskID == RiskNo) {
+
+                            covGrid.jqGrid('setCell', covCurrRow, 'RCOV_STATUS', 'D');
+
+                            $('#' + covCurrRow, '#gridAppCovers').css({ color: 'red' });
+                        }
+                    }
+
+                    grid.jqGrid('setCell', row_id, 'CPM_STATUS', 'D');
+                    $('#' + row_id, '#gridCARCPMInterest').css({ color: 'red' });
+
+                    u.hide_confirm();
+                    u.growl_hide("Selected row successfully marked for deletion, please click on the save button to save changes");
+
+                } else if (recordStatus == "D") {
+
+                    for (var i = 0, len = covRowIds.length; i < len; i++) {
+                        var covCurrRow = covRowIds[i];
+
+                        //get value of the cell or column in an array
+
+                        var getCovRiskID = covGrid.jqGrid('getCell', covCurrRow, 'RCOV_RISK_SYS_ID');
+
+                        if (getCovRiskID == RiskNo) {
+
+                            covGrid.jqGrid('setCell', covCurrRow, 'RCOV_STATUS', 'A');
+
+                            $('#' + covCurrRow, '#gridAppCovers').css({ color: 'black' });
+                        }
+                    }
+
+                    $('#' + row_id, '#gridCARCPMInterest').css({ color: 'black' });
+                    grid.jqGrid('setCell', row_id, 'CPM_STATUS', 'A');
+                    u.hide_confirm();
+                    u.growl_hide("Data successfully restored");
+                }
+
+            });
+
+        });
 
 
         /*-----------------------------------
@@ -3052,7 +3311,7 @@
             var grossPremBC = "";
             var NetPremFC = "";
             var NetPremBC = "";
-            var ExchangeRate = $('#ENG_OTHER_CURRENCY_RATE').val();
+            var ExchangeRate = $('#POLH_CURRENCY_RATE').val();
 
             if ($('#RCOV_SI_FC').val() == "" || $('#RCOV_SI_FC').val() == 0 || $('#RCOV_RATE').val() == "" || $('#RCOV_RATE').val() <= 0 || $('#RCOV_RATE').val() > 100) {
                 u.growl_warning("Please Check the RATE or SUM INSURED values");
@@ -3190,50 +3449,6 @@
             }
         }
 
-        //---//Risk period days
-        //document.getElementById("ENG_OTHER_START_DATE").addEventListener("focusout", fxnRiskPeriodDays);
-        //document.getElementById("ENG_OTHER_END_DATE").addEventListener("focusout", fxnRiskPeriodDays);
-        //function fxnRiskPeriodDays() {
-        //    //alert("Input field lost focus.");
-        //    var polStartDate = new Date($("#POLH_POL_START_DATE").val());
-        //    var PolEndDate = new Date($("#POLH_POL_END_DATE").val());
-
-        //    var riskStartDate = new Date($("#ENG_OTHER_START_DATE").val());
-        //    var riskEndDate = new Date($("#ENG_OTHER_END_DATE").val());
-
-        //    var riskPeriodDays = u.get_dateDifference(riskStartDate, riskEndDate);
-
-        //    if (u.get_dateDifference(polStartDate, riskStartDate) < 0) {
-        //        u.growl_warning("Risk Start date cannot be less than Policy start date");
-        //    }
-        //    else if (u.get_dateDifference(PolEndDate, riskEndDate) > 0) {
-        //        u.growl_warning("Risk End date cannot be greater than Policy End date");
-        //    }
-        //    else {
-
-        //        if (riskPeriodDays > 0) {
-        //            $("#ENG_OTHER_PERIOD_DAYS").val(riskPeriodDays);
-        //        }
-        //    }
-
-
-        //    if ((riskPeriodDays <= 0)) {
-        //        u.growl_warning("Risk End date cannot be less than or equal to start date");
-
-        //        //reset end date and no. of days
-        //        $("#ENG_OTHER_START_DATE").val('');
-        //        $("#ENG_OTHER_END_DATE").val('');
-
-        //    }
-        //    else if ((riskPeriodDays > 365)) {
-        //        u.growl_warning("Risk period cannot be greater than 365 days, please check and try again");
-        //    }
-
-
-        //    // alert(diffDays(StartDate, EndDate));
-        //}
-
-
 
         /*
         //Hide or show Covers in the Risk Covers (to filter out the covers for particular risk
@@ -3241,9 +3456,9 @@
         $scope.hideShowCovers = function () {
 
             //get the selected Risk ID
-            var vehgrid = $scope.eng_grid;
-            var selId = vehgrid.jqGrid("getGridParam", "selrow");
-            var vehRiskId = vehgrid.jqGrid("getCell", selId, "ENG_OTHER_SYS_ID");
+            var cargrid = $scope.carinterest_grid;
+            var selId = cargrid.jqGrid("getGridParam", "selrow");
+            var carRiskId = cargrid.jqGrid("getCell", selId, "CAR_SYS_ID");
 
             //get the Risk Cover data
             var covgrid = $scope.cover_grid;
@@ -3259,21 +3474,56 @@
 
                 var getRiskCovId = covgrid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
 
-
-                if (getRiskCovId != vehRiskId) {
+                if (getRiskCovId != carRiskId) {
 
                     //hide if covers are not for the selected risk 
                     $("#" + currRow).hide();
 
                 }
-                else if (getRiskCovId == vehRiskId) {
+                else if (getRiskCovId == carRiskId) {
 
                     //Show if covers are for the selected risk 
                     $("#" + currRow).show();
 
                 }
             }
+        };
 
+
+        $scope.hideCPMShowCovers = function () {
+
+            //get the selected Risk ID
+            var cpmgrid = $scope.carcpm_grid;
+            var selId = cpmgrid.jqGrid("getGridParam", "selrow");
+            var cpmRiskId = cpmgrid.jqGrid("getCell", selId, "CPM_SYS_ID");
+
+            //get the Risk Cover data
+            var covgrid = $scope.cover_grid;
+            var rowIds = covgrid.jqGrid("getDataIDs");
+
+
+            // iterate through the risk cover rows to hide or show covers 
+
+            for (var i = 0, len = rowIds.length; i < len; i++) {
+
+                //get value of the cell or column in an array
+                var currRow = rowIds[i];
+
+                var getRiskCovId = covgrid.jqGrid("getCell", currRow, "RCOV_RISK_SYS_ID");
+
+                if (getRiskCovId != cpmRiskId) {
+
+                    //hide if covers are not for the selected risk 
+                    $("#" + currRow).hide();
+
+                }
+                else if (getRiskCovId == cpmRiskId) {
+
+                    //Show if covers are for the selected risk 
+                    $("#" + currRow).show();
+
+                }
+            }
         };
 
 

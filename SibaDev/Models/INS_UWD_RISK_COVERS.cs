@@ -138,5 +138,7 @@ namespace SibaDev.Models
         public virtual INS_UDW_LIABILITY INS_UDW_LIABILITY { get; set; } 
 
         public virtual INS_UDW_LIABILITY_WKS_COMP INS_UDW_LIABILITY_WKS_COMP { get; set; }
+
+        public virtual INS_UDW_ENG_OTHER INS_UDW_ENG_OTHER { get; set; }
     }
 }

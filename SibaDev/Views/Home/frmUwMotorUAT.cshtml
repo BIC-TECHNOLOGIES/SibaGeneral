@@ -2,8 +2,14 @@
 @{
     ViewBag.Title = "Motor Policy";
 }
-<script src="~/Scripts/Utilities/cover.change.util.js"></script>
+
+<!--setups-->
 <script src="~/Scripts/Page_Scripts/policy.motor.setup.js"></script>
+
+<!--utils-->
+<script src="~/Scripts/Utilities/cover.change.util.js"></script>
+
+<!--services-->
 <script src="~/Scripts/Services/policy.motor.service.js"></script>
 <script src="~/Scripts/Services/customers.service.js"></script>
 <script src="~/Scripts/Services/premiumtariff.service.js"></script>
@@ -12,6 +18,8 @@
 <script src="~/Scripts/Libraries/SibaScript/RetnSequenceNo.js"></script>
 <script src="~/Scripts/Services/endorsements.js"></script>
 <script src="~/Scripts/Services/discountloading.service.js"></script>
+<script src="~/Scripts/Services/motor.ncd.service.js"></script>
+<script src="~/Scripts/Services/buy.back.excess.service.js"></script>
 
 <div class="main">
 
@@ -26,7 +34,7 @@
                             <div class="panel-heading row">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <button type="button" class="btn btn-success" id="btn_Save">
                                                 <i class="fa fa-save" title="Save" aria-hidden="true"></i> Save
                                             </button>
@@ -38,23 +46,7 @@
                                             </button>
                                         </div>
 
-                                        @*<div class="col-md-1">
-                                                <button type="button" class="btn btn-success" id="btnPolConfirm">
-                                                    <i class="fa fa-adjust" title="Save" aria-hidden="true"></i> Confirm
-                                                </button>
-                                            </div>
-
-                                            <div class="col-md-1">
-                                                <button type="button" class="btn btn-success" id="btnPolApproval">
-                                                    <i class="fa fa-check-square" title="Save" aria-hidden="true"></i> Approve
-                                                </button>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <button type="button" class="btn btn-success" id="btnEndorsement">
-                                                    <i class="fa fa-edit" title="Save" aria-hidden="true"></i> Endorsement
-                                                </button>
-                                            </div>*@
-                                        <div class="col-md-1">
+                                        <div class="col-md-2">
                                             <button type="button" class="btn btn-success" id="btnProcessPolicy">
                                                 <i class="fa fa-edit" title="Save" aria-hidden="true"></i> Process Policy
                                             </button>
@@ -67,8 +59,7 @@
                                             </button>
                                         </div>
 
-
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <button type="button" id="btnQueryPolicy" class="btn btn-info" style="float: right;">
                                                 <i class="fa fa-search" title="Search" aria-hidden="true"></i> Search
                                             </button>
@@ -107,12 +98,12 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Company</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhcomp">
                                                                     <div class="input-group">
                                                                         <input class="form-control readonly" min="3" max-length="15" type="text" id="POLH_CMP_CODE" name="POLH_CMP_CODE" value="MULTI" title="Code" readonly />
                                                                         <span class="input-group-btn">
-                                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_company", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
+                                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_companys", "field1":"POLH_CMP_CODE", "field2":"CMP_NAME"}'>
                                                                                 <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                             </button>
                                                                         </span>
@@ -120,7 +111,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control readonly" min="3" max-length="50" type="text" name="CMP_NAME" value="MULTI-INSURANCE" readonly title="Name" />
                                                             </div>
                                                         </div>
@@ -131,7 +122,7 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Channel</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhchannel">
                                                                     <div class="input-group">
                                                                         <input class="form-control" min="3" max-length="15" type="text" id="POLH_CHANNEL_CODE" name="POLH_CHANNEL_CODE" title="Code" required readonly />
@@ -144,7 +135,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control" min="3" max-length="50" type="text" name="MSC_NAME" title="Name" readonly />
                                                             </div>
                                                         </div>
@@ -155,12 +146,12 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Product</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhclass">
                                                                     <div class="input-group">
                                                                         <input class="form-control readonly" min="3" max-length="15" type="text" id="POLH_CLASS_CODE" name="POLH_CLASS_CODE" value="MOTO" readonly />
                                                                         <span class="input-group-btn">
-                                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_type", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
+                                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_product_types", "field1":"POLH_CLASS_CODE", "field2":"COB_NAME"}'>
                                                                                 <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                                             </button>
                                                                         </span>
@@ -168,7 +159,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control readonly" min="3" max-length="50" type="text" name="COB_NAME" value="MOTOR" readonly />
                                                             </div>
                                                         </div>
@@ -179,7 +170,7 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Office</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhoff">
                                                                     <div class="input-group">
                                                                         <input class="form-control" min="3" max-length="15" type="text" id="POLH_OFF_CODE" name="POLH_OFF_CODE" title="Code" required />
@@ -192,7 +183,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control" min="3" max-length="50" type="text" name="OFF_NAME" title="Name" />
                                                             </div>
                                                         </div>
@@ -203,7 +194,7 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Sub Class</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhsubclass">
                                                                     <div class="input-group">
                                                                         <input class="form-control" min="3" max-length="15" type="text" id="POLH_SUB_CLASS_CODE" name="POLH_SUB_CLASS_CODE" title="Code" required />
@@ -216,7 +207,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control" min="3" max-length="50" type="text" name="PDT_NAME" title="Name" />
                                                             </div>
                                                         </div>
@@ -227,7 +218,7 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Insurance Source</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhins">
                                                                     <div class="input-group">
                                                                         <input class="form-control" min="3" max-length="15" type="text" id="POLH_INS_SOURCE" name="POLH_INS_SOURCE" title="Code" required />
@@ -240,7 +231,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control" min="3" max-length="50" type="text" name="INSUR_NAME" title="Name" />
                                                             </div>
                                                         </div>
@@ -251,7 +242,7 @@
                                                             <div class="col-md-2">
                                                                 <label class="">Business Source</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_polhbuz">
                                                                     <div class="input-group">
                                                                         <input class="form-control" min="3" max-length="15" type="text" id="POLH_BIZ_SOURCE" name="POLH_BIZ_SOURCE" title="Code" required />
@@ -264,42 +255,18 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <input class="form-control" min="3" max-length="50" type="text" name="SRB_NAME" />
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    @*<div class="row">
-                                                            <div class="form-group">
-                                                                <div class="col-md-2">
-                                                                    <label class="">Broker/Agent</label>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <span id="spry_polhbroker">
-                                                                        <div class="input-group">
-                                                                            <input class="form-control" min="3" max-length="15" type="text" id="POLH_INTERMIDIARY" name="POLH_INTERMIDIARY" title="Code" required />
-                                                                            <span class="input-group-btn">
-                                                                                <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "btn_broker_agent", "field1":"POLH_INTERMIDIARY", "field2":"INT_OFFICIAL_NAME"}'>
-                                                                                    <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
-                                                                                </button>
-                                                                            </span>
-                                                                        </div>
-                                                                        <span class="textfieldRequiredMsg">Code is required.</span>
-                                                                    </span>
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <input class="form-control" min="3" max-length="50" type="text" name="INT_OFFICIAL_NAME" title="Name" />
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
 
                                                     <div class="row">
                                                         <div class="form-group">
                                                             <div class="col-md-2">
                                                                 <label class="">Currency</label>
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <span id="spry_lovcode">
                                                                     <div class="input-group">
                                                                         <input class="form-control" min="3" max-length="15" type="text" id="POLH_CURRENCY" name="POLH_CURRENCY" required />
@@ -312,7 +279,7 @@
                                                                     <span class="textfieldRequiredMsg">Code is required.</span>
                                                                 </span>
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-6">
                                                                 <span id="spry_baserate">
                                                                     <input class="form-control" min="3" max-length="50" type="text" id="POLH_CURRENCY_RATE" name="POLH_CURRENCY_RATE" />
                                                                     <span class="textfieldRequiredMsg">Exchage Rate is required.</span>
@@ -531,93 +498,93 @@
                                     <div class="row">
 
                                         <div class="col-md-1">
-                                            <input id="POLH_STATUS" type="text" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
+                                            <input id="POLH_STATUS" type="hidden" name="POLH_STATUS" class="form-control" min="12" title="POLH_STATUS" value="U" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_SI_FC" type="text" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
+                                            <input id="POLH_POL_SI_FC" type="hidden" name="POLH_POL_SI_FC" class="form-control" min="12" title="POLH_POL_SI_FC" />
 
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_SI_BC" type="text" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
+                                            <input id="POLH_POL_SI_BC" type="hidden" name="POLH_POL_SI_BC" class="form-control" min="12" title="POLH_POL_SI_BC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_PREM_FC" type="text" name="POLH_POL_PREM_FC" class="form-control" min="12" title="POLH_POL_PREM_FC" />
+                                            <input id="POLH_POL_PREM_FC" type="hidden" name="POLH_POL_PREM_FC" class="form-control" min="12" title="POLH_POL_PREM_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_PREM_BC" type="text" name="POLH_POL_PREM_BC" class="form-control" min="12" title="POLH_POL_PREM_BC" />
+                                            <input id="POLH_POL_PREM_BC" type="hidden" name="POLH_POL_PREM_BC" class="form-control" min="12" title="POLH_POL_PREM_BC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_COMM_FC" type="text" name="POLH_POL_COMM_FC" class="form-control" min="12" title="POLH_POL_COMM_FC" />
+                                            <input id="POLH_POL_COMM_FC" type="hidden" name="POLH_POL_COMM_FC" class="form-control" min="12" title="POLH_POL_COMM_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_COMM_BC" type="text" name="POLH_POL_COMM_BC" class="form-control" min="12" title="POLH_POL_COMM_BC" />
-                                        </div>
-
-                                        <div class="col-md-1">
-                                            <input id="POLH_POL_DISC_FC" type="text" name="POLH_POL_DISC_FC" class="form-control" min="12" title="POLH_POL_DISC_FC" />
-                                        </div>
-                                        <div class="col-md-1">
-                                            <input id="POLH_POL_DISC_BC" type="text" name="POLH_POL_DISC_BC" class="form-control" min="12" title="POLH_POL_DISC_BC" />
+                                            <input id="POLH_POL_COMM_BC" type="hidden" name="POLH_POL_COMM_BC" class="form-control" min="12" title="POLH_POL_COMM_BC" />
                                         </div>
 
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_LOAD_FC" type="text" name="POLH_POL_LOAD_FC" class="form-control" min="12" title="POLH_POL_LOAD_FC" />
+                                            <input id="POLH_POL_DISC_FC" type="hidden" name="POLH_POL_DISC_FC" class="form-control" min="12" title="POLH_POL_DISC_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_POL_LOAD_BC" type="text" name="POLH_POL_LOAD_BC" class="form-control" min="12" title="POLH_POL_LOAD_BC" />
-                                        </div>
-
-                                        <div class="col-md-1">
-                                            <input id="POLH_COINS_SI_FC" type="text" name="POLH_COINS_SI_FC" class="form-control" min="12" title="POLH_COINS_SI_FC" />
+                                            <input id="POLH_POL_DISC_BC" type="hidden" name="POLH_POL_DISC_BC" class="form-control" min="12" title="POLH_POL_DISC_BC" />
                                         </div>
 
                                         <div class="col-md-1">
-                                            <input id="POLH_COINS_SI_BC" type="text" name="POLH_COINS_SI_BC" class="form-control" min="12" title="POLH_COINS_SI_BC" />
+                                            <input id="POLH_POL_LOAD_FC" type="hidden" name="POLH_POL_LOAD_FC" class="form-control" min="12" title="POLH_POL_LOAD_FC" />
+                                        </div>
+                                        <div class="col-md-1">
+                                            <input id="POLH_POL_LOAD_BC" type="hidden" name="POLH_POL_LOAD_BC" class="form-control" min="12" title="POLH_POL_LOAD_BC" />
                                         </div>
 
                                         <div class="col-md-1">
-                                            <input id="POLH_COINS_PREM_FC" type="text" name="POLH_COINS_PREM_FC" class="form-control" min="12" title="POLH_COINS_PREM_FC" />
+                                            <input id="POLH_COINS_SI_FC" type="hidden" name="POLH_COINS_SI_FC" class="form-control" min="12" title="POLH_COINS_SI_FC" />
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <input id="POLH_COINS_SI_BC" type="hidden" name="POLH_COINS_SI_BC" class="form-control" min="12" title="POLH_COINS_SI_BC" />
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <input id="POLH_COINS_PREM_FC" type="hidden" name="POLH_COINS_PREM_FC" class="form-control" min="12" title="POLH_COINS_PREM_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_COINS_PREM_BC" type="text" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
+                                            <input id="POLH_COINS_PREM_BC" type="hidden" name="POLH_COINS_PREM_BC" class="form-control" min="12" title="POLH_COINS_PREM_BC" />
                                         </div>
 
 
                                         <div class="col-md-1">
-                                            <input id="POLH_NET_SI_FC" type="text" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
+                                            <input id="POLH_NET_SI_FC" type="hidden" name="POLH_NET_SI_FC" class="form-control" min="12" title="POLH_NET_SI_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_NET_SI_BC" type="text" name="POLH_NET_SI_BC" class="form-control" min="12" title="POLH_NET_SI_BC" />
-                                        </div>
-
-                                        <div class="col-md-1">
-                                            <input id="POLH_NET_PREM_FC" type="text" name="POLH_NET_PREM_FC" class="form-control" min="12" title="POLH_NET_PREM_FC" />
-                                        </div>
-                                        <div class="col-md-1">
-                                            <input id="POLH_NET_PREM_BC" type="text" name="POLH_NET_PREM_BC" class="form-control" min="12" title="POLH_NET_PREM_BC" />
+                                            <input id="POLH_NET_SI_BC" type="hidden" name="POLH_NET_SI_BC" class="form-control" min="12" title="POLH_NET_SI_BC" />
                                         </div>
 
                                         <div class="col-md-1">
-                                            <input id="POLH_FEE_FC" type="text" name="POLH_FEE_FC" class="form-control" min="12" title="POLH_FEE_FC" />
+                                            <input id="POLH_NET_PREM_FC" type="hidden" name="POLH_NET_PREM_FC" class="form-control" min="12" title="POLH_NET_PREM_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_FEE_BC" type="text" name="POLH_FEE_BC" class="form-control" min="12" title="POLH_FEE_BC" />
+                                            <input id="POLH_NET_PREM_BC" type="hidden" name="POLH_NET_PREM_BC" class="form-control" min="12" title="POLH_NET_PREM_BC" />
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <input id="POLH_FEE_FC" type="hidden" name="POLH_FEE_FC" class="form-control" min="12" title="POLH_FEE_FC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_SYS_ID" type="text" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
+                                            <input id="POLH_FEE_BC" type="hidden" name="POLH_FEE_BC" class="form-control" min="12" title="POLH_FEE_BC" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_END_NO" type="number" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
+                                            <input id="POLH_SYS_ID" type="hidden" name="POLH_SYS_ID" class="form-control" min="12" title="POLH_SYS_ID" />
                                         </div>
                                         <div class="col-md-1">
-                                            <input id="POLH_TXN_STATE" type="text" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
+                                            <input id="POLH_END_NO" type="hidden" name="POLH_END_NO" class="form-control" min="12" title="POLH_END_NO" value="0" />
+                                        </div>
+                                        <div class="col-md-1">
+                                            <input id="POLH_TXN_STATE" type="hidden" name="POLH_TXN_STATE" class="form-control" min="12" title="POLH_TXN_STATE" value="S" />
                                         </div>
                                     </div>
 
                                     <h4 style="border-bottom-color: blue" class="sub-header"></h4>
 
                                     <div class="row">
-
+                                        <div class="col-md-2">  </div>
                                         <div class="col-md-2">
                                             <div class="input-group">
                                                 <button type="button" id="btnFACInward" name="btnFACInward" disabled class="btn btn-default"><i class="fa fa-recycle" aria-hidden="true"></i>FAC Inward </button>
@@ -651,6 +618,9 @@
                                     </div>
 
                                     <h4 style="border-bottom-color: blue" class="sub-header"></h4>
+                                    <input class="form-control" type="hidden" id="POLHP" name="POLHP" value="P" />
+                                    <input class="form-control" type="hidden" id="MULTI" name="MULTI" value="M" />
+                                    <input class="form-control" type="hidden" id="POLYEAR" name="POLYEAR" value="17" />
                                 </form>
                             </div>
                         </div>
@@ -682,7 +652,7 @@
 
                                             <button id="btn_remove_motor_risk" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
 
-                                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-cover-btn" title="Export Grid data to Excel">
+                                            <button type="button" class="btn btn-default pull-right dialog-btn" id="export-motor-btn" title="Export Grid data to Excel">
                                                 <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
                                             </button>
                                         </div>
@@ -879,10 +849,10 @@
                                                     </span>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <input class="form-control" type="text" id="VEH_SYS_ID" name="VEH_SYS_ID" />
+                                                    <input class="form-control" type="hidden" id="VEH_SYS_ID" name="VEH_SYS_ID" />
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <input class="form-control" type="text" id="VEH_RISK_NO" name="VEH_RISK_NO" />
+                                                    <input class="form-control" type="hidden" id="VEH_RISK_NO" name="VEH_RISK_NO" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1148,6 +1118,17 @@
                                                     <input id="VEH_PASSENGERS" class="form-control" maxlength="20" type="number" name="VEH_PASSENGERS" title="No of Passengers" required />
 
                                                 </div>
+                                                <div class="col-md-2">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <input id="SEAT_LOAD" class="form-control" maxlength="20" type="hidden" name="SEAT_LOAD" title="No of Passengers" />
+
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <input id="MIN_SEATS" class="form-control" maxlength="20" type="hidden" name="MIN_SEATS" title="No of Passengers" />
+
+                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -1157,6 +1138,13 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input id="VEH_CLM_FREE_YRS" class="form-control" maxlength="20" type="number" name="VEH_CLM_FREE_YRS" title="No of Passengers" required />
+
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="required">NCD %</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input id="VEH_NCD_PERC" class="form-control" readonly maxlength="20" type="number" name="VEH_NCD_PERC" title="No of Passengers" />
 
                                                 </div>
                                             </div>
@@ -1170,10 +1158,18 @@
                                                 <div class="col-md-3">
                                                     <select id="" class="form-control" name="VEH_CUBIC_CAP" required>
                                                         <option value="">Select Capacity</option>
-                                                        <option value="<=2000">Up to 2000</option>
-                                                        <option value="2001 &amp; 1000">Between 2001 &amp; 1000</option>
-                                                        <option value="Above 1001">Above 1001</option>
+                                                        <option value="1">Up to 1000</option>
+                                                        <option value="2">Between 2001 &amp; 1000</option>
+                                                        <option value="3">Above 2001</option>
                                                     </select>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <label class="required">CC Load %</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input id="VEH_CCL_PERC" class="form-control" maxlength="20" type="number" name="VEH_CCL_PERC" title="No of Passengers" />
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1202,9 +1198,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="input-group">
-                                                        <input class="form-control" min="3" max-length="15" type="text" id="VEH_EXCESS_PERC" name="VEH_EXCESS_PERC" title="Claim Deductible Excess" required />
+                                                        <input class="form-control" min="3" max-length="15" type="number" readonly id="VEH_EXCESS_PERC" name="VEH_EXCESS_PERC" title="Claim Deductible Excess" required />
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "", "field1":"", "field2":""}'>
+                                                            <button id="btn_excess" type="button" class="btn btn_lov btn-default pull-left" data-dialog='{"type": "excess_lov", "field1":"", "field2":"VEH_EXCESS_PERC"}'>
                                                                 <i class="fa fa-sort-down" title="Select" aria-hidden="true"></i>
                                                             </button>
                                                         </span>
@@ -1217,7 +1213,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-2">
                                                     <label>
-                                                        Increase TTPD ?
+                                                        Increase TPPD ?
                                                     </label>
                                                 </div>
                                                 <div class="col-md-3">
@@ -1306,7 +1302,7 @@
 
                     <div class="row control-group form-padding">
                         <div class="container" style="width: 100%">
-                            <span class="control-grp-lbl text-danger">Policy Cover</span>
+                            <span class="control-grp-lbl text-danger">Risk Covers</span>
 
                             <div class="row">
 
@@ -1353,10 +1349,10 @@
                                             </div>
 
                                             <div class="col-sm-1">
-                                                <input id="RCOV_ANNL_PREM_BC" value="0.00" class="form-control" type="text" name="RCOV_ANNL_PREM_BC">
+                                                <input id="RCOV_ANNL_PREM_BC" value="0.00" class="form-control" type="Hidden" name="RCOV_ANNL_PREM_BC">
                                             </div>
                                             <div class="col-sm-1">
-                                                <input id="RCOV_ANNL_PREM_FC" value="0.00" class="form-control" type="text" name="RCOV_ANNL_PREM_FC">
+                                                <input id="RCOV_ANNL_PREM_FC" value="0.00" class="form-control" type="Hidden" name="RCOV_ANNL_PREM_FC">
                                             </div>
                                         </div>
 
@@ -2106,8 +2102,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>Type</label>
-                                                <input type="text" class="form-control" id="DL_TYPE" name="DL_TYPE" />
+                                                @*<label>Type</label>*@
+                                                <input type="hidden" class="form-control" id="DL_TYPE" name="DL_TYPE" />
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Rate</label>
@@ -2346,21 +2342,19 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <label>Deft. Amount</label>
-                                                <input type="number" class="form-control" id="DL_DEFT_AMT" name="DL_DEFT_AMT" />
-                                            </div>
                                             <div class="col-md-1">
                                                 <label>Level</label>
                                                 <input type="number" class="form-control" id="DL_LEVEL" name="DL_LEVEL" />
                                             </div>
-                                            <div class="col-md-1">
-                                                <label>Type</label>
-                                                <input type="text" class="form-control" id="DL_TYPE" name="DL_TYPE" />
+                                            <div class="col-md-2">
+                                                <label>D/L. Amount</label>
+                                                <input type="Number" class="form-control" id="DL_DEFT_AMT" disabled="" name="DL_DEFT_AMT" />
                                             </div>
 
-
-
+                                            <div class="col-md-1">
+                                                @*<label>Type</label>*@
+                                                <input type="hidden" class="form-control" id="DL_TYPE" name="DL_TYPE" />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -2375,17 +2369,17 @@
 
                                             <div class="col-md-2">
                                                 <label>Amount FC</label>
-                                                <input type="number" class="form-control" id="DL_AMT_FC" name="DL_AMT_FC" />
+                                                <input type="text" class="form-control" id="DL_AMT_FC" name="DL_AMT_FC" />
                                             </div>
 
                                             <div class="col-md-2">
                                                 <label>Premium BC</label>
-                                                <input type="number" class="form-control" id="DL_PREM_BC" name="DL_PREM_BC" />
+                                                <input type="text" class="form-control" id="DL_PREM_BC" name="DL_PREM_BC" />
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Premium FC</label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" id="DL_PREM_FC" name="DL_PREM_FC" />
+                                                    <input type="text" class="form-control" id="DL_PREM_FC" name="DL_PREM_FC" />
                                                 </div>
                                             </div>
 
@@ -2404,6 +2398,8 @@
                                 <button id="btn_update_riskdiscloading" class="btn btn-default" type="button"><i class="fa fa-edit text-yellow"></i> Update</button>
                                 <button id="btn_remove_riskdiscloadings" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Remove</button>
                                 <button type="reset" class="btn btn-default"> <i class="fa fa-refresh" title="Reset" aria-hidden="true"></i> Reset </button>
+
+                                <button id="btnCalcDisLoad" class="btn btn-default" type="button"><i class="fa fa-trash-o text-danger"></i> Recalculate</button>
 
                                 <button type="button" class="btn btn-default pull-right dialog-btn" id="export-risk-discloading-btn" title="Export Grid data to Excel">
                                     <img src="~/Content/Images/Excell_DownLoad.png" alt="Down Load" height="25" width="27" /> Export
